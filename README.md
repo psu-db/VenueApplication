@@ -32,7 +32,7 @@ Requirement Analysis
 
  
 
-Functionality Description 
+Functionality Description:
 
 The functionality of this application will be like that of popular ticket sale apps such as Ticketmaster. To start, the user must create an account. If they already have an account, then they can login using their username (or email) and password. There are two types of users; there’s the more traditional user who uses the application to purchase tickets, merchandise, and concessions at the event. There is also an administrative user, who can post tickets for events they are holding at the venue, as well as new merchandise and concessions options available for each event. Before an event, the user can browse tickets for various events, sorting by date or price. After adding a payment method to their account and loading a balance, the user can select tickets they would like to purchase. At this point, the tickets would be added to the user’s digital wallet, and their account balance would be subtracted. The user can access their digital wallet to view their tickets, where they will appear with their event name, seat number, section number.  
 
@@ -44,7 +44,7 @@ Another feature on the user side is the ability to resell tickets to other users
 
  
 
-Data Description 
+Data Description:
 
 For the users, we will need to collect some basic information such as their first and last name, birthday, email, and payment information. For administrators, we will also record similar information to allow administrators to log in and use the application. The database will record credit card numbers for each payment method for the user to load their account balance into the application. We will also record data for each user’s wallet, which shows their account balance and which tickets they have purchased. 
 
