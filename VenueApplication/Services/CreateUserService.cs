@@ -8,5 +8,6 @@ namespace VenueApplication.Services
 {
     internal class CreateUserService
     {
+
     }
 }
