@@ -34,12 +34,12 @@
             passwordLabel = new Label();
             loginButton = new Syncfusion.WinForms.Controls.SfButton();
             label1 = new Label();
-            linkLabel1 = new LinkLabel();
+            newUserSignUpLinkLabel = new LinkLabel();
             loginErrorLabel = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            panel1 = new Panel();
+            loginControlsPanel = new Panel();
             ((System.ComponentModel.ISupportInitialize)usernameTextBoxEdit).BeginInit();
             ((System.ComponentModel.ISupportInitialize)passwordTextBoxEdit).BeginInit();
-            panel1.SuspendLayout();
+            loginControlsPanel.SuspendLayout();
             SuspendLayout();
             // 
             // usernameTextBoxEdit
@@ -100,15 +100,16 @@
             label1.TabIndex = 5;
             label1.Text = "Don't have an account?";
             // 
-            // linkLabel1
+            // newUserSignUpLinkLabel
             // 
-            linkLabel1.AutoSize = true;
-            linkLabel1.Location = new Point(215, 193);
-            linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(48, 15);
-            linkLabel1.TabIndex = 6;
-            linkLabel1.TabStop = true;
-            linkLabel1.Text = "Sign Up";
+            newUserSignUpLinkLabel.AutoSize = true;
+            newUserSignUpLinkLabel.Location = new Point(215, 193);
+            newUserSignUpLinkLabel.Name = "newUserSignUpLinkLabel";
+            newUserSignUpLinkLabel.Size = new Size(48, 15);
+            newUserSignUpLinkLabel.TabIndex = 6;
+            newUserSignUpLinkLabel.TabStop = true;
+            newUserSignUpLinkLabel.Text = "Sign Up";
+            newUserSignUpLinkLabel.Click += newUserSignUpLinkLabel_Click;
             // 
             // loginErrorLabel
             // 
@@ -116,26 +117,26 @@
             loginErrorLabel.ForeColor = Color.Red;
             loginErrorLabel.Location = new Point(106, 30);
             loginErrorLabel.Name = "loginErrorLabel";
-            loginErrorLabel.Size = new Size(149, 15);
+            loginErrorLabel.Size = new Size(146, 15);
             loginErrorLabel.TabIndex = 7;
-            loginErrorLabel.Text = "Template Loging Error Text";
+            loginErrorLabel.Text = "Template Log In Error Text";
             // 
-            // panel1
+            // loginControlsPanel
             // 
-            panel1.BackColor = Color.White;
-            panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(usernameTextBoxEdit);
-            panel1.Controls.Add(loginErrorLabel);
-            panel1.Controls.Add(passwordTextBoxEdit);
-            panel1.Controls.Add(linkLabel1);
-            panel1.Controls.Add(usernameLabel);
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(passwordLabel);
-            panel1.Controls.Add(loginButton);
-            panel1.Location = new Point(210, 90);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(355, 247);
-            panel1.TabIndex = 8;
+            loginControlsPanel.BackColor = Color.White;
+            loginControlsPanel.BorderStyle = BorderStyle.FixedSingle;
+            loginControlsPanel.Controls.Add(usernameTextBoxEdit);
+            loginControlsPanel.Controls.Add(loginErrorLabel);
+            loginControlsPanel.Controls.Add(passwordTextBoxEdit);
+            loginControlsPanel.Controls.Add(newUserSignUpLinkLabel);
+            loginControlsPanel.Controls.Add(usernameLabel);
+            loginControlsPanel.Controls.Add(label1);
+            loginControlsPanel.Controls.Add(passwordLabel);
+            loginControlsPanel.Controls.Add(loginButton);
+            loginControlsPanel.Location = new Point(210, 90);
+            loginControlsPanel.Name = "loginControlsPanel";
+            loginControlsPanel.Size = new Size(355, 247);
+            loginControlsPanel.TabIndex = 8;
             // 
             // LoginForm
             // 
@@ -144,7 +145,7 @@
             BackColor = Color.White;
             BackgroundImage = Properties.Resource.beaverStaidumLoginBackgroundImage_webp;
             ClientSize = new Size(792, 450);
-            Controls.Add(panel1);
+            Controls.Add(loginControlsPanel);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "LoginForm";
             ShowIcon = false;
@@ -152,8 +153,8 @@
             Text = "LoginForm";
             ((System.ComponentModel.ISupportInitialize)usernameTextBoxEdit).EndInit();
             ((System.ComponentModel.ISupportInitialize)passwordTextBoxEdit).EndInit();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            loginControlsPanel.ResumeLayout(false);
+            loginControlsPanel.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -165,8 +166,8 @@
         private Label passwordLabel;
         private Syncfusion.WinForms.Controls.SfButton loginButton;
         private Label label1;
-        private LinkLabel linkLabel1;
+        private LinkLabel newUserSignUpLinkLabel;
         private Syncfusion.Windows.Forms.Tools.AutoLabel loginErrorLabel;
-        private Panel panel1;
+        private Panel loginControlsPanel;
     }
 }

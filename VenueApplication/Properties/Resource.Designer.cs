@@ -63,9 +63,29 @@ namespace VenueApplication.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _22_Profile {
+            get {
+                object obj = ResourceManager.GetObject("22_Profile", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap beaverStaidumLoginBackgroundImage_webp {
             get {
                 object obj = ResourceManager.GetObject("beaverStaidumLoginBackgroundImage.webp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap vecteezy_home_or_house_symbol_icon_vector_illustration_8070536 {
+            get {
+                object obj = ResourceManager.GetObject("vecteezy_home-or-house-symbol-icon-vector-illustration_8070536", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

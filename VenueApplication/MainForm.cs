@@ -16,6 +16,7 @@ namespace VenueApplication
             InitializeComponent();
             this.Text = "Venue Application";
 
+            // Creates DatabaseManager object that will be used throughout lifetime of the application, should be passed to and method that will interact with the database
             _databaseManager = new DatabaseManager(dbHost, dbUsername, dbPassword, dbName);
 
             _databaseManager.ExecuteTestQuery();

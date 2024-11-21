@@ -13,10 +13,35 @@ namespace VenueApplication
 {
     public partial class LoginForm : MetroForm
     {
+        #region Constructor
+
         public LoginForm()
         {
             InitializeComponent();
             this.Text = "Login Page";
         }
+
+        #endregion
+
+        #region Events
+
+        private void newUserSignUpLinkLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Method will hide necessary UI components and reconfigure the UI to allow for new user signup
+        /// </summary>
+        private void switchToNewUserSignUpConfig()
+        {
+
+        }
+
+        #endregion
     }
 }
