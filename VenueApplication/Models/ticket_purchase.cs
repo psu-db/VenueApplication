@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using VenueApplication.DataAccess;
+
+namespace VenueApplication.Models
+{
+    internal class ticket_purchase
+    {
+        #region Table Attributes
+        // Primary key
+        public int tktpur_id { get; set; } // DBMS will auto-generate this
+
+        public int tktpur_tkt_id { get; set; }
+        public DateOnly tktpur_date { get; set; }
+        public int tktpur_wallet_id { get; set; }
+
+        #endregion
+
+        DatabaseManager databaseManager { get; set; }
+
+        public ticket_purchase(int tktpur_tkt_id, DateOnly tktpur_date, int tktpur_wallet_id, DatabaseManager databaseManager)
+        {
+            this.tktpur_tkt_id = tktpur_tkt_id;
+            this.tktpur_date = tktpur_date;
+            this.tktpur_wallet_id = tktpur_wallet_id;
+            this.databaseManager = databaseManager;
+        }
+    }
+}
