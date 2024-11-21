@@ -16,14 +16,33 @@
 
   <ItemGroup>
     <PackageReference Include="Npgsql" Version="9.0.1" />
+    <PackageReference Include="Syncfusion.Chart.Windows" Version="27.2.2" />
+    <PackageReference Include="Syncfusion.Core.WinForms" Version="27.2.2" />
+    <PackageReference Include="Syncfusion.Grid.Windows" Version="27.2.2" />
+    <PackageReference Include="Syncfusion.SfDataGrid.WinForms" Version="27.2.2" />
+    <PackageReference Include="Syncfusion.SfInput.WinForms" Version="27.2.2" />
+    <PackageReference Include="Syncfusion.Shared.Base" Version="27.2.2" />
+    <PackageReference Include="Syncfusion.Tools.Windows" Version="27.2.2" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Properties\Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

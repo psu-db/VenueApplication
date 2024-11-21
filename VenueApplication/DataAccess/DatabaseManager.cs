@@ -49,11 +49,9 @@ namespace VenueApplication.DataAccess
                         // Iterate through the rows returned by the query
                         while (reader.Read())
                         {
-                            // Example: Assuming your table has a 'trans_id' and 'trans_quantity'
                             string lgn_username = reader.GetString(reader.GetOrdinal("lgn_username"));
                             string lgn_password = reader.GetString(reader.GetOrdinal("lgn_password"));
 
-                            // You can then use this data as needed, for example, printing to console
                             Debug.WriteLine($"lgn_username: {lgn_username}, lgn_password: {lgn_password}");
                         }
                     }

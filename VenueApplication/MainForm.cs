@@ -1,8 +1,9 @@
 using VenueApplication.DataAccess;
+using Syncfusion.Windows.Forms;
 
 namespace VenueApplication
 {
-    public partial class Form1 : Form
+    public partial class MainForm : MetroForm
     {
         string dbHost = Environment.GetEnvironmentVariable("DB_HOST")!;
         string dbUsername = Environment.GetEnvironmentVariable("DB_USERNAME")!;
@@ -10,9 +11,10 @@ namespace VenueApplication
         string dbName = Environment.GetEnvironmentVariable("DB_NAME")!;
         private DatabaseManager _databaseManager;
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
+            this.Text = "Venue Application";
 
             _databaseManager = new DatabaseManager(dbHost, dbUsername, dbPassword, dbName);
 

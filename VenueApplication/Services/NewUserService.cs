@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace VenueApplication.Services
 {
-    internal class CreateUserService
+    internal class NewUserService
     {
-
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace VenueApplication
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            backStageView1 = new Syncfusion.Windows.Forms.BackStageView(components);
             SuspendLayout();
+            // 
+            // backStageView1
+            // 
+            backStageView1.BackStage = null;
+            backStageView1.HostControl = null;
+            backStageView1.HostForm = this;
             // 
             // Form1
             // 
@@ -41,5 +49,7 @@
         }
 
         #endregion
+
+        private Syncfusion.Windows.Forms.BackStageView backStageView1;
     }
 }
