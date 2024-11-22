@@ -81,6 +81,16 @@ namespace VenueApplication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SELECT * FROM login_credentials
+        ///WHERE lgn_username = @username AND lgn_password = @password;.
+        /// </summary>
+        internal static string userLogin_SELECT {
+            get {
+                return ResourceManager.GetString("userLogin_SELECT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap vecteezy_home_or_house_symbol_icon_vector_illustration_8070536 {
