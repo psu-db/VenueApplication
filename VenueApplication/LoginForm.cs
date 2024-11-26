@@ -84,5 +84,17 @@ namespace VenueApplication
                 loginErrorLabel.Refresh();
             }
         }
+
+        private void newUserSignUpLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
+            SignupForm signupForm = new SignupForm();
+            signupForm.Show();
+        }
+
+        private void usernameLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
