@@ -120,7 +120,7 @@
             loginErrorLabel.Name = "loginErrorLabel";
             loginErrorLabel.Size = new Size(146, 15);
             loginErrorLabel.TabIndex = 7;
-            loginErrorLabel.Text = "Template Log In Error Text";
+            loginErrorLabel.Text = "";
             // 
             // loginControlsPanel
             // 

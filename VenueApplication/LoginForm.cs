@@ -60,7 +60,7 @@ namespace VenueApplication
             string username = usernameTextBoxEdit.Text;
             string password = passwordTextBoxEdit.Text;
 
-            if (username != null && password != null)
+            if (username != "" && password != "")
             {
                 bool loginAttemptResult = LoginService.attemptLogin(username, password, _databaseManager);
 
@@ -73,7 +73,15 @@ namespace VenueApplication
                 else
                 {
                     // update error message
+                    loginErrorLabel.Text = "Username or password is incorrect";
+                    loginErrorLabel.Refresh();
                 }
+            }
+            else
+            {
+                // update error message - one or more fields are empty
+                loginErrorLabel.Text = "Username or password is empty";
+                loginErrorLabel.Refresh();
             }
         }
     }
