@@ -131,4 +131,20 @@
     <value>SELECT * FROM login_credentials
 WHERE lgn_username = @username AND lgn_password = @password;</value>
   </data>
+  <data name="userCreate_INSERT" xml:space="preserve">
+    <value>WITH inserted_user AS (
+    INSERT INTO app_user(user_fname, user_lname, user_birthday, user_balance, user_type)
+    VALUES (@firstname, @lastname, @birthday, @balance, @type)
+    RETURNING user_id
+),
+--[INSERT LOGINCREDS]
+INSERT INTO user_wallet(wallet_user_id)
+SELECT user_id FROM inserted_user;</value>
+  </data>
+  <data name="userLoginCreds_INSERT" xml:space="preserve">
+    <value>inserted_credentials AS (
+    INSERT INTO login_credentials(lgn_user_id, lgn_username, lgn_password, lgn_email)
+    VALUES ((SELECT user_id FROM inserted_user), @username, @password, @email)
+)</value>
+  </data>
 </root>

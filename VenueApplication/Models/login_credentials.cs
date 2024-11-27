@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VenueApplication.DataAccess;
+using static Syncfusion.Windows.Forms.Tools.NavigationView;
 
 namespace VenueApplication.Models
 {
@@ -22,13 +25,36 @@ namespace VenueApplication.Models
 
         DatabaseManager databaseManager { get; set; }
 
-        public login_credentials(int lgn_user_id, string lgn_username, string lgn_password, string lgn_email, DatabaseManager databaseManager)
+        public login_credentials(string lgn_username, string lgn_password, string lgn_email, DatabaseManager databaseManager)
         {
-            this.lgn_user_id = lgn_user_id;
             this.lgn_username = lgn_username;
             this.lgn_password = lgn_password;
             this.lgn_email = lgn_email;
             this.databaseManager = databaseManager;
+        }
+
+        public string CreateSQLInsertQuery()
+        {
+            string query = VenueApplication.Properties.Resource.userLoginCreds_INSERT;
+
+            return query;
+        }
+
+        public NpgsqlCommand AddWithValues(NpgsqlCommand command)
+        {
+            try
+            {
+                command.Parameters.AddWithValue("@username", lgn_username);
+                command.Parameters.AddWithValue("@password", lgn_password);
+                command.Parameters.AddWithValue("@email", lgn_email);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error while trying to add replace values in LOGIN_CREDENTIALS query: " + ex.Message);
+            }
+
+            return command;
+
         }
     }
 }

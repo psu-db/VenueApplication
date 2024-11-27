@@ -9,7 +9,7 @@ using System.Diagnostics;
 
 namespace VenueApplication.DataAccess
 {
-    internal class DatabaseManager
+    public partial class DatabaseManager
     {
         private readonly string _connectionString;
 

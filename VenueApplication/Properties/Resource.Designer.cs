@@ -81,12 +81,40 @@ namespace VenueApplication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to WITH inserted_user AS (
+        ///    INSERT INTO app_user(user_fname, user_lname, user_birthday, user_balance, user_type)
+        ///    VALUES (@firstname, @lastname, @birthday, @balance, @type)
+        ///    RETURNING user_id
+        ///),
+        ///--[INSERT LOGINCREDS]
+        ///INSERT INTO user_wallet(wallet_user_id)
+        ///SELECT user_id FROM inserted_user;.
+        /// </summary>
+        internal static string userCreate_INSERT {
+            get {
+                return ResourceManager.GetString("userCreate_INSERT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SELECT * FROM login_credentials
         ///WHERE lgn_username = @username AND lgn_password = @password;.
         /// </summary>
         internal static string userLogin_SELECT {
             get {
                 return ResourceManager.GetString("userLogin_SELECT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to inserted_credentials AS (
+        ///    INSERT INTO login_credentials(lgn_user_id, lgn_username, lgn_password, lgn_email)
+        ///    VALUES ((SELECT user_id FROM inserted_user), @username, @password, @email)
+        ///).
+        /// </summary>
+        internal static string userLoginCreds_INSERT {
+            get {
+                return ResourceManager.GetString("userLoginCreds_INSERT", resourceCulture);
             }
         }
         
