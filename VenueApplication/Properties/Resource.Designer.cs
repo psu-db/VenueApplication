@@ -63,16 +63,6 @@ namespace VenueApplication.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _22_Profile {
-            get {
-                object obj = ResourceManager.GetObject("22_Profile", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap beaverStaidumLoginBackgroundImage_webp {
             get {
                 object obj = ResourceManager.GetObject("beaverStaidumLoginBackgroundImage.webp", resourceCulture);
@@ -87,8 +77,7 @@ namespace VenueApplication.Properties {
         ///    RETURNING user_id
         ///),
         ///--[INSERT LOGINCREDS]
-        ///INSERT INTO user_wallet(wallet_user_id)
-        ///SELECT user_id FROM inserted_user;.
+        ///--[INSERT WALLET].
         /// </summary>
         internal static string userCreate_INSERT {
             get {
@@ -97,7 +86,8 @@ namespace VenueApplication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT * FROM login_credentials
+        ///   Looks up a localized string similar to SELECT * FROM login_credentials JOIN user_wallet
+        ///ON user_wallet.wallet_user_id = login_credentials.lgn_user_id JOIN app_user ON app_user.user_id = user_wallet.wallet_user_id
         ///WHERE lgn_username = @username AND lgn_password = @password;.
         /// </summary>
         internal static string userLogin_SELECT {
@@ -117,29 +107,16 @@ namespace VenueApplication.Properties {
                 return ResourceManager.GetString("userLoginCreds_INSERT", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to inserted_credentials AS (
-        ///    INSERT INTO login_credentials(lgn_user_id, lgn_username, lgn_password, lgn_email)
-        ///    VALUES ((SELECT user_id FROM inserted_user), @username, @password, @email)
-        ///).
+        ///   Looks up a localized string similar to INSERT INTO user_wallet(wallet_user_id)
+        ///SELECT user_id FROM inserted_user;.
         /// </summary>
-        internal static string userWallet_INSERT
-        {
-            get
-            {
+        internal static string userWallet_INSERT {
+            get {
                 return ResourceManager.GetString("userWallet_INSERT", resourceCulture);
             }
         }
 
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap vecteezy_home_or_house_symbol_icon_vector_illustration_8070536 {
-            get {
-                object obj = ResourceManager.GetObject("vecteezy_home-or-house-symbol-icon-vector-illustration_8070536", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

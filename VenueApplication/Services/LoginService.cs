@@ -40,7 +40,7 @@ namespace VenueApplication.Services
 
                             while (reader.Read())
                             {
-                                #region app_user properties
+                                #region gets app_user properties
 
                                 // Properties for a app_user object
                                 int? user_id = reader.IsDBNull(reader.GetOrdinal("user_id")) ? null : reader.GetInt32(reader.GetOrdinal("user_id"));
@@ -64,7 +64,7 @@ namespace VenueApplication.Services
 
                                 #endregion
 
-                                #region login_creds properties
+                                #region gets login_creds properties
 
                                 int? lgn_creds_id = reader.IsDBNull(reader.GetOrdinal("lgn_creds_id")) ? null : reader.GetInt32(reader.GetOrdinal("lgn_creds_id"));
                                 int? lgn_user_id = reader.IsDBNull(reader.GetOrdinal("lgn_user_id")) ? null : reader.GetInt32(reader.GetOrdinal("lgn_user_id"));
@@ -74,7 +74,7 @@ namespace VenueApplication.Services
 
                                 #endregion
 
-                                #region user_wallet properties
+                                #region gets user_wallet properties
 
                                 int? wallet_id = reader.IsDBNull(reader.GetOrdinal("wallet_id")) ? null : reader.GetInt32(reader.GetOrdinal("wallet_id"));
                                 int? wallet_user_id = reader.IsDBNull(reader.GetOrdinal("wallet_user_id")) ? null : reader.GetInt32(reader.GetOrdinal("wallet_user_id"));

@@ -21,10 +21,26 @@ namespace VenueApplication
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            adminToolsTab.TabVisible = false;
+            homeTab.TabVisible = false;
+            myTicketsTab.TabVisible = false;
+            profileTab.TabVisible = false;
+            adminToolsSelectionTab.TabVisible = false;
+            createNewEventTab.TabVisible = false;
+            eventManagerTab.TabVisible = false;
+
+            tabControlAdv1.SelectedTab = homeTab;
+
             if (user.user_type == "ADMIN")
             {
                 adminControlsButton.Visible = true;
                 adminControlsButton.Enabled = true;
+
+            }
+            else
+            {
+                adminControlsButton.Visible = false;
+                adminControlsButton.Enabled = false;
             }
         }
 
@@ -36,6 +52,27 @@ namespace VenueApplication
         private void eventManagerButton_Click(object sender, EventArgs e)
         {
             tabControlAdv2.SelectedTab = eventManagerTab;
+        }
+
+        private void adminControlsButton_Click(object sender, EventArgs e)
+        {
+            tabControlAdv1.SelectedTab = adminToolsTab;
+            tabControlAdv2.SelectedTab = adminToolsSelectionTab;
+        }
+
+        private void homeButton_Click(object sender, EventArgs e)
+        {
+            tabControlAdv1.SelectedTab = homeTab;
+        }
+
+        private void profileButton_Click(object sender, EventArgs e)
+        {
+            tabControlAdv1.SelectedTab = profileTab;
+        }
+
+        private void ticketWalletButton_Click(object sender, EventArgs e)
+        {
+            tabControlAdv1.SelectedTab = myTicketsTab;
         }
     }
 }

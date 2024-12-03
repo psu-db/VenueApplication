@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             panel1 = new Panel();
             tableLayoutPanel1 = new TableLayoutPanel();
             adminControlsButton = new Syncfusion.WinForms.Controls.SfButton();
@@ -42,20 +43,26 @@
             adminToolsSelectionTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             eventManagerButton = new Syncfusion.WinForms.Controls.SfButton();
             switchToCreateNewEventTabButton = new Syncfusion.WinForms.Controls.SfButton();
-            eventManagerTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             createNewEventTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
-            profileTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
-            myTicketsTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             createEventButton = new Syncfusion.WinForms.Controls.SfButton();
+            eventManagerTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            myTicketsTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            sfButton2 = new Syncfusion.WinForms.Controls.SfButton();
+            profileTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            imageListAdv1 = new Syncfusion.Windows.Forms.Tools.ImageListAdv(components);
+            pictureBox1 = new PictureBox();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tabControlAdv1).BeginInit();
             tabControlAdv1.SuspendLayout();
+            homeTab.SuspendLayout();
             adminToolsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tabControlAdv2).BeginInit();
             tabControlAdv2.SuspendLayout();
             adminToolsSelectionTab.SuspendLayout();
             createNewEventTab.SuspendLayout();
+            myTicketsTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -97,6 +104,7 @@
             adminControlsButton.TabIndex = 1;
             adminControlsButton.Text = "Admin Tools";
             adminControlsButton.Visible = false;
+            adminControlsButton.Click += adminControlsButton_Click;
             // 
             // homeButton
             // 
@@ -108,6 +116,7 @@
             homeButton.Size = new Size(162, 38);
             homeButton.TabIndex = 0;
             homeButton.Text = "Home";
+            homeButton.Click += homeButton_Click;
             // 
             // profileButton
             // 
@@ -118,6 +127,7 @@
             profileButton.Size = new Size(162, 38);
             profileButton.TabIndex = 1;
             profileButton.Text = "Profile";
+            profileButton.Click += profileButton_Click;
             // 
             // ticketWalletButton
             // 
@@ -128,6 +138,7 @@
             ticketWalletButton.Size = new Size(162, 38);
             ticketWalletButton.TabIndex = 2;
             ticketWalletButton.Text = "My Tickets";
+            ticketWalletButton.Click += ticketWalletButton_Click;
             // 
             // dockingClientPanel1
             // 
@@ -141,8 +152,8 @@
             tabControlAdv1.BeforeTouchSize = new Size(1647, 876);
             tabControlAdv1.Controls.Add(homeTab);
             tabControlAdv1.Controls.Add(adminToolsTab);
-            tabControlAdv1.Controls.Add(profileTab);
             tabControlAdv1.Controls.Add(myTicketsTab);
+            tabControlAdv1.Controls.Add(profileTab);
             tabControlAdv1.Dock = DockStyle.Fill;
             tabControlAdv1.Location = new Point(200, 0);
             tabControlAdv1.Name = "tabControlAdv1";
@@ -151,6 +162,7 @@
             // 
             // homeTab
             // 
+            homeTab.Controls.Add(pictureBox1);
             homeTab.Image = null;
             homeTab.ImageSize = new Size(16, 16);
             homeTab.Location = new Point(1, 27);
@@ -192,10 +204,10 @@
             adminToolsSelectionTab.Controls.Add(switchToCreateNewEventTabButton);
             adminToolsSelectionTab.Image = null;
             adminToolsSelectionTab.ImageSize = new Size(16, 16);
-            adminToolsSelectionTab.Location = new Point(1, 27);
+            adminToolsSelectionTab.Location = new Point(1, 0);
             adminToolsSelectionTab.Name = "adminToolsSelectionTab";
             adminToolsSelectionTab.ShowCloseButton = true;
-            adminToolsSelectionTab.Size = new Size(1641, 818);
+            adminToolsSelectionTab.Size = new Size(1641, 845);
             adminToolsSelectionTab.TabIndex = 1;
             adminToolsSelectionTab.Text = "Admin Tool Selection";
             adminToolsSelectionTab.ThemesEnabled = false;
@@ -220,30 +232,61 @@
             switchToCreateNewEventTabButton.Text = "Create New Event";
             switchToCreateNewEventTabButton.Click += switchToCreateNewEventTabButton_Click;
             // 
-            // eventManagerTab
-            // 
-            eventManagerTab.Image = null;
-            eventManagerTab.ImageSize = new Size(16, 16);
-            eventManagerTab.Location = new Point(1, 27);
-            eventManagerTab.Name = "eventManagerTab";
-            eventManagerTab.ShowCloseButton = true;
-            eventManagerTab.Size = new Size(1641, 818);
-            eventManagerTab.TabIndex = 3;
-            eventManagerTab.Text = "Event Manager";
-            eventManagerTab.ThemesEnabled = false;
-            // 
             // createNewEventTab
             // 
             createNewEventTab.Controls.Add(createEventButton);
             createNewEventTab.Image = null;
             createNewEventTab.ImageSize = new Size(16, 16);
-            createNewEventTab.Location = new Point(1, 27);
+            createNewEventTab.Location = new Point(1, 0);
             createNewEventTab.Name = "createNewEventTab";
             createNewEventTab.ShowCloseButton = true;
-            createNewEventTab.Size = new Size(1641, 818);
+            createNewEventTab.Size = new Size(1641, 845);
             createNewEventTab.TabIndex = 2;
             createNewEventTab.Text = "Create New Event";
             createNewEventTab.ThemesEnabled = false;
+            // 
+            // createEventButton
+            // 
+            createEventButton.Font = new Font("Segoe UI Semibold", 9F);
+            createEventButton.Location = new Point(1441, 700);
+            createEventButton.Name = "createEventButton";
+            createEventButton.Size = new Size(153, 62);
+            createEventButton.TabIndex = 0;
+            createEventButton.Text = "Create Event";
+            // 
+            // eventManagerTab
+            // 
+            eventManagerTab.Image = null;
+            eventManagerTab.ImageSize = new Size(16, 16);
+            eventManagerTab.Location = new Point(1, 0);
+            eventManagerTab.Name = "eventManagerTab";
+            eventManagerTab.ShowCloseButton = true;
+            eventManagerTab.Size = new Size(1641, 845);
+            eventManagerTab.TabIndex = 3;
+            eventManagerTab.Text = "Event Manager";
+            eventManagerTab.ThemesEnabled = false;
+            // 
+            // myTicketsTab
+            // 
+            myTicketsTab.Controls.Add(sfButton2);
+            myTicketsTab.Image = null;
+            myTicketsTab.ImageSize = new Size(16, 16);
+            myTicketsTab.Location = new Point(1, 27);
+            myTicketsTab.Name = "myTicketsTab";
+            myTicketsTab.ShowCloseButton = true;
+            myTicketsTab.Size = new Size(1644, 847);
+            myTicketsTab.TabIndex = 3;
+            myTicketsTab.Text = "My Tickets";
+            myTicketsTab.ThemesEnabled = false;
+            // 
+            // sfButton2
+            // 
+            sfButton2.Font = new Font("Segoe UI Semibold", 9F);
+            sfButton2.Location = new Point(205, 401);
+            sfButton2.Name = "sfButton2";
+            sfButton2.Size = new Size(96, 28);
+            sfButton2.TabIndex = 0;
+            sfButton2.Text = "sfButton2";
             // 
             // profileTab
             // 
@@ -257,26 +300,14 @@
             profileTab.Text = "Profile";
             profileTab.ThemesEnabled = false;
             // 
-            // myTicketsTab
+            // pictureBox1
             // 
-            myTicketsTab.Image = null;
-            myTicketsTab.ImageSize = new Size(16, 16);
-            myTicketsTab.Location = new Point(1, 27);
-            myTicketsTab.Name = "myTicketsTab";
-            myTicketsTab.ShowCloseButton = true;
-            myTicketsTab.Size = new Size(1644, 847);
-            myTicketsTab.TabIndex = 3;
-            myTicketsTab.Text = "My Tickets";
-            myTicketsTab.ThemesEnabled = false;
-            // 
-            // createEventButton
-            // 
-            createEventButton.Font = new Font("Segoe UI Semibold", 9F);
-            createEventButton.Location = new Point(1441, 700);
-            createEventButton.Name = "createEventButton";
-            createEventButton.Size = new Size(153, 62);
-            createEventButton.TabIndex = 0;
-            createEventButton.Text = "Create Event";
+            pictureBox1.Image = Properties.Resource._22_Profile1;
+            pictureBox1.Location = new Point(48, 46);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(343, 311);
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
             // 
             // MainForm
             // 
@@ -294,11 +325,14 @@
             tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)tabControlAdv1).EndInit();
             tabControlAdv1.ResumeLayout(false);
+            homeTab.ResumeLayout(false);
             adminToolsTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)tabControlAdv2).EndInit();
             tabControlAdv2.ResumeLayout(false);
             adminToolsSelectionTab.ResumeLayout(false);
             createNewEventTab.ResumeLayout(false);
+            myTicketsTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -322,5 +356,8 @@
         private Syncfusion.WinForms.Controls.SfButton eventManagerButton;
         private Syncfusion.WinForms.Controls.SfButton switchToCreateNewEventTabButton;
         private Syncfusion.WinForms.Controls.SfButton createEventButton;
+        private Syncfusion.WinForms.Controls.SfButton sfButton2;
+        private PictureBox pictureBox1;
+        private Syncfusion.Windows.Forms.Tools.ImageListAdv imageListAdv1;
     }
 }
