@@ -45,7 +45,7 @@
             // usernameTextBoxEdit
             // 
             usernameTextBoxEdit.BackColor = SystemColors.Window;
-            usernameTextBoxEdit.BeforeTouchSize = new Size(263, 23);
+            usernameTextBoxEdit.BeforeTouchSize = new Size(129, 23);
             usernameTextBoxEdit.Location = new Point(148, 61);
             usernameTextBoxEdit.Name = "usernameTextBoxEdit";
             usernameTextBoxEdit.Size = new Size(155, 23);
@@ -53,7 +53,7 @@
             // 
             // passwordTextBoxEdit
             // 
-            passwordTextBoxEdit.BeforeTouchSize = new Size(263, 23);
+            passwordTextBoxEdit.BeforeTouchSize = new Size(129, 23);
             passwordTextBoxEdit.Location = new Point(148, 101);
             passwordTextBoxEdit.Name = "passwordTextBoxEdit";
             passwordTextBoxEdit.Size = new Size(155, 23);
@@ -111,7 +111,6 @@
             newUserSignUpLinkLabel.TabStop = true;
             newUserSignUpLinkLabel.Text = "Sign Up";
             newUserSignUpLinkLabel.LinkClicked += newUserSignUpLinkLabel_LinkClicked;
-            newUserSignUpLinkLabel.Click += newUserSignUpLinkLabel_Click;
             // 
             // loginErrorLabel
             // 
@@ -119,7 +118,6 @@
             loginErrorLabel.ForeColor = Color.Red;
             loginErrorLabel.Location = new Point(51, 27);
             loginErrorLabel.Name = "loginErrorLabel";
-            loginErrorLabel.Position = Syncfusion.Windows.Forms.Tools.AutoLabelPosition.Side;
             loginErrorLabel.Size = new Size(0, 15);
             loginErrorLabel.TabIndex = 7;
             // 
@@ -152,6 +150,7 @@
             Name = "LoginForm";
             ShowIcon = false;
             ShowMaximizeBox = false;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "LoginForm";
             ((System.ComponentModel.ISupportInitialize)usernameTextBoxEdit).EndInit();
             ((System.ComponentModel.ISupportInitialize)passwordTextBoxEdit).EndInit();

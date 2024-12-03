@@ -60,25 +60,38 @@ namespace VenueApplication.Forms
             string password = signUpPasswordTextEdit.Text;
             string retyped_password = reTypePasswordTextEdit.Text;
 
-            if (firstname != "" && lastname != "" && email != "" && birthdayDate != null && username != "" && password != "" && retyped_password != "" && password == retyped_password)
+            if (firstname != "" && lastname != "" && email != "" && birthdayDate != null && username != "" && password != "" && retyped_password != "")
             {
-                bool signupAttemptResult = NewUserService.attemptSignup(firstname, lastname, email, birthdayDate, username, password, databaseManager);
 
-                if (signupAttemptResult)
+                if (password == retyped_password)
                 {
-                    this.Close();
-                    loginForm.Show();
+                    bool signupAttemptResult = NewUserService.attemptSignup(firstname, lastname, email, birthdayDate, username, password, databaseManager);
+
+                    if (signupAttemptResult)
+                    {
+                        this.Close();
+                        loginForm.Show();
+                    }
+                    else
+                    {
+                        signUpFormErrorLabel.Text = "An error occured during the sign up process. Please wait and try again.";
+                        signUpFormErrorLabel.Visible = true;
+                        signUpFormErrorLabel.Refresh();
+                    }
                 }
                 else
                 {
-                    // update error message
-                    //signUpErrorLabel.Text = "Incorrect username or password. Please try again.";
-                    //signUpErrorLabel.Refresh();
+                    signUpFormErrorLabel.Text = "Password and re-typed password do not match.";
+                    signUpFormErrorLabel.Visible = true;
+                    signUpFormErrorLabel.Refresh();
                 }
+                
             }
             else
             {
-
+                signUpFormErrorLabel.Text = "All fields must be filled in order to sign up.";
+                signUpFormErrorLabel.Visible = true;
+                signUpFormErrorLabel.Refresh();
             }
             
         }

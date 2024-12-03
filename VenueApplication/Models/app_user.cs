@@ -1,5 +1,6 @@
 ﻿using Npgsql;
 using Syncfusion.Styles;
+using Syncfusion.Windows.Forms.Tools;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -12,7 +13,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace VenueApplication.Models
 {
-    internal class app_user
+    public class app_user
     {
         #region Table Attributes
         // Primary key
@@ -29,12 +30,25 @@ namespace VenueApplication.Models
         #region Reference Tables
 
         login_credentials login_credentials { get; set; }
+        user_wallet user_wallet { get; set; }
 
         #endregion
 
         DatabaseManager databaseManager { get; set; }
 
-        public app_user(string user_fname, string user_lname, DateOnly? user_birthday, decimal user_balance, string user_type, login_credentials login_creds, DatabaseManager databaseManager)
+        public app_user(int user_id, string user_fname, string user_lname, DateOnly? user_birthday, decimal user_balance, string user_type, login_credentials login_creds, user_wallet wallet, DatabaseManager databaseManager)
+        {
+            this.user_id = user_id;
+            this.user_fname = user_fname;
+            this.user_lname = user_lname;
+            this.user_birthday = user_birthday;
+            this.user_balance = user_balance;
+            this.user_type = user_type;
+            this.login_credentials = login_creds;
+            this.user_wallet = wallet;
+            this.databaseManager = databaseManager;
+        }
+        public app_user(string user_fname, string user_lname, DateOnly? user_birthday, decimal user_balance, string user_type, login_credentials login_creds, user_wallet wallet, DatabaseManager databaseManager)
         {
             this.user_fname = user_fname;
             this.user_lname = user_lname;
@@ -42,6 +56,7 @@ namespace VenueApplication.Models
             this.user_balance = user_balance;
             this.user_type = user_type;
             this.login_credentials = login_creds;
+            this.user_wallet = wallet;
             this.databaseManager = databaseManager;
         }
 
@@ -52,8 +67,12 @@ namespace VenueApplication.Models
         public string CreateSQLInsertQuery()
         {
             string query = VenueApplication.Properties.Resource.userCreate_INSERT;
+
             string loginCredsQuery = login_credentials.CreateSQLInsertQuery();
             query = query.Replace("--[INSERT LOGINCREDS]", loginCredsQuery);
+
+            string walletQuery = user_wallet.CreateSQLInsertQuery();
+            query = query.Replace("--[INSERT WALLET]", walletQuery);
 
             return query;
         }

@@ -55,7 +55,7 @@
             // 
             // firstNameTextBoxEdit
             // 
-            firstNameTextBoxEdit.BeforeTouchSize = new Size(129, 23);
+            firstNameTextBoxEdit.BeforeTouchSize = new Size(155, 23);
             firstNameTextBoxEdit.Location = new Point(146, 52);
             firstNameTextBoxEdit.Name = "firstNameTextBoxEdit";
             firstNameTextBoxEdit.Size = new Size(129, 23);
@@ -83,7 +83,7 @@
             // 
             // lastNameTextBoxEdit
             // 
-            lastNameTextBoxEdit.BeforeTouchSize = new Size(129, 23);
+            lastNameTextBoxEdit.BeforeTouchSize = new Size(155, 23);
             lastNameTextBoxEdit.Location = new Point(146, 112);
             lastNameTextBoxEdit.Name = "lastNameTextBoxEdit";
             lastNameTextBoxEdit.Size = new Size(129, 23);
@@ -101,7 +101,7 @@
             // 
             // emailTextBoxEdit
             // 
-            emailTextBoxEdit.BeforeTouchSize = new Size(129, 23);
+            emailTextBoxEdit.BeforeTouchSize = new Size(155, 23);
             emailTextBoxEdit.Location = new Point(146, 175);
             emailTextBoxEdit.Name = "emailTextBoxEdit";
             emailTextBoxEdit.Size = new Size(199, 23);
@@ -138,7 +138,7 @@
             // 
             // signUpUserNameTextEdit
             // 
-            signUpUserNameTextEdit.BeforeTouchSize = new Size(129, 23);
+            signUpUserNameTextEdit.BeforeTouchSize = new Size(155, 23);
             signUpUserNameTextEdit.Location = new Point(146, 293);
             signUpUserNameTextEdit.Name = "signUpUserNameTextEdit";
             signUpUserNameTextEdit.Size = new Size(129, 23);
@@ -156,7 +156,7 @@
             // 
             // signUpPasswordTextEdit
             // 
-            signUpPasswordTextEdit.BeforeTouchSize = new Size(129, 23);
+            signUpPasswordTextEdit.BeforeTouchSize = new Size(155, 23);
             signUpPasswordTextEdit.Location = new Point(146, 349);
             signUpPasswordTextEdit.Name = "signUpPasswordTextEdit";
             signUpPasswordTextEdit.Size = new Size(129, 23);
@@ -174,7 +174,7 @@
             // 
             // reTypePasswordTextEdit
             // 
-            reTypePasswordTextEdit.BeforeTouchSize = new Size(129, 23);
+            reTypePasswordTextEdit.BeforeTouchSize = new Size(155, 23);
             reTypePasswordTextEdit.Location = new Point(203, 397);
             reTypePasswordTextEdit.Name = "reTypePasswordTextEdit";
             reTypePasswordTextEdit.Size = new Size(129, 23);
@@ -209,6 +209,7 @@
             signUpFormErrorLabel.Size = new Size(110, 15);
             signUpFormErrorLabel.TabIndex = 16;
             signUpFormErrorLabel.Text = "TempError Message";
+            signUpFormErrorLabel.Visible = false;
             // 
             // SignupForm
             // 
@@ -232,7 +233,10 @@
             Controls.Add(lastNameLabel);
             Controls.Add(firstnameLabel);
             Controls.Add(firstNameTextBoxEdit);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
             Name = "SignupForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "SignupForm";
             ((System.ComponentModel.ISupportInitialize)firstNameTextBoxEdit).EndInit();
             ((System.ComponentModel.ISupportInitialize)lastNameTextBoxEdit).EndInit();
