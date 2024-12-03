@@ -43,6 +43,8 @@ namespace VenueApplication.Services
                             command = loginCreds.AddWithValues(command);
 
                             int rowsAffected = command.ExecuteNonQuery();
+                            //check if rows affected is 3
+
 
                             // Commit the transaction if everything is successful
                             transaction.Commit();
