@@ -53,8 +53,12 @@ namespace VenueApplication.Forms
 
                         Debug.WriteLine($"SUCCESS: USER_ID: {USER_ID} USER_WALLET_ID: {USER_WALLET_ID}");
 
+                        // clear text fields upon successful login
+                        usernameTextBoxEdit.Text = "";
+                        passwordTextBoxEdit.Text = "";
+
                         this.Hide();
-                        MainForm mainForm = new MainForm(user, wallet, databaseManager);
+                        MainForm mainForm = new MainForm(user, wallet, this, databaseManager);
                         mainForm.Show();
                     }
                     else

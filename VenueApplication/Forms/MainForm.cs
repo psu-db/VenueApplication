@@ -1,26 +1,31 @@
 using VenueApplication.DataAccess;
 using Syncfusion.Windows.Forms;
 using VenueApplication.Models;
+using VenueApplication.Forms;
 
 namespace VenueApplication
 {
     public partial class MainForm : MetroForm
     {
         public DatabaseManager databaseManager;
+        public LoginForm loginForm;
         public app_user user;
         public user_wallet user_wallet;
 
-        public MainForm(app_user user, user_wallet user_wallet, DatabaseManager databaseManager)
+        public MainForm(app_user user, user_wallet user_wallet, LoginForm loginForm, DatabaseManager databaseManager)
         {
             InitializeComponent();
-            this.Text = "Venue Application";
             this.databaseManager = databaseManager;
+            this.loginForm = loginForm;
             this.user = user;
             this.user_wallet = user_wallet;
         }
 
+        #region Events
         private void MainForm_Load(object sender, EventArgs e)
         {
+            InitializeProfilePage();
+
             adminToolsTab.TabVisible = false;
             homeTab.TabVisible = false;
             myTicketsTab.TabVisible = false;
@@ -73,6 +78,29 @@ namespace VenueApplication
         private void ticketWalletButton_Click(object sender, EventArgs e)
         {
             tabControlAdv1.SelectedTab = myTicketsTab;
+        }
+
+        #endregion
+
+        #region Methods
+
+        private void InitializeProfilePage()
+        {
+            firstlastNameLabel.Text = $"{user.user_fname} {user.user_lname}";
+        }
+
+        #endregion
+
+        private void signOutButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            loginForm.Show();
+        }
+
+        private void addNewPaymentMethodButton_Click(object sender, EventArgs e)
+        {
+            PaymentMethodForm paymentMethodForm = new PaymentMethodForm(this);
+            paymentMethodForm.Show();
         }
     }
 }

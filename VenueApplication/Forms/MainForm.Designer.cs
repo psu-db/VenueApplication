@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             panel1 = new Panel();
             tableLayoutPanel1 = new TableLayoutPanel();
             adminControlsButton = new Syncfusion.WinForms.Controls.SfButton();
@@ -49,19 +48,24 @@
             myTicketsTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             sfButton2 = new Syncfusion.WinForms.Controls.SfButton();
             profileTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
-            imageListAdv1 = new Syncfusion.Windows.Forms.Tools.ImageListAdv(components);
+            addNewPaymentMethodButton = new Syncfusion.WinForms.Controls.SfButton();
+            paymentMethodsLabel = new Label();
+            paymentMethodsComboBox = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
+            signOutButton = new Syncfusion.WinForms.Controls.SfButton();
+            firstlastNameLabel = new Label();
             pictureBox1 = new PictureBox();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tabControlAdv1).BeginInit();
             tabControlAdv1.SuspendLayout();
-            homeTab.SuspendLayout();
             adminToolsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tabControlAdv2).BeginInit();
             tabControlAdv2.SuspendLayout();
             adminToolsSelectionTab.SuspendLayout();
             createNewEventTab.SuspendLayout();
             myTicketsTab.SuspendLayout();
+            profileTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)paymentMethodsComboBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -162,7 +166,6 @@
             // 
             // homeTab
             // 
-            homeTab.Controls.Add(pictureBox1);
             homeTab.Image = null;
             homeTab.ImageSize = new Size(16, 16);
             homeTab.Location = new Point(1, 27);
@@ -290,6 +293,12 @@
             // 
             // profileTab
             // 
+            profileTab.Controls.Add(addNewPaymentMethodButton);
+            profileTab.Controls.Add(paymentMethodsLabel);
+            profileTab.Controls.Add(paymentMethodsComboBox);
+            profileTab.Controls.Add(signOutButton);
+            profileTab.Controls.Add(firstlastNameLabel);
+            profileTab.Controls.Add(pictureBox1);
             profileTab.Image = null;
             profileTab.ImageSize = new Size(16, 16);
             profileTab.Location = new Point(1, 27);
@@ -299,6 +308,67 @@
             profileTab.TabIndex = 2;
             profileTab.Text = "Profile";
             profileTab.ThemesEnabled = false;
+            // 
+            // addNewPaymentMethodButton
+            // 
+            addNewPaymentMethodButton.Font = new Font("Segoe UI Semibold", 9F);
+            addNewPaymentMethodButton.Location = new Point(337, 211);
+            addNewPaymentMethodButton.Name = "addNewPaymentMethodButton";
+            addNewPaymentMethodButton.Size = new Size(157, 28);
+            addNewPaymentMethodButton.TabIndex = 5;
+            addNewPaymentMethodButton.Text = "Add new payment method";
+            addNewPaymentMethodButton.Click += addNewPaymentMethodButton_Click;
+            // 
+            // paymentMethodsLabel
+            // 
+            paymentMethodsLabel.AutoSize = true;
+            paymentMethodsLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            paymentMethodsLabel.Location = new Point(337, 131);
+            paymentMethodsLabel.Name = "paymentMethodsLabel";
+            paymentMethodsLabel.Size = new Size(111, 15);
+            paymentMethodsLabel.TabIndex = 4;
+            paymentMethodsLabel.Text = "Payment Methods:";
+            // 
+            // paymentMethodsComboBox
+            // 
+            paymentMethodsComboBox.BeforeTouchSize = new Size(121, 23);
+            paymentMethodsComboBox.Location = new Point(337, 158);
+            paymentMethodsComboBox.Name = "paymentMethodsComboBox";
+            paymentMethodsComboBox.Size = new Size(121, 23);
+            paymentMethodsComboBox.TabIndex = 3;
+            paymentMethodsComboBox.Text = "Click to view";
+            // 
+            // signOutButton
+            // 
+            signOutButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            signOutButton.Font = new Font("Segoe UI Semibold", 9F);
+            signOutButton.ForeColor = Color.FromArgb(192, 0, 0);
+            signOutButton.Location = new Point(1444, 798);
+            signOutButton.Name = "signOutButton";
+            signOutButton.Size = new Size(179, 28);
+            signOutButton.Style.ForeColor = Color.FromArgb(192, 0, 0);
+            signOutButton.TabIndex = 2;
+            signOutButton.Text = "Sign Out";
+            signOutButton.Click += signOutButton_Click;
+            // 
+            // firstlastNameLabel
+            // 
+            firstlastNameLabel.AutoSize = true;
+            firstlastNameLabel.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            firstlastNameLabel.Location = new Point(337, 21);
+            firstlastNameLabel.Name = "firstlastNameLabel";
+            firstlastNameLabel.Size = new Size(349, 47);
+            firstlastNameLabel.TabIndex = 1;
+            firstlastNameLabel.Text = "Firstname Lastname";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resource.pngtree_avatar_icon_profile_member_login_vector_isolated_silhouette_transparent_png_image_7111828;
+            pictureBox1.Location = new Point(3, 3);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(309, 310);
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
             // 
             // MainForm
             // 
@@ -310,19 +380,22 @@
             Controls.Add(dockingClientPanel1);
             Controls.Add(panel1);
             Name = "MainForm";
-            Text = "Form1";
+            Text = "Venue App";
+            WindowState = FormWindowState.Maximized;
             Load += MainForm_Load;
             panel1.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)tabControlAdv1).EndInit();
             tabControlAdv1.ResumeLayout(false);
-            homeTab.ResumeLayout(false);
             adminToolsTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)tabControlAdv2).EndInit();
             tabControlAdv2.ResumeLayout(false);
             adminToolsSelectionTab.ResumeLayout(false);
             createNewEventTab.ResumeLayout(false);
             myTicketsTab.ResumeLayout(false);
+            profileTab.ResumeLayout(false);
+            profileTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)paymentMethodsComboBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
@@ -349,6 +422,10 @@
         private Syncfusion.WinForms.Controls.SfButton createEventButton;
         private Syncfusion.WinForms.Controls.SfButton sfButton2;
         private PictureBox pictureBox1;
-        private Syncfusion.Windows.Forms.Tools.ImageListAdv imageListAdv1;
+        private Label firstlastNameLabel;
+        private Syncfusion.WinForms.Controls.SfButton signOutButton;
+        private Label paymentMethodsLabel;
+        private Syncfusion.Windows.Forms.Tools.ComboBoxAdv paymentMethodsComboBox;
+        private Syncfusion.WinForms.Controls.SfButton addNewPaymentMethodButton;
     }
 }

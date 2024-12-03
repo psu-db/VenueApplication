@@ -71,6 +71,17 @@ namespace VenueApplication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pngtree_avatar_icon_profile_member_login_vector_isolated_silhouette_transparent_png_image_7111828 {
+            get {
+                object obj = ResourceManager.GetObject("pngtree-avatar-icon-profile-member-login-vector-isolated-silhouette-transparent-p" +
+                        "ng-image_7111828", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to WITH inserted_user AS (
         ///    INSERT INTO app_user(user_fname, user_lname, user_birthday, user_balance, user_type)
         ///    VALUES (@firstname, @lastname, @birthday, @balance, @type)
