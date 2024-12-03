@@ -10,7 +10,7 @@ using static Syncfusion.Windows.Forms.Tools.NavigationView;
 
 namespace VenueApplication.Models
 {
-    internal class login_credentials
+    public class login_credentials
     {
         #region Table Attributes
         // Primary key
@@ -25,6 +25,15 @@ namespace VenueApplication.Models
 
         DatabaseManager databaseManager { get; set; }
 
+        public login_credentials(int lgn_creds_id, int lgn_user_id, string lgn_username, string lgn_password, string lgn_email, DatabaseManager databaseManager)
+        {
+            this.lgn_creds_id = lgn_creds_id;
+            this.lgn_user_id = lgn_user_id;
+            this.lgn_username = lgn_username;
+            this.lgn_password = lgn_password;
+            this.lgn_email = lgn_email;
+            this.databaseManager = databaseManager;
+        }
         public login_credentials(string lgn_username, string lgn_password, string lgn_email, DatabaseManager databaseManager)
         {
             this.lgn_username = lgn_username;

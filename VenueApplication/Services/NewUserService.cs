@@ -6,8 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Npgsql;
 using VenueApplication.DataAccess;
-using Npgsql;
-using System.Text;
 using VenueApplication.Models;
 
 namespace VenueApplication.Services
@@ -19,14 +17,15 @@ namespace VenueApplication.Services
         {
             // Create necessary related objects
             login_credentials loginCreds = new login_credentials(username, password, email, databaseManager);
-            app_user newUser = new app_user(firstname, lastname, birthday, 0m, "USER", loginCreds, databaseManager);
+            user_wallet wallet = new user_wallet(databaseManager);
+            app_user newUser = new app_user(firstname, lastname, birthday, 0m, "USER", loginCreds, wallet, databaseManager);
 
             // Generate the SQL query
             string query = newUser.CreateSQLInsertQuery();
 
             using (var dbConnection = databaseManager.GetConnection())
             {
-                // Open connection
+
                 try
                 {
                     dbConnection.Open();
@@ -43,7 +42,6 @@ namespace VenueApplication.Services
                             command = newUser.AddWithValues(command);
                             command = loginCreds.AddWithValues(command);
 
-                            // Execute the query (no need for reader, just execute the non-query)
                             int rowsAffected = command.ExecuteNonQuery();
                             //check if rows affected is 3
 
@@ -64,7 +62,6 @@ namespace VenueApplication.Services
                 }
                 catch (Exception ex)
                 {
-                    // Handle connection or transaction errors
                     MessageBox.Show($"Connection error: {ex.Message}");
                     return false;
                 }

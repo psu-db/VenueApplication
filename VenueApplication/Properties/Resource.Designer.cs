@@ -117,7 +117,21 @@ namespace VenueApplication.Properties {
                 return ResourceManager.GetString("userLoginCreds_INSERT", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to inserted_credentials AS (
+        ///    INSERT INTO login_credentials(lgn_user_id, lgn_username, lgn_password, lgn_email)
+        ///    VALUES ((SELECT user_id FROM inserted_user), @username, @password, @email)
+        ///).
+        /// </summary>
+        internal static string userWallet_INSERT
+        {
+            get
+            {
+                return ResourceManager.GetString("userWallet_INSERT", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>

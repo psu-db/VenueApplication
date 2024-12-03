@@ -1,26 +1,41 @@
 using VenueApplication.DataAccess;
 using Syncfusion.Windows.Forms;
+using VenueApplication.Models;
 
 namespace VenueApplication
 {
     public partial class MainForm : MetroForm
     {
-        string dbHost = Environment.GetEnvironmentVariable("DB_HOST")!;
-        string dbUsername = Environment.GetEnvironmentVariable("DB_USERNAME")!;
-        string dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD")!;
-        string dbName = Environment.GetEnvironmentVariable("DB_NAME")!;
-        private DatabaseManager _databaseManager;
+        public DatabaseManager databaseManager;
+        public app_user user;
+        public user_wallet user_wallet;
 
-        public MainForm()
+        public MainForm(app_user user, user_wallet user_wallet, DatabaseManager databaseManager)
         {
             InitializeComponent();
             this.Text = "Venue Application";
+            this.databaseManager = databaseManager;
+            this.user = user;
+            this.user_wallet = user_wallet;
+        }
 
-            // Creates DatabaseManager object that will be used throughout lifetime of the application, should be passed to and method that will interact with the database
-            _databaseManager = new DatabaseManager(dbHost, dbUsername, dbPassword, dbName);
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            if (user.user_type == "ADMIN")
+            {
+                adminControlsButton.Visible = true;
+                adminControlsButton.Enabled = true;
+            }
+        }
 
-            _databaseManager.ExecuteTestQuery();
-          
+        private void switchToCreateNewEventTabButton_Click(object sender, EventArgs e)
+        {
+            tabControlAdv2.SelectedTab = createNewEventTab;
+        }
+
+        private void eventManagerButton_Click(object sender, EventArgs e)
+        {
+            tabControlAdv2.SelectedTab = eventManagerTab;
         }
     }
 }

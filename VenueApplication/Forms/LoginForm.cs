@@ -1,11 +1,19 @@
 ﻿using Syncfusion.Windows.Forms;
 using VenueApplication.DataAccess;
 using VenueApplication.Services;
+using VenueApplication.Models;
+using System.Diagnostics;
 
 namespace VenueApplication.Forms
 {
     public partial class LoginForm : MetroForm
     {
+        #region Global Variables
+
+        public static int USER_ID;
+        public static int USER_WALLET_ID;
+
+        #endregion
 
         string dbHost = Environment.GetEnvironmentVariable("DB_HOST")!;
         string dbUsername = Environment.GetEnvironmentVariable("DB_USERNAME")!;
@@ -26,11 +34,6 @@ namespace VenueApplication.Forms
 
         #region Events
 
-        private void newUserSignUpLinkLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void loginButton_Click(object sender, EventArgs e)
         {
             string username = usernameTextBoxEdit.Text;
@@ -38,13 +41,27 @@ namespace VenueApplication.Forms
 
             if (username != "" && password != "")
             {
-                bool loginAttemptResult = LoginService.attemptLogin(username, password, databaseManager);
+                (bool loginAttemptResult, user_wallet? wallet, login_credentials? credentials, app_user? user) = LoginService.attemptLogin(username, password, databaseManager);
 
                 if (loginAttemptResult)
                 {
-                    this.Hide();
-                    MainForm mainForm = new MainForm();
-                    mainForm.Show();
+
+                    if (user != null && wallet != null)
+                    {
+                        USER_ID = user.user_id;
+                        USER_WALLET_ID = wallet.wallet_id;
+
+                        Debug.WriteLine($"SUCCESS: USER_ID: {USER_ID} USER_WALLET_ID: {USER_WALLET_ID}");
+
+                        this.Hide();
+                        MainForm mainForm = new MainForm(user, wallet, databaseManager);
+                        mainForm.Show();
+                    }
+                    else
+                    {
+                        Debug.WriteLine("ERROR: user or wallet object was null while attempting to assign global variables");
+                    }
+
                 }
                 else
                 {
