@@ -45,6 +45,8 @@ namespace VenueApplication.Services
 
                             // Execute the query (no need for reader, just execute the non-query)
                             int rowsAffected = command.ExecuteNonQuery();
+                            //check if rows affected is 3
+
 
                             // Commit the transaction if everything is successful
                             transaction.Commit();
