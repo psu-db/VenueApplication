@@ -117,6 +117,5 @@ namespace VenueApplication.Properties {
                 return ResourceManager.GetString("userWallet_INSERT", resourceCulture);
             }
         }
-
     }
 }

@@ -300,15 +300,6 @@
             profileTab.Text = "Profile";
             profileTab.ThemesEnabled = false;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = Properties.Resource._22_Profile1;
-            pictureBox1.Location = new Point(48, 46);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(343, 311);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
