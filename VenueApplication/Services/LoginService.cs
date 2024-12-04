@@ -15,7 +15,7 @@ namespace VenueApplication.Services
     {
         public static (bool, user_wallet?, login_credentials?, app_user?) AttemptLogin(string username, string password, DatabaseManager databaseManager)
         {
-
+            //this is the local branch
             string query = VenueApplication.Properties.Resource.userLogin_SELECT;
 
             using (var dbConnection = databaseManager.GetConnection())
