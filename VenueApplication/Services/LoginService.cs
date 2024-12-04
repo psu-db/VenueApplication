@@ -13,7 +13,7 @@ namespace VenueApplication.Services
 {
     internal static class LoginService
     {
-        public static (bool, user_wallet?, login_credentials?, app_user?) attemptLogin(string username, string password, DatabaseManager databaseManager)
+        public static (bool, user_wallet?, login_credentials?, app_user?) AttemptLogin(string username, string password, DatabaseManager databaseManager)
         {
 
             string query = VenueApplication.Properties.Resource.userLogin_SELECT;

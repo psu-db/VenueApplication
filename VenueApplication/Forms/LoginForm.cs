@@ -41,7 +41,7 @@ namespace VenueApplication.Forms
 
             if (username != "" && password != "")
             {
-                (bool loginAttemptResult, user_wallet? wallet, login_credentials? credentials, app_user? user) = LoginService.attemptLogin(username, password, databaseManager);
+                (bool loginAttemptResult, user_wallet? wallet, login_credentials? credentials, app_user? user) = LoginService.AttemptLogin(username, password, databaseManager);
 
                 if (loginAttemptResult)
                 {

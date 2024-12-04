@@ -65,7 +65,7 @@ namespace VenueApplication.Forms
 
                 if (password == retyped_password)
                 {
-                    bool signupAttemptResult = NewUserService.attemptSignup(firstname, lastname, email, birthdayDate, username, password, databaseManager);
+                    bool signupAttemptResult = NewUserService.AttemptSignup(firstname, lastname, email, birthdayDate, username, password, databaseManager);
 
                     if (signupAttemptResult)
                     {

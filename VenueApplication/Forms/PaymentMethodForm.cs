@@ -17,13 +17,13 @@ namespace VenueApplication.Forms
         public PaymentMethodForm(MainForm mainForm)
         {
             InitializeComponent();
-            this.Text = "New Payment Method Form";
             this.mainForm = mainForm;
         }
 
         private void paymentMethodFormCancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
+            mainForm.EnableAddNewPaymentButton();
         }
     }
 }

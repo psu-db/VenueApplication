@@ -17,7 +17,7 @@ namespace VenueApplication.Models
         public string pymt_info_type { get; set; }
         public string pymt_info_card_number { get; set; }
         public string pymt_info_card_cvv { get; set; }
-        public DateOnly pymt_info_expiration_date { get; set; }
+        public string pymt_info_expiration_date { get; set; } // FORMAT MM/YY
         public string pymt_info_address { get; set; }
         public string pymt_info_address_state { get; set; }
         public string pymt_info_zipcode { get; set; }
@@ -26,7 +26,7 @@ namespace VenueApplication.Models
 
         DatabaseManager databaseManager { get; set; }
 
-        public payment_info(int pymt_info_user_id, string pymt_info_type, string pymt_info_card_number, string pymt_info_card_cvv, DateOnly pymt_info_expiration_date, string pymt_info_address, string pymt_info_address_state, string pymt_info_zipcode, DatabaseManager databaseManager)
+        public payment_info(int pymt_info_user_id, string pymt_info_type, string pymt_info_card_number, string pymt_info_card_cvv, string pymt_info_expiration_date, string pymt_info_address, string pymt_info_address_state, string pymt_info_zipcode, DatabaseManager databaseManager)
         {
             this.pymt_info_user_id = pymt_info_user_id;
             this.pymt_info_type = pymt_info_type;
@@ -38,5 +38,15 @@ namespace VenueApplication.Models
             this.pymt_info_zipcode = pymt_info_zipcode;
             this.databaseManager = databaseManager;
         }
+
+        /*
+        public string CreateSQLInsertQuery()
+        {
+            string query = VenueApplication.Properties.Resource.userCreate_INSERT;
+
+
+            return query;
+        }
+        */
     }
 }

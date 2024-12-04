@@ -1,27 +1,27 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Npgsql;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using VenueApplication.DataAccess;
 using VenueApplication.Models;
+using VenueApplication.Forms;
 
 namespace VenueApplication.Services
 {
-
-    internal static class NewUserService
+    internal static class NewPaymentMethodService
     {
-        public static bool AttemptSignup(string firstname, string lastname, string email, DateOnly? birthday, string username, string password, DatabaseManager databaseManager)
+        public static void AttemptAddNewPaymentMethod(string cardType, string cardNumber, string cardCVV, string expDate, string address, string state, string zipcode, DatabaseManager databaseManager)
         {
             // Create necessary related objects
-            login_credentials loginCreds = new login_credentials(username, password, email, databaseManager);
-            user_wallet wallet = new user_wallet(databaseManager);
-            app_user newUser = new app_user(firstname, lastname, birthday, 0m, "USER", loginCreds, wallet, databaseManager);
+            payment_info paymentInfo = new payment_info(LoginForm.USER_ID, cardType, cardNumber, cardCVV, expDate, address, state, zipcode, databaseManager);
 
+            /*
             // Generate the SQL query
-            string query = newUser.CreateSQLInsertQuery();
+            string query = paymentInfo.CreateSQLInsertQuery();
 
             using (var dbConnection = databaseManager.GetConnection())
             {
@@ -67,7 +67,7 @@ namespace VenueApplication.Services
                 }
             }
         }
-
-
+    */
     }
+}
 }

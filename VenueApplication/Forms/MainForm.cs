@@ -49,6 +49,19 @@ namespace VenueApplication
             }
         }
 
+        private void signOutButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            loginForm.Show();
+        }
+
+        private void addNewPaymentMethodButton_Click(object sender, EventArgs e)
+        {
+            addNewPaymentMethodButton.Enabled = false;
+            PaymentMethodForm paymentMethodForm = new PaymentMethodForm(this);
+            paymentMethodForm.Show();
+        }
+
         private void switchToCreateNewEventTabButton_Click(object sender, EventArgs e)
         {
             tabControlAdv2.SelectedTab = createNewEventTab;
@@ -89,18 +102,13 @@ namespace VenueApplication
             firstlastNameLabel.Text = $"{user.user_fname} {user.user_lname}";
         }
 
+        public void EnableAddNewPaymentButton()
+        {
+            addNewPaymentMethodButton.Enabled = true;
+        }
+
         #endregion
 
-        private void signOutButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            loginForm.Show();
-        }
-
-        private void addNewPaymentMethodButton_Click(object sender, EventArgs e)
-        {
-            PaymentMethodForm paymentMethodForm = new PaymentMethodForm(this);
-            paymentMethodForm.Show();
-        }
+        
     }
 }
