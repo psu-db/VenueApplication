@@ -2,6 +2,7 @@ using VenueApplication.DataAccess;
 using Syncfusion.Windows.Forms;
 using VenueApplication.Models;
 using VenueApplication.Forms;
+using VenueApplication.Services;
 using Npgsql;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Diagnostics;
@@ -173,6 +174,66 @@ namespace VenueApplication
 
         #endregion
 
-        
+
+        private void createEventCancelButton_Click(object sender, EventArgs e)
+        {
+            tabControlAdv2.SelectedTab = adminToolsSelectionTab;
+        }
+
+        private void createEventCreateButton_Click(object sender, EventArgs e)
+        {
+            string eventHour = createEventHourComboDropDown.Text;
+            string eventMinute = createEventMinuteComboDropDown.Text;
+            string eventAMPM = createEventAMPMComboDropDown.Text;
+            string eventType = createEventTypeComboDropDown.Text;
+            string eventDescription = createEventDescriptionTextBox.Text;
+            DateTime? eventDate = createEventCalendar.SelectedDate;
+            DateOnly? eventDateOnly = null;
+
+            if (eventDate.HasValue)
+            {
+                // Convert DateTime to DateOnly
+                eventDateOnly = DateOnly.FromDateTime(eventDate.Value);
+
+                // Convert DateOnly to string in the correct format (YYYY-MM-DD)
+            }
+
+            if (eventDateOnly != null && eventHour != "" && eventMinute != "" && eventAMPM != "" && eventType != "" && eventDescription != "")
+            {
+
+                string buildTime = eventHour + ":" + eventMinute + " " + eventAMPM;
+                TimeOnly parsedTime = TimeOnly.Parse(buildTime);
+                //string time24Hour = parsedTime.ToString("HH:mm");
+                //Debug.WriteLine(time24Hour);
+
+                bool createEventResults = NewEventService.AttemptEventCreation(eventDateOnly, parsedTime, eventType, eventDescription, databaseManager);
+
+                if (createEventResults)
+                {
+                    createEventHourComboDropDown.Text = "";
+                    createEventMinuteComboDropDown.Text = "";
+                    createEventAMPMComboDropDown.Text = "";
+                    createEventTypeComboDropDown.Text = "";
+                    createEventDescriptionTextBox.Text = "";
+                    createEventErrorLabel.Text = "Successfully inserted event";
+                    createEventErrorLabel.ForeColor = Color.Green;
+                    createEventErrorLabel.Refresh();
+                }
+                else
+                {
+                    createEventErrorLabel.Text = "An error occured during the sign up process. Please wait and try again.";
+                    createEventErrorLabel.Visible = true;
+                    createEventErrorLabel.Refresh();
+                }
+
+
+            }
+            else
+            {
+                createEventErrorLabel.Text = "All fields must be filled in order to create an event";
+                createEventErrorLabel.Visible = true;
+                createEventErrorLabel.Refresh();
+            }
+        }
     }
 }

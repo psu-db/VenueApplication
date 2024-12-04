@@ -156,4 +156,8 @@ VALUES(@user_id, @card_type, @card_number, @card_cvv, @exp_date, @address, @stat
     <value>SELECT * FROM payment_info
 WHERE pymt_info_user_id = @user_id;</value>
   </data>
+  <data name="eventCreate_INSERT" xml:space="preserve">
+    <value>INSERT INTO venue_event(event_date, event_time, event_type, event_description)
+VALUES(@eventdate, @eventtime, @eventtype, @eventdescription);</value>
+  </data>
 </root>
