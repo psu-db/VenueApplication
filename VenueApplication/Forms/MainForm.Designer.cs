@@ -74,6 +74,7 @@
             signOutButton = new Syncfusion.WinForms.Controls.SfButton();
             firstlastNameLabel = new Label();
             pictureBox1 = new PictureBox();
+            eventManagerErrorLabel = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tabControlAdv1).BeginInit();
@@ -245,11 +246,11 @@
             adminToolsSelectionTab.Controls.Add(switchToCreateNewEventTabButton);
             adminToolsSelectionTab.Image = null;
             adminToolsSelectionTab.ImageSize = new Size(16, 16);
-            adminToolsSelectionTab.Location = new Point(1, 0);
+            adminToolsSelectionTab.Location = new Point(1, 43);
             adminToolsSelectionTab.Margin = new Padding(5, 6, 5, 6);
             adminToolsSelectionTab.Name = "adminToolsSelectionTab";
             adminToolsSelectionTab.ShowCloseButton = true;
-            adminToolsSelectionTab.Size = new Size(2227, 1529);
+            adminToolsSelectionTab.Size = new Size(2227, 1485);
             adminToolsSelectionTab.TabIndex = 1;
             adminToolsSelectionTab.Text = "Admin Tool Selection";
             adminToolsSelectionTab.ThemesEnabled = false;
@@ -295,11 +296,11 @@
             createNewEventTab.Controls.Add(createEventButton);
             createNewEventTab.Image = null;
             createNewEventTab.ImageSize = new Size(16, 16);
-            createNewEventTab.Location = new Point(1, 0);
+            createNewEventTab.Location = new Point(1, 43);
             createNewEventTab.Margin = new Padding(5, 6, 5, 6);
             createNewEventTab.Name = "createNewEventTab";
             createNewEventTab.ShowCloseButton = true;
-            createNewEventTab.Size = new Size(2227, 1529);
+            createNewEventTab.Size = new Size(2227, 1485);
             createNewEventTab.TabIndex = 2;
             createNewEventTab.Text = "Create New Event";
             createNewEventTab.ThemesEnabled = false;
@@ -450,6 +451,7 @@
             // 
             // eventManagerTab
             // 
+            eventManagerTab.Controls.Add(eventManagerErrorLabel);
             eventManagerTab.Controls.Add(manageEventCloseEventButton);
             eventManagerTab.Controls.Add(manageEventScanTicketsButton);
             eventManagerTab.Controls.Add(manageEventManageTicketsButton);
@@ -502,6 +504,7 @@
             manageEventEditEventButton.Size = new Size(245, 109);
             manageEventEditEventButton.TabIndex = 2;
             manageEventEditEventButton.Text = "Edit Event";
+            manageEventEditEventButton.Click += manageEventEditEventButton_Click;
             // 
             // manageEventCancelButton
             // 
@@ -640,6 +643,16 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
+            // eventManagerErrorLabel
+            // 
+            eventManagerErrorLabel.Font = new Font("Segoe UI", 12F);
+            eventManagerErrorLabel.ForeColor = Color.Red;
+            eventManagerErrorLabel.Location = new Point(276, 783);
+            eventManagerErrorLabel.Name = "eventManagerErrorLabel";
+            eventManagerErrorLabel.Size = new Size(145, 38);
+            eventManagerErrorLabel.TabIndex = 6;
+            eventManagerErrorLabel.Text = "error label";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
@@ -670,6 +683,7 @@
             ((System.ComponentModel.ISupportInitialize)createEventHourComboDropDown).EndInit();
             ((System.ComponentModel.ISupportInitialize)createEventDescriptionTextBox).EndInit();
             eventManagerTab.ResumeLayout(false);
+            eventManagerTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)manageEventDataGrid).EndInit();
             myTicketsTab.ResumeLayout(false);
             profileTab.ResumeLayout(false);
@@ -726,5 +740,6 @@
         private Syncfusion.WinForms.Controls.SfButton manageEventScanTicketsButton;
         private Syncfusion.WinForms.Controls.SfButton manageEventManageTicketsButton;
         private Syncfusion.WinForms.Controls.SfButton manageEventEditEventButton;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel eventManagerErrorLabel;
     }
 }

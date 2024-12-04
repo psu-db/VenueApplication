@@ -51,10 +51,36 @@ namespace VenueApplication.Models
             return query;
         }
 
+        public string CreateSQLUpdateQuery()
+        {
+            string query = VenueApplication.Properties.Resource.eventCreate_UPDATE;
+
+            return query;
+        }
+
         public NpgsqlCommand AddWithValues(NpgsqlCommand command)
         {
             try
             {
+                command.Parameters.AddWithValue("@eventdate", event_date);
+                command.Parameters.AddWithValue("@eventtime", event_time);
+                command.Parameters.AddWithValue("@eventtype", event_type);
+                command.Parameters.AddWithValue("@eventdescription", event_description);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error while trying to add replace values in query: " + ex.Message);
+            }
+
+            return command;
+
+        }
+
+        public NpgsqlCommand AddWithValuesID(NpgsqlCommand command)
+        {
+            try
+            {
+                command.Parameters.AddWithValue("@eventid", event_id);
                 command.Parameters.AddWithValue("@eventdate", event_date);
                 command.Parameters.AddWithValue("@eventtime", event_time);
                 command.Parameters.AddWithValue("@eventtype", event_type);

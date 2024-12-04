@@ -112,36 +112,56 @@ namespace VenueApplication
 
         public void InitializeEventManager()
         {
+
+            manageEventDataGrid.DataSource = null;
             List<venue_event> venue_events = InitializeEvents();
             manageEventDataGrid.AutoGenerateColumns = false;
             manageEventDataGrid.DataSource = venue_events;
 
-            manageEventDataGrid.Columns.Add(new GridTextColumn
-            {
-                MappingName = "event_type",
-                HeaderText = "Event Type",
-            });
 
-            manageEventDataGrid.Columns.Add(new GridTextColumn
+            if (!manageEventDataGrid.Columns.Any(c => c.MappingName == "event_type"))
             {
-                MappingName = "event_description",
-                HeaderText = "Event Description",
-            });
+                manageEventDataGrid.Columns.Add(new GridTextColumn
+                {
+                    MappingName = "event_type",
+                    HeaderText = "Event Type",
+                });
+            }
 
-            manageEventDataGrid.Columns.Add(new GridTextColumn
+            // Check for 'event_description' column
+            if (!manageEventDataGrid.Columns.Any(c => c.MappingName == "event_description"))
             {
-                MappingName = "event_date",
-                HeaderText = "Event Date",
-                Format = "MM/dd/yyyy" // Optional formatting
-            });
+                manageEventDataGrid.Columns.Add(new GridTextColumn
+                {
+                    MappingName = "event_description",
+                    HeaderText = "Event Description",
+                });
+            }
 
-            manageEventDataGrid.Columns.Add(new GridTextColumn
+            // Check for 'event_date' column
+            if (!manageEventDataGrid.Columns.Any(c => c.MappingName == "event_date"))
             {
-                MappingName = "event_time",
-                HeaderText = "Event Time",
-                Format = "hh\\:mm tt" // Optional formatting
-            });
+                manageEventDataGrid.Columns.Add(new GridTextColumn
+                {
+                    MappingName = "event_date",
+                    HeaderText = "Event Date",
+                    Format = "MM/dd/yyyy" // Optional formatting
+                });
+            }
+
+            // Check for 'event_time' column
+            if (!manageEventDataGrid.Columns.Any(c => c.MappingName == "event_time"))
+            {
+                manageEventDataGrid.Columns.Add(new GridTextColumn
+                {
+                    MappingName = "event_time",
+                    HeaderText = "Event Time",
+                    Format = "hh\\:mm tt" // Optional formatting
+                });
+            }
             manageEventDataGrid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
+            this.selected_event = null;
+            eventManagerErrorLabel.Visible = false;
 
         }
 
@@ -227,15 +247,14 @@ namespace VenueApplication
                         // Check if there are any rows (meaning the username/password pair is valid)
                         if (reader.HasRows)
                         {
-
                             while (reader.Read())
                             {
+
                                 int? event_id = reader.IsDBNull(reader.GetOrdinal("event_id")) ? null : reader.GetInt32(reader.GetOrdinal("event_id"));
                                 DateTime? event_date = reader.IsDBNull(reader.GetOrdinal("event_date")) ? null : reader.GetDateTime(reader.GetOrdinal("event_date"));
                                 TimeSpan? event_time = reader.IsDBNull(reader.GetOrdinal("event_time")) ? null : reader.GetTimeSpan(reader.GetOrdinal("event_time"));
                                 string? event_type = reader.IsDBNull(reader.GetOrdinal("event_type")) ? null : reader.GetString(reader.GetOrdinal("event_type"));
                                 string? event_description = reader.IsDBNull(reader.GetOrdinal("event_description")) ? null : reader.GetString(reader.GetOrdinal("event_description"));
-
 
                                 DateOnly? eventDateOnly = null;
                                 TimeOnly? eventTimeOnly = null;
@@ -255,13 +274,14 @@ namespace VenueApplication
 
                                 venue_event venueEvent = new venue_event((int)event_id, eventDateOnly, (TimeOnly)eventTimeOnly, event_type, event_description, databaseManager);
                                 venue_events.Add(venueEvent);
+
                             }
 
                             return venue_events;
                         }
                         else
                         {
-                            Debug.WriteLine("Initialize payment methods failed");
+                            Debug.WriteLine("Initialize events failed");
                             return venue_events;
                         }
                     }
@@ -361,6 +381,22 @@ namespace VenueApplication
         {
             this.selected_event = (venue_event)manageEventDataGrid.SelectedItem;
 
+        }
+
+        private void manageEventEditEventButton_Click(object sender, EventArgs e)
+        {
+
+            if (this.selected_event != null)
+            {
+                EditEventForm editEventForm = new EditEventForm(this, databaseManager, this.selected_event);
+                editEventForm.Show();
+            }
+            else
+            {
+                eventManagerErrorLabel.Text = "Please select an event to continue";
+                eventManagerErrorLabel.Visible = true;
+            }
+            
         }
     }
 }
