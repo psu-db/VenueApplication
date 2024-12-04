@@ -71,6 +71,36 @@ namespace VenueApplication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to INSERT INTO venue_event(event_date, event_time, event_type, event_description)
+        ///VALUES(@eventdate, @eventtime, @eventtype, @eventdescription);.
+        /// </summary>
+        internal static string eventCreate_INSERT {
+            get {
+                return ResourceManager.GetString("eventCreate_INSERT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INSERT INTO Payment_info(pymt_info_user_id, pymt_info_type, pymt_info_card_number, pymt_info_card_cvv, pymt_info_expiration_date, pymt_info_address, pymt_info_address_state, pymt_info_zipcode)
+        ///VALUES(@user_id, @card_type, @card_number, @card_cvv, @exp_date, @address, @state, @zipcode); .
+        /// </summary>
+        internal static string paymentMethod_INSERT {
+            get {
+                return ResourceManager.GetString("paymentMethod_INSERT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT * FROM payment_info
+        ///WHERE pymt_info_user_id = @user_id;.
+        /// </summary>
+        internal static string paymentMethods_SELECT {
+            get {
+                return ResourceManager.GetString("paymentMethods_SELECT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap pngtree_avatar_icon_profile_member_login_vector_isolated_silhouette_transparent_png_image_7111828 {
@@ -126,30 +156,6 @@ namespace VenueApplication.Properties {
         internal static string userWallet_INSERT {
             get {
                 return ResourceManager.GetString("userWallet_INSERT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to INSERT INTO user_wallet(wallet_user_id)
-        ///SELECT user_id FROM inserted_user;.
-        /// </summary>
-        internal static string paymentMethod_INSERT
-        {
-            get
-            {
-                return ResourceManager.GetString("paymentMethod_INSERT", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to INSERT INTO user_wallet(wallet_user_id)
-        ///SELECT user_id FROM inserted_user;.
-        /// </summary>
-        internal static string paymentMethods_SELECT
-        {
-            get
-            {
-                return ResourceManager.GetString("paymentMethods_SELECT", resourceCulture);
             }
         }
     }
