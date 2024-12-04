@@ -29,7 +29,7 @@ namespace VenueApplication
         private void MainForm_Load(object sender, EventArgs e)
         {
             InitializeProfilePage();
-
+            InitializeEventManager();
             adminToolsTab.TabVisible = false;
             homeTab.TabVisible = false;
             myTicketsTab.TabVisible = false;
@@ -108,6 +108,12 @@ namespace VenueApplication
             paymentMethodsComboBox.DataSource = paymentMethods;
         }
 
+        public void InitializeEventManager()
+        {
+            List<venue_event> venue_events = InitializeEvents();
+            manageEventDataGrid.DataSource = venue_events;
+        }
+
         private List<payment_info> InitializePaymentMethods()
         {
             List<payment_info> paymentMethods = new List<payment_info>();
@@ -167,6 +173,79 @@ namespace VenueApplication
 
         }
 
+
+        private List<venue_event> InitializeEvents()
+        {
+            List<venue_event> venue_events = new List<venue_event>();
+
+            string query = VenueApplication.Properties.Resource.venue_events_SELECT;
+
+            using (var dbConnection = databaseManager.GetConnection())
+            {
+                // Create a command object to execute the query
+                var command = new NpgsqlCommand(query, dbConnection);
+
+                // Add parameters to the query
+                try
+                {
+                    dbConnection.Open();
+
+                    // Execute the query and get a reader to read the results
+                    using (var reader = command.ExecuteReader())
+                    {
+                        // Check if there are any rows (meaning the username/password pair is valid)
+                        if (reader.HasRows)
+                        {
+
+                            while (reader.Read())
+                            {
+                                int? event_id = reader.IsDBNull(reader.GetOrdinal("event_id")) ? null : reader.GetInt32(reader.GetOrdinal("event_id"));
+                                DateTime? event_date = reader.IsDBNull(reader.GetOrdinal("event_date")) ? null : reader.GetDateTime(reader.GetOrdinal("event_date"));
+                                TimeSpan? event_time = reader.IsDBNull(reader.GetOrdinal("event_time")) ? null : reader.GetTimeSpan(reader.GetOrdinal("event_time"));
+                                string? event_type = reader.IsDBNull(reader.GetOrdinal("event_type")) ? null : reader.GetString(reader.GetOrdinal("event_type"));
+                                string? event_description = reader.IsDBNull(reader.GetOrdinal("event_description")) ? null : reader.GetString(reader.GetOrdinal("event_description"));
+
+
+                                DateOnly? eventDateOnly = null;
+                                TimeOnly? eventTimeOnly = null;
+
+                                if (event_time.HasValue)
+                                {
+                                    // Convert DateTime to DateOnly
+                                    eventTimeOnly = TimeOnly.FromTimeSpan(event_time.Value);
+                                }
+                                
+
+                                if (event_date.HasValue)
+                                {
+                                    // Convert DateTime to DateOnly
+                                    eventDateOnly = DateOnly.FromDateTime(event_date.Value);
+                                }
+
+                           
+                                venue_event venueEvent = new venue_event((int)event_id, eventDateOnly, (TimeOnly)eventTimeOnly, event_type, event_description, databaseManager);
+                                venue_events.Add(venueEvent);
+                            }
+
+                            return venue_events;
+                        }
+                        else
+                        {
+                            Debug.WriteLine("Initialize payment methods failed");
+                            return venue_events;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error executing query: {ex.Message}");
+
+                    return venue_events;
+                }
+            }
+
+        }
+
         public void EnableAddNewPaymentButton()
         {
             addNewPaymentMethodButton.Enabled = true;
@@ -178,6 +257,7 @@ namespace VenueApplication
         private void createEventCancelButton_Click(object sender, EventArgs e)
         {
             tabControlAdv2.SelectedTab = adminToolsSelectionTab;
+            createEventErrorLabel.Visible = false;
         }
 
         private void createEventCreateButton_Click(object sender, EventArgs e)
@@ -217,6 +297,7 @@ namespace VenueApplication
                     createEventDescriptionTextBox.Text = "";
                     createEventErrorLabel.Text = "Successfully inserted event";
                     createEventErrorLabel.ForeColor = Color.Green;
+                    createEventErrorLabel.Visible = true;
                     createEventErrorLabel.Refresh();
                 }
                 else
@@ -234,6 +315,11 @@ namespace VenueApplication
                 createEventErrorLabel.Visible = true;
                 createEventErrorLabel.Refresh();
             }
+        }
+
+        private void createNewEventTab_Leave(object sender, EventArgs e)
+        {
+            createEventErrorLabel.Visible = false;
         }
     }
 }

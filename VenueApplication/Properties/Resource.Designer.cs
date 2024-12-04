@@ -158,5 +158,14 @@ namespace VenueApplication.Properties {
                 return ResourceManager.GetString("userWallet_INSERT", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT * FROM venue_event;.
+        /// </summary>
+        internal static string venue_events_SELECT {
+            get {
+                return ResourceManager.GetString("venue_events_SELECT", resourceCulture);
+            }
+        }
     }
 }

@@ -68,6 +68,7 @@
             signOutButton = new Syncfusion.WinForms.Controls.SfButton();
             firstlastNameLabel = new Label();
             pictureBox1 = new PictureBox();
+            manageEventDataGrid = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tabControlAdv1).BeginInit();
@@ -82,10 +83,12 @@
             ((System.ComponentModel.ISupportInitialize)createEventMinuteComboDropDown).BeginInit();
             ((System.ComponentModel.ISupportInitialize)createEventHourComboDropDown).BeginInit();
             ((System.ComponentModel.ISupportInitialize)createEventDescriptionTextBox).BeginInit();
+            eventManagerTab.SuspendLayout();
             myTicketsTab.SuspendLayout();
             profileTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)paymentMethodsComboBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)manageEventDataGrid).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -295,6 +298,7 @@
             createNewEventTab.TabIndex = 2;
             createNewEventTab.Text = "Create New Event";
             createNewEventTab.ThemesEnabled = false;
+            createNewEventTab.Leave += createNewEventTab_Leave;
             // 
             // createEventTypeComboDropDown
             // 
@@ -371,13 +375,14 @@
             createEventErrorLabel.ForeColor = Color.Red;
             createEventErrorLabel.Location = new Point(102, 1133);
             createEventErrorLabel.Name = "createEventErrorLabel";
-            createEventErrorLabel.Size = new Size(192, 51);
+            createEventErrorLabel.Size = new Size(414, 51);
             createEventErrorLabel.TabIndex = 9;
-            createEventErrorLabel.Text = "error label";
+            createEventErrorLabel.Text = "Create event error label";
+            createEventErrorLabel.Visible = false;
             // 
             // createEventDescriptionTextBox
             // 
-            createEventDescriptionTextBox.BeforeTouchSize = new Size(640, 45);
+            createEventDescriptionTextBox.BeforeTouchSize = new Size(100, 35);
             createEventDescriptionTextBox.Font = new Font("Segoe UI", 12F);
             createEventDescriptionTextBox.Location = new Point(491, 992);
             createEventDescriptionTextBox.Name = "createEventDescriptionTextBox";
@@ -440,6 +445,7 @@
             // 
             // eventManagerTab
             // 
+            eventManagerTab.Controls.Add(manageEventDataGrid);
             eventManagerTab.Image = null;
             eventManagerTab.ImageSize = new Size(16, 16);
             eventManagerTab.Location = new Point(1, 43);
@@ -561,6 +567,21 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
+            // manageEventDataGrid
+            // 
+            manageEventDataGrid.AccessibleName = "Table";
+            manageEventDataGrid.Location = new Point(273, 71);
+            manageEventDataGrid.Name = "manageEventDataGrid";
+            manageEventDataGrid.PreviewRowHeight = 49;
+            manageEventDataGrid.Size = new Size(1425, 506);
+            manageEventDataGrid.Style.BorderColor = Color.FromArgb(100, 100, 100);
+            manageEventDataGrid.Style.CheckBoxStyle.CheckedBackColor = Color.FromArgb(0, 120, 215);
+            manageEventDataGrid.Style.CheckBoxStyle.CheckedBorderColor = Color.FromArgb(0, 120, 215);
+            manageEventDataGrid.Style.CheckBoxStyle.IndeterminateBorderColor = Color.FromArgb(0, 120, 215);
+            manageEventDataGrid.Style.HyperlinkStyle.DefaultLinkColor = Color.FromArgb(0, 120, 215);
+            manageEventDataGrid.TabIndex = 0;
+            manageEventDataGrid.Text = "sfDataGrid1";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
@@ -590,11 +611,13 @@
             ((System.ComponentModel.ISupportInitialize)createEventMinuteComboDropDown).EndInit();
             ((System.ComponentModel.ISupportInitialize)createEventHourComboDropDown).EndInit();
             ((System.ComponentModel.ISupportInitialize)createEventDescriptionTextBox).EndInit();
+            eventManagerTab.ResumeLayout(false);
             myTicketsTab.ResumeLayout(false);
             profileTab.ResumeLayout(false);
             profileTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)paymentMethodsComboBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)manageEventDataGrid).EndInit();
             ResumeLayout(false);
         }
 
@@ -639,5 +662,6 @@
         private Syncfusion.Windows.Forms.Tools.ComboBoxAdv createEventHourComboDropDown;
         private Syncfusion.Windows.Forms.Tools.ComboBoxAdv createEventAMPMComboDropDown;
         private Syncfusion.Windows.Forms.Tools.ComboBoxAdv createEventTypeComboDropDown;
+        private Syncfusion.WinForms.DataGrid.SfDataGrid manageEventDataGrid;
     }
 }

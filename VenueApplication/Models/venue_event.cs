@@ -24,6 +24,16 @@ namespace VenueApplication.Models
 
         DatabaseManager databaseManager { get; set; }
 
+
+        public venue_event(int event_id, DateOnly? event_date, TimeOnly event_time, string event_type, string event_description, DatabaseManager databaseManager)
+        {
+            this.event_id = event_id;
+            this.event_date = event_date;
+            this.event_time = event_time;
+            this.event_type = event_type;
+            this.event_description = event_description;
+            this.databaseManager = databaseManager;
+        }
         public venue_event(DateOnly? event_date, TimeOnly event_time, string event_type, string event_description, DatabaseManager databaseManager)
         {
             this.event_date = event_date;

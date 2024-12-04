@@ -160,4 +160,7 @@ WHERE pymt_info_user_id = @user_id;</value>
     <value>INSERT INTO venue_event(event_date, event_time, event_type, event_description)
 VALUES(@eventdate, @eventtime, @eventtype, @eventdescription);</value>
   </data>
+  <data name="venue_events_SELECT" xml:space="preserve">
+    <value>SELECT * FROM venue_event;</value>
+  </data>
 </root>
