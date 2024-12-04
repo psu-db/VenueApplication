@@ -9,7 +9,7 @@ using VenueApplication.DataAccess;
 
 namespace VenueApplication.Models
 {
-    internal class venue_event
+    public class venue_event
     {
         #region Table Attributes
         // Primary key

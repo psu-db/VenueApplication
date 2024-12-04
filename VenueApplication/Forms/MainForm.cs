@@ -6,6 +6,7 @@ using VenueApplication.Services;
 using Npgsql;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Diagnostics;
+using Syncfusion.WinForms.DataGrid;
 
 namespace VenueApplication
 {
@@ -15,6 +16,7 @@ namespace VenueApplication
         public LoginForm loginForm;
         public app_user user;
         public user_wallet user_wallet;
+        public venue_event selected_event;
 
         public MainForm(app_user user, user_wallet user_wallet, LoginForm loginForm, DatabaseManager databaseManager)
         {
@@ -111,7 +113,36 @@ namespace VenueApplication
         public void InitializeEventManager()
         {
             List<venue_event> venue_events = InitializeEvents();
+            manageEventDataGrid.AutoGenerateColumns = false;
             manageEventDataGrid.DataSource = venue_events;
+
+            manageEventDataGrid.Columns.Add(new GridTextColumn
+            {
+                MappingName = "event_type",
+                HeaderText = "Event Type",
+            });
+
+            manageEventDataGrid.Columns.Add(new GridTextColumn
+            {
+                MappingName = "event_description",
+                HeaderText = "Event Description",
+            });
+
+            manageEventDataGrid.Columns.Add(new GridTextColumn
+            {
+                MappingName = "event_date",
+                HeaderText = "Event Date",
+                Format = "MM/dd/yyyy" // Optional formatting
+            });
+
+            manageEventDataGrid.Columns.Add(new GridTextColumn
+            {
+                MappingName = "event_time",
+                HeaderText = "Event Time",
+                Format = "hh\\:mm tt" // Optional formatting
+            });
+            manageEventDataGrid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
+
         }
 
         private List<payment_info> InitializePaymentMethods()
@@ -214,7 +245,7 @@ namespace VenueApplication
                                     // Convert DateTime to DateOnly
                                     eventTimeOnly = TimeOnly.FromTimeSpan(event_time.Value);
                                 }
-                                
+
 
                                 if (event_date.HasValue)
                                 {
@@ -222,7 +253,6 @@ namespace VenueApplication
                                     eventDateOnly = DateOnly.FromDateTime(event_date.Value);
                                 }
 
-                           
                                 venue_event venueEvent = new venue_event((int)event_id, eventDateOnly, (TimeOnly)eventTimeOnly, event_type, event_description, databaseManager);
                                 venue_events.Add(venueEvent);
                             }
@@ -320,6 +350,17 @@ namespace VenueApplication
         private void createNewEventTab_Leave(object sender, EventArgs e)
         {
             createEventErrorLabel.Visible = false;
+        }
+
+        private void manageEventCancelButton_Click(object sender, EventArgs e)
+        {
+            tabControlAdv2.SelectedTab = adminToolsSelectionTab;
+        }
+
+        private void manageEventDataGrid_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
+        {
+            this.selected_event = (venue_event)manageEventDataGrid.SelectedItem;
+
         }
     }
 }
