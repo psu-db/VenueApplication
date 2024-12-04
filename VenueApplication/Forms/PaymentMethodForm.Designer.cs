@@ -40,17 +40,18 @@
             cardCVVTextEdit = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             addressTextEdit = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             cardTypeComboBox = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
-            cardExpDatePicker = new Syncfusion.WinForms.Input.SfDateTimeEdit();
             selectStateComboBox = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
             paymentFormErrorLabel = new Label();
             zipcodeLabel = new Label();
             zipcodeTextEdit = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            cardExpDateTextEdit = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             ((System.ComponentModel.ISupportInitialize)cardNumberTextEdit).BeginInit();
             ((System.ComponentModel.ISupportInitialize)cardCVVTextEdit).BeginInit();
             ((System.ComponentModel.ISupportInitialize)addressTextEdit).BeginInit();
             ((System.ComponentModel.ISupportInitialize)cardTypeComboBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)selectStateComboBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)zipcodeTextEdit).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)cardExpDateTextEdit).BeginInit();
             SuspendLayout();
             // 
             // paymentMethodFormCancelButton
@@ -73,6 +74,7 @@
             savePaymentMethodButton.TabIndex = 1;
             savePaymentMethodButton.TabStop = false;
             savePaymentMethodButton.Text = "Save";
+            savePaymentMethodButton.Click += savePaymentMethodButton_Click;
             // 
             // cardTypeLabel
             // 
@@ -167,15 +169,6 @@
             cardTypeComboBox.Size = new Size(121, 23);
             cardTypeComboBox.TabIndex = 14;
             // 
-            // cardExpDatePicker
-            // 
-            cardExpDatePicker.DateTimeIcon = null;
-            cardExpDatePicker.Location = new Point(231, 204);
-            cardExpDatePicker.Name = "cardExpDatePicker";
-            cardExpDatePicker.Size = new Size(119, 23);
-            cardExpDatePicker.TabIndex = 15;
-            cardExpDatePicker.ToolTipText = "";
-            // 
             // selectStateComboBox
             // 
             selectStateComboBox.BeforeTouchSize = new Size(121, 23);
@@ -214,16 +207,24 @@
             zipcodeTextEdit.Size = new Size(100, 23);
             zipcodeTextEdit.TabIndex = 19;
             // 
+            // cardExpDateTextEdit
+            // 
+            cardExpDateTextEdit.BeforeTouchSize = new Size(100, 23);
+            cardExpDateTextEdit.Location = new Point(231, 204);
+            cardExpDateTextEdit.Name = "cardExpDateTextEdit";
+            cardExpDateTextEdit.Size = new Size(100, 23);
+            cardExpDateTextEdit.TabIndex = 20;
+            // 
             // PaymentMethodForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(438, 450);
+            Controls.Add(cardExpDateTextEdit);
             Controls.Add(zipcodeTextEdit);
             Controls.Add(zipcodeLabel);
             Controls.Add(paymentFormErrorLabel);
             Controls.Add(selectStateComboBox);
-            Controls.Add(cardExpDatePicker);
             Controls.Add(cardTypeComboBox);
             Controls.Add(addressTextEdit);
             Controls.Add(cardCVVTextEdit);
@@ -247,6 +248,7 @@
             ((System.ComponentModel.ISupportInitialize)cardTypeComboBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)selectStateComboBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)zipcodeTextEdit).EndInit();
+            ((System.ComponentModel.ISupportInitialize)cardExpDateTextEdit).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -265,10 +267,10 @@
         private Syncfusion.Windows.Forms.Tools.TextBoxExt cardCVVTextEdit;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt addressTextEdit;
         private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cardTypeComboBox;
-        private Syncfusion.WinForms.Input.SfDateTimeEdit cardExpDatePicker;
         private Syncfusion.Windows.Forms.Tools.ComboBoxAdv selectStateComboBox;
         private Label paymentFormErrorLabel;
         private Label zipcodeLabel;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt zipcodeTextEdit;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt cardExpDateTextEdit;
     }
 }

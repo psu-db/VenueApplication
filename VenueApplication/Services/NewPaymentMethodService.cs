@@ -14,12 +14,12 @@ namespace VenueApplication.Services
 {
     internal static class NewPaymentMethodService
     {
-        public static void AttemptAddNewPaymentMethod(string cardType, string cardNumber, string cardCVV, string expDate, string address, string state, string zipcode, DatabaseManager databaseManager)
+        public static bool AttemptAddNewPaymentMethod(string cardType, string cardNumber, string cardCVV, string expDate, string address, string state, string zipcode, DatabaseManager databaseManager)
         {
-            // Create necessary related objects
+            // Create necessary related object
             payment_info paymentInfo = new payment_info(LoginForm.USER_ID, cardType, cardNumber, cardCVV, expDate, address, state, zipcode, databaseManager);
 
-            /*
+            
             // Generate the SQL query
             string query = paymentInfo.CreateSQLInsertQuery();
 
@@ -39,11 +39,9 @@ namespace VenueApplication.Services
                             var command = new NpgsqlCommand(query, dbConnection, transaction);
 
                             // Add parameters to the query
-                            command = newUser.AddWithValues(command);
-                            command = loginCreds.AddWithValues(command);
+                            command = paymentInfo.AddWithValues(command);
 
                             int rowsAffected = command.ExecuteNonQuery();
-                            //check if rows affected is 3
 
 
                             // Commit the transaction if everything is successful
@@ -67,7 +65,7 @@ namespace VenueApplication.Services
                 }
             }
         }
-    */
+    
     }
 }
-}
+

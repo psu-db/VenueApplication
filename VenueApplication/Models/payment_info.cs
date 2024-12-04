@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,15 +40,39 @@ namespace VenueApplication.Models
             this.pymt_info_zipcode = pymt_info_zipcode;
             this.databaseManager = databaseManager;
         }
-
-        /*
         public string CreateSQLInsertQuery()
         {
-            string query = VenueApplication.Properties.Resource.userCreate_INSERT;
-
+            string query = VenueApplication.Properties.Resource.paymentMethod_INSERT;
 
             return query;
         }
-        */
+
+        public NpgsqlCommand AddWithValues(NpgsqlCommand command)
+        {
+            try
+            {
+                command.Parameters.AddWithValue("@user_id", pymt_info_user_id);
+                command.Parameters.AddWithValue("@card_type", pymt_info_type);
+                command.Parameters.AddWithValue("@card_number", pymt_info_card_number);
+                command.Parameters.AddWithValue("@card_cvv", pymt_info_card_cvv);
+                command.Parameters.AddWithValue("@exp_date", pymt_info_expiration_date);
+                command.Parameters.AddWithValue("@address", pymt_info_address);
+                command.Parameters.AddWithValue("@state", pymt_info_address_state);
+                command.Parameters.AddWithValue("@zipcode", pymt_info_zipcode);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error while trying to add replace values in query: " + ex.Message);
+            }
+
+            return command;
+
+        }
+
+        public override string ToString()
+        {
+            return $"{pymt_info_type} Ending in {pymt_info_card_number.Substring(pymt_info_card_number.Length - 4)}";
+        }
+
     }
 }

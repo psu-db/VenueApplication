@@ -148,4 +148,12 @@ WHERE lgn_username = @username AND lgn_password = @password;</value>
   <data name="pngtree-avatar-icon-profile-member-login-vector-isolated-silhouette-transparent-png-image_7111828" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pngtree-avatar-icon-profile-member-login-vector-isolated-silhouette-transparent-png-image_71118281.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="paymentMethod_INSERT" xml:space="preserve">
+    <value>INSERT INTO Payment_info(pymt_info_user_id, pymt_info_type, pymt_info_card_number, pymt_info_card_cvv, pymt_info_expiration_date, pymt_info_address, pymt_info_address_state, pymt_info_zipcode)
+VALUES(@user_id, @card_type, @card_number, @card_cvv, @exp_date, @address, @state, @zipcode); </value>
+  </data>
+  <data name="paymentMethods_SELECT" xml:space="preserve">
+    <value>SELECT * FROM payment_info
+WHERE pymt_info_user_id = @user_id;</value>
+  </data>
 </root>

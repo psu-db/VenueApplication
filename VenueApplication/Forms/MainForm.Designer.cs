@@ -312,7 +312,7 @@
             // addNewPaymentMethodButton
             // 
             addNewPaymentMethodButton.Font = new Font("Segoe UI Semibold", 9F);
-            addNewPaymentMethodButton.Location = new Point(337, 211);
+            addNewPaymentMethodButton.Location = new Point(337, 202);
             addNewPaymentMethodButton.Name = "addNewPaymentMethodButton";
             addNewPaymentMethodButton.Size = new Size(157, 28);
             addNewPaymentMethodButton.TabIndex = 5;
@@ -331,10 +331,10 @@
             // 
             // paymentMethodsComboBox
             // 
-            paymentMethodsComboBox.BeforeTouchSize = new Size(121, 23);
+            paymentMethodsComboBox.BeforeTouchSize = new Size(200, 23);
             paymentMethodsComboBox.Location = new Point(337, 158);
             paymentMethodsComboBox.Name = "paymentMethodsComboBox";
-            paymentMethodsComboBox.Size = new Size(121, 23);
+            paymentMethodsComboBox.Size = new Size(200, 23);
             paymentMethodsComboBox.TabIndex = 3;
             paymentMethodsComboBox.Text = "Click to view";
             // 

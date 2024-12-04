@@ -128,5 +128,29 @@ namespace VenueApplication.Properties {
                 return ResourceManager.GetString("userWallet_INSERT", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INSERT INTO user_wallet(wallet_user_id)
+        ///SELECT user_id FROM inserted_user;.
+        /// </summary>
+        internal static string paymentMethod_INSERT
+        {
+            get
+            {
+                return ResourceManager.GetString("paymentMethod_INSERT", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to INSERT INTO user_wallet(wallet_user_id)
+        ///SELECT user_id FROM inserted_user;.
+        /// </summary>
+        internal static string paymentMethods_SELECT
+        {
+            get
+            {
+                return ResourceManager.GetString("paymentMethods_SELECT", resourceCulture);
+            }
+        }
     }
 }

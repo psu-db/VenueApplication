@@ -38,8 +38,6 @@ namespace VenueApplication.Forms
             loginForm.Show();
         }
 
-        #endregion
-
         private void signUpButton_Click(object sender, EventArgs e)
         {
             string firstname = firstNameTextBoxEdit.Text;
@@ -85,7 +83,7 @@ namespace VenueApplication.Forms
                     signUpFormErrorLabel.Visible = true;
                     signUpFormErrorLabel.Refresh();
                 }
-                
+
             }
             else
             {
@@ -93,7 +91,10 @@ namespace VenueApplication.Forms
                 signUpFormErrorLabel.Visible = true;
                 signUpFormErrorLabel.Refresh();
             }
-            
+
         }
     }
+
+    #endregion
+
 }
