@@ -7,6 +7,8 @@ using Npgsql;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Diagnostics;
 using Syncfusion.WinForms.DataGrid;
+using Microsoft.Extensions.Logging;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace VenueApplication
 {
@@ -17,6 +19,7 @@ namespace VenueApplication
         public app_user user;
         public user_wallet user_wallet;
         public venue_event selected_event;
+        public venue_event homePage_selectedEvent;
 
         public MainForm(app_user user, user_wallet user_wallet, LoginForm loginForm, DatabaseManager databaseManager)
         {
@@ -31,7 +34,9 @@ namespace VenueApplication
         private void MainForm_Load(object sender, EventArgs e)
         {
             InitializeProfilePage();
+            InitializeHomePage();
             InitializeEventManager();
+
             adminToolsTab.TabVisible = false;
             homeTab.TabVisible = false;
             myTicketsTab.TabVisible = false;
@@ -106,8 +111,63 @@ namespace VenueApplication
         public void InitializeProfilePage()
         {
             firstlastNameLabel.Text = $"{user.user_fname} {user.user_lname}";
+            profileAccountBalanceValueLabel.Text = $"${user.user_balance.ToString()}";
             List<payment_info> paymentMethods = InitializePaymentMethods();
             paymentMethodsComboBox.DataSource = paymentMethods;
+        }
+
+        public void InitializeHomePage()
+        {
+
+            homePageEventsDataGrid.DataSource = null;
+            List<venue_event> venue_events = InitializeEvents();
+            homePageEventsDataGrid.AutoGenerateColumns = false;
+            homePageEventsDataGrid.DataSource = venue_events;
+
+
+            if (!homePageEventsDataGrid.Columns.Any(c => c.MappingName == "event_type"))
+            {
+                homePageEventsDataGrid.Columns.Add(new GridTextColumn
+                {
+                    MappingName = "event_type",
+                    HeaderText = "Event Type",
+                });
+            }
+
+            // Check for 'event_description' column
+            if (!homePageEventsDataGrid.Columns.Any(c => c.MappingName == "event_description"))
+            {
+                homePageEventsDataGrid.Columns.Add(new GridTextColumn
+                {
+                    MappingName = "event_description",
+                    HeaderText = "Event Description",
+                });
+            }
+
+            // Check for 'event_date' column
+            if (!homePageEventsDataGrid.Columns.Any(c => c.MappingName == "event_date"))
+            {
+                homePageEventsDataGrid.Columns.Add(new GridTextColumn
+                {
+                    MappingName = "event_date",
+                    HeaderText = "Event Date",
+                    Format = "MM/dd/yyyy" // Optional formatting
+                });
+            }
+
+            // Check for 'event_time' column
+            if (!homePageEventsDataGrid.Columns.Any(c => c.MappingName == "event_time"))
+            {
+                homePageEventsDataGrid.Columns.Add(new GridTextColumn
+                {
+                    MappingName = "event_time",
+                    HeaderText = "Event Time",
+                    Format = "hh\\:mm tt" // Optional formatting
+                });
+            }
+            homePageEventsDataGrid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
+            this.homePage_selectedEvent = null;
+
         }
 
         public void InitializeEventManager()
@@ -162,6 +222,66 @@ namespace VenueApplication
             manageEventDataGrid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
             this.selected_event = null;
             eventManagerErrorLabel.Visible = false;
+
+        }
+
+        private List<venue_ticket> InitializeTicketsForEvent(venue_event venueEvent)
+        {
+            List<venue_ticket> eventTickets = new List<venue_ticket>();
+
+            string query = VenueApplication.Properties.Resource.ticketsForEvent_SELECT;
+
+            using (var dbConnection = databaseManager.GetConnection())
+            {
+                // Create a command object to execute the query
+                var command = new NpgsqlCommand(query, dbConnection);
+
+                // Add parameters to the query
+                command.Parameters.AddWithValue("@event_id", venueEvent.event_id);
+                command.Parameters.AddWithValue("@status1", "SAL");
+                command.Parameters.AddWithValue("@status2", "RSL");
+
+                try
+                {
+                    dbConnection.Open();
+
+                    // Execute the query and get a reader to read the results
+                    using (var reader = command.ExecuteReader())
+                    {
+                        // Check if there are any rows (meaning the username/password pair is valid)
+                        if (reader.HasRows)
+                        {
+
+                            while (reader.Read())
+                            {
+                                int? tkt_id = reader.IsDBNull(reader.GetOrdinal("tkt_id")) ? null : reader.GetInt32(reader.GetOrdinal("tkt_id"));
+                                int? tkt_event_id = reader.IsDBNull(reader.GetOrdinal("tkt_event_id")) ? null : reader.GetInt32(reader.GetOrdinal("tkt_event_id"));
+                                string? tkt_section = reader.IsDBNull(reader.GetOrdinal("tkt_section")) ? null : reader.GetString(reader.GetOrdinal("tkt_section"));
+                                int? tkt_row = reader.IsDBNull(reader.GetOrdinal("tkt_row")) ? null : reader.GetInt32(reader.GetOrdinal("tkt_row"));
+                                int? tkt_seat_num = reader.IsDBNull(reader.GetOrdinal("tkt_seat_num")) ? null : reader.GetInt32(reader.GetOrdinal("tkt_seat_num"));
+                                decimal? tkt_price = reader.IsDBNull(reader.GetOrdinal("tkt_price")) ? null : reader.GetDecimal(reader.GetOrdinal("tkt_price"));
+                                string? tkt_status = reader.IsDBNull(reader.GetOrdinal("tkt_status")) ? null : reader.GetString(reader.GetOrdinal("tkt_status"));
+
+                                venue_ticket ticket = new venue_ticket((int)tkt_id, (int)tkt_event_id, tkt_section, (int)tkt_row, (int)tkt_seat_num, (decimal)tkt_price, tkt_status, databaseManager);
+                                eventTickets.Add(ticket);
+                            }
+
+                            return eventTickets;
+                        }
+                        else
+                        {
+                            Debug.WriteLine("Initialize tickets for event failed");
+                            return eventTickets;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error executing query: {ex.Message}");
+
+                    return eventTickets;
+                }
+            }
 
         }
 
@@ -223,7 +343,6 @@ namespace VenueApplication
             }
 
         }
-
 
         private List<venue_event> InitializeEvents()
         {
@@ -410,6 +529,33 @@ namespace VenueApplication
             {
                 eventManagerErrorLabel.Text = "Please select an event to continue";
                 eventManagerErrorLabel.Visible = true;
+            }
+        }
+
+        private void homePageEventsDataGrid_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
+        {
+            this.homePage_selectedEvent = (venue_event)homePageEventsDataGrid.SelectedItem;
+        }
+
+        private void homeViewEventTicketsButton_Click(object sender, EventArgs e)
+        {
+            if (homePage_selectedEvent != null)
+            {
+                List<venue_ticket> eventTickets = InitializeTicketsForEvent(homePage_selectedEvent);
+                homePageEventsDataGrid.DataSource = eventTickets;
+
+                homePageErrorLabel.Visible = false;
+                homeViewEventTicketsButton.Text = "Return To Event View";
+                //load datasoruce to tickets logic here
+                homePage_selectedEvent = null;
+            }
+            else
+            {
+                InitializeHomePage();
+                //switch datasource back to available events
+                homePageErrorLabel.Visible = true;
+                homePageErrorLabel.Text = "Select an event to view available tickets";
+                homeViewEventTicketsButton.Text = "View Tickets For Selected Event";
             }
         }
     }

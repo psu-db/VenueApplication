@@ -142,6 +142,15 @@ namespace VenueApplication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SELECT * FROM venue_ticket WHERE tkt_event_id = @event_id AND tkt_status = @status1 OR tkt_status = @status2;.
+        /// </summary>
+        internal static string ticketsForEvent_SELECT {
+            get {
+                return ResourceManager.GetString("ticketsForEvent_SELECT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to WITH inserted_user AS (
         ///    INSERT INTO app_user(user_fname, user_lname, user_birthday, user_balance, user_type)
         ///    VALUES (@firstname, @lastname, @birthday, @balance, @type)

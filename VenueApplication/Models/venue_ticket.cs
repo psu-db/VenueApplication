@@ -26,6 +26,17 @@ namespace VenueApplication.Models
 
         DatabaseManager databaseManager { get; set; }
 
+        public venue_ticket(int tkt_id, int tkt_event_id, string tkt_section, int tkt_row, int tkt_seat_num, decimal tkt_price, string tkt_status, DatabaseManager databaseManager)
+        {
+            this.tkt_id = tkt_id;
+            this.tkt_event_id = tkt_event_id;
+            this.tkt_section = tkt_section;
+            this.tkt_row = tkt_row;
+            this.tkt_seat_num = tkt_seat_num;
+            this.tkt_price = tkt_price;
+            this.tkt_status = tkt_status;
+            this.databaseManager = databaseManager;
+        }
         public venue_ticket(int tkt_event_id, string tkt_section, int tkt_row, int tkt_seat_num, decimal tkt_price, string tkt_status, DatabaseManager databaseManager)
         {
             this.tkt_event_id = tkt_event_id;
@@ -53,8 +64,6 @@ namespace VenueApplication.Models
 
             return query;
         }
-
-
 
         public NpgsqlCommand AddWithValues(NpgsqlCommand command)
         {

@@ -181,4 +181,7 @@ FROM
     generate_series(1, 5) AS rows(row_number),
     generate_series(1, 5) AS seats(seat_number);</value>
   </data>
+  <data name="ticketsForEvent_SELECT" xml:space="preserve">
+    <value>SELECT * FROM venue_ticket WHERE tkt_event_id = @event_id AND tkt_status = @status1 OR tkt_status = @status2;</value>
+  </data>
 </root>
