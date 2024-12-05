@@ -125,6 +125,16 @@ namespace VenueApplication
             homePageEventsDataGrid.DataSource = venue_events;
 
 
+            FormatDataGridForEvents();
+            homePageEventsDataGrid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
+            this.homePage_selectedEvent = null;
+
+        }
+
+        public void FormatDataGridForEvents()
+        {
+            homePageEventsDataGrid.Columns.Clear();
+
             if (!homePageEventsDataGrid.Columns.Any(c => c.MappingName == "event_type"))
             {
                 homePageEventsDataGrid.Columns.Add(new GridTextColumn
@@ -165,11 +175,52 @@ namespace VenueApplication
                     Format = "hh\\:mm tt" // Optional formatting
                 });
             }
-            homePageEventsDataGrid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
-            this.homePage_selectedEvent = null;
-
         }
 
+        public void FormatDataGridForTickets()
+        {
+
+            homePageEventsDataGrid.Columns.Clear();
+
+            if (!homePageEventsDataGrid.Columns.Any(c => c.MappingName == "tkt_section"))
+            {
+                homePageEventsDataGrid.Columns.Add(new GridTextColumn
+                {
+                    MappingName = "tkt_section",
+                    HeaderText = "Section",
+                });
+            }
+
+            // Check for 'event_description' column
+            if (!homePageEventsDataGrid.Columns.Any(c => c.MappingName == "tkt_row"))
+            {
+                homePageEventsDataGrid.Columns.Add(new GridTextColumn
+                {
+                    MappingName = "tkt_row",
+                    HeaderText = "Row",
+                });
+            }
+
+            // Check for 'event_date' column
+            if (!homePageEventsDataGrid.Columns.Any(c => c.MappingName == "tkt_seat_num"))
+            {
+                homePageEventsDataGrid.Columns.Add(new GridTextColumn
+                {
+                    MappingName = "tkt_seat_num",
+                    HeaderText = "Seat Number",
+                });
+            }
+
+            // Check for 'event_time' column
+            if (!homePageEventsDataGrid.Columns.Any(c => c.MappingName == "tkt_price"))
+            {
+                homePageEventsDataGrid.Columns.Add(new GridTextColumn
+                {
+                    MappingName = "tkt_price",
+                    HeaderText = "Price",
+                });
+            }
+        }
         public void InitializeEventManager()
         {
 
@@ -542,6 +593,7 @@ namespace VenueApplication
             if (homePage_selectedEvent != null)
             {
                 List<venue_ticket> eventTickets = InitializeTicketsForEvent(homePage_selectedEvent);
+                FormatDataGridForTickets();
                 homePageEventsDataGrid.DataSource = eventTickets;
 
                 homePageErrorLabel.Visible = false;
