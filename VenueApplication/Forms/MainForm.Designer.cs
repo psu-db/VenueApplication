@@ -59,6 +59,13 @@
             createEventDateLabel = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             createEventButton = new Syncfusion.WinForms.Controls.SfButton();
             eventManagerTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            eventManagerErrorLabel = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            manageEventCloseEventButton = new Syncfusion.WinForms.Controls.SfButton();
+            manageEventScanTicketsButton = new Syncfusion.WinForms.Controls.SfButton();
+            manageEventManageTicketsButton = new Syncfusion.WinForms.Controls.SfButton();
+            manageEventEditEventButton = new Syncfusion.WinForms.Controls.SfButton();
+            manageEventCancelButton = new Syncfusion.WinForms.Controls.SfButton();
+            manageEventDataGrid = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             myTicketsTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             sfButton2 = new Syncfusion.WinForms.Controls.SfButton();
             profileTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
@@ -68,7 +75,6 @@
             signOutButton = new Syncfusion.WinForms.Controls.SfButton();
             firstlastNameLabel = new Label();
             pictureBox1 = new PictureBox();
-            manageEventDataGrid = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tabControlAdv1).BeginInit();
@@ -84,11 +90,11 @@
             ((System.ComponentModel.ISupportInitialize)createEventHourComboDropDown).BeginInit();
             ((System.ComponentModel.ISupportInitialize)createEventDescriptionTextBox).BeginInit();
             eventManagerTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)manageEventDataGrid).BeginInit();
             myTicketsTab.SuspendLayout();
             profileTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)paymentMethodsComboBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)manageEventDataGrid).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -382,7 +388,7 @@
             // 
             // createEventDescriptionTextBox
             // 
-            createEventDescriptionTextBox.BeforeTouchSize = new Size(100, 35);
+            createEventDescriptionTextBox.BeforeTouchSize = new Size(572, 45);
             createEventDescriptionTextBox.Font = new Font("Segoe UI", 12F);
             createEventDescriptionTextBox.Location = new Point(491, 992);
             createEventDescriptionTextBox.Name = "createEventDescriptionTextBox";
@@ -445,6 +451,12 @@
             // 
             // eventManagerTab
             // 
+            eventManagerTab.Controls.Add(eventManagerErrorLabel);
+            eventManagerTab.Controls.Add(manageEventCloseEventButton);
+            eventManagerTab.Controls.Add(manageEventScanTicketsButton);
+            eventManagerTab.Controls.Add(manageEventManageTicketsButton);
+            eventManagerTab.Controls.Add(manageEventEditEventButton);
+            eventManagerTab.Controls.Add(manageEventCancelButton);
             eventManagerTab.Controls.Add(manageEventDataGrid);
             eventManagerTab.Image = null;
             eventManagerTab.ImageSize = new Size(16, 16);
@@ -456,6 +468,81 @@
             eventManagerTab.TabIndex = 3;
             eventManagerTab.Text = "Event Manager";
             eventManagerTab.ThemesEnabled = false;
+            // 
+            // eventManagerErrorLabel
+            // 
+            eventManagerErrorLabel.Font = new Font("Segoe UI", 12F);
+            eventManagerErrorLabel.ForeColor = Color.Red;
+            eventManagerErrorLabel.Location = new Point(276, 783);
+            eventManagerErrorLabel.Name = "eventManagerErrorLabel";
+            eventManagerErrorLabel.Size = new Size(145, 38);
+            eventManagerErrorLabel.TabIndex = 6;
+            eventManagerErrorLabel.Text = "error label";
+            // 
+            // manageEventCloseEventButton
+            // 
+            manageEventCloseEventButton.Font = new Font("Segoe UI Semibold", 9F);
+            manageEventCloseEventButton.Location = new Point(1798, 885);
+            manageEventCloseEventButton.Name = "manageEventCloseEventButton";
+            manageEventCloseEventButton.Size = new Size(245, 109);
+            manageEventCloseEventButton.TabIndex = 5;
+            manageEventCloseEventButton.Text = "Close Event";
+            // 
+            // manageEventScanTicketsButton
+            // 
+            manageEventScanTicketsButton.Font = new Font("Segoe UI Semibold", 9F);
+            manageEventScanTicketsButton.Location = new Point(1262, 885);
+            manageEventScanTicketsButton.Name = "manageEventScanTicketsButton";
+            manageEventScanTicketsButton.Size = new Size(245, 109);
+            manageEventScanTicketsButton.TabIndex = 4;
+            manageEventScanTicketsButton.Text = "Scan Tickets";
+            // 
+            // manageEventManageTicketsButton
+            // 
+            manageEventManageTicketsButton.Font = new Font("Segoe UI Semibold", 9F);
+            manageEventManageTicketsButton.Location = new Point(755, 885);
+            manageEventManageTicketsButton.Name = "manageEventManageTicketsButton";
+            manageEventManageTicketsButton.Size = new Size(245, 109);
+            manageEventManageTicketsButton.TabIndex = 3;
+            manageEventManageTicketsButton.Text = "Manage Tickets";
+            manageEventManageTicketsButton.Click += manageEventManageTicketsButton_Click;
+            // 
+            // manageEventEditEventButton
+            // 
+            manageEventEditEventButton.Font = new Font("Segoe UI Semibold", 9F);
+            manageEventEditEventButton.Location = new Point(273, 885);
+            manageEventEditEventButton.Name = "manageEventEditEventButton";
+            manageEventEditEventButton.Size = new Size(245, 109);
+            manageEventEditEventButton.TabIndex = 2;
+            manageEventEditEventButton.Text = "Edit Event";
+            manageEventEditEventButton.Click += manageEventEditEventButton_Click;
+            // 
+            // manageEventCancelButton
+            // 
+            manageEventCancelButton.Font = new Font("Segoe UI Semibold", 9F);
+            manageEventCancelButton.Location = new Point(1817, 1337);
+            manageEventCancelButton.Name = "manageEventCancelButton";
+            manageEventCancelButton.Size = new Size(226, 88);
+            manageEventCancelButton.TabIndex = 1;
+            manageEventCancelButton.Text = "Cancel";
+            manageEventCancelButton.Click += manageEventCancelButton_Click;
+            // 
+            // manageEventDataGrid
+            // 
+            manageEventDataGrid.AccessibleName = "Table";
+            manageEventDataGrid.AllowResizingColumns = true;
+            manageEventDataGrid.Location = new Point(273, 71);
+            manageEventDataGrid.Name = "manageEventDataGrid";
+            manageEventDataGrid.PreviewRowHeight = 49;
+            manageEventDataGrid.Size = new Size(1770, 630);
+            manageEventDataGrid.Style.BorderColor = Color.FromArgb(100, 100, 100);
+            manageEventDataGrid.Style.CheckBoxStyle.CheckedBackColor = Color.FromArgb(0, 120, 215);
+            manageEventDataGrid.Style.CheckBoxStyle.CheckedBorderColor = Color.FromArgb(0, 120, 215);
+            manageEventDataGrid.Style.CheckBoxStyle.IndeterminateBorderColor = Color.FromArgb(0, 120, 215);
+            manageEventDataGrid.Style.HyperlinkStyle.DefaultLinkColor = Color.FromArgb(0, 120, 215);
+            manageEventDataGrid.TabIndex = 0;
+            manageEventDataGrid.Text = "sfDataGrid1";
+            manageEventDataGrid.SelectionChanged += manageEventDataGrid_SelectionChanged;
             // 
             // myTicketsTab
             // 
@@ -567,21 +654,6 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // manageEventDataGrid
-            // 
-            manageEventDataGrid.AccessibleName = "Table";
-            manageEventDataGrid.Location = new Point(273, 71);
-            manageEventDataGrid.Name = "manageEventDataGrid";
-            manageEventDataGrid.PreviewRowHeight = 49;
-            manageEventDataGrid.Size = new Size(1425, 506);
-            manageEventDataGrid.Style.BorderColor = Color.FromArgb(100, 100, 100);
-            manageEventDataGrid.Style.CheckBoxStyle.CheckedBackColor = Color.FromArgb(0, 120, 215);
-            manageEventDataGrid.Style.CheckBoxStyle.CheckedBorderColor = Color.FromArgb(0, 120, 215);
-            manageEventDataGrid.Style.CheckBoxStyle.IndeterminateBorderColor = Color.FromArgb(0, 120, 215);
-            manageEventDataGrid.Style.HyperlinkStyle.DefaultLinkColor = Color.FromArgb(0, 120, 215);
-            manageEventDataGrid.TabIndex = 0;
-            manageEventDataGrid.Text = "sfDataGrid1";
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
@@ -612,12 +684,13 @@
             ((System.ComponentModel.ISupportInitialize)createEventHourComboDropDown).EndInit();
             ((System.ComponentModel.ISupportInitialize)createEventDescriptionTextBox).EndInit();
             eventManagerTab.ResumeLayout(false);
+            eventManagerTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)manageEventDataGrid).EndInit();
             myTicketsTab.ResumeLayout(false);
             profileTab.ResumeLayout(false);
             profileTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)paymentMethodsComboBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)manageEventDataGrid).EndInit();
             ResumeLayout(false);
         }
 
@@ -663,5 +736,11 @@
         private Syncfusion.Windows.Forms.Tools.ComboBoxAdv createEventAMPMComboDropDown;
         private Syncfusion.Windows.Forms.Tools.ComboBoxAdv createEventTypeComboDropDown;
         private Syncfusion.WinForms.DataGrid.SfDataGrid manageEventDataGrid;
+        private Syncfusion.WinForms.Controls.SfButton manageEventCancelButton;
+        private Syncfusion.WinForms.Controls.SfButton manageEventCloseEventButton;
+        private Syncfusion.WinForms.Controls.SfButton manageEventScanTicketsButton;
+        private Syncfusion.WinForms.Controls.SfButton manageEventManageTicketsButton;
+        private Syncfusion.WinForms.Controls.SfButton manageEventEditEventButton;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel eventManagerErrorLabel;
     }
 }

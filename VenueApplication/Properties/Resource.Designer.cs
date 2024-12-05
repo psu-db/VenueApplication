@@ -81,6 +81,17 @@ namespace VenueApplication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to UPDATE venue_event
+        ///SET event_date = @eventdate, event_time = @eventtime, event_type = @eventtype, event_description = @eventdescription
+        ///WHERE event_id = @eventid;.
+        /// </summary>
+        internal static string eventCreate_UPDATE {
+            get {
+                return ResourceManager.GetString("eventCreate_UPDATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to INSERT INTO Payment_info(pymt_info_user_id, pymt_info_type, pymt_info_card_number, pymt_info_card_cvv, pymt_info_expiration_date, pymt_info_address, pymt_info_address_state, pymt_info_zipcode)
         ///VALUES(@user_id, @card_type, @card_number, @card_cvv, @exp_date, @address, @state, @zipcode); .
         /// </summary>
@@ -108,6 +119,25 @@ namespace VenueApplication.Properties {
                 object obj = ResourceManager.GetObject("pngtree-avatar-icon-profile-member-login-vector-isolated-silhouette-transparent-p" +
                         "ng-image_7111828", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INSERT INTO venue_ticket (tkt_event_id, tkt_section, tkt_row, tkt_seat_num, tkt_price, tkt_status)
+        ///SELECT 
+        ///    @eventid,
+        ///    @ticketsection,
+        ///    rows.row_number,
+        ///    seats.seat_number, 
+        ///    @ticketprice,
+        ///    @ticketstatus
+        ///FROM 
+        ///    generate_series(1, 5) AS rows(row_number),
+        ///    generate_series(1, 5) AS seats(seat_number);.
+        /// </summary>
+        internal static string ticketCreate_BULKINSERT {
+            get {
+                return ResourceManager.GetString("ticketCreate_BULKINSERT", resourceCulture);
             }
         }
         
