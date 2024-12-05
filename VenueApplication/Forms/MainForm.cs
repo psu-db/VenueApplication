@@ -396,7 +396,21 @@ namespace VenueApplication
                 eventManagerErrorLabel.Text = "Please select an event to continue";
                 eventManagerErrorLabel.Visible = true;
             }
-            
+
+        }
+
+        private void manageEventManageTicketsButton_Click(object sender, EventArgs e)
+        {
+            if (this.selected_event != null)
+            {
+                ManageTicketsForm manageTicketsForm = new ManageTicketsForm(this, databaseManager, this.selected_event);
+                manageTicketsForm.Show();
+            }
+            else
+            {
+                eventManagerErrorLabel.Text = "Please select an event to continue";
+                eventManagerErrorLabel.Visible = true;
+            }
         }
     }
 }

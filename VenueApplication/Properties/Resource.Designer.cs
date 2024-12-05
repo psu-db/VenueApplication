@@ -123,6 +123,25 @@ namespace VenueApplication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to INSERT INTO venue_ticket (tkt_event_id, tkt_section, tkt_row, tkt_seat_num, tkt_price, tkt_status)
+        ///SELECT 
+        ///    @eventid,
+        ///    @ticketsection,
+        ///    rows.row_number,
+        ///    seats.seat_number, 
+        ///    @ticketprice,
+        ///    @ticketstatus
+        ///FROM 
+        ///    generate_series(1, 5) AS rows(row_number),
+        ///    generate_series(1, 5) AS seats(seat_number);.
+        /// </summary>
+        internal static string ticketCreate_BULKINSERT {
+            get {
+                return ResourceManager.GetString("ticketCreate_BULKINSERT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to WITH inserted_user AS (
         ///    INSERT INTO app_user(user_fname, user_lname, user_birthday, user_balance, user_type)
         ///    VALUES (@firstname, @lastname, @birthday, @balance, @type)

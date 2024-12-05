@@ -59,6 +59,7 @@
             createEventDateLabel = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             createEventButton = new Syncfusion.WinForms.Controls.SfButton();
             eventManagerTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            eventManagerErrorLabel = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             manageEventCloseEventButton = new Syncfusion.WinForms.Controls.SfButton();
             manageEventScanTicketsButton = new Syncfusion.WinForms.Controls.SfButton();
             manageEventManageTicketsButton = new Syncfusion.WinForms.Controls.SfButton();
@@ -74,7 +75,6 @@
             signOutButton = new Syncfusion.WinForms.Controls.SfButton();
             firstlastNameLabel = new Label();
             pictureBox1 = new PictureBox();
-            eventManagerErrorLabel = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tabControlAdv1).BeginInit();
@@ -388,7 +388,7 @@
             // 
             // createEventDescriptionTextBox
             // 
-            createEventDescriptionTextBox.BeforeTouchSize = new Size(640, 45);
+            createEventDescriptionTextBox.BeforeTouchSize = new Size(572, 45);
             createEventDescriptionTextBox.Font = new Font("Segoe UI", 12F);
             createEventDescriptionTextBox.Location = new Point(491, 992);
             createEventDescriptionTextBox.Name = "createEventDescriptionTextBox";
@@ -469,6 +469,16 @@
             eventManagerTab.Text = "Event Manager";
             eventManagerTab.ThemesEnabled = false;
             // 
+            // eventManagerErrorLabel
+            // 
+            eventManagerErrorLabel.Font = new Font("Segoe UI", 12F);
+            eventManagerErrorLabel.ForeColor = Color.Red;
+            eventManagerErrorLabel.Location = new Point(276, 783);
+            eventManagerErrorLabel.Name = "eventManagerErrorLabel";
+            eventManagerErrorLabel.Size = new Size(145, 38);
+            eventManagerErrorLabel.TabIndex = 6;
+            eventManagerErrorLabel.Text = "error label";
+            // 
             // manageEventCloseEventButton
             // 
             manageEventCloseEventButton.Font = new Font("Segoe UI Semibold", 9F);
@@ -495,6 +505,7 @@
             manageEventManageTicketsButton.Size = new Size(245, 109);
             manageEventManageTicketsButton.TabIndex = 3;
             manageEventManageTicketsButton.Text = "Manage Tickets";
+            manageEventManageTicketsButton.Click += manageEventManageTicketsButton_Click;
             // 
             // manageEventEditEventButton
             // 
@@ -642,16 +653,6 @@
             pictureBox1.Size = new Size(530, 620);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
-            // 
-            // eventManagerErrorLabel
-            // 
-            eventManagerErrorLabel.Font = new Font("Segoe UI", 12F);
-            eventManagerErrorLabel.ForeColor = Color.Red;
-            eventManagerErrorLabel.Location = new Point(276, 783);
-            eventManagerErrorLabel.Name = "eventManagerErrorLabel";
-            eventManagerErrorLabel.Size = new Size(145, 38);
-            eventManagerErrorLabel.TabIndex = 6;
-            eventManagerErrorLabel.Text = "error label";
             // 
             // MainForm
             // 
