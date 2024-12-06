@@ -9,7 +9,7 @@ using VenueApplication.DataAccess;
 
 namespace VenueApplication.Models
 {
-    internal class venue_ticket
+    public class venue_ticket
     {
         #region Table Attributes
         // Primary key
@@ -65,6 +65,21 @@ namespace VenueApplication.Models
             return query;
         }
 
+        public string CreateSQLDeleteQuery()
+        {
+            string query = VenueApplication.Properties.Resource.ticketCreate_DELETE;
+
+            return query;
+        }
+
+        public string CreateSQLScanQuery()
+        {
+            string query = VenueApplication.Properties.Resource.ticketCreate_SCAN;
+
+            return query;
+        }
+
+
         public NpgsqlCommand AddWithValues(NpgsqlCommand command)
         {
             try
@@ -73,6 +88,22 @@ namespace VenueApplication.Models
                 command.Parameters.AddWithValue("@ticketsection", tkt_section);
                 command.Parameters.AddWithValue("@ticketprice", tkt_price);
                 command.Parameters.AddWithValue("@ticketstatus", tkt_status);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error while trying to add replace values in query: " + ex.Message);
+            }
+
+            return command;
+
+        }
+
+        public NpgsqlCommand AddWithValuesDeletion(NpgsqlCommand command)
+        {
+            try
+            {
+                command.Parameters.AddWithValue("@tktid", tkt_id);
+
             }
             catch (Exception ex)
             {

@@ -39,6 +39,7 @@
             manageTicketsCancelButton = new Syncfusion.WinForms.Controls.SfButton();
             manageTicketsCreateButton = new Syncfusion.WinForms.Controls.SfButton();
             manageTicketsErrorLabel = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            manageTicketsDeleteButton = new Syncfusion.WinForms.Controls.SfButton();
             ((System.ComponentModel.ISupportInitialize)manageTicketsDataGrid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)manageTicketsSectionComboBoxAdv).BeginInit();
             ((System.ComponentModel.ISupportInitialize)manageTicketsCurrencyTextBox).BeginInit();
@@ -68,7 +69,7 @@
             manageTicketsDataGrid.Location = new Point(79, 142);
             manageTicketsDataGrid.Name = "manageTicketsDataGrid";
             manageTicketsDataGrid.PreviewRowHeight = 49;
-            manageTicketsDataGrid.Size = new Size(1676, 282);
+            manageTicketsDataGrid.Size = new Size(2010, 656);
             manageTicketsDataGrid.Style.BorderColor = Color.FromArgb(100, 100, 100);
             manageTicketsDataGrid.Style.CheckBoxStyle.CheckedBackColor = Color.FromArgb(0, 120, 215);
             manageTicketsDataGrid.Style.CheckBoxStyle.CheckedBorderColor = Color.FromArgb(0, 120, 215);
@@ -76,13 +77,14 @@
             manageTicketsDataGrid.Style.HyperlinkStyle.DefaultLinkColor = Color.FromArgb(0, 120, 215);
             manageTicketsDataGrid.TabIndex = 2;
             manageTicketsDataGrid.Text = "sfDataGrid1";
+            manageTicketsDataGrid.SelectionChanged += manageTicketsDataGrid_SelectionChanged;
             // 
             // manageTicketsSectionComboBoxAdv
             // 
             manageTicketsSectionComboBoxAdv.BeforeTouchSize = new Size(212, 46);
             manageTicketsSectionComboBoxAdv.Font = new Font("Segoe UI", 12F);
             manageTicketsSectionComboBoxAdv.Items.AddRange(new object[] { "EB", "EF", "NL", "NG", "NC", "WH", "WD", "SK", "SF", "EAU", "EEU", "EJU", "NHU", "NDU", "WHU", "WEU", "WAU", "SLU", "SGU", "SCU" });
-            manageTicketsSectionComboBoxAdv.Location = new Point(294, 569);
+            manageTicketsSectionComboBoxAdv.Location = new Point(311, 828);
             manageTicketsSectionComboBoxAdv.Name = "manageTicketsSectionComboBoxAdv";
             manageTicketsSectionComboBoxAdv.Size = new Size(212, 46);
             manageTicketsSectionComboBoxAdv.TabIndex = 3;
@@ -90,7 +92,7 @@
             // manageTicketsSectionLabel
             // 
             manageTicketsSectionLabel.Font = new Font("Segoe UI", 12F);
-            manageTicketsSectionLabel.Location = new Point(144, 569);
+            manageTicketsSectionLabel.Location = new Point(161, 828);
             manageTicketsSectionLabel.Name = "manageTicketsSectionLabel";
             manageTicketsSectionLabel.Size = new Size(114, 38);
             manageTicketsSectionLabel.TabIndex = 4;
@@ -99,7 +101,7 @@
             // manageTicketsPriceLabel
             // 
             manageTicketsPriceLabel.Font = new Font("Segoe UI", 12F);
-            manageTicketsPriceLabel.Location = new Point(144, 711);
+            manageTicketsPriceLabel.Location = new Point(161, 970);
             manageTicketsPriceLabel.Name = "manageTicketsPriceLabel";
             manageTicketsPriceLabel.Size = new Size(84, 38);
             manageTicketsPriceLabel.TabIndex = 5;
@@ -111,7 +113,7 @@
             manageTicketsCurrencyTextBox.BeforeTouchSize = new Size(175, 45);
             manageTicketsCurrencyTextBox.DecimalValue = new decimal(new int[] { 100, 0, 0, 131072 });
             manageTicketsCurrencyTextBox.Font = new Font("Segoe UI", 12F);
-            manageTicketsCurrencyTextBox.Location = new Point(294, 714);
+            manageTicketsCurrencyTextBox.Location = new Point(311, 973);
             manageTicketsCurrencyTextBox.Name = "manageTicketsCurrencyTextBox";
             manageTicketsCurrencyTextBox.Size = new Size(175, 45);
             manageTicketsCurrencyTextBox.TabIndex = 7;
@@ -120,7 +122,7 @@
             // manageTicketsCancelButton
             // 
             manageTicketsCancelButton.Font = new Font("Segoe UI Semibold", 9F);
-            manageTicketsCancelButton.Location = new Point(1164, 657);
+            manageTicketsCancelButton.Location = new Point(1190, 1073);
             manageTicketsCancelButton.Name = "manageTicketsCancelButton";
             manageTicketsCancelButton.Size = new Size(267, 113);
             manageTicketsCancelButton.TabIndex = 8;
@@ -130,7 +132,7 @@
             // manageTicketsCreateButton
             // 
             manageTicketsCreateButton.Font = new Font("Segoe UI Semibold", 9F);
-            manageTicketsCreateButton.Location = new Point(1488, 657);
+            manageTicketsCreateButton.Location = new Point(1511, 1073);
             manageTicketsCreateButton.Name = "manageTicketsCreateButton";
             manageTicketsCreateButton.Size = new Size(267, 113);
             manageTicketsCreateButton.TabIndex = 9;
@@ -141,18 +143,29 @@
             // 
             manageTicketsErrorLabel.Font = new Font("Segoe UI", 16F);
             manageTicketsErrorLabel.ForeColor = Color.Red;
-            manageTicketsErrorLabel.Location = new Point(144, 822);
+            manageTicketsErrorLabel.Location = new Point(144, 1112);
             manageTicketsErrorLabel.Name = "manageTicketsErrorLabel";
             manageTicketsErrorLabel.Size = new Size(206, 51);
             manageTicketsErrorLabel.TabIndex = 10;
             manageTicketsErrorLabel.Text = "autoLabel1";
             manageTicketsErrorLabel.Visible = false;
             // 
+            // manageTicketsDeleteButton
+            // 
+            manageTicketsDeleteButton.Font = new Font("Segoe UI Semibold", 9F);
+            manageTicketsDeleteButton.Location = new Point(1835, 1073);
+            manageTicketsDeleteButton.Name = "manageTicketsDeleteButton";
+            manageTicketsDeleteButton.Size = new Size(267, 113);
+            manageTicketsDeleteButton.TabIndex = 11;
+            manageTicketsDeleteButton.Text = "Delete";
+            manageTicketsDeleteButton.Click += manageTicketsDeleteButton_Click;
+            // 
             // ManageTicketsForm
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1871, 900);
+            ClientSize = new Size(2190, 1235);
+            Controls.Add(manageTicketsDeleteButton);
             Controls.Add(manageTicketsErrorLabel);
             Controls.Add(manageTicketsCreateButton);
             Controls.Add(manageTicketsCancelButton);
@@ -184,5 +197,6 @@
         private Syncfusion.WinForms.Controls.SfButton manageTicketsCancelButton;
         private Syncfusion.WinForms.Controls.SfButton manageTicketsCreateButton;
         private Syncfusion.Windows.Forms.Tools.AutoLabel manageTicketsErrorLabel;
+        private Syncfusion.WinForms.Controls.SfButton manageTicketsDeleteButton;
     }
 }

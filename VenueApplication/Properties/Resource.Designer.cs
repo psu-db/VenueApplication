@@ -142,6 +142,28 @@ namespace VenueApplication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DELETE FROM venue_ticket
+        ///WHERE tkt_id = @tktid;.
+        /// </summary>
+        internal static string ticketCreate_DELETE {
+            get {
+                return ResourceManager.GetString("ticketCreate_DELETE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UPDATE venue_ticket
+        ///SET tkt_status = &apos;SCN&apos;
+        ///WHERE tkt_id = @tktid
+        ///AND (tkt_status = &apos;SLD&apos; OR tkt_status = &apos;RSD&apos;);.
+        /// </summary>
+        internal static string ticketCreate_SCAN {
+            get {
+                return ResourceManager.GetString("ticketCreate_SCAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SELECT * FROM venue_ticket WHERE tkt_event_id = @event_id AND tkt_status = @status1 OR tkt_status = @status2;.
         /// </summary>
         internal static string ticketsForEvent_SELECT {
