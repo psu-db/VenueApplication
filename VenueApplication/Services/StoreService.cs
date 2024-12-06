@@ -65,5 +65,110 @@ namespace VenueApplication.Services
             }
         }
 
+
+        public static bool AttemptStoreUpdate(int store_id, string storeName, string storeSectionLocation, string storeType, DatabaseManager databaseManager)
+        {
+            // Create necessary related objects
+            venue_store newStore = new venue_store(store_id, storeName, storeSectionLocation, storeType, databaseManager);
+
+            // Generate the SQL query
+            string query = newStore.CreateSQLUpdateQuery();
+
+            using (var dbConnection = databaseManager.GetConnection())
+            {
+
+                try
+                {
+                    dbConnection.Open();
+
+                    // Start a transaction
+                    using (var transaction = dbConnection.BeginTransaction())
+                    {
+                        try
+                        {
+                            // Create a command object to execute the query
+                            var command = new NpgsqlCommand(query, dbConnection, transaction);
+
+                            // Add parameters to the query
+                            command = newStore.AddWithValuesId(command);
+
+                            int rowsAffected = command.ExecuteNonQuery();
+                            //check if rows affected is 3
+
+
+                            // Commit the transaction if everything is successful
+                            transaction.Commit();
+
+                            return true;
+                        }
+                        catch (Exception ex)
+                        {
+                            // Rollback the transaction in case of error
+                            transaction.Rollback();
+                            MessageBox.Show($"Error executing query: {ex.Message}");
+                            return false;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Connection error: {ex.Message}");
+                    return false;
+                }
+            }
+        }
+
+        public static bool AttemptStoreDeletion(int store_id, DatabaseManager databaseManager)
+        {
+            // Create necessary related objects
+            venue_store newStore = new venue_store(store_id, "name",  "LOC", "type", databaseManager);
+
+            // Generate the SQL query
+            string query = newStore.CreateSQLDeleteQuery();
+
+            using (var dbConnection = databaseManager.GetConnection())
+            {
+
+                try
+                {
+                    dbConnection.Open();
+
+                    // Start a transaction
+                    using (var transaction = dbConnection.BeginTransaction())
+                    {
+                        try
+                        {
+                            // Create a command object to execute the query
+                            var command = new NpgsqlCommand(query, dbConnection, transaction);
+
+                            // Add parameters to the query
+                            command = newStore.AddWithValuesDeletion(command);
+
+                            int rowsAffected = command.ExecuteNonQuery();
+                            //check if rows affected is 3
+
+
+                            // Commit the transaction if everything is successful
+                            transaction.Commit();
+
+                            return true;
+                        }
+                        catch (Exception ex)
+                        {
+                            // Rollback the transaction in case of error
+                            transaction.Rollback();
+                            MessageBox.Show($"Error executing query: {ex.Message}");
+                            return false;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Connection error: {ex.Message}");
+                    return false;
+                }
+            }
+        }
+
     }
 }

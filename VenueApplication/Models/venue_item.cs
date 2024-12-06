@@ -11,7 +11,7 @@ using VenueApplication.DataAccess;
 
 namespace VenueApplication.Models
 {
-    internal class venue_item
+    public class venue_item
     {
         #region Table Attributes
         // Primary key
@@ -30,6 +30,16 @@ namespace VenueApplication.Models
             this.item_price = item_price;
             this.databaseManager = databaseManager;
         }
+
+        public venue_item(int item_id, string item_name, decimal item_price, DatabaseManager databaseManager)
+        {
+            this.item_id = item_id;
+            this.item_name = item_name;
+            this.item_price = item_price;
+            this.databaseManager = databaseManager;
+        }
+
+
 
         public string CreateSQLInsertQuery()
         {
@@ -53,5 +63,6 @@ namespace VenueApplication.Models
             return command;
 
         }
+
     }
 }

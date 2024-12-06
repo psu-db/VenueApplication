@@ -9,7 +9,7 @@ using VenueApplication.DataAccess;
 
 namespace VenueApplication.Models
 {
-    internal class venue_store
+    public class venue_store
     {
         #region Table Attributes
         // Primary key
@@ -31,11 +31,32 @@ namespace VenueApplication.Models
             this.databaseManager = databaseManager;
         }
 
+        public venue_store(int store_id, string store_name, string store_section_location, string store_type, DatabaseManager databaseManager)
+        {
+            this.store_id = store_id;
+            this.store_name = store_name;
+            this.store_section_location = store_section_location;
+            this.store_type = store_type;
+            this.databaseManager = databaseManager;
+        }
+
 
         public string CreateSQLInsertQuery()
         {
             string query = Properties.Resource.storeCreate_INSERT;
 
+            return query;
+        }
+
+        public string CreateSQLUpdateQuery()
+        {
+            string query = Properties.Resource.storeCreate_UPDATE;
+            return query;
+        }
+
+        public string CreateSQLDeleteQuery()
+        {
+            string query = Properties.Resource.store_DELETE;
             return query;
         }
 
@@ -47,6 +68,40 @@ namespace VenueApplication.Models
                 command.Parameters.AddWithValue("@storename", store_name);
                 command.Parameters.AddWithValue("@storesectionlocation", store_section_location);
                 command.Parameters.AddWithValue("@storetype", store_type);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error while trying to add replace values in query: " + ex.Message);
+            }
+
+            return command;
+
+        }
+
+        public NpgsqlCommand AddWithValuesId(NpgsqlCommand command)
+        {
+            try
+            {
+                command.Parameters.AddWithValue("@storeid", store_id);
+                command.Parameters.AddWithValue("@storename", store_name);
+                command.Parameters.AddWithValue("@storesectionlocation", store_section_location);
+                command.Parameters.AddWithValue("@storetype", store_type);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error while trying to add replace values in query: " + ex.Message);
+            }
+
+            return command;
+
+        }
+
+        
+        public NpgsqlCommand AddWithValuesDeletion(NpgsqlCommand command)
+        {
+            try
+            {
+                command.Parameters.AddWithValue("@storeid", store_id);
             }
             catch (Exception ex)
             {

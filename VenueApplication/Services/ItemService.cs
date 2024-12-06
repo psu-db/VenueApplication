@@ -11,7 +11,7 @@ using VenueApplication.Models;
 
 namespace VenueApplication.Services
 {
-    internal static class ItemService
+    public  static class ItemService
     {
         public static bool AttemptItemCreation(string item_name, decimal item_price, DatabaseManager databaseManager)
         {

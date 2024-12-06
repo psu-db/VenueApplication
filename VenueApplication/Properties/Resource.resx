@@ -210,4 +210,15 @@ VALUES(@itmpuritemid, @itmpur_store_id);</value>
     <value>INSERT INTO venue_transaction(trans_pymt_info_id,trans_itmpur_loc_id, trans_event_id, trans_timestamp, trans_quantity)
 VALUES(@transpymtinfoid, @transitmpurlocid, @transeventid, @transtimestamp, @transquantity);</value>
   </data>
+  <data name="venue_stores_SELECT" xml:space="preserve">
+    <value>SELECT * FROM venue_store;</value>
+  </data>
+  <data name="storeCreate_UPDATE" xml:space="preserve">
+    <value>UPDATE venue_store
+SET store_name = @storename, store_section_location = @storesectionlocation, store_type = @storetype
+WHERE store_id = @storeid;</value>
+  </data>
+  <data name="store_DELETE" xml:space="preserve">
+    <value>DELETE FROM venue_store WHERE store_id = @storeid;</value>
+  </data>
 </root>

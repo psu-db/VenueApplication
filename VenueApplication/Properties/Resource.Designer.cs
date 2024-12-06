@@ -143,12 +143,32 @@ namespace VenueApplication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DELETE FROM venue_store WHERE store_id = @storeid;.
+        /// </summary>
+        internal static string store_DELETE {
+            get {
+                return ResourceManager.GetString("store_DELETE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to INSERT INTO venue_store(store_name, store_section_location, store_type)
         ///VALUES(@storename, @storesectionlocation, @storetype);.
         /// </summary>
         internal static string storeCreate_INSERT {
             get {
                 return ResourceManager.GetString("storeCreate_INSERT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UPDATE venue_store
+        ///SET store_name = @storename, store_section_location = @storesectionlocation, store_type = @storetype
+        ///WHERE store_id = @storeid;.
+        /// </summary>
+        internal static string storeCreate_UPDATE {
+            get {
+                return ResourceManager.GetString("storeCreate_UPDATE", resourceCulture);
             }
         }
         
@@ -266,6 +286,15 @@ namespace VenueApplication.Properties {
         internal static string venue_events_SELECT {
             get {
                 return ResourceManager.GetString("venue_events_SELECT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT * FROM venue_store;.
+        /// </summary>
+        internal static string venue_stores_SELECT {
+            get {
+                return ResourceManager.GetString("venue_stores_SELECT", resourceCulture);
             }
         }
     }

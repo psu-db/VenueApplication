@@ -46,6 +46,7 @@
             adminToolsTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             tabControlAdv2 = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             adminToolsSelectionTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            manageStoresButton = new Syncfusion.WinForms.Controls.SfButton();
             eventManagerButton = new Syncfusion.WinForms.Controls.SfButton();
             switchToCreateNewEventTabButton = new Syncfusion.WinForms.Controls.SfButton();
             createNewEventTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
@@ -72,6 +73,20 @@
             manageEventEditEventButton = new Syncfusion.WinForms.Controls.SfButton();
             manageEventCancelButton = new Syncfusion.WinForms.Controls.SfButton();
             manageEventDataGrid = new Syncfusion.WinForms.DataGrid.SfDataGrid();
+            manageStoresTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            manageStoreTypeComboBox = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
+            manageStoreLocationComboBox = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
+            manageStoreNameTextBox = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            manageStoresLabel = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            manageStoresCancelButton = new Syncfusion.WinForms.Controls.SfButton();
+            manageStoresCreateButton = new Syncfusion.WinForms.Controls.SfButton();
+            manageStoresDeleteButton = new Syncfusion.WinForms.Controls.SfButton();
+            managStoresUpdateButton = new Syncfusion.WinForms.Controls.SfButton();
+            managStoresEditItemsButton = new Syncfusion.WinForms.Controls.SfButton();
+            manageStoresDataGrid = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             myTicketsTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             myTicketsMyTicketsLabel = new Label();
             sfDataGrid1 = new Syncfusion.WinForms.DataGrid.SfDataGrid();
@@ -103,6 +118,11 @@
             ((System.ComponentModel.ISupportInitialize)createEventDescriptionTextBox).BeginInit();
             eventManagerTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)manageEventDataGrid).BeginInit();
+            manageStoresTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)manageStoreTypeComboBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)manageStoreLocationComboBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)manageStoreNameTextBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)manageStoresDataGrid).BeginInit();
             myTicketsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)sfDataGrid1).BeginInit();
             profileTab.SuspendLayout();
@@ -323,6 +343,7 @@
             tabControlAdv2.Controls.Add(adminToolsSelectionTab);
             tabControlAdv2.Controls.Add(createNewEventTab);
             tabControlAdv2.Controls.Add(eventManagerTab);
+            tabControlAdv2.Controls.Add(manageStoresTab);
             tabControlAdv2.Dock = DockStyle.Fill;
             tabControlAdv2.Location = new Point(0, 0);
             tabControlAdv2.Margin = new Padding(5, 6, 5, 6);
@@ -332,6 +353,7 @@
             // 
             // adminToolsSelectionTab
             // 
+            adminToolsSelectionTab.Controls.Add(manageStoresButton);
             adminToolsSelectionTab.Controls.Add(eventManagerButton);
             adminToolsSelectionTab.Controls.Add(switchToCreateNewEventTabButton);
             adminToolsSelectionTab.Image = null;
@@ -344,6 +366,17 @@
             adminToolsSelectionTab.TabIndex = 1;
             adminToolsSelectionTab.Text = "Admin Tool Selection";
             adminToolsSelectionTab.ThemesEnabled = false;
+            // 
+            // manageStoresButton
+            // 
+            manageStoresButton.Font = new Font("Segoe UI Semibold", 9F);
+            manageStoresButton.Location = new Point(1006, 490);
+            manageStoresButton.Margin = new Padding(5, 6, 5, 6);
+            manageStoresButton.Name = "manageStoresButton";
+            manageStoresButton.Size = new Size(643, 656);
+            manageStoresButton.TabIndex = 2;
+            manageStoresButton.Text = "Manage Stores";
+            manageStoresButton.Click += manageStoresButton_Click;
             // 
             // eventManagerButton
             // 
@@ -359,7 +392,7 @@
             // switchToCreateNewEventTabButton
             // 
             switchToCreateNewEventTabButton.Font = new Font("Segoe UI Semibold", 9F);
-            switchToCreateNewEventTabButton.Location = new Point(670, 490);
+            switchToCreateNewEventTabButton.Location = new Point(187, 490);
             switchToCreateNewEventTabButton.Margin = new Padding(5, 6, 5, 6);
             switchToCreateNewEventTabButton.Name = "switchToCreateNewEventTabButton";
             switchToCreateNewEventTabButton.Size = new Size(643, 656);
@@ -484,7 +517,7 @@
             // 
             // createEventDescriptionTextBox
             // 
-            createEventDescriptionTextBox.BeforeTouchSize = new Size(640, 45);
+            createEventDescriptionTextBox.BeforeTouchSize = new Size(397, 45);
             createEventDescriptionTextBox.Font = new Font("Segoe UI", 12F);
             createEventDescriptionTextBox.Location = new Point(490, 992);
             createEventDescriptionTextBox.Margin = new Padding(3, 4, 3, 4);
@@ -648,6 +681,164 @@
             manageEventDataGrid.TabIndex = 0;
             manageEventDataGrid.Text = "sfDataGrid1";
             manageEventDataGrid.SelectionChanged += manageEventDataGrid_SelectionChanged;
+            // 
+            // manageStoresTab
+            // 
+            manageStoresTab.Controls.Add(manageStoreTypeComboBox);
+            manageStoresTab.Controls.Add(manageStoreLocationComboBox);
+            manageStoresTab.Controls.Add(manageStoreNameTextBox);
+            manageStoresTab.Controls.Add(autoLabel3);
+            manageStoresTab.Controls.Add(autoLabel2);
+            manageStoresTab.Controls.Add(autoLabel1);
+            manageStoresTab.Controls.Add(manageStoresLabel);
+            manageStoresTab.Controls.Add(manageStoresCancelButton);
+            manageStoresTab.Controls.Add(manageStoresCreateButton);
+            manageStoresTab.Controls.Add(manageStoresDeleteButton);
+            manageStoresTab.Controls.Add(managStoresUpdateButton);
+            manageStoresTab.Controls.Add(managStoresEditItemsButton);
+            manageStoresTab.Controls.Add(manageStoresDataGrid);
+            manageStoresTab.Image = null;
+            manageStoresTab.ImageSize = new Size(28, 28);
+            manageStoresTab.Location = new Point(1, 43);
+            manageStoresTab.Name = "manageStoresTab";
+            manageStoresTab.ShowCloseButton = true;
+            manageStoresTab.Size = new Size(2048, 1271);
+            manageStoresTab.TabIndex = 4;
+            manageStoresTab.Text = "Manage Stores";
+            manageStoresTab.ThemesEnabled = false;
+            // 
+            // manageStoreTypeComboBox
+            // 
+            manageStoreTypeComboBox.BeforeTouchSize = new Size(212, 46);
+            manageStoreTypeComboBox.Font = new Font("Segoe UI", 12F);
+            manageStoreTypeComboBox.Items.AddRange(new object[] { "merchandise", "concession" });
+            manageStoreTypeComboBox.Location = new Point(1559, 561);
+            manageStoreTypeComboBox.Name = "manageStoreTypeComboBox";
+            manageStoreTypeComboBox.Size = new Size(212, 46);
+            manageStoreTypeComboBox.TabIndex = 13;
+            // 
+            // manageStoreLocationComboBox
+            // 
+            manageStoreLocationComboBox.BeforeTouchSize = new Size(212, 46);
+            manageStoreLocationComboBox.Font = new Font("Segoe UI", 12F);
+            manageStoreLocationComboBox.Items.AddRange(new object[] { "EB", "EF", "NL", "NG", "NC", "WH", "WD", "SK", "SF", "EAU", "EEU", "EJU", "NHU", "NDU", "WHU", "WEU", "WAU", "SLU", "SGU", "SCU" });
+            manageStoreLocationComboBox.Location = new Point(1016, 561);
+            manageStoreLocationComboBox.Name = "manageStoreLocationComboBox";
+            manageStoreLocationComboBox.Size = new Size(212, 46);
+            manageStoreLocationComboBox.TabIndex = 12;
+            // 
+            // manageStoreNameTextBox
+            // 
+            manageStoreNameTextBox.BeforeTouchSize = new Size(397, 45);
+            manageStoreNameTextBox.Font = new Font("Segoe UI", 12F);
+            manageStoreNameTextBox.Location = new Point(190, 562);
+            manageStoreNameTextBox.Name = "manageStoreNameTextBox";
+            manageStoreNameTextBox.Size = new Size(397, 45);
+            manageStoreNameTextBox.TabIndex = 11;
+            // 
+            // autoLabel3
+            // 
+            autoLabel3.Font = new Font("Segoe UI", 12F);
+            autoLabel3.Location = new Point(767, 562);
+            autoLabel3.Name = "autoLabel3";
+            autoLabel3.Size = new Size(226, 38);
+            autoLabel3.TabIndex = 10;
+            autoLabel3.Text = "Section Location:";
+            // 
+            // autoLabel2
+            // 
+            autoLabel2.Font = new Font("Segoe UI", 12F);
+            autoLabel2.Location = new Point(1393, 562);
+            autoLabel2.Name = "autoLabel2";
+            autoLabel2.Size = new Size(153, 38);
+            autoLabel2.TabIndex = 9;
+            autoLabel2.Text = "Store Type:";
+            // 
+            // autoLabel1
+            // 
+            autoLabel1.Font = new Font("Segoe UI", 12F);
+            autoLabel1.Location = new Point(87, 562);
+            autoLabel1.Name = "autoLabel1";
+            autoLabel1.Size = new Size(97, 38);
+            autoLabel1.TabIndex = 8;
+            autoLabel1.Text = "Name:";
+            // 
+            // manageStoresLabel
+            // 
+            manageStoresLabel.Font = new Font("Segoe UI", 18F);
+            manageStoresLabel.ForeColor = Color.Red;
+            manageStoresLabel.Location = new Point(87, 1064);
+            manageStoresLabel.Name = "manageStoresLabel";
+            manageStoresLabel.Size = new Size(230, 57);
+            manageStoresLabel.TabIndex = 7;
+            manageStoresLabel.Text = "autoLabel1";
+            manageStoresLabel.Visible = false;
+            // 
+            // manageStoresCancelButton
+            // 
+            manageStoresCancelButton.Font = new Font("Segoe UI Semibold", 9F);
+            manageStoresCancelButton.Location = new Point(1776, 1083);
+            manageStoresCancelButton.Name = "manageStoresCancelButton";
+            manageStoresCancelButton.Size = new Size(168, 49);
+            manageStoresCancelButton.TabIndex = 6;
+            manageStoresCancelButton.Text = "Cancel";
+            manageStoresCancelButton.Click += manageStoresCancelButton_Click;
+            // 
+            // manageStoresCreateButton
+            // 
+            manageStoresCreateButton.Font = new Font("Segoe UI Semibold", 12F);
+            manageStoresCreateButton.Location = new Point(87, 730);
+            manageStoresCreateButton.Name = "manageStoresCreateButton";
+            manageStoresCreateButton.Size = new Size(333, 248);
+            manageStoresCreateButton.TabIndex = 5;
+            manageStoresCreateButton.Text = "Create";
+            manageStoresCreateButton.Click += manageStoresCreateButton_Click;
+            // 
+            // manageStoresDeleteButton
+            // 
+            manageStoresDeleteButton.Font = new Font("Segoe UI Semibold", 12F);
+            manageStoresDeleteButton.Location = new Point(1611, 717);
+            manageStoresDeleteButton.Name = "manageStoresDeleteButton";
+            manageStoresDeleteButton.Size = new Size(333, 248);
+            manageStoresDeleteButton.TabIndex = 4;
+            manageStoresDeleteButton.Text = "Delete";
+            manageStoresDeleteButton.Click += manageStoresDeleteButton_Click;
+            // 
+            // managStoresUpdateButton
+            // 
+            managStoresUpdateButton.Font = new Font("Segoe UI Semibold", 12F);
+            managStoresUpdateButton.Location = new Point(615, 730);
+            managStoresUpdateButton.Name = "managStoresUpdateButton";
+            managStoresUpdateButton.Size = new Size(333, 248);
+            managStoresUpdateButton.TabIndex = 3;
+            managStoresUpdateButton.Text = "Edit Store";
+            managStoresUpdateButton.Click += managStoresUpdateButton_Click;
+            // 
+            // managStoresEditItemsButton
+            // 
+            managStoresEditItemsButton.Font = new Font("Segoe UI Semibold", 12F);
+            managStoresEditItemsButton.Location = new Point(1119, 730);
+            managStoresEditItemsButton.Name = "managStoresEditItemsButton";
+            managStoresEditItemsButton.Size = new Size(333, 248);
+            managStoresEditItemsButton.TabIndex = 2;
+            managStoresEditItemsButton.Text = "Edit Items";
+            managStoresEditItemsButton.Click += managStoresEditItemsButton_Click;
+            // 
+            // manageStoresDataGrid
+            // 
+            manageStoresDataGrid.AccessibleName = "Table";
+            manageStoresDataGrid.Location = new Point(87, 60);
+            manageStoresDataGrid.Name = "manageStoresDataGrid";
+            manageStoresDataGrid.PreviewRowHeight = 49;
+            manageStoresDataGrid.Size = new Size(1857, 350);
+            manageStoresDataGrid.Style.BorderColor = Color.FromArgb(100, 100, 100);
+            manageStoresDataGrid.Style.CheckBoxStyle.CheckedBackColor = Color.FromArgb(0, 120, 215);
+            manageStoresDataGrid.Style.CheckBoxStyle.CheckedBorderColor = Color.FromArgb(0, 120, 215);
+            manageStoresDataGrid.Style.CheckBoxStyle.IndeterminateBorderColor = Color.FromArgb(0, 120, 215);
+            manageStoresDataGrid.Style.HyperlinkStyle.DefaultLinkColor = Color.FromArgb(0, 120, 215);
+            manageStoresDataGrid.TabIndex = 1;
+            manageStoresDataGrid.Text = "sfDataGrid2";
+            manageStoresDataGrid.SelectionChanged += manageStoresDataGrid_SelectionChanged;
             // 
             // myTicketsTab
             // 
@@ -847,6 +1038,12 @@
             eventManagerTab.ResumeLayout(false);
             eventManagerTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)manageEventDataGrid).EndInit();
+            manageStoresTab.ResumeLayout(false);
+            manageStoresTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)manageStoreTypeComboBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)manageStoreLocationComboBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)manageStoreNameTextBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)manageStoresDataGrid).EndInit();
             myTicketsTab.ResumeLayout(false);
             myTicketsTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)sfDataGrid1).EndInit();
@@ -920,5 +1117,20 @@
         private Label homeHeaderTextLabel;
         private Syncfusion.WinForms.Controls.SfButton homeViewEventTicketsButton;
         private Label homePageErrorLabel;
+        private Syncfusion.WinForms.Controls.SfButton manageStoresButton;
+        private Syncfusion.Windows.Forms.Tools.TabPageAdv manageStoresTab;
+        private Syncfusion.WinForms.Controls.SfButton manageStoresDeleteButton;
+        private Syncfusion.WinForms.Controls.SfButton managStoresUpdateButton;
+        private Syncfusion.WinForms.Controls.SfButton managStoresEditItemsButton;
+        private Syncfusion.WinForms.DataGrid.SfDataGrid manageStoresDataGrid;
+        private Syncfusion.WinForms.Controls.SfButton manageStoresCreateButton;
+        private Syncfusion.WinForms.Controls.SfButton manageStoresCancelButton;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel manageStoresLabel;
+        private Syncfusion.Windows.Forms.Tools.ComboBoxAdv manageStoreLocationComboBox;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt manageStoreNameTextBox;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel3;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel2;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel1;
+        private Syncfusion.Windows.Forms.Tools.ComboBoxAdv manageStoreTypeComboBox;
     }
 }
