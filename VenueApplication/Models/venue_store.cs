@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Npgsql;
 using VenueApplication.DataAccess;
 
 namespace VenueApplication.Models
@@ -27,6 +29,32 @@ namespace VenueApplication.Models
             this.store_section_location = store_section_location;
             this.store_type = store_type;
             this.databaseManager = databaseManager;
+        }
+
+
+        public string CreateSQLInsertQuery()
+        {
+            string query = Properties.Resource.storeCreate_INSERT;
+
+            return query;
+        }
+
+
+        public NpgsqlCommand AddWithValues(NpgsqlCommand command)
+        {
+            try
+            {
+                command.Parameters.AddWithValue("@storename", store_name);
+                command.Parameters.AddWithValue("@storesectionlocation", store_section_location);
+                command.Parameters.AddWithValue("@storetype", store_type);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error while trying to add replace values in query: " + ex.Message);
+            }
+
+            return command;
+
         }
     }
 }

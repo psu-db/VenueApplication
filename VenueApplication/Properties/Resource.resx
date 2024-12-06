@@ -194,4 +194,20 @@ SET tkt_status = 'SCN'
 WHERE tkt_id = @tktid
 AND (tkt_status = 'SLD' OR tkt_status = 'RSD');</value>
   </data>
+  <data name="storeCreate_INSERT" xml:space="preserve">
+    <value>INSERT INTO venue_store(store_name, store_section_location, store_type)
+VALUES(@storename, @storesectionlocation, @storetype);</value>
+  </data>
+  <data name="itemCreate_INSERT" xml:space="preserve">
+    <value>INSERT INTO venue_item(item_name, item_price)
+VALUES(@itemname, itemprice);</value>
+  </data>
+  <data name="itemPurchaseLocationCreate_INSERT" xml:space="preserve">
+    <value>INSERT INTO item_purchase_location(itmpur_item_id,itmpur_store_id);
+VALUES(@itmpuritemid, @itmpur_store_id);</value>
+  </data>
+  <data name="transactionCreate_INSERT" xml:space="preserve">
+    <value>INSERT INTO venue_transaction(trans_pymt_info_id,trans_itmpur_loc_id, trans_event_id, trans_timestamp, trans_quantity)
+VALUES(@transpymtinfoid, @transitmpurlocid, @transeventid, @transtimestamp, @transquantity);</value>
+  </data>
 </root>

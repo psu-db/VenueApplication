@@ -92,6 +92,26 @@ namespace VenueApplication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to INSERT INTO venue_item(item_name, item_price)
+        ///VALUES(@itemname, itemprice);.
+        /// </summary>
+        internal static string itemCreate_INSERT {
+            get {
+                return ResourceManager.GetString("itemCreate_INSERT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INSERT INTO item_purchase_location(itmpur_item_id,itmpur_store_id);
+        ///VALUES(@itmpuritemid, @itmpur_store_id);.
+        /// </summary>
+        internal static string itemPurchaseLocationCreate_INSERT {
+            get {
+                return ResourceManager.GetString("itemPurchaseLocationCreate_INSERT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to INSERT INTO Payment_info(pymt_info_user_id, pymt_info_type, pymt_info_card_number, pymt_info_card_cvv, pymt_info_expiration_date, pymt_info_address, pymt_info_address_state, pymt_info_zipcode)
         ///VALUES(@user_id, @card_type, @card_number, @card_cvv, @exp_date, @address, @state, @zipcode); .
         /// </summary>
@@ -119,6 +139,16 @@ namespace VenueApplication.Properties {
                 object obj = ResourceManager.GetObject("pngtree-avatar-icon-profile-member-login-vector-isolated-silhouette-transparent-p" +
                         "ng-image_7111828", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INSERT INTO venue_store(store_name, store_section_location, store_type)
+        ///VALUES(@storename, @storesectionlocation, @storetype);.
+        /// </summary>
+        internal static string storeCreate_INSERT {
+            get {
+                return ResourceManager.GetString("storeCreate_INSERT", resourceCulture);
             }
         }
         
@@ -169,6 +199,16 @@ namespace VenueApplication.Properties {
         internal static string ticketsForEvent_SELECT {
             get {
                 return ResourceManager.GetString("ticketsForEvent_SELECT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INSERT INTO venue_transaction(trans_pymt_info_id,trans_itmpur_loc_id, trans_event_id, trans_timestamp, trans_quantity)
+        ///VALUES(@transpymtinfoid, @transitmpurlocid, @transeventid, @transtimestamp, @transquantity);.
+        /// </summary>
+        internal static string transactionCreate_INSERT {
+            get {
+                return ResourceManager.GetString("transactionCreate_INSERT", resourceCulture);
             }
         }
         
