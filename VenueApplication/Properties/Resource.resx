@@ -184,4 +184,14 @@ FROM
   <data name="ticketsForEvent_SELECT" xml:space="preserve">
     <value>SELECT * FROM venue_ticket WHERE tkt_event_id = @event_id AND tkt_status = @status1 OR tkt_status = @status2;</value>
   </data>
+  <data name="ticketCreate_DELETE" xml:space="preserve">
+    <value>DELETE FROM venue_ticket
+WHERE tkt_id = @tktid;</value>
+  </data>
+  <data name="ticketCreate_SCAN" xml:space="preserve">
+    <value>UPDATE venue_ticket
+SET tkt_status = 'SCN'
+WHERE tkt_id = @tktid
+AND (tkt_status = 'SLD' OR tkt_status = 'RSD');</value>
+  </data>
 </root>

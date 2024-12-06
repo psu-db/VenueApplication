@@ -118,7 +118,6 @@ namespace VenueApplication
 
         public void InitializeHomePage()
         {
-
             homePageEventsDataGrid.DataSource = null;
             List<venue_event> venue_events = InitializeEvents();
             homePageEventsDataGrid.AutoGenerateColumns = false;
@@ -608,6 +607,20 @@ namespace VenueApplication
                 homePageErrorLabel.Visible = true;
                 homePageErrorLabel.Text = "Select an event to view available tickets";
                 homeViewEventTicketsButton.Text = "View Tickets For Selected Event";
+            }
+        }
+
+        private void manageEventScanTicketsButton_Click(object sender, EventArgs e)
+        {
+            if (this.selected_event != null)
+            {
+                ScanTicketForm scanTicketForm = new ScanTicketForm(this, databaseManager, this.selected_event);
+                scanTicketForm.Show();
+            }
+            else
+            {
+                eventManagerErrorLabel.Text = "Please select an event to continue";
+                eventManagerErrorLabel.Visible = true;
             }
         }
     }
