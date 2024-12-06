@@ -74,6 +74,7 @@ namespace VenueApplication.Forms
                 {
                     scanTicketMessageLabel.Text = "Scan successful";
                     showGreenMessage();
+                    scanTicketTextBox.Text = "";
 
                 }
                 else

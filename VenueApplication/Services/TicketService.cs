@@ -127,23 +127,41 @@ namespace VenueApplication.Services
 
             using (var dbConnection = databaseManager.GetConnection())
             {
-                var command = new NpgsqlCommand(query, dbConnection);
-                command.Parameters.AddWithValue("@tktid", tkt_id);
+
                 try
                 {
                     dbConnection.Open();
 
                     // Start a transaction
-                    using (var reader = command.ExecuteReader())
+                    using (var transaction = dbConnection.BeginTransaction())
                     {
-                        if (reader.HasRows)
+                        try
                         {
+                            // Create a command object to execute the query
+                            var command = new NpgsqlCommand(query, dbConnection, transaction);
+
+                            // Add parameters to the query
+                            command = newTicket.AddWithValuesDeletion(command);
+
+                            int rowsAffected = command.ExecuteNonQuery();
+                            if (rowsAffected != 1)
+                            {
+                                transaction.Rollback();
+                                return false;
+                            }
+
+
+                            // Commit the transaction if everything is successful
+                            transaction.Commit();
+
                             return true;
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            Debug.WriteLine("Scan Failed");
-                            return (false);
+                            // Rollback the transaction in case of error
+                            transaction.Rollback();
+                            MessageBox.Show($"Error executing query: {ex.Message}");
+                            return false;
                         }
                     }
                 }
