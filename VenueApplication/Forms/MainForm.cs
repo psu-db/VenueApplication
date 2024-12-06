@@ -20,7 +20,7 @@ namespace VenueApplication
         public user_wallet user_wallet;
         public venue_event selected_event;
         public venue_event homePage_selectedEvent;
-
+        public venue_store manageStores_selectedStore;
         public MainForm(app_user user, user_wallet user_wallet, LoginForm loginForm, DatabaseManager databaseManager)
         {
             InitializeComponent();
@@ -44,6 +44,7 @@ namespace VenueApplication
             adminToolsSelectionTab.TabVisible = false;
             createNewEventTab.TabVisible = false;
             eventManagerTab.TabVisible = false;
+            manageStoresTab.TabVisible = false;
 
             tabControlAdv1.SelectedTab = homeTab;
 
@@ -217,6 +218,40 @@ namespace VenueApplication
                 {
                     MappingName = "tkt_price",
                     HeaderText = "Price",
+                });
+            }
+        }
+
+        public void FormatDataGridForStores()
+        {
+            manageStoresDataGrid.Columns.Clear();
+
+            if (!manageStoresDataGrid.Columns.Any(c => c.MappingName == "store_name"))
+            {
+                manageStoresDataGrid.Columns.Add(new GridTextColumn
+                {
+                    MappingName = "store_name",
+                    HeaderText = "Store Name",
+                });
+            }
+
+            // Check for 'store_section_location' column
+            if (!manageStoresDataGrid.Columns.Any(c => c.MappingName == "store_section_location"))
+            {
+                manageStoresDataGrid.Columns.Add(new GridTextColumn
+                {
+                    MappingName = "store_section_location",
+                    HeaderText = "Section Location",
+                });
+            }
+
+            // Check for 'store_type' column
+            if (!manageStoresDataGrid.Columns.Any(c => c.MappingName == "store_type"))
+            {
+                manageStoresDataGrid.Columns.Add(new GridTextColumn
+                {
+                    MappingName = "store_type",
+                    HeaderText = "Store Type",
                 });
             }
         }
@@ -465,6 +500,71 @@ namespace VenueApplication
 
         }
 
+        private List<venue_store> InitializeStores()
+        {
+            List<venue_store> venue_stores = new List<venue_store>();
+
+            string query = VenueApplication.Properties.Resource.venue_stores_SELECT;
+
+            using (var dbConnection = databaseManager.GetConnection())
+            {
+                // Create a command object to execute the query
+                var command = new NpgsqlCommand(query, dbConnection);
+
+                // Add parameters to the query
+                try
+                {
+                    dbConnection.Open();
+
+                    // Execute the query and get a reader to read the results
+                    using (var reader = command.ExecuteReader())
+                    {
+                        // Check if there are any rows (meaning the username/password pair is valid)
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+
+                                int? store_id = reader.IsDBNull(reader.GetOrdinal("store_id")) ? null : reader.GetInt32(reader.GetOrdinal("store_id"));
+                                string? store_name = reader.IsDBNull(reader.GetOrdinal("store_name")) ? null : reader.GetString(reader.GetOrdinal("store_name"));
+                                string? store_section_location = reader.IsDBNull(reader.GetOrdinal("store_section_location")) ? null : reader.GetString(reader.GetOrdinal("store_section_location"));
+                                string? store_type = reader.IsDBNull(reader.GetOrdinal("store_type")) ? null : reader.GetString(reader.GetOrdinal("store_type"));
+
+                                venue_store venueStore = new venue_store((int)store_id, store_name, store_section_location, store_type, databaseManager);
+                                venue_stores.Add(venueStore);
+
+                            }
+
+                            return venue_stores;
+                        }
+                        else
+                        {
+                            Debug.WriteLine("Initialize events failed");
+                            return venue_stores;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error executing query: {ex.Message}");
+
+                    return venue_stores;
+                }
+            }
+
+        }
+
+
+        public void refreshStoresTable()
+        {
+            manageStoresDataGrid.DataSource = null;
+            List<venue_store> venue_stores = InitializeStores();
+            manageStoresDataGrid.AutoGenerateColumns = false;
+            manageStoresDataGrid.DataSource = venue_stores;
+            FormatDataGridForStores();
+            manageStoresDataGrid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
+        }
+
         public void EnableAddNewPaymentButton()
         {
             addNewPaymentMethodButton.Enabled = true;
@@ -621,6 +721,205 @@ namespace VenueApplication
             {
                 eventManagerErrorLabel.Text = "Please select an event to continue";
                 eventManagerErrorLabel.Visible = true;
+            }
+        }
+
+        private void manageStoresButton_Click(object sender, EventArgs e)
+        {
+            //swtich to the manage stores tab
+            tabControlAdv2.SelectedTab = manageStoresTab;
+
+            //initialize/refresh the stores table
+            refreshStoresTable();
+        }
+
+        private void manageStoresDataGrid_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
+        {
+            this.manageStores_selectedStore = (venue_store)manageStoresDataGrid.SelectedItem;
+
+            string store_name = this.manageStores_selectedStore.store_name;
+            string store_location = this.manageStores_selectedStore.store_section_location;
+            string store_type = this.manageStores_selectedStore.store_type;
+
+            manageStoreNameTextBox.Text = store_name;
+            manageStoreLocationComboBox.Text = store_location;
+            manageStoreTypeComboBox.SelectedItem = store_type;
+
+
+        }
+
+        private void manageStoresCancelButton_Click(object sender, EventArgs e)
+        {
+            tabControlAdv2.SelectedTab = adminToolsSelectionTab;
+            manageStoresLabel.Visible = false;
+            this.manageStores_selectedStore = null;
+        }
+
+
+        public void manage_store_successul_reset()
+        {
+            manageStoreNameTextBox.Text = "";
+            manageStoreLocationComboBox.Text = "";
+            manageStoreTypeComboBox.Text = "";
+            manageStoresLabel.ForeColor = Color.Green;
+            manageStoresLabel.Visible = true;
+            manageStoresLabel.Refresh();
+            refreshStoresTable();
+        }
+
+        private void manage_store_fail_reset()
+        {
+            manageStoresLabel.Visible = true;
+            manageStoresLabel.ForeColor = Color.Red;
+            manageStoresLabel.Refresh();
+        }
+
+        private void manageStoresCreateButton_Click(object sender, EventArgs e)
+        {
+
+            //read the fields from the form
+            string storeName = manageStoreNameTextBox.Text;
+            string storeLocation = manageStoreLocationComboBox.Text;
+            string storeType = manageStoreTypeComboBox.Text;
+
+
+
+            if (storeName != null && storeLocation != "" && storeType != "")
+            {
+                bool createStoreResults = StoreService.AttemptStoreCreation(storeName, storeLocation, storeType, databaseManager);
+
+                if (createStoreResults)
+                {
+                    manage_store_successul_reset();
+                    manageStoresLabel.Text = "Successfully inserted store";
+                }
+                else
+                {
+                    manageStoresLabel.Text = "An error occured during the store creation process. Please wait and try again.";
+                    manage_store_fail_reset();
+                }
+
+
+            }
+            else
+            {
+                manageStoresLabel.Text = "All fields must be filled in order to create a store";
+                manage_store_fail_reset();
+            }
+        }
+
+        private void managStoresUpdateButton_Click(object sender, EventArgs e)
+        {
+            if (this.manageStores_selectedStore == null)
+            {
+                manageStoresLabel.Text = "Please select a store to update";
+                manage_store_fail_reset();
+                return;
+            }
+
+
+            string store_name = manageStoreNameTextBox.Text;
+            string store_location = manageStoreLocationComboBox.Text;
+            string store_type = manageStoreTypeComboBox.Text;
+
+            int store_id = this.manageStores_selectedStore.store_id;
+
+
+            if (store_name != null && store_location != "" && store_type != "")
+            {
+
+                bool updateStoreResults = StoreService.AttemptStoreUpdate(store_id, store_name, store_location, store_type, databaseManager);
+
+                if (updateStoreResults)
+                {
+                    manage_store_successul_reset();
+                    manageStoresLabel.Text = "Successfully updated store";
+                }
+                else
+                {
+                    manageStoresLabel.Text = "An error occured during the update process. Please wait and try again.";
+                    manage_store_fail_reset();
+                }
+
+
+            }
+            else
+            {
+                manageStoresLabel.Text = "All fields must be filled in order to update an event";
+                manage_store_fail_reset();
+            }
+
+
+        }
+
+        private void managStoresEditItemsButton_Click(object sender, EventArgs e)
+        {
+            if (this.manageStores_selectedStore == null)
+            {
+                manageStoresLabel.Text = "Please select a store to update";
+                manage_store_fail_reset();
+                return;
+            }
+
+            int store_id = this.manageStores_selectedStore.store_id;
+
+
+            if (store_id >= 0)
+            {
+
+                //open up the manageItems form
+                ManageStoreItemsForm manageStoreItemsForm = new ManageStoreItemsForm(this, databaseManager, this.manageStores_selectedStore);
+                manageStoreItemsForm.Show();
+                //popuate the items table to show all items for the selected event
+
+            }
+            else
+            {
+                manageStoresLabel.Text = "All fields must be filled in order to update an event";
+                manage_store_fail_reset();
+            }
+        }
+
+        private void manageStoresDeleteButton_Click(object sender, EventArgs e)
+        {
+            if (this.manageStores_selectedStore == null)
+            {
+                manageStoresLabel.Text = "Select a store";
+                manageStoresLabel.Visible = true;
+                manageStoresLabel.ForeColor = Color.Red;
+                return;
+            }
+
+            int storeID = this.manageStores_selectedStore.store_id;
+
+            if (storeID != null)
+            {
+                bool storeDeleteAttemptResult = StoreService.AttemptStoreDeletion(storeID, databaseManager);
+
+                if (storeDeleteAttemptResult)
+                {
+
+                    refreshStoresTable();
+                    manageStoresLabel.Text = "Successfully deleted store";
+                    manageStoresLabel.ForeColor = Color.Green;
+                    manageStoresLabel.Visible = true;
+                    manageStoresLabel.Refresh();
+
+
+                }
+                else
+                {
+                    manageStoresLabel.Text = "An error occured during the insert process. Please wait and try again.";
+                    manageStoresLabel.Visible = true;
+                    manageStoresLabel.Refresh();
+                }
+
+            }
+            else
+            {
+                manageStoresLabel.Text = "select a store first";
+                manageStoresLabel.Visible = true;
+                manageStoresLabel.Refresh();
             }
         }
     }

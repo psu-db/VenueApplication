@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Npgsql;
 using VenueApplication.DataAccess;
 
 namespace VenueApplication.Models
@@ -31,6 +33,32 @@ namespace VenueApplication.Models
             this.trans_timestamp = trans_timestamp;
             this.trans_quantity = trans_quantity;
             this.databaseManager = databaseManager;
+        }
+
+        public string CreateSQLInsertQuery()
+        {
+            string query = Properties.Resource.transactionCreate_INSERT;
+            return query;
+        }
+
+
+        public NpgsqlCommand AddWithValues(NpgsqlCommand command)
+        {
+            try
+            {
+                command.Parameters.AddWithValue("@transpymtinfoid", trans_pymt_info_id);
+                command.Parameters.AddWithValue("@transitmpurlocid", trans_itmpur_loc_id);
+                command.Parameters.AddWithValue("@transeventid", trans_event_id);
+                command.Parameters.AddWithValue("@transtimestamp", trans_timestamp);
+                command.Parameters.AddWithValue("@transquantity", trans_quantity);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error while trying to add replace values in query: " + ex.Message);
+            }
+
+            return command;
+
         }
     }
 }
