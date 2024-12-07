@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.VisualBasic.ApplicationServices;
 using Npgsql;
 using VenueApplication.DataAccess;
+using VenueApplication.Forms;
 using VenueApplication.Models;
 
 namespace VenueApplication.Services
@@ -171,6 +172,65 @@ namespace VenueApplication.Services
                     return false;
                 }
             }
+        }
+
+        public static bool AttemptPurchaseTicket(venue_ticket ticket, DatabaseManager databaseManager)
+        {
+            if (ticket != null)
+            {
+                // Create necessary related objects
+                DateOnly currentDate = DateOnly.FromDateTime(DateTime.Now);
+
+                ticket_purchase ticketPurchase = new ticket_purchase(ticket.tkt_id, currentDate, LoginForm.USER_WALLET_ID, databaseManager);
+
+                // Generate the SQL query
+                string query = ticketPurchase.CreateSQLInsertQuery();
+
+                using (var dbConnection = databaseManager.GetConnection())
+                {
+
+                    try
+                    {
+                        dbConnection.Open();
+
+                        // Start a transaction
+                        using (var transaction = dbConnection.BeginTransaction())
+                        {
+                            try
+                            {
+                                // Create a command object to execute the query
+                                var command = new NpgsqlCommand(query, dbConnection, transaction);
+
+                                // Add parameters to the query
+                                command = ticketPurchase.AddWithValues(command, "SLD", ticket.tkt_id.ToString());
+
+                                int rowsAffected = command.ExecuteNonQuery();
+                                //check if rows affected is 3
+
+
+                                // Commit the transaction if everything is successful
+                                transaction.Commit();
+
+                                return true;
+                            }
+                            catch (Exception ex)
+                            {
+                                // Rollback the transaction in case of error
+                                transaction.Rollback();
+                                MessageBox.Show($"Error executing query: {ex.Message}");
+                                return false;
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Connection error: {ex.Message}");
+                        return false;
+                    }
+                }
+            }
+
+            return false;
         }
 
 

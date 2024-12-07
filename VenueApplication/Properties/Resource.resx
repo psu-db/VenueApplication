@@ -229,5 +229,17 @@ WHERE item_id = @itemid;</value>
   <data name="item_on_store_SELECT" xml:space="preserve">
     <value>SELECT * FROM venue_item
 WHERE item_store_id = @itemstoreid;</value>
+
+  <data name="ticketPurchase_INSERT" xml:space="preserve">
+    <value>INSERT INTO ticket_purchase(tktpur_tkt_id, tktpur_date, tktpur_wallet_id)
+VALUES(@ticket_id, @ticket_pur_date, @ticket_wallet_id);
+
+UPDATE venue_ticket
+SET tkt_status = @ticket_status
+WHERE tkt_id = @ticket_id;</value>
+  </data>
+  <data name="ticketPurchase_SELECT" xml:space="preserve">
+    <value>SELECT * FROM ticket_purchase JOIN venue_ticket ON tktpur_tkt_id = tkt_id
+WHERE tktpur_wallet_id = @wallet_id AND tkt_status != 'SCN';</value>
   </data>
 </root>

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +29,32 @@ namespace VenueApplication.Models
             this.tktpur_date = tktpur_date;
             this.tktpur_wallet_id = tktpur_wallet_id;
             this.databaseManager = databaseManager;
+        }
+
+        public string CreateSQLInsertQuery()
+        {
+            string query = VenueApplication.Properties.Resource.ticketPurchase_INSERT;
+
+            return query;
+        }
+
+        public NpgsqlCommand AddWithValues(NpgsqlCommand command, string ticket_status, string ticket_id)
+        {
+            try
+            {
+                command.Parameters.AddWithValue("@ticket_id", tktpur_tkt_id);
+                command.Parameters.AddWithValue("@ticket_pur_date", tktpur_date);
+                command.Parameters.AddWithValue("@ticket_wallet_id", tktpur_wallet_id);
+                command.Parameters.AddWithValue("@ticket_status", ticket_status);
+                command.Parameters.AddWithValue("@ticket_id", ticket_id);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error while trying to add replace values in query: " + ex.Message);
+            }
+
+            return command;
+
         }
     }
 }
