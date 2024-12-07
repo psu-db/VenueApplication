@@ -1247,6 +1247,8 @@ namespace VenueApplication
             purchaseItemsItemDataGrid.Visible = false;
             itemPurchaseQuantityTextBox.Visible = false;
             itemPurchasePurchaseButton.Visible = false;
+            purchaseItemsPaymentMethodLabel.Visible = false;
+            purchseItemsPaymentMethodComboBox.Visible = false;
             tabControlAdv1.SelectedTab = purchaseItemsTab;
 
         }
@@ -1278,14 +1280,19 @@ namespace VenueApplication
 
         private void itemPurchasePurchaseButton_Click(object sender, EventArgs e)
         {
-            
+
 
             //payment info functionality not started yet
-            int trans_pymt_info_id = 4;
+            int trans_pymt_info_id = 0;
+            payment_info payment_selection = (payment_info)purchseItemsPaymentMethodComboBox.SelectedItem;
+            if (payment_selection != null)
+            {
+                trans_pymt_info_id = payment_selection.pymt_info_id;
+            }
 
             //search through my tickets that are scanned to find the event
             int trans_event_id = SelectEventForScannedTickets();
-            
+
             //set the current time
             DateTime currentTime = DateTime.Now;
             //TimeOnly currentTimeOnly = TimeOnly.FromTimeSpan(currentTime.TimeOfDay);
@@ -1309,9 +1316,16 @@ namespace VenueApplication
                 venue_item selectedItem = (venue_item)purchaseItemsItemDataGrid.SelectedItem;
                 trans_item_id = selectedItem.item_id;
             }
-            
-                
-            if (trans_pymt_info_id > 0 && trans_event_id > 0  && trans_quantity > 0 && trans_item_id > 0)
+            if (trans_event_id == 0)
+            {
+                itemPurchaseMessageLabel.Text = "You must be at an event to purchase";
+                itemPurchaseMessageLabel.Visible = true;
+                itemPurchaseMessageLabel.ForeColor = Color.Red;
+                itemPurchaseMessageLabel.Refresh();
+                return;
+            }
+
+            if (trans_pymt_info_id > 0 && trans_event_id > 0 && trans_quantity > 0 && trans_item_id > 0)
             {
                 bool transactionCreateAttempt = TransactionService.AttemptTransactionCreation(trans_pymt_info_id, trans_event_id, currentTime, trans_quantity, trans_item_id, databaseManager);
 
@@ -1340,6 +1354,16 @@ namespace VenueApplication
                 itemPurchaseMessageLabel.ForeColor = Color.Red;
                 itemPurchaseMessageLabel.Refresh();
             }
+        }
+
+        private void purchaseItemsItemDataGrid_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
+        {
+            purchaseItemsPaymentMethodLabel.Visible = true;
+            purchseItemsPaymentMethodComboBox.Visible = true;
+
+            List<payment_info> paymentMethods = InitializePaymentMethods();
+            purchseItemsPaymentMethodComboBox.DataSource = paymentMethods;
+
         }
     }
 

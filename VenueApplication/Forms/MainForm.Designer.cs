@@ -103,6 +103,9 @@
             firstlastNameLabel = new Label();
             pictureBox1 = new PictureBox();
             purchaseItemsTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            purchaseItemsPaymentMethodLabel = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            purchseItemsPaymentMethodComboBox = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
+            itemPurchaseMessageLabel = new Label();
             itemPurchasePurchaseButton = new Syncfusion.WinForms.Controls.SfButton();
             itemPurchaseCancelButton = new Syncfusion.WinForms.Controls.SfButton();
             itemPurchaseQuantityTextBox = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
@@ -110,7 +113,6 @@
             purchaseItemsItemDataGrid = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             purhaseItemsStoresDataGrid = new Syncfusion.WinForms.DataGrid.SfDataGrid();
-            itemPurchaseMessageLabel = new Label();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tabControlAdv1).BeginInit();
@@ -140,6 +142,7 @@
             ((System.ComponentModel.ISupportInitialize)paymentMethodsComboBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             purchaseItemsTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)purchseItemsPaymentMethodComboBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)itemPurchaseQuantityTextBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)purchaseItemsItemDataGrid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)purhaseItemsStoresDataGrid).BeginInit();
@@ -1059,6 +1062,8 @@
             // 
             // purchaseItemsTab
             // 
+            purchaseItemsTab.Controls.Add(purchaseItemsPaymentMethodLabel);
+            purchaseItemsTab.Controls.Add(purchseItemsPaymentMethodComboBox);
             purchaseItemsTab.Controls.Add(itemPurchaseMessageLabel);
             purchaseItemsTab.Controls.Add(itemPurchasePurchaseButton);
             purchaseItemsTab.Controls.Add(itemPurchaseCancelButton);
@@ -1076,6 +1081,35 @@
             purchaseItemsTab.TabIndex = 5;
             purchaseItemsTab.Text = "Purchase Items";
             purchaseItemsTab.ThemesEnabled = false;
+            // 
+            // purchaseItemsPaymentMethodLabel
+            // 
+            purchaseItemsPaymentMethodLabel.Font = new Font("Segoe UI", 18F);
+            purchaseItemsPaymentMethodLabel.Location = new Point(598, 962);
+            purchaseItemsPaymentMethodLabel.Name = "purchaseItemsPaymentMethodLabel";
+            purchaseItemsPaymentMethodLabel.Size = new Size(354, 57);
+            purchaseItemsPaymentMethodLabel.TabIndex = 11;
+            purchaseItemsPaymentMethodLabel.Text = "Payment Method:";
+            // 
+            // purchseItemsPaymentMethodComboBox
+            // 
+            purchseItemsPaymentMethodComboBox.BeforeTouchSize = new Size(548, 65);
+            purchseItemsPaymentMethodComboBox.Font = new Font("Segoe UI", 18F);
+            purchseItemsPaymentMethodComboBox.Location = new Point(958, 960);
+            purchseItemsPaymentMethodComboBox.Name = "purchseItemsPaymentMethodComboBox";
+            purchseItemsPaymentMethodComboBox.Size = new Size(548, 65);
+            purchseItemsPaymentMethodComboBox.TabIndex = 10;
+            // 
+            // itemPurchaseMessageLabel
+            // 
+            itemPurchaseMessageLabel.AutoSize = true;
+            itemPurchaseMessageLabel.Font = new Font("Segoe UI", 16F);
+            itemPurchaseMessageLabel.Location = new Point(128, 1133);
+            itemPurchaseMessageLabel.Name = "itemPurchaseMessageLabel";
+            itemPurchaseMessageLabel.Size = new Size(121, 51);
+            itemPurchaseMessageLabel.TabIndex = 9;
+            itemPurchaseMessageLabel.Text = "label1";
+            itemPurchaseMessageLabel.Visible = false;
             // 
             // itemPurchasePurchaseButton
             // 
@@ -1132,6 +1166,7 @@
             purchaseItemsItemDataGrid.Style.HyperlinkStyle.DefaultLinkColor = Color.FromArgb(0, 120, 215);
             purchaseItemsItemDataGrid.TabIndex = 2;
             purchaseItemsItemDataGrid.Text = "sfDataGrid1";
+            purchaseItemsItemDataGrid.SelectionChanged += purchaseItemsItemDataGrid_SelectionChanged;
             // 
             // autoLabel4
             // 
@@ -1157,17 +1192,6 @@
             purhaseItemsStoresDataGrid.TabIndex = 0;
             purhaseItemsStoresDataGrid.Text = "sfDataGrid1";
             purhaseItemsStoresDataGrid.SelectionChanged += purhaseItemsStoresDataGrid_SelectionChanged;
-            // 
-            // itemPurchaseMessageLabel
-            // 
-            itemPurchaseMessageLabel.AutoSize = true;
-            itemPurchaseMessageLabel.Font = new Font("Segoe UI", 16F);
-            itemPurchaseMessageLabel.Location = new Point(128, 1133);
-            itemPurchaseMessageLabel.Name = "itemPurchaseMessageLabel";
-            itemPurchaseMessageLabel.Size = new Size(121, 51);
-            itemPurchaseMessageLabel.TabIndex = 9;
-            itemPurchaseMessageLabel.Text = "label1";
-            itemPurchaseMessageLabel.Visible = false;
             // 
             // MainForm
             // 
@@ -1219,6 +1243,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             purchaseItemsTab.ResumeLayout(false);
             purchaseItemsTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)purchseItemsPaymentMethodComboBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)itemPurchaseQuantityTextBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)purchaseItemsItemDataGrid).EndInit();
             ((System.ComponentModel.ISupportInitialize)purhaseItemsStoresDataGrid).EndInit();
@@ -1314,5 +1339,7 @@
         private Syncfusion.WinForms.Controls.SfButton itemPurchasePurchaseButton;
         private Syncfusion.WinForms.Controls.SfButton itemPurchaseCancelButton;
         private Label itemPurchaseMessageLabel;
+        private Syncfusion.Windows.Forms.Tools.ComboBoxAdv purchseItemsPaymentMethodComboBox;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel purchaseItemsPaymentMethodLabel;
     }
 }

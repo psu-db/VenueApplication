@@ -9,7 +9,7 @@ using VenueApplication.DataAccess;
 
 namespace VenueApplication.Models
 {
-    internal class payment_info
+    public class payment_info
     {
         #region Table Attributes
         // Primary key
@@ -40,6 +40,7 @@ namespace VenueApplication.Models
             this.pymt_info_zipcode = pymt_info_zipcode;
             this.databaseManager = databaseManager;
         }
+
         public string CreateSQLInsertQuery()
         {
             string query = VenueApplication.Properties.Resource.paymentMethod_INSERT;
