@@ -51,6 +51,7 @@ namespace VenueApplication
             createNewEventTab.TabVisible = false;
             eventManagerTab.TabVisible = false;
             manageStoresTab.TabVisible = false;
+            purchaseItemsTab.TabVisible = false;
 
             tabControlAdv1.SelectedTab = homeTab;
 
@@ -252,6 +253,7 @@ namespace VenueApplication
                 });
             }
 
+
             // Check for 'store_section_location' column
             if (!manageStoresDataGrid.Columns.Any(c => c.MappingName == "store_section_location"))
             {
@@ -272,6 +274,42 @@ namespace VenueApplication
                 });
             }
         }
+
+        public void FormatDataGridForStoresItemPurchase()
+        {
+            purhaseItemsStoresDataGrid.Columns.Clear();
+
+            if (!purhaseItemsStoresDataGrid.Columns.Any(c => c.MappingName == "store_name"))
+            {
+                purhaseItemsStoresDataGrid.Columns.Add(new GridTextColumn
+                {
+                    MappingName = "store_name",
+                    HeaderText = "Store Name",
+                });
+            }
+
+
+            // Check for 'store_section_location' column
+            if (!purhaseItemsStoresDataGrid.Columns.Any(c => c.MappingName == "store_section_location"))
+            {
+                purhaseItemsStoresDataGrid.Columns.Add(new GridTextColumn
+                {
+                    MappingName = "store_section_location",
+                    HeaderText = "Section Location",
+                });
+            }
+
+            // Check for 'store_type' column
+            if (!purhaseItemsStoresDataGrid.Columns.Any(c => c.MappingName == "store_type"))
+            {
+                purhaseItemsStoresDataGrid.Columns.Add(new GridTextColumn
+                {
+                    MappingName = "store_type",
+                    HeaderText = "Store Type",
+                });
+            }
+        }
+
         public void InitializeEventManager()
         {
 
@@ -628,6 +666,55 @@ namespace VenueApplication
 
         }
 
+        private int SelectEventForScannedTickets()
+        {
+            string query = VenueApplication.Properties.Resource.ticketPurchase_SELECTSCANNED;
+            int event_id = 0;
+            using (var dbConnection = databaseManager.GetConnection())
+            {
+                // Create a command object to execute the query
+                var command = new NpgsqlCommand(query, dbConnection);
+
+                // Add parameters to the query
+                command.Parameters.AddWithValue("@wallet_id", LoginForm.USER_WALLET_ID);
+
+                try
+                {
+                    dbConnection.Open();
+
+                    // Execute the query and get a reader to read the results
+                    using (var reader = command.ExecuteReader())
+                    {
+                        // Check if there are any rows (meaning the username/password pair is valid)
+                        if (reader.HasRows)
+                        {
+
+                            while (reader.Read())
+                            {
+                                int? tkt_event_id = reader.IsDBNull(reader.GetOrdinal("tkt_event_id")) ? null : reader.GetInt32(reader.GetOrdinal("tkt_event_id"));
+                                //Debug.WriteLine("the returned event id is");
+                                //Debug.WriteLine(tkt_event_id);
+
+                                return (int)tkt_event_id;
+                            }
+                            return event_id;
+                        }
+                        else
+                        {
+                            Debug.WriteLine("Initialize tickets for MyTickets failed");
+                            return event_id;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error executing query: {ex.Message}");
+
+                    return event_id;
+                }
+            }
+
+        }
 
         public void refreshStoresTable()
         {
@@ -638,6 +725,8 @@ namespace VenueApplication
             FormatDataGridForStores();
             manageStoresDataGrid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
         }
+
+
 
         public void EnableAddNewPaymentButton()
         {
@@ -1060,5 +1149,198 @@ namespace VenueApplication
 
 
         }
+
+
+
+        //item purchase tab
+
+        private void refreshItemTable()
+        {
+            //initialize the table of tickets for the event
+            purchaseItemsItemDataGrid.DataSource = null;
+            List<venue_item> storeItems = InitializeItemsForStore((venue_store)purhaseItemsStoresDataGrid.SelectedItem);
+            purchaseItemsItemDataGrid.AutoGenerateColumns = false;
+            FormatDataGridForItems();
+            purchaseItemsItemDataGrid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
+            purchaseItemsItemDataGrid.DataSource = storeItems;
+        }
+
+
+        private List<venue_item> InitializeItemsForStore(venue_store venueStore)
+        {
+            List<venue_item> storeItems = new List<venue_item>();
+            string query = VenueApplication.Properties.Resource.item_on_store_SELECT;
+            using (var dbConnection = databaseManager.GetConnection())
+            {
+                // Create a command object to execute the query
+                var command = new NpgsqlCommand(query, dbConnection);
+                // Add parameters to the query
+                command.Parameters.AddWithValue("@itemstoreid", venueStore.store_id);
+
+                try
+                {
+                    dbConnection.Open();
+                    // Execute the query and get a reader to read the results
+                    using (var reader = command.ExecuteReader())
+                    {
+                        // Check if there are any rows (meaning the username/password pair is valid)
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                int? item_id = reader.IsDBNull(reader.GetOrdinal("item_id")) ? null : reader.GetInt32(reader.GetOrdinal("item_id"));
+                                string? item_name = reader.IsDBNull(reader.GetOrdinal("item_name")) ? null : reader.GetString(reader.GetOrdinal("item_name"));
+                                decimal? item_price = reader.IsDBNull(reader.GetOrdinal("item_price")) ? null : reader.GetDecimal(reader.GetOrdinal("item_price"));
+                                int? item_store_id = reader.IsDBNull(reader.GetOrdinal("item_store_id")) ? null : reader.GetInt32(reader.GetOrdinal("item_store_id"));
+
+                                venue_item returnedItem = new venue_item((int)item_id, item_name, (decimal)item_price, (int)item_store_id, databaseManager);
+                                storeItems.Add(returnedItem);
+                            }
+                            return storeItems;
+                        }
+                        else
+                        {
+                            Debug.WriteLine("Initialize items for store failed");
+                            return storeItems;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error executing query: {ex.Message}");
+                    return storeItems;
+                }
+            }
+        }
+
+        public void FormatDataGridForItems()
+        {
+
+            purchaseItemsItemDataGrid.Columns.Clear();
+
+            if (!purchaseItemsItemDataGrid.Columns.Any(c => c.MappingName == "item_name"))
+            {
+                purchaseItemsItemDataGrid.Columns.Add(new GridTextColumn
+                {
+                    MappingName = "item_name",
+                    HeaderText = "Item Name",
+                });
+            }
+
+            // Check for 'item_price' column
+            if (!purchaseItemsItemDataGrid.Columns.Any(c => c.MappingName == "item_price"))
+            {
+                purchaseItemsItemDataGrid.Columns.Add(new GridTextColumn
+                {
+                    MappingName = "item_price",
+                    HeaderText = "Item Price",
+                });
+            }
+
+        }
+
+
+        private void itemPurchaseControlButton_Click(object sender, EventArgs e)
+        {
+            refreshStoreItemPurchaseTable();
+            purchaseItemsQuantityLabel.Visible = false;
+            purchaseItemsItemDataGrid.Visible = false;
+            itemPurchaseQuantityTextBox.Visible = false;
+            itemPurchasePurchaseButton.Visible = false;
+            tabControlAdv1.SelectedTab = purchaseItemsTab;
+
+        }
+
+        public void refreshStoreItemPurchaseTable()
+        {
+            manageStoresDataGrid.DataSource = null;
+            List<venue_store> venue_stores = InitializeStores();
+            purhaseItemsStoresDataGrid.AutoGenerateColumns = false;
+            purhaseItemsStoresDataGrid.DataSource = venue_stores;
+            FormatDataGridForStoresItemPurchase();
+            purhaseItemsStoresDataGrid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
+        }
+
+        private void purhaseItemsStoresDataGrid_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
+        {
+            purchaseItemsQuantityLabel.Visible = true;
+            purchaseItemsItemDataGrid.Visible = true;
+            itemPurchaseQuantityTextBox.Visible = true;
+            itemPurchasePurchaseButton.Visible = true;
+            Debug.WriteLine(purhaseItemsStoresDataGrid.SelectedIndex);
+            refreshItemTable();
+        }
+
+        private void itemPurchaseCancelButton_Click(object sender, EventArgs e)
+        {
+            tabControlAdv1.SelectedTab = homeTab;
+        }
+
+        private void itemPurchasePurchaseButton_Click(object sender, EventArgs e)
+        {
+            
+
+            //payment info functionality not started yet
+            int trans_pymt_info_id = 4;
+
+            //search through my tickets that are scanned to find the event
+            int trans_event_id = SelectEventForScannedTickets();
+            
+            //set the current time
+            DateTime currentTime = DateTime.Now;
+            //TimeOnly currentTimeOnly = TimeOnly.FromTimeSpan(currentTime.TimeOfDay);
+
+
+            //set quantity
+            string quantity = itemPurchaseQuantityTextBox.Text;
+            int trans_quantity = int.Parse(quantity);
+
+            if (trans_quantity < 1)
+            {
+                itemPurchaseMessageLabel.Text = "Please provide a quantity";
+                itemPurchaseMessageLabel.ForeColor = Color.Red;
+                itemPurchaseMessageLabel.Visible = true;
+                return;
+            }
+
+            int trans_item_id = -1;
+            if (purchaseItemsItemDataGrid.SelectedItem != null)
+            {
+                venue_item selectedItem = (venue_item)purchaseItemsItemDataGrid.SelectedItem;
+                trans_item_id = selectedItem.item_id;
+            }
+            
+                
+            if (trans_pymt_info_id > 0 && trans_event_id > 0  && trans_quantity > 0 && trans_item_id > 0)
+            {
+                bool transactionCreateAttempt = TransactionService.AttemptTransactionCreation(trans_pymt_info_id, trans_event_id, currentTime, trans_quantity, trans_item_id, databaseManager);
+
+                if (transactionCreateAttempt)
+                {
+                    itemPurchaseQuantityTextBox.Text = "1";
+                    itemPurchaseMessageLabel.Text = "Successfully purchased item(s)";
+                    itemPurchaseMessageLabel.ForeColor = Color.Green;
+                    itemPurchaseMessageLabel.Visible = true;
+                    itemPurchaseMessageLabel.Refresh();
+                    refreshItemTable();
+                }
+                else
+                {
+                    itemPurchaseMessageLabel.Text = "An error occured. Please wait and try again.";
+                    itemPurchaseMessageLabel.Visible = true;
+                    itemPurchaseMessageLabel.ForeColor = Color.Red;
+                    itemPurchaseMessageLabel.Refresh();
+                }
+
+            }
+            else
+            {
+                itemPurchaseMessageLabel.Text = "All fields must be filled";
+                itemPurchaseMessageLabel.Visible = true;
+                itemPurchaseMessageLabel.ForeColor = Color.Red;
+                itemPurchaseMessageLabel.Refresh();
+            }
+        }
     }
+
 }

@@ -203,8 +203,8 @@ VALUES(@storename, @storesectionlocation, @storetype);</value>
 VALUES(@itemname, @itemprice,@itemstoreid);</value>
   </data>
   <data name="transactionCreate_INSERT" xml:space="preserve">
-    <value>INSERT INTO venue_transaction(trans_pymt_info_id,trans_itmpur_loc_id, trans_event_id, trans_timestamp, trans_quantity)
-VALUES(@transpymtinfoid, @transitmpurlocid, @transeventid, @transtimestamp, @transquantity);</value>
+    <value>INSERT INTO venue_transaction(trans_pymt_info_id, trans_event_id, trans_timestamp, trans_quantity, trans_item_id)
+VALUES(@transpymtinfoid, @transeventid, @transtimestamp, @transquantity, @transitemid);</value>
   </data>
   <data name="venue_stores_SELECT" xml:space="preserve">
     <value>SELECT * FROM venue_store;</value>
@@ -241,5 +241,9 @@ WHERE tkt_id = @ticket_id;</value>
   <data name="ticketPurchase_SELECT" xml:space="preserve">
     <value>SELECT * FROM ticket_purchase JOIN venue_ticket ON tktpur_tkt_id = tkt_id
 WHERE tktpur_wallet_id = @wallet_id AND tkt_status != 'SCN';</value>
+  </data>
+  <data name="ticketPurchase_SELECTSCANNED" xml:space="preserve">
+    <value>SELECT * FROM ticket_purchase JOIN venue_ticket ON tktpur_tkt_id = tkt_id
+WHERE tktpur_wallet_id = @wallet_id AND tkt_status = 'SCN';</value>
   </data>
 </root>

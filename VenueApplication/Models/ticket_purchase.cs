@@ -38,6 +38,18 @@ namespace VenueApplication.Models
             return query;
         }
 
+        public string CreateSQLSelectQueryOnUser()
+        {
+            string query = VenueApplication.Properties.Resource.ticketPurchase_SELECT;
+            return query;
+        }
+
+        public string CreateSQLSelectQueryOnUsersScanned()
+        {
+            string query = VenueApplication.Properties.Resource.ticketPurchase_SELECTSCANNED;
+            return query;
+        }
+
         public NpgsqlCommand AddWithValues(NpgsqlCommand command, string ticket_status, string ticket_id)
         {
             try
@@ -47,6 +59,22 @@ namespace VenueApplication.Models
                 command.Parameters.AddWithValue("@ticket_wallet_id", tktpur_wallet_id);
                 command.Parameters.AddWithValue("@ticket_status", ticket_status);
                 command.Parameters.AddWithValue("@ticket_id", ticket_id);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error while trying to add replace values in query: " + ex.Message);
+            }
+
+            return command;
+
+        }
+
+        public NpgsqlCommand AddWithValuesWalletId(NpgsqlCommand command, int wallet_id)
+        {
+            try
+            {
+                command.Parameters.AddWithValue("@walletid", wallet_id);
+    
             }
             catch (Exception ex)
             {

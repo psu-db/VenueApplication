@@ -11,12 +11,12 @@ using VenueApplication.Models;
 
 namespace VenueApplication.Services
 {
-    internal static class TransactionService
+    public static class TransactionService
     {
-        public static bool AttemptTransactionCreation(int trans_pymt_info_id, int trans_itmpur_loc_id, int trans_event_id, DateTime trans_timestamp, int trans_quantity, DatabaseManager databaseManager)
+        public static bool AttemptTransactionCreation(int trans_pymt_info_id, int trans_event_id, DateTime trans_timestamp, int trans_quantity, int trans_item_id, DatabaseManager databaseManager)
         {
             // Create necessary related objects
-            venue_transaction newTransaction = new venue_transaction(trans_pymt_info_id, trans_itmpur_loc_id, trans_event_id, trans_timestamp, trans_quantity, databaseManager);
+            venue_transaction newTransaction = new venue_transaction(trans_pymt_info_id, trans_event_id, trans_timestamp, trans_quantity, trans_item_id, databaseManager);
 
             // Generate the SQL query
             string query = newTransaction.CreateSQLInsertQuery();

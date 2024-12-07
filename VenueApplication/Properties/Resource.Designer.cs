@@ -259,6 +259,16 @@ namespace VenueApplication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SELECT * FROM ticket_purchase JOIN venue_ticket ON tktpur_tkt_id = tkt_id
+        ///WHERE tktpur_wallet_id = @wallet_id AND tkt_status = &apos;SCN&apos;;.
+        /// </summary>
+        internal static string ticketPurchase_SELECTSCANNED {
+            get {
+                return ResourceManager.GetString("ticketPurchase_SELECTSCANNED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SELECT * FROM venue_ticket WHERE tkt_event_id = @event_id AND tkt_status = @status1 OR tkt_status = @status2;.
         /// </summary>
         internal static string ticketsForEvent_SELECT {
@@ -268,8 +278,8 @@ namespace VenueApplication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to INSERT INTO venue_transaction(trans_pymt_info_id,trans_itmpur_loc_id, trans_event_id, trans_timestamp, trans_quantity)
-        ///VALUES(@transpymtinfoid, @transitmpurlocid, @transeventid, @transtimestamp, @transquantity);.
+        ///   Looks up a localized string similar to INSERT INTO venue_transaction(trans_pymt_info_id, trans_event_id, trans_timestamp, trans_quantity, trans_item_id)
+        ///VALUES(@transpymtinfoid, @transeventid, @transtimestamp, @transquantity, @transitemid);.
         /// </summary>
         internal static string transactionCreate_INSERT {
             get {

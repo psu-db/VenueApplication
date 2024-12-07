@@ -233,6 +233,5 @@ namespace VenueApplication.Services
             return false;
         }
 
-
     }
 }
