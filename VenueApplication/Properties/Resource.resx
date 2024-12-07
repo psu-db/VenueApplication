@@ -229,7 +229,7 @@ WHERE item_id = @itemid;</value>
   <data name="item_on_store_SELECT" xml:space="preserve">
     <value>SELECT * FROM venue_item
 WHERE item_store_id = @itemstoreid;</value>
-
+  </data>
   <data name="ticketPurchase_INSERT" xml:space="preserve">
     <value>INSERT INTO ticket_purchase(tktpur_tkt_id, tktpur_date, tktpur_wallet_id)
 VALUES(@ticket_id, @ticket_pur_date, @ticket_wallet_id);
