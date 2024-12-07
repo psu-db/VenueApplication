@@ -323,7 +323,6 @@ namespace VenueApplication
             manageEventDataGrid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
             this.selected_event = null;
             eventManagerErrorLabel.Visible = false;
-
         }
 
         private List<venue_ticket> InitializeTicketsForEvent(venue_event venueEvent)
@@ -692,6 +691,7 @@ namespace VenueApplication
                     createEventErrorLabel.ForeColor = Color.Green;
                     createEventErrorLabel.Visible = true;
                     createEventErrorLabel.Refresh();
+                    InitializeEventManager();
                 }
                 else
                 {

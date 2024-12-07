@@ -199,12 +199,8 @@ AND (tkt_status = 'SLD' OR tkt_status = 'RSD');</value>
 VALUES(@storename, @storesectionlocation, @storetype);</value>
   </data>
   <data name="itemCreate_INSERT" xml:space="preserve">
-    <value>INSERT INTO venue_item(item_name, item_price)
-VALUES(@itemname, itemprice);</value>
-  </data>
-  <data name="itemPurchaseLocationCreate_INSERT" xml:space="preserve">
-    <value>INSERT INTO item_purchase_location(itmpur_item_id,itmpur_store_id);
-VALUES(@itmpuritemid, @itmpur_store_id);</value>
+    <value>INSERT INTO venue_item(item_name,item_price,item_store_id)
+VALUES(@itemname, @itemprice,@itemstoreid);</value>
   </data>
   <data name="transactionCreate_INSERT" xml:space="preserve">
     <value>INSERT INTO venue_transaction(trans_pymt_info_id,trans_itmpur_loc_id, trans_event_id, trans_timestamp, trans_quantity)
@@ -221,6 +217,19 @@ WHERE store_id = @storeid;</value>
   <data name="store_DELETE" xml:space="preserve">
     <value>DELETE FROM venue_store WHERE store_id = @storeid;</value>
   </data>
+  <data name="item_UPDATE" xml:space="preserve">
+    <value>UPDATE venue_item
+SET item_name = @itemname, item_price = @itemprice
+WHERE item_id = @itemid AND item_store_id = @itemstoreid;</value>
+  </data>
+  <data name="item_DELETE" xml:space="preserve">
+    <value>DELETE FROM venue_item
+WHERE item_id = @itemid;</value>
+  </data>
+  <data name="item_on_store_SELECT" xml:space="preserve">
+    <value>SELECT * FROM venue_item
+WHERE item_store_id = @itemstoreid;</value>
+
   <data name="ticketPurchase_INSERT" xml:space="preserve">
     <value>INSERT INTO ticket_purchase(tktpur_tkt_id, tktpur_date, tktpur_wallet_id)
 VALUES(@ticket_id, @ticket_pur_date, @ticket_wallet_id);

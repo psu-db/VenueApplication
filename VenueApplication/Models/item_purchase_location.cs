@@ -31,11 +31,11 @@ namespace VenueApplication.Models
         }
 
 
-        public string CreateSQLInsertQuery()
-        {
-            string query = Properties.Resource.itemPurchaseLocationCreate_INSERT;
-            return query;
-        }
+        //public string CreateSQLInsertQuery()
+        //{
+        //string query = Properties.Resource.itemPurchaseLocationCreate_INSERT;
+        //return query;
+        //}
 
 
         public NpgsqlCommand AddWithValues(NpgsqlCommand command)
