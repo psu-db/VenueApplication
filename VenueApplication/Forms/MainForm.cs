@@ -236,6 +236,7 @@ namespace VenueApplication
                     HeaderText = "Type",
                 });
             }
+            sfDataGrid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
         }
 
         public void FormatDataGridForStores()
