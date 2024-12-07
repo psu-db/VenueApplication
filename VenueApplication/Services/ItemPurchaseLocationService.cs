@@ -19,7 +19,12 @@ namespace VenueApplication.Services
             item_purchase_location newItemPurchaseLocation = new item_purchase_location(itmpurItemId, itmpurStoreId, databaseManager);
 
             // Generate the SQL query
-            string query = newItemPurchaseLocation.CreateSQLInsertQuery();
+            //string query = newItemPurchaseLocation.CreateSQLInsertQuery();
+
+
+
+            //DEPRECATE
+            string query = "";
 
             using (var dbConnection = databaseManager.GetConnection())
             {

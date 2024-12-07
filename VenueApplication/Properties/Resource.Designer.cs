@@ -92,22 +92,43 @@ namespace VenueApplication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to INSERT INTO venue_item(item_name, item_price)
-        ///VALUES(@itemname, itemprice);.
+        ///   Looks up a localized string similar to DELETE FROM venue_item
+        ///WHERE item_id = @itemid;.
         /// </summary>
-        internal static string itemCreate_INSERT {
+        internal static string item_DELETE {
             get {
-                return ResourceManager.GetString("itemCreate_INSERT", resourceCulture);
+                return ResourceManager.GetString("item_DELETE", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to INSERT INTO item_purchase_location(itmpur_item_id,itmpur_store_id);
-        ///VALUES(@itmpuritemid, @itmpur_store_id);.
+        ///   Looks up a localized string similar to SELECT * FROM venue_item
+        ///WHERE item_store_id = @itemstoreid;.
         /// </summary>
-        internal static string itemPurchaseLocationCreate_INSERT {
+        internal static string item_on_store_SELECT {
             get {
-                return ResourceManager.GetString("itemPurchaseLocationCreate_INSERT", resourceCulture);
+                return ResourceManager.GetString("item_on_store_SELECT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UPDATE venue_item
+        ///SET item_name = @itemname, item_price = @itemprice
+        ///WHERE item_id = @itemid AND item_store_id = @itemstoreid;.
+        /// </summary>
+        internal static string item_UPDATE {
+            get {
+                return ResourceManager.GetString("item_UPDATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INSERT INTO venue_item(item_name,item_price,item_store_id)
+        ///VALUES(@itemname, @itemprice,@itemstoreid);.
+        /// </summary>
+        internal static string itemCreate_INSERT {
+            get {
+                return ResourceManager.GetString("itemCreate_INSERT", resourceCulture);
             }
         }
         

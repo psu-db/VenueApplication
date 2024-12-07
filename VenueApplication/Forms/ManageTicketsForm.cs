@@ -59,10 +59,11 @@ namespace VenueApplication.Forms
                     manageTicketsEventNameLabel.Text = "";
                     manageTicketsCurrencyTextBox.DecimalValue = 1.00m;
                     manageTicketsSectionComboBoxAdv.Text = "";
-                    manageTicketsErrorLabel.Text = "Successfully inserted event";
                     manageTicketsErrorLabel.ForeColor = Color.Green;
-                    manageTicketsErrorLabel.Visible = true;
                     manageTicketsErrorLabel.Refresh();
+                    refreshTicketTable();
+                    manageTicketsErrorLabel.Text = "Successfully inserted tickets";
+                    manageTicketsErrorLabel.Visible = true;
                 }
                 else
                 {
@@ -214,10 +215,11 @@ namespace VenueApplication.Forms
                 {
 
                     refreshTicketTable();
-                    manageTicketsErrorLabel.Text = "Successfully deleted ticket";
                     manageTicketsErrorLabel.ForeColor = Color.Green;
-                    manageTicketsErrorLabel.Visible = true;
                     manageTicketsErrorLabel.Refresh();
+                    refreshTicketTable();
+                    manageTicketsErrorLabel.Text = "Successfully deleted ticket";
+                    manageTicketsErrorLabel.Visible = true;
 
 
                 }

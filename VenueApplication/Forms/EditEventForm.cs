@@ -91,19 +91,12 @@ namespace VenueApplication.Forms
 
                 if (updateEventResults)
                 {
-                    editEventHourComboBoxAdv.Text = "";
-                    editEventMinuteComboBoxAdv.Text = "";
-                    editEventAMPMComboBoxAdv.Text = "";
-                    editEventTypeComboBoxAdv.Text = "";
-                    editEventDescriptionTextBoxExt.Text = "";
-                    editEventErrorLabel.Text = "Successfully inserted event";
-                    editEventErrorLabel.ForeColor = Color.Green;
-                    editEventErrorLabel.Visible = true;
-                    editEventErrorLabel.Refresh();
+                    mainForm.InitializeEventManager();
+                    this.Close();
                 }
                 else
                 {
-                    editEventErrorLabel.Text = "An error occured during the sign up process. Please wait and try again.";
+                    editEventErrorLabel.Text = "An error occured. Please wait and try again.";
                     editEventErrorLabel.Visible = true;
                     editEventErrorLabel.Refresh();
                 }

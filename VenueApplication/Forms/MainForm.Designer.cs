@@ -527,10 +527,10 @@
             // 
             // createEventCalendar
             // 
-            createEventCalendar.Location = new Point(439, 54);
+            createEventCalendar.Location = new Point(437, 128);
             createEventCalendar.Margin = new Padding(3, 4, 3, 4);
             createEventCalendar.Name = "createEventCalendar";
-            createEventCalendar.Size = new Size(693, 812);
+            createEventCalendar.Size = new Size(693, 406);
             createEventCalendar.TabIndex = 5;
             createEventCalendar.Text = "sfCalendar1";
             // 
