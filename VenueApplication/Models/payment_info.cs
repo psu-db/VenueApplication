@@ -53,6 +53,7 @@ namespace VenueApplication.Models
             this.pymt_info_zipcode = pymt_info_zipcode;
             this.databaseManager = databaseManager;
         }
+
         public string CreateSQLInsertQuery()
         {
             string query = VenueApplication.Properties.Resource.paymentMethod_INSERT;
