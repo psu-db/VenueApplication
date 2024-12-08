@@ -105,6 +105,7 @@ namespace VenueApplication
         private void homeButton_Click(object sender, EventArgs e)
         {
             tabControlAdv1.SelectedTab = homeTab;
+            InitializeHomePage();
         }
 
         private void profileButton_Click(object sender, EventArgs e)
@@ -155,7 +156,7 @@ namespace VenueApplication
                 paymentMethods.Add(accountPayment);
             }
 
-            
+
             InitializeUsersSelectedPaymentInfo();
         }
 
@@ -360,7 +361,6 @@ namespace VenueApplication
         public void InitializeEventManager()
         {
 
-            manageEventDataGrid.DataSource = null;
             List<venue_event> venue_events = InitializeEvents();
             manageEventDataGrid.AutoGenerateColumns = false;
             manageEventDataGrid.DataSource = venue_events;
@@ -1293,6 +1293,7 @@ namespace VenueApplication
                     HeaderText = "Item Price",
                 });
             }
+            purchaseItemsItemDataGrid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
 
         }
 
@@ -1455,6 +1456,20 @@ namespace VenueApplication
             List<payment_info> paymentMethods = InitializePaymentMethods();
             purchseItemsPaymentMethodComboBox.DataSource = paymentMethods;
 
+        }
+
+        private void manageEventCloseEventButton_Click(object sender, EventArgs e)
+        {
+            if (this.selected_event != null)
+            {
+                CloseEventForm closeEventForm = new CloseEventForm(this, databaseManager, this.selected_event);
+                closeEventForm.Show();
+            }
+            else
+            {
+                eventManagerErrorLabel.Text = "Please select an event to continue";
+                eventManagerErrorLabel.Visible = true;
+            }
         }
     }
 
