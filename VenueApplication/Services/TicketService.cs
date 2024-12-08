@@ -174,7 +174,7 @@ namespace VenueApplication.Services
             }
         }
 
-        public static bool AttemptPurchaseTicket(venue_ticket ticket, DatabaseManager databaseManager)
+        public static bool AttemptPurchaseTicket(venue_ticket ticket, MainForm mainForm, DatabaseManager databaseManager)
         {
             if (ticket != null)
             {
@@ -206,6 +206,17 @@ namespace VenueApplication.Services
                                 if (ticket.tkt_status == "RSL")
                                 {
                                     command = ticketPurchase.AddWithValues(command, "RLD", ticket.tkt_id.ToString());
+
+                                    // (IMPLEMENT): give seller their money for the ticket to their account balance
+                                    (bool returnGetSellerAndTicketInfoStatus, int? user_id, decimal? tkt_price) = TicketService.AttemptGetSellerAndTicketInfo(ticket.tkt_id, databaseManager);
+                                    (bool attemptUpdateBalanceStatus, decimal? newBalance) = TicketService.AttemptUpdateUserBalanceFromTicketSale(user_id, tkt_price, databaseManager);
+
+                                    if (returnGetSellerAndTicketInfoStatus && attemptUpdateBalanceStatus)
+                                    {
+                                        //Update users balance
+                                        mainForm.InitializeProfilePage(newBalance);
+                                    }
+
                                 }
                                 else
                                 {
@@ -283,6 +294,110 @@ namespace VenueApplication.Services
                 {
                     MessageBox.Show($"Connection error: {ex.Message}");
                     return false;
+                }
+            }
+        }
+
+        public static (bool, int?, decimal?) AttemptGetSellerAndTicketInfo(int ticket_id, DatabaseManager databaseManager)
+        {
+
+            // Generate the SQL query
+            string query = VenueApplication.Properties.Resource.ticketSellerInfo_SELECT;
+
+            using (var dbConnection = databaseManager.GetConnection())
+            {
+                // Create a command object to execute the query
+                var command = new NpgsqlCommand(query, dbConnection);
+
+                // Add parameters to the query
+                command.Parameters.AddWithValue("@ticket_id", ticket_id);
+
+                try
+                {
+                    dbConnection.Open();
+
+                    // Execute the query and get a reader to read the results
+                    using (var reader = command.ExecuteReader())
+                    {
+                        // Check if there are any rows (meaning the username/password pair is valid)
+
+                        if (reader.HasRows)
+                        {
+                            int? user_id = null;
+                            decimal? tkt_price = null;
+
+                            while (reader.Read())
+                            {
+                                user_id = reader.IsDBNull(reader.GetOrdinal("user_id")) ? null : reader.GetInt32(reader.GetOrdinal("user_id"));
+                                tkt_price = reader.IsDBNull(reader.GetOrdinal("tkt_price")) ? null : reader.GetDecimal(reader.GetOrdinal("tkt_price"));
+
+                            }
+
+                            return (true, user_id, tkt_price);
+                        }
+                        else
+                        {
+                            Debug.WriteLine("Fetching ticket seller info failed");
+                            return (false, null, null);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error executing query: {ex.Message}");
+
+                    return (false, null, null);
+                }
+            }
+
+        }
+
+        public static (bool, decimal?) AttemptUpdateUserBalanceFromTicketSale(int? user_id, decimal? ticket_sold_price, DatabaseManager databaseManager)
+        {
+            string query = VenueApplication.Properties.Resource.ticketSellerBalance_UPDATE;
+
+            using (var dbConnection = databaseManager.GetConnection())
+            {
+                // Create a command object to execute the query
+                var command = new NpgsqlCommand(query, dbConnection);
+
+                // Add parameters to the query
+                command.Parameters.AddWithValue("@user_id", user_id);
+                command.Parameters.AddWithValue("@ticket_sold_price", ticket_sold_price);
+
+                try
+                {
+                    dbConnection.Open();
+
+                    // Execute the query and get a reader to read the results
+                    using (var reader = command.ExecuteReader())
+                    {
+                        // Check if there are any rows (meaning the username/password pair is valid)
+
+                        if (reader.HasRows)
+                        {
+                            decimal? user_balance = null;
+
+                            while (reader.Read())
+                            {
+                                user_balance = reader.IsDBNull(reader.GetOrdinal("user_balance")) ? null : reader.GetDecimal(reader.GetOrdinal("user_balance"));
+
+                            }
+
+                            return (true, user_balance);
+                        }
+                        else
+                        {
+                            Debug.WriteLine("Updating ticket sellers balance failed");
+                            return (false, null);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error executing query: {ex.Message}");
+
+                    return (false, null);
                 }
             }
         }

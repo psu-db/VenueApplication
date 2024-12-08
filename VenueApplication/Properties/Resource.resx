@@ -253,4 +253,17 @@ WHERE tktpur_wallet_id = @wallet_id AND tkt_status = 'SCN';</value>
 SET tkt_status = 'RSL'
 WHERE tkt_id = @ticket_id;</value>
   </data>
+  <data name="ticketSellerInfo_SELECT" xml:space="preserve">
+    <value>SELECT app_user.user_id, venue_ticket.tkt_price FROM ticket_purchase JOIN venue_ticket
+ON ticket_purchase.tktpur_tkt_id = venue_ticket.tkt_id JOIN
+user_wallet ON ticket_purchase.tktpur_wallet_id = user_wallet.wallet_id JOIN app_user
+ON app_user.user_id = user_wallet.wallet_user_id
+WHERE venue_ticket.tkt_id = @ticket_id;</value>
+  </data>
+  <data name="ticketSellerBalance_UPDATE" xml:space="preserve">
+    <value>UPDATE app_user
+SET user_balance = user_balance + @ticket_sold_price
+WHERE user_id = @user_id
+RETURNING user_balance;</value>
+  </data>
 </root>

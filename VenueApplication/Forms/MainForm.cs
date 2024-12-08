@@ -27,6 +27,7 @@ namespace VenueApplication
         public venue_ticket myTicket_selectedTicket;
         public venue_store manageStores_selectedStore;
         public payment_info selectedPayment;
+
         public MainForm(app_user user, user_wallet user_wallet, LoginForm loginForm, DatabaseManager databaseManager)
         {
             InitializeComponent();
@@ -120,10 +121,19 @@ namespace VenueApplication
 
         #region Methods
 
-        public void InitializeProfilePage()
+        public void InitializeProfilePage(decimal? newBalance = 0)
         {
             firstlastNameLabel.Text = $"{user.user_fname} {user.user_lname}";
-            profileAccountBalanceValueLabel.Text = $"${user.user_balance.ToString()}";
+            
+            if (newBalance != 0)
+            {
+                profileAccountBalanceValueLabel.Text = $"${newBalance.ToString()}";
+            }
+            else
+            {
+                profileAccountBalanceValueLabel.Text = $"${user.user_balance.ToString()}";
+            }
+            
             List<payment_info> paymentMethods = InitializePaymentMethods();
             paymentMethodsComboBox.DataSource = paymentMethods;
 
@@ -1166,7 +1176,7 @@ namespace VenueApplication
                 return;
             }
 
-            bool purchaseTicketStatus = TicketService.AttemptPurchaseTicket(homePage_selectedTicket, databaseManager);
+            bool purchaseTicketStatus = TicketService.AttemptPurchaseTicket(homePage_selectedTicket, this, databaseManager);
 
             if (purchaseTicketStatus)
             {

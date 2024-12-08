@@ -364,5 +364,27 @@ namespace VenueApplication.Properties {
             }
         }
 
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT * FROM venue_store;.
+        /// </summary>
+        internal static string ticketSellerInfo_SELECT
+        {
+            get
+            {
+                return ResourceManager.GetString("ticketSellerInfo_SELECT", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT * FROM venue_store;.
+        /// </summary>
+        internal static string ticketSellerBalance_UPDATE
+        {
+            get
+            {
+                return ResourceManager.GetString("ticketSellerBalance_UPDATE", resourceCulture);
+            }
+        }
+        
     }
 }

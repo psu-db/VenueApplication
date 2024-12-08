@@ -1054,17 +1054,17 @@
             purchaseItemsPaymentMethodLabel.Font = new Font("Segoe UI", 18F);
             purchaseItemsPaymentMethodLabel.Location = new Point(598, 962);
             purchaseItemsPaymentMethodLabel.Name = "purchaseItemsPaymentMethodLabel";
-            purchaseItemsPaymentMethodLabel.Size = new Size(354, 57);
+            purchaseItemsPaymentMethodLabel.Size = new Size(203, 32);
             purchaseItemsPaymentMethodLabel.TabIndex = 11;
             purchaseItemsPaymentMethodLabel.Text = "Payment Method:";
             // 
             // purchseItemsPaymentMethodComboBox
             // 
-            purchseItemsPaymentMethodComboBox.BeforeTouchSize = new Size(548, 65);
+            purchseItemsPaymentMethodComboBox.BeforeTouchSize = new Size(548, 40);
             purchseItemsPaymentMethodComboBox.Font = new Font("Segoe UI", 18F);
             purchseItemsPaymentMethodComboBox.Location = new Point(958, 960);
             purchseItemsPaymentMethodComboBox.Name = "purchseItemsPaymentMethodComboBox";
-            purchseItemsPaymentMethodComboBox.Size = new Size(548, 65);
+            purchseItemsPaymentMethodComboBox.Size = new Size(548, 40);
             purchseItemsPaymentMethodComboBox.TabIndex = 10;
             // 
             // itemPurchaseMessageLabel
@@ -1073,7 +1073,7 @@
             itemPurchaseMessageLabel.Font = new Font("Segoe UI", 16F);
             itemPurchaseMessageLabel.Location = new Point(128, 1133);
             itemPurchaseMessageLabel.Name = "itemPurchaseMessageLabel";
-            itemPurchaseMessageLabel.Size = new Size(121, 51);
+            itemPurchaseMessageLabel.Size = new Size(71, 30);
             itemPurchaseMessageLabel.TabIndex = 9;
             itemPurchaseMessageLabel.Text = "label1";
             itemPurchaseMessageLabel.Visible = false;
@@ -1313,5 +1313,6 @@
         private Syncfusion.Windows.Forms.Tools.ComboBoxAdv purchseItemsPaymentMethodComboBox;
         private Syncfusion.Windows.Forms.Tools.AutoLabel purchaseItemsPaymentMethodLabel;
         private Label myTicketsErrorLabel;
+        private Syncfusion.Windows.Forms.Chart.ChartControl chartControl1;
     }
 }
