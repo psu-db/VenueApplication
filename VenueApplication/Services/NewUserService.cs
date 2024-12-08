@@ -15,6 +15,7 @@ namespace VenueApplication.Services
     {
         public static bool AttemptSignup(string firstname, string lastname, string email, DateOnly? birthday, string username, string password, DatabaseManager databaseManager)
         {
+            
             // Create necessary related objects
             login_credentials loginCreds = new login_credentials(username, password, email, databaseManager);
             user_wallet wallet = new user_wallet(databaseManager);

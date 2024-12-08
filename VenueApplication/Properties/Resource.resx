@@ -239,11 +239,18 @@ SET tkt_status = @ticket_status
 WHERE tkt_id = @ticket_id;</value>
   </data>
   <data name="ticketPurchase_SELECT" xml:space="preserve">
-    <value>SELECT * FROM ticket_purchase JOIN venue_ticket ON tktpur_tkt_id = tkt_id
-WHERE tktpur_wallet_id = @wallet_id AND tkt_status != 'SCN';</value>
+    <value>SELECT * 
+FROM ticket_purchase 
+JOIN venue_ticket ON tktpur_tkt_id = tkt_id
+WHERE tktpur_wallet_id = @wallet_id AND (tkt_status != 'SCN' AND tkt_status != 'RSL');</value>
   </data>
   <data name="ticketPurchase_SELECTSCANNED" xml:space="preserve">
     <value>SELECT * FROM ticket_purchase JOIN venue_ticket ON tktpur_tkt_id = tkt_id
 WHERE tktpur_wallet_id = @wallet_id AND tkt_status = 'SCN';</value>
+  </data>
+  <data name="myTickets_UPDATE" xml:space="preserve">
+    <value>UPDATE venue_ticket
+SET tkt_status = 'RSL'
+WHERE tkt_id = @ticket_id;</value>
   </data>
 </root>

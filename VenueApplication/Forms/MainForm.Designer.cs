@@ -43,8 +43,6 @@
             homeHeaderTextLabel = new Label();
             homeViewEventTicketsButton = new Syncfusion.WinForms.Controls.SfButton();
             homePageEventsDataGrid = new Syncfusion.WinForms.DataGrid.SfDataGrid();
-            homeEventDatesLabel = new Label();
-            homeDateSelector = new Syncfusion.WinForms.Input.SfCalendar();
             adminToolsTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             tabControlAdv2 = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             adminToolsSelectionTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
@@ -90,6 +88,7 @@
             managStoresEditItemsButton = new Syncfusion.WinForms.Controls.SfButton();
             manageStoresDataGrid = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             myTicketsTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            myTicketsErrorLabel = new Label();
             sellSelectedTicketButton = new Syncfusion.WinForms.Controls.SfButton();
             myTicketsMyTicketsLabel = new Label();
             myTicketsDataGrid = new Syncfusion.WinForms.DataGrid.SfDataGrid();
@@ -103,6 +102,7 @@
             firstlastNameLabel = new Label();
             pictureBox1 = new PictureBox();
             purchaseItemsTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            itemPurchaseMessageLabel = new Label();
             itemPurchasePurchaseButton = new Syncfusion.WinForms.Controls.SfButton();
             itemPurchaseCancelButton = new Syncfusion.WinForms.Controls.SfButton();
             itemPurchaseQuantityTextBox = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
@@ -110,7 +110,6 @@
             purchaseItemsItemDataGrid = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             purhaseItemsStoresDataGrid = new Syncfusion.WinForms.DataGrid.SfDataGrid();
-            itemPurchaseMessageLabel = new Label();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tabControlAdv1).BeginInit();
@@ -151,9 +150,8 @@
             panel1.Controls.Add(tableLayoutPanel1);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(5, 6, 5, 6);
             panel1.Name = "panel1";
-            panel1.Size = new Size(343, 1278);
+            panel1.Size = new Size(200, 652);
             panel1.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -165,8 +163,7 @@
             tableLayoutPanel1.Controls.Add(homeButton, 0, 0);
             tableLayoutPanel1.Controls.Add(profileButton, 0, 1);
             tableLayoutPanel1.Controls.Add(ticketWalletButton, 0, 2);
-            tableLayoutPanel1.Location = new Point(5, 140);
-            tableLayoutPanel1.Margin = new Padding(5, 6, 5, 6);
+            tableLayoutPanel1.Location = new Point(3, 70);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 5;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
@@ -174,17 +171,16 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.Size = new Size(267, 411);
+            tableLayoutPanel1.Size = new Size(156, 206);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // itemPurchaseControlButton
             // 
             itemPurchaseControlButton.Dock = DockStyle.Fill;
             itemPurchaseControlButton.Font = new Font("Segoe UI Semibold", 9F);
-            itemPurchaseControlButton.Location = new Point(5, 334);
-            itemPurchaseControlButton.Margin = new Padding(5, 6, 5, 6);
+            itemPurchaseControlButton.Location = new Point(3, 167);
             itemPurchaseControlButton.Name = "itemPurchaseControlButton";
-            itemPurchaseControlButton.Size = new Size(278, 71);
+            itemPurchaseControlButton.Size = new Size(162, 36);
             itemPurchaseControlButton.TabIndex = 3;
             itemPurchaseControlButton.Text = "Purchase Items";
             itemPurchaseControlButton.Click += itemPurchaseControlButton_Click;
@@ -194,10 +190,9 @@
             adminControlsButton.Dock = DockStyle.Fill;
             adminControlsButton.Enabled = false;
             adminControlsButton.Font = new Font("Segoe UI Semibold", 9F);
-            adminControlsButton.Location = new Point(5, 252);
-            adminControlsButton.Margin = new Padding(5, 6, 5, 6);
+            adminControlsButton.Location = new Point(3, 126);
             adminControlsButton.Name = "adminControlsButton";
-            adminControlsButton.Size = new Size(278, 70);
+            adminControlsButton.Size = new Size(162, 35);
             adminControlsButton.TabIndex = 1;
             adminControlsButton.Text = "Admin Tools";
             adminControlsButton.Visible = false;
@@ -208,10 +203,9 @@
             homeButton.Dock = DockStyle.Fill;
             homeButton.Font = new Font("Segoe UI Semibold", 9F);
             homeButton.ImageAlign = ContentAlignment.MiddleRight;
-            homeButton.Location = new Point(5, 6);
-            homeButton.Margin = new Padding(5, 6, 5, 6);
+            homeButton.Location = new Point(3, 3);
             homeButton.Name = "homeButton";
-            homeButton.Size = new Size(278, 70);
+            homeButton.Size = new Size(162, 35);
             homeButton.TabIndex = 0;
             homeButton.Text = "Home";
             homeButton.Click += homeButton_Click;
@@ -220,10 +214,9 @@
             // 
             profileButton.Dock = DockStyle.Fill;
             profileButton.Font = new Font("Segoe UI Semibold", 9F);
-            profileButton.Location = new Point(5, 88);
-            profileButton.Margin = new Padding(5, 6, 5, 6);
+            profileButton.Location = new Point(3, 44);
             profileButton.Name = "profileButton";
-            profileButton.Size = new Size(278, 70);
+            profileButton.Size = new Size(162, 35);
             profileButton.TabIndex = 1;
             profileButton.Text = "Profile";
             profileButton.Click += profileButton_Click;
@@ -232,35 +225,32 @@
             // 
             ticketWalletButton.Dock = DockStyle.Fill;
             ticketWalletButton.Font = new Font("Segoe UI Semibold", 9F);
-            ticketWalletButton.Location = new Point(5, 170);
-            ticketWalletButton.Margin = new Padding(5, 6, 5, 6);
+            ticketWalletButton.Location = new Point(3, 85);
             ticketWalletButton.Name = "ticketWalletButton";
-            ticketWalletButton.Size = new Size(278, 70);
+            ticketWalletButton.Size = new Size(162, 35);
             ticketWalletButton.TabIndex = 2;
             ticketWalletButton.Text = "My Tickets";
             ticketWalletButton.Click += ticketWalletButton_Click;
             // 
             // dockingClientPanel1
             // 
-            dockingClientPanel1.Location = new Point(1277, 1078);
-            dockingClientPanel1.Margin = new Padding(5, 6, 5, 6);
+            dockingClientPanel1.Location = new Point(745, 539);
             dockingClientPanel1.Name = "dockingClientPanel1";
-            dockingClientPanel1.Size = new Size(39, 22);
+            dockingClientPanel1.Size = new Size(23, 11);
             dockingClientPanel1.TabIndex = 1;
             // 
             // tabControlAdv1
             // 
-            tabControlAdv1.BeforeTouchSize = new Size(2350, 1278);
+            tabControlAdv1.BeforeTouchSize = new Size(1075, 652);
             tabControlAdv1.Controls.Add(homeTab);
             tabControlAdv1.Controls.Add(adminToolsTab);
             tabControlAdv1.Controls.Add(myTicketsTab);
             tabControlAdv1.Controls.Add(profileTab);
             tabControlAdv1.Controls.Add(purchaseItemsTab);
             tabControlAdv1.Dock = DockStyle.Fill;
-            tabControlAdv1.Location = new Point(343, 0);
-            tabControlAdv1.Margin = new Padding(5, 6, 5, 6);
+            tabControlAdv1.Location = new Point(200, 0);
             tabControlAdv1.Name = "tabControlAdv1";
-            tabControlAdv1.Size = new Size(2350, 1278);
+            tabControlAdv1.Size = new Size(1075, 652);
             tabControlAdv1.TabIndex = 2;
             // 
             // homeTab
@@ -270,15 +260,12 @@
             homeTab.Controls.Add(homeHeaderTextLabel);
             homeTab.Controls.Add(homeViewEventTicketsButton);
             homeTab.Controls.Add(homePageEventsDataGrid);
-            homeTab.Controls.Add(homeEventDatesLabel);
-            homeTab.Controls.Add(homeDateSelector);
             homeTab.Image = null;
             homeTab.ImageSize = new Size(16, 16);
-            homeTab.Location = new Point(1, 43);
-            homeTab.Margin = new Padding(5, 6, 5, 6);
+            homeTab.Location = new Point(1, 27);
             homeTab.Name = "homeTab";
             homeTab.ShowCloseButton = true;
-            homeTab.Size = new Size(2347, 1233);
+            homeTab.Size = new Size(1072, 623);
             homeTab.TabIndex = 1;
             homeTab.Text = "Home";
             homeTab.ThemesEnabled = false;
@@ -287,10 +274,9 @@
             // 
             homePagePurchaseTicketButton.Enabled = false;
             homePagePurchaseTicketButton.Font = new Font("Segoe UI Semibold", 9F);
-            homePagePurchaseTicketButton.Location = new Point(982, 970);
-            homePagePurchaseTicketButton.Margin = new Padding(5, 6, 5, 6);
+            homePagePurchaseTicketButton.Location = new Point(573, 485);
             homePagePurchaseTicketButton.Name = "homePagePurchaseTicketButton";
-            homePagePurchaseTicketButton.Size = new Size(165, 56);
+            homePagePurchaseTicketButton.Size = new Size(96, 28);
             homePagePurchaseTicketButton.TabIndex = 6;
             homePagePurchaseTicketButton.Text = "Purchase Ticket";
             homePagePurchaseTicketButton.Visible = false;
@@ -300,10 +286,9 @@
             // 
             homePageErrorLabel.AutoSize = true;
             homePageErrorLabel.ForeColor = Color.Red;
-            homePageErrorLabel.Location = new Point(57, 970);
-            homePageErrorLabel.Margin = new Padding(5, 0, 5, 0);
+            homePageErrorLabel.Location = new Point(33, 485);
             homePageErrorLabel.Name = "homePageErrorLabel";
-            homePageErrorLabel.Size = new Size(112, 30);
+            homePageErrorLabel.Size = new Size(63, 15);
             homePageErrorLabel.TabIndex = 5;
             homePageErrorLabel.Text = "Error Label";
             homePageErrorLabel.Visible = false;
@@ -312,20 +297,18 @@
             // 
             homeHeaderTextLabel.AutoSize = true;
             homeHeaderTextLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            homeHeaderTextLabel.Location = new Point(57, 42);
-            homeHeaderTextLabel.Margin = new Padding(5, 0, 5, 0);
+            homeHeaderTextLabel.Location = new Point(33, 21);
             homeHeaderTextLabel.Name = "homeHeaderTextLabel";
-            homeHeaderTextLabel.Size = new Size(298, 46);
+            homeHeaderTextLabel.Size = new Size(167, 25);
             homeHeaderTextLabel.TabIndex = 4;
             homeHeaderTextLabel.Text = "Upcoming Events";
             // 
             // homeViewEventTicketsButton
             // 
             homeViewEventTicketsButton.Font = new Font("Segoe UI Semibold", 9F);
-            homeViewEventTicketsButton.Location = new Point(1173, 970);
-            homeViewEventTicketsButton.Margin = new Padding(5, 6, 5, 6);
+            homeViewEventTicketsButton.Location = new Point(684, 485);
             homeViewEventTicketsButton.Name = "homeViewEventTicketsButton";
-            homeViewEventTicketsButton.Size = new Size(336, 56);
+            homeViewEventTicketsButton.Size = new Size(196, 28);
             homeViewEventTicketsButton.TabIndex = 3;
             homeViewEventTicketsButton.Text = "View Tickets For Selected Event";
             homeViewEventTicketsButton.Click += homeViewEventTicketsButton_Click;
@@ -333,11 +316,10 @@
             // homePageEventsDataGrid
             // 
             homePageEventsDataGrid.AccessibleName = "Table";
-            homePageEventsDataGrid.Location = new Point(57, 118);
-            homePageEventsDataGrid.Margin = new Padding(5, 6, 5, 6);
+            homePageEventsDataGrid.Location = new Point(33, 59);
             homePageEventsDataGrid.Name = "homePageEventsDataGrid";
             homePageEventsDataGrid.PreviewRowHeight = 49;
-            homePageEventsDataGrid.Size = new Size(1451, 804);
+            homePageEventsDataGrid.Size = new Size(847, 403);
             homePageEventsDataGrid.Style.BorderColor = Color.FromArgb(100, 100, 100);
             homePageEventsDataGrid.Style.CheckBoxStyle.CheckedBackColor = Color.FromArgb(0, 120, 215);
             homePageEventsDataGrid.Style.CheckBoxStyle.CheckedBorderColor = Color.FromArgb(0, 120, 215);
@@ -347,52 +329,30 @@
             homePageEventsDataGrid.Text = "sfDataGrid2";
             homePageEventsDataGrid.SelectionChanged += homePageEventsDataGrid_SelectionChanged;
             // 
-            // homeEventDatesLabel
-            // 
-            homeEventDatesLabel.AutoSize = true;
-            homeEventDatesLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            homeEventDatesLabel.Location = new Point(1637, 112);
-            homeEventDatesLabel.Margin = new Padding(5, 0, 5, 0);
-            homeEventDatesLabel.Name = "homeEventDatesLabel";
-            homeEventDatesLabel.Size = new Size(322, 30);
-            homeEventDatesLabel.TabIndex = 1;
-            homeEventDatesLabel.Text = "View Events For A Specific Date";
-            // 
-            // homeDateSelector
-            // 
-            homeDateSelector.Location = new Point(1605, 180);
-            homeDateSelector.Margin = new Padding(5, 6, 5, 6);
-            homeDateSelector.Name = "homeDateSelector";
-            homeDateSelector.Size = new Size(693, 812);
-            homeDateSelector.TabIndex = 0;
-            homeDateSelector.Text = "sfCalendar1";
-            // 
             // adminToolsTab
             // 
             adminToolsTab.Controls.Add(tabControlAdv2);
             adminToolsTab.Image = null;
             adminToolsTab.ImageSize = new Size(16, 16);
-            adminToolsTab.Location = new Point(1, 43);
-            adminToolsTab.Margin = new Padding(5, 6, 5, 6);
+            adminToolsTab.Location = new Point(1, 27);
             adminToolsTab.Name = "adminToolsTab";
             adminToolsTab.ShowCloseButton = true;
-            adminToolsTab.Size = new Size(2347, 1233);
+            adminToolsTab.Size = new Size(1072, 623);
             adminToolsTab.TabIndex = 4;
             adminToolsTab.Text = "Admin Tools";
             adminToolsTab.ThemesEnabled = false;
             // 
             // tabControlAdv2
             // 
-            tabControlAdv2.BeforeTouchSize = new Size(2347, 1233);
+            tabControlAdv2.BeforeTouchSize = new Size(1072, 623);
             tabControlAdv2.Controls.Add(adminToolsSelectionTab);
             tabControlAdv2.Controls.Add(createNewEventTab);
             tabControlAdv2.Controls.Add(eventManagerTab);
             tabControlAdv2.Controls.Add(manageStoresTab);
             tabControlAdv2.Dock = DockStyle.Fill;
             tabControlAdv2.Location = new Point(0, 0);
-            tabControlAdv2.Margin = new Padding(5, 6, 5, 6);
             tabControlAdv2.Name = "tabControlAdv2";
-            tabControlAdv2.Size = new Size(2347, 1233);
+            tabControlAdv2.Size = new Size(1072, 623);
             tabControlAdv2.TabIndex = 0;
             // 
             // adminToolsSelectionTab
@@ -403,10 +363,9 @@
             adminToolsSelectionTab.Image = null;
             adminToolsSelectionTab.ImageSize = new Size(16, 16);
             adminToolsSelectionTab.Location = new Point(1, 0);
-            adminToolsSelectionTab.Margin = new Padding(5, 6, 5, 6);
             adminToolsSelectionTab.Name = "adminToolsSelectionTab";
             adminToolsSelectionTab.ShowCloseButton = true;
-            adminToolsSelectionTab.Size = new Size(2344, 1231);
+            adminToolsSelectionTab.Size = new Size(1069, 621);
             adminToolsSelectionTab.TabIndex = 1;
             adminToolsSelectionTab.Text = "Admin Tool Selection";
             adminToolsSelectionTab.ThemesEnabled = false;
@@ -414,10 +373,9 @@
             // manageStoresButton
             // 
             manageStoresButton.Font = new Font("Segoe UI Semibold", 9F);
-            manageStoresButton.Location = new Point(1006, 490);
-            manageStoresButton.Margin = new Padding(5, 6, 5, 6);
+            manageStoresButton.Location = new Point(587, 245);
             manageStoresButton.Name = "manageStoresButton";
-            manageStoresButton.Size = new Size(643, 656);
+            manageStoresButton.Size = new Size(375, 328);
             manageStoresButton.TabIndex = 2;
             manageStoresButton.Text = "Manage Stores";
             manageStoresButton.Click += manageStoresButton_Click;
@@ -425,10 +383,9 @@
             // eventManagerButton
             // 
             eventManagerButton.Font = new Font("Segoe UI Semibold", 9F);
-            eventManagerButton.Location = new Point(1822, 490);
-            eventManagerButton.Margin = new Padding(5, 6, 5, 6);
+            eventManagerButton.Location = new Point(1063, 245);
             eventManagerButton.Name = "eventManagerButton";
-            eventManagerButton.Size = new Size(643, 656);
+            eventManagerButton.Size = new Size(375, 328);
             eventManagerButton.TabIndex = 1;
             eventManagerButton.Text = "Manage Existing Event";
             eventManagerButton.Click += eventManagerButton_Click;
@@ -436,10 +393,9 @@
             // switchToCreateNewEventTabButton
             // 
             switchToCreateNewEventTabButton.Font = new Font("Segoe UI Semibold", 9F);
-            switchToCreateNewEventTabButton.Location = new Point(187, 490);
-            switchToCreateNewEventTabButton.Margin = new Padding(5, 6, 5, 6);
+            switchToCreateNewEventTabButton.Location = new Point(109, 245);
             switchToCreateNewEventTabButton.Name = "switchToCreateNewEventTabButton";
-            switchToCreateNewEventTabButton.Size = new Size(643, 656);
+            switchToCreateNewEventTabButton.Size = new Size(375, 328);
             switchToCreateNewEventTabButton.TabIndex = 0;
             switchToCreateNewEventTabButton.Text = "Create New Event";
             switchToCreateNewEventTabButton.Click += switchToCreateNewEventTabButton_Click;
@@ -464,10 +420,9 @@
             createNewEventTab.Image = null;
             createNewEventTab.ImageSize = new Size(16, 16);
             createNewEventTab.Location = new Point(1, 0);
-            createNewEventTab.Margin = new Padding(5, 6, 5, 6);
             createNewEventTab.Name = "createNewEventTab";
             createNewEventTab.ShowCloseButton = true;
-            createNewEventTab.Size = new Size(2344, 1231);
+            createNewEventTab.Size = new Size(1069, 621);
             createNewEventTab.TabIndex = 2;
             createNewEventTab.Text = "Create New Event";
             createNewEventTab.ThemesEnabled = false;
@@ -475,64 +430,65 @@
             // 
             // createEventTypeComboDropDown
             // 
-            createEventTypeComboDropDown.BeforeTouchSize = new Size(211, 53);
+            createEventTypeComboDropDown.BeforeTouchSize = new Size(125, 33);
             createEventTypeComboDropDown.Font = new Font("Segoe UI", 14F);
             createEventTypeComboDropDown.Items.AddRange(new object[] { "Football", "Concert", "Other" });
-            createEventTypeComboDropDown.Location = new Point(490, 796);
-            createEventTypeComboDropDown.Margin = new Padding(3, 4, 3, 4);
+            createEventTypeComboDropDown.Location = new Point(286, 398);
+            createEventTypeComboDropDown.Margin = new Padding(2);
             createEventTypeComboDropDown.Name = "createEventTypeComboDropDown";
-            createEventTypeComboDropDown.Size = new Size(211, 53);
+            createEventTypeComboDropDown.Size = new Size(125, 33);
             createEventTypeComboDropDown.TabIndex = 20;
             // 
             // createEventAMPMComboDropDown
             // 
-            createEventAMPMComboDropDown.BeforeTouchSize = new Size(105, 53);
+            createEventAMPMComboDropDown.BeforeTouchSize = new Size(63, 33);
             createEventAMPMComboDropDown.Font = new Font("Segoe UI", 14F);
             createEventAMPMComboDropDown.Items.AddRange(new object[] { "AM", "PM" });
-            createEventAMPMComboDropDown.Location = new Point(801, 602);
-            createEventAMPMComboDropDown.Margin = new Padding(3, 4, 3, 4);
+            createEventAMPMComboDropDown.Location = new Point(467, 301);
+            createEventAMPMComboDropDown.Margin = new Padding(2);
             createEventAMPMComboDropDown.Name = "createEventAMPMComboDropDown";
-            createEventAMPMComboDropDown.Size = new Size(105, 53);
+            createEventAMPMComboDropDown.Size = new Size(63, 33);
             createEventAMPMComboDropDown.TabIndex = 19;
             // 
             // createEventMinuteComboDropDown
             // 
-            createEventMinuteComboDropDown.BeforeTouchSize = new Size(103, 53);
+            createEventMinuteComboDropDown.BeforeTouchSize = new Size(62, 33);
             createEventMinuteComboDropDown.Font = new Font("Segoe UI", 14F);
             createEventMinuteComboDropDown.Items.AddRange(new object[] { "00", "15", "30", "45" });
-            createEventMinuteComboDropDown.Location = new Point(660, 602);
-            createEventMinuteComboDropDown.Margin = new Padding(3, 4, 3, 4);
+            createEventMinuteComboDropDown.Location = new Point(385, 301);
+            createEventMinuteComboDropDown.Margin = new Padding(2);
             createEventMinuteComboDropDown.Name = "createEventMinuteComboDropDown";
-            createEventMinuteComboDropDown.Size = new Size(103, 53);
+            createEventMinuteComboDropDown.Size = new Size(62, 33);
             createEventMinuteComboDropDown.TabIndex = 18;
             // 
             // createEventHourComboDropDown
             // 
-            createEventHourComboDropDown.BeforeTouchSize = new Size(109, 53);
+            createEventHourComboDropDown.BeforeTouchSize = new Size(65, 33);
             createEventHourComboDropDown.Font = new Font("Segoe UI", 14F);
             createEventHourComboDropDown.Items.AddRange(new object[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" });
-            createEventHourComboDropDown.Location = new Point(490, 602);
-            createEventHourComboDropDown.Margin = new Padding(3, 4, 3, 4);
+            createEventHourComboDropDown.Location = new Point(286, 301);
+            createEventHourComboDropDown.Margin = new Padding(2);
             createEventHourComboDropDown.Name = "createEventHourComboDropDown";
-            createEventHourComboDropDown.Size = new Size(109, 53);
+            createEventHourComboDropDown.Size = new Size(65, 33);
             createEventHourComboDropDown.TabIndex = 17;
             // 
             // createEventColonLabel
             // 
             createEventColonLabel.Font = new Font("Segoe UI", 14F);
-            createEventColonLabel.Location = new Point(617, 602);
+            createEventColonLabel.Location = new Point(360, 301);
+            createEventColonLabel.Margin = new Padding(2, 0, 2, 0);
             createEventColonLabel.Name = "createEventColonLabel";
-            createEventColonLabel.Size = new Size(27, 45);
+            createEventColonLabel.Size = new Size(16, 25);
             createEventColonLabel.TabIndex = 16;
             createEventColonLabel.Text = ":";
             // 
             // createEventCreateButton
             // 
             createEventCreateButton.Font = new Font("Segoe UI Semibold", 9F);
-            createEventCreateButton.Location = new Point(1761, 1078);
-            createEventCreateButton.Margin = new Padding(3, 4, 3, 4);
+            createEventCreateButton.Location = new Point(1027, 539);
+            createEventCreateButton.Margin = new Padding(2);
             createEventCreateButton.Name = "createEventCreateButton";
-            createEventCreateButton.Size = new Size(194, 82);
+            createEventCreateButton.Size = new Size(113, 41);
             createEventCreateButton.TabIndex = 11;
             createEventCreateButton.Text = "Create";
             createEventCreateButton.Click += createEventCreateButton_Click;
@@ -540,10 +496,10 @@
             // createEventCancelButton
             // 
             createEventCancelButton.Font = new Font("Segoe UI Semibold", 9F);
-            createEventCancelButton.Location = new Point(1498, 1078);
-            createEventCancelButton.Margin = new Padding(3, 4, 3, 4);
+            createEventCancelButton.Location = new Point(874, 539);
+            createEventCancelButton.Margin = new Padding(2);
             createEventCancelButton.Name = "createEventCancelButton";
-            createEventCancelButton.Size = new Size(189, 82);
+            createEventCancelButton.Size = new Size(110, 41);
             createEventCancelButton.TabIndex = 10;
             createEventCancelButton.Text = "Cancel";
             createEventCancelButton.Click += createEventCancelButton_Click;
@@ -552,75 +508,79 @@
             // 
             createEventErrorLabel.Font = new Font("Segoe UI", 16F);
             createEventErrorLabel.ForeColor = Color.Red;
-            createEventErrorLabel.Location = new Point(101, 1132);
+            createEventErrorLabel.Location = new Point(59, 566);
+            createEventErrorLabel.Margin = new Padding(2, 0, 2, 0);
             createEventErrorLabel.Name = "createEventErrorLabel";
-            createEventErrorLabel.Size = new Size(414, 51);
+            createEventErrorLabel.Size = new Size(244, 30);
             createEventErrorLabel.TabIndex = 9;
             createEventErrorLabel.Text = "Create event error label";
             createEventErrorLabel.Visible = false;
             // 
             // createEventDescriptionTextBox
             // 
-            createEventDescriptionTextBox.BeforeTouchSize = new Size(175, 63);
+            createEventDescriptionTextBox.BeforeTouchSize = new Size(104, 39);
             createEventDescriptionTextBox.Font = new Font("Segoe UI", 12F);
-            createEventDescriptionTextBox.Location = new Point(490, 992);
-            createEventDescriptionTextBox.Margin = new Padding(3, 4, 3, 4);
+            createEventDescriptionTextBox.Location = new Point(286, 496);
+            createEventDescriptionTextBox.Margin = new Padding(2);
             createEventDescriptionTextBox.Name = "createEventDescriptionTextBox";
-            createEventDescriptionTextBox.Size = new Size(640, 45);
+            createEventDescriptionTextBox.Size = new Size(375, 29);
             createEventDescriptionTextBox.TabIndex = 8;
             // 
             // createEventCalendar
             // 
-            createEventCalendar.Location = new Point(430, 126);
-            createEventCalendar.Margin = new Padding(3, 4, 3, 4);
+            createEventCalendar.Location = new Point(251, 63);
+            createEventCalendar.Margin = new Padding(2);
             createEventCalendar.Name = "createEventCalendar";
-            createEventCalendar.Size = new Size(693, 812);
+            createEventCalendar.Size = new Size(399, 406);
             createEventCalendar.TabIndex = 5;
             createEventCalendar.Text = "sfCalendar1";
             // 
             // createEventDescriptionLabel
             // 
             createEventDescriptionLabel.Font = new Font("Segoe UI", 16F);
-            createEventDescriptionLabel.Location = new Point(74, 980);
+            createEventDescriptionLabel.Location = new Point(43, 490);
+            createEventDescriptionLabel.Margin = new Padding(2, 0, 2, 0);
             createEventDescriptionLabel.Name = "createEventDescriptionLabel";
-            createEventDescriptionLabel.Size = new Size(323, 51);
+            createEventDescriptionLabel.Size = new Size(186, 30);
             createEventDescriptionLabel.TabIndex = 4;
             createEventDescriptionLabel.Text = "Event Description:";
             // 
             // createEventTypeLabel
             // 
             createEventTypeLabel.Font = new Font("Segoe UI", 16F);
-            createEventTypeLabel.Location = new Point(182, 796);
+            createEventTypeLabel.Location = new Point(106, 398);
+            createEventTypeLabel.Margin = new Padding(2, 0, 2, 0);
             createEventTypeLabel.Name = "createEventTypeLabel";
-            createEventTypeLabel.Size = new Size(210, 51);
+            createEventTypeLabel.Size = new Size(124, 30);
             createEventTypeLabel.TabIndex = 3;
             createEventTypeLabel.Text = "Event Type:";
             // 
             // createEventTimeLabel
             // 
             createEventTimeLabel.Font = new Font("Segoe UI", 16F);
-            createEventTimeLabel.Location = new Point(182, 596);
+            createEventTimeLabel.Location = new Point(106, 298);
+            createEventTimeLabel.Margin = new Padding(2, 0, 2, 0);
             createEventTimeLabel.Name = "createEventTimeLabel";
-            createEventTimeLabel.Size = new Size(214, 51);
+            createEventTimeLabel.Size = new Size(125, 30);
             createEventTimeLabel.TabIndex = 2;
             createEventTimeLabel.Text = "Event Time:";
             // 
             // createEventDateLabel
             // 
             createEventDateLabel.Font = new Font("Segoe UI", 16F);
-            createEventDateLabel.Location = new Point(185, 196);
+            createEventDateLabel.Location = new Point(108, 98);
+            createEventDateLabel.Margin = new Padding(2, 0, 2, 0);
             createEventDateLabel.Name = "createEventDateLabel";
-            createEventDateLabel.Size = new Size(211, 51);
+            createEventDateLabel.Size = new Size(122, 30);
             createEventDateLabel.TabIndex = 1;
             createEventDateLabel.Text = "Event Date:";
             // 
             // createEventButton
             // 
             createEventButton.Font = new Font("Segoe UI Semibold", 9F);
-            createEventButton.Location = new Point(2470, 1400);
-            createEventButton.Margin = new Padding(5, 6, 5, 6);
+            createEventButton.Location = new Point(1441, 700);
             createEventButton.Name = "createEventButton";
-            createEventButton.Size = new Size(262, 124);
+            createEventButton.Size = new Size(153, 62);
             createEventButton.TabIndex = 0;
             createEventButton.Text = "Create Event";
             // 
@@ -636,10 +596,9 @@
             eventManagerTab.Image = null;
             eventManagerTab.ImageSize = new Size(16, 16);
             eventManagerTab.Location = new Point(1, 0);
-            eventManagerTab.Margin = new Padding(5, 6, 5, 6);
             eventManagerTab.Name = "eventManagerTab";
             eventManagerTab.ShowCloseButton = true;
-            eventManagerTab.Size = new Size(2344, 1231);
+            eventManagerTab.Size = new Size(1069, 621);
             eventManagerTab.TabIndex = 3;
             eventManagerTab.Text = "Event Manager";
             eventManagerTab.ThemesEnabled = false;
@@ -648,29 +607,30 @@
             // 
             eventManagerErrorLabel.Font = new Font("Segoe UI", 12F);
             eventManagerErrorLabel.ForeColor = Color.Red;
-            eventManagerErrorLabel.Location = new Point(276, 784);
+            eventManagerErrorLabel.Location = new Point(161, 392);
+            eventManagerErrorLabel.Margin = new Padding(2, 0, 2, 0);
             eventManagerErrorLabel.Name = "eventManagerErrorLabel";
-            eventManagerErrorLabel.Size = new Size(145, 38);
+            eventManagerErrorLabel.Size = new Size(82, 21);
             eventManagerErrorLabel.TabIndex = 6;
             eventManagerErrorLabel.Text = "error label";
             // 
             // manageEventCloseEventButton
             // 
             manageEventCloseEventButton.Font = new Font("Segoe UI Semibold", 9F);
-            manageEventCloseEventButton.Location = new Point(1798, 884);
-            manageEventCloseEventButton.Margin = new Padding(3, 4, 3, 4);
+            manageEventCloseEventButton.Location = new Point(1049, 442);
+            manageEventCloseEventButton.Margin = new Padding(2);
             manageEventCloseEventButton.Name = "manageEventCloseEventButton";
-            manageEventCloseEventButton.Size = new Size(245, 108);
+            manageEventCloseEventButton.Size = new Size(143, 54);
             manageEventCloseEventButton.TabIndex = 5;
             manageEventCloseEventButton.Text = "Close Event";
             // 
             // manageEventScanTicketsButton
             // 
             manageEventScanTicketsButton.Font = new Font("Segoe UI Semibold", 9F);
-            manageEventScanTicketsButton.Location = new Point(1262, 884);
-            manageEventScanTicketsButton.Margin = new Padding(3, 4, 3, 4);
+            manageEventScanTicketsButton.Location = new Point(736, 442);
+            manageEventScanTicketsButton.Margin = new Padding(2);
             manageEventScanTicketsButton.Name = "manageEventScanTicketsButton";
-            manageEventScanTicketsButton.Size = new Size(245, 108);
+            manageEventScanTicketsButton.Size = new Size(143, 54);
             manageEventScanTicketsButton.TabIndex = 4;
             manageEventScanTicketsButton.Text = "Scan Tickets";
             manageEventScanTicketsButton.Click += manageEventScanTicketsButton_Click;
@@ -678,10 +638,10 @@
             // manageEventManageTicketsButton
             // 
             manageEventManageTicketsButton.Font = new Font("Segoe UI Semibold", 9F);
-            manageEventManageTicketsButton.Location = new Point(754, 884);
-            manageEventManageTicketsButton.Margin = new Padding(3, 4, 3, 4);
+            manageEventManageTicketsButton.Location = new Point(440, 442);
+            manageEventManageTicketsButton.Margin = new Padding(2);
             manageEventManageTicketsButton.Name = "manageEventManageTicketsButton";
-            manageEventManageTicketsButton.Size = new Size(245, 108);
+            manageEventManageTicketsButton.Size = new Size(143, 54);
             manageEventManageTicketsButton.TabIndex = 3;
             manageEventManageTicketsButton.Text = "Manage Tickets";
             manageEventManageTicketsButton.Click += manageEventManageTicketsButton_Click;
@@ -689,10 +649,10 @@
             // manageEventEditEventButton
             // 
             manageEventEditEventButton.Font = new Font("Segoe UI Semibold", 9F);
-            manageEventEditEventButton.Location = new Point(273, 884);
-            manageEventEditEventButton.Margin = new Padding(3, 4, 3, 4);
+            manageEventEditEventButton.Location = new Point(159, 442);
+            manageEventEditEventButton.Margin = new Padding(2);
             manageEventEditEventButton.Name = "manageEventEditEventButton";
-            manageEventEditEventButton.Size = new Size(245, 108);
+            manageEventEditEventButton.Size = new Size(143, 54);
             manageEventEditEventButton.TabIndex = 2;
             manageEventEditEventButton.Text = "Edit Event";
             manageEventEditEventButton.Click += manageEventEditEventButton_Click;
@@ -700,10 +660,10 @@
             // manageEventCancelButton
             // 
             manageEventCancelButton.Font = new Font("Segoe UI Semibold", 9F);
-            manageEventCancelButton.Location = new Point(1817, 1336);
-            manageEventCancelButton.Margin = new Padding(3, 4, 3, 4);
+            manageEventCancelButton.Location = new Point(1060, 668);
+            manageEventCancelButton.Margin = new Padding(2);
             manageEventCancelButton.Name = "manageEventCancelButton";
-            manageEventCancelButton.Size = new Size(226, 88);
+            manageEventCancelButton.Size = new Size(132, 44);
             manageEventCancelButton.TabIndex = 1;
             manageEventCancelButton.Text = "Cancel";
             manageEventCancelButton.Click += manageEventCancelButton_Click;
@@ -712,11 +672,11 @@
             // 
             manageEventDataGrid.AccessibleName = "Table";
             manageEventDataGrid.AllowResizingColumns = true;
-            manageEventDataGrid.Location = new Point(273, 72);
-            manageEventDataGrid.Margin = new Padding(3, 4, 3, 4);
+            manageEventDataGrid.Location = new Point(159, 36);
+            manageEventDataGrid.Margin = new Padding(2);
             manageEventDataGrid.Name = "manageEventDataGrid";
             manageEventDataGrid.PreviewRowHeight = 49;
-            manageEventDataGrid.Size = new Size(1769, 630);
+            manageEventDataGrid.Size = new Size(1033, 316);
             manageEventDataGrid.Style.BorderColor = Color.FromArgb(100, 100, 100);
             manageEventDataGrid.Style.CheckBoxStyle.CheckedBackColor = Color.FromArgb(0, 120, 215);
             manageEventDataGrid.Style.CheckBoxStyle.CheckedBorderColor = Color.FromArgb(0, 120, 215);
@@ -744,70 +704,73 @@
             manageStoresTab.Image = null;
             manageStoresTab.ImageSize = new Size(28, 28);
             manageStoresTab.Location = new Point(1, 0);
-            manageStoresTab.Margin = new Padding(3, 4, 3, 4);
+            manageStoresTab.Margin = new Padding(2);
             manageStoresTab.Name = "manageStoresTab";
             manageStoresTab.ShowCloseButton = true;
-            manageStoresTab.Size = new Size(2344, 1231);
+            manageStoresTab.Size = new Size(1069, 621);
             manageStoresTab.TabIndex = 4;
             manageStoresTab.Text = "Manage Stores";
             manageStoresTab.ThemesEnabled = false;
             // 
             // manageStoreTypeComboBox
             // 
-            manageStoreTypeComboBox.BeforeTouchSize = new Size(211, 46);
+            manageStoreTypeComboBox.BeforeTouchSize = new Size(125, 29);
             manageStoreTypeComboBox.Font = new Font("Segoe UI", 12F);
             manageStoreTypeComboBox.Items.AddRange(new object[] { "merchandise", "concession" });
-            manageStoreTypeComboBox.Location = new Point(1558, 560);
-            manageStoreTypeComboBox.Margin = new Padding(3, 4, 3, 4);
+            manageStoreTypeComboBox.Location = new Point(909, 280);
+            manageStoreTypeComboBox.Margin = new Padding(2);
             manageStoreTypeComboBox.Name = "manageStoreTypeComboBox";
-            manageStoreTypeComboBox.Size = new Size(211, 46);
+            manageStoreTypeComboBox.Size = new Size(125, 29);
             manageStoreTypeComboBox.TabIndex = 13;
             // 
             // manageStoreLocationComboBox
             // 
-            manageStoreLocationComboBox.BeforeTouchSize = new Size(211, 46);
+            manageStoreLocationComboBox.BeforeTouchSize = new Size(125, 29);
             manageStoreLocationComboBox.Font = new Font("Segoe UI", 12F);
             manageStoreLocationComboBox.Items.AddRange(new object[] { "EB", "EF", "NL", "NG", "NC", "WH", "WD", "SK", "SF", "EAU", "EEU", "EJU", "NHU", "NDU", "WHU", "WEU", "WAU", "SLU", "SGU", "SCU" });
-            manageStoreLocationComboBox.Location = new Point(1017, 560);
-            manageStoreLocationComboBox.Margin = new Padding(3, 4, 3, 4);
+            manageStoreLocationComboBox.Location = new Point(593, 280);
+            manageStoreLocationComboBox.Margin = new Padding(2);
             manageStoreLocationComboBox.Name = "manageStoreLocationComboBox";
-            manageStoreLocationComboBox.Size = new Size(211, 46);
+            manageStoreLocationComboBox.Size = new Size(125, 29);
             manageStoreLocationComboBox.TabIndex = 12;
             // 
             // manageStoreNameTextBox
             // 
-            manageStoreNameTextBox.BeforeTouchSize = new Size(175, 63);
+            manageStoreNameTextBox.BeforeTouchSize = new Size(104, 39);
             manageStoreNameTextBox.Font = new Font("Segoe UI", 12F);
-            manageStoreNameTextBox.Location = new Point(190, 562);
-            manageStoreNameTextBox.Margin = new Padding(3, 4, 3, 4);
+            manageStoreNameTextBox.Location = new Point(111, 281);
+            manageStoreNameTextBox.Margin = new Padding(2);
             manageStoreNameTextBox.Name = "manageStoreNameTextBox";
-            manageStoreNameTextBox.Size = new Size(397, 45);
+            manageStoreNameTextBox.Size = new Size(233, 29);
             manageStoreNameTextBox.TabIndex = 11;
             // 
             // autoLabel3
             // 
             autoLabel3.Font = new Font("Segoe UI", 12F);
-            autoLabel3.Location = new Point(766, 562);
+            autoLabel3.Location = new Point(447, 281);
+            autoLabel3.Margin = new Padding(2, 0, 2, 0);
             autoLabel3.Name = "autoLabel3";
-            autoLabel3.Size = new Size(226, 38);
+            autoLabel3.Size = new Size(127, 21);
             autoLabel3.TabIndex = 10;
             autoLabel3.Text = "Section Location:";
             // 
             // autoLabel2
             // 
             autoLabel2.Font = new Font("Segoe UI", 12F);
-            autoLabel2.Location = new Point(1394, 562);
+            autoLabel2.Location = new Point(813, 281);
+            autoLabel2.Margin = new Padding(2, 0, 2, 0);
             autoLabel2.Name = "autoLabel2";
-            autoLabel2.Size = new Size(153, 38);
+            autoLabel2.Size = new Size(85, 21);
             autoLabel2.TabIndex = 9;
             autoLabel2.Text = "Store Type:";
             // 
             // autoLabel1
             // 
             autoLabel1.Font = new Font("Segoe UI", 12F);
-            autoLabel1.Location = new Point(87, 562);
+            autoLabel1.Location = new Point(51, 281);
+            autoLabel1.Margin = new Padding(2, 0, 2, 0);
             autoLabel1.Name = "autoLabel1";
-            autoLabel1.Size = new Size(97, 38);
+            autoLabel1.Size = new Size(55, 21);
             autoLabel1.TabIndex = 8;
             autoLabel1.Text = "Name:";
             // 
@@ -815,9 +778,10 @@
             // 
             manageStoresLabel.Font = new Font("Segoe UI", 18F);
             manageStoresLabel.ForeColor = Color.Red;
-            manageStoresLabel.Location = new Point(87, 1064);
+            manageStoresLabel.Location = new Point(51, 532);
+            manageStoresLabel.Margin = new Padding(2, 0, 2, 0);
             manageStoresLabel.Name = "manageStoresLabel";
-            manageStoresLabel.Size = new Size(230, 57);
+            manageStoresLabel.Size = new Size(131, 32);
             manageStoresLabel.TabIndex = 7;
             manageStoresLabel.Text = "autoLabel1";
             manageStoresLabel.Visible = false;
@@ -825,10 +789,10 @@
             // manageStoresCancelButton
             // 
             manageStoresCancelButton.Font = new Font("Segoe UI Semibold", 9F);
-            manageStoresCancelButton.Location = new Point(1776, 1084);
-            manageStoresCancelButton.Margin = new Padding(3, 4, 3, 4);
+            manageStoresCancelButton.Location = new Point(1036, 542);
+            manageStoresCancelButton.Margin = new Padding(2);
             manageStoresCancelButton.Name = "manageStoresCancelButton";
-            manageStoresCancelButton.Size = new Size(168, 48);
+            manageStoresCancelButton.Size = new Size(98, 24);
             manageStoresCancelButton.TabIndex = 6;
             manageStoresCancelButton.Text = "Cancel";
             manageStoresCancelButton.Click += manageStoresCancelButton_Click;
@@ -836,10 +800,10 @@
             // manageStoresCreateButton
             // 
             manageStoresCreateButton.Font = new Font("Segoe UI Semibold", 12F);
-            manageStoresCreateButton.Location = new Point(87, 730);
-            manageStoresCreateButton.Margin = new Padding(3, 4, 3, 4);
+            manageStoresCreateButton.Location = new Point(51, 365);
+            manageStoresCreateButton.Margin = new Padding(2);
             manageStoresCreateButton.Name = "manageStoresCreateButton";
-            manageStoresCreateButton.Size = new Size(333, 248);
+            manageStoresCreateButton.Size = new Size(194, 124);
             manageStoresCreateButton.TabIndex = 5;
             manageStoresCreateButton.Text = "Create";
             manageStoresCreateButton.Click += manageStoresCreateButton_Click;
@@ -847,10 +811,10 @@
             // manageStoresDeleteButton
             // 
             manageStoresDeleteButton.Font = new Font("Segoe UI Semibold", 12F);
-            manageStoresDeleteButton.Location = new Point(1611, 716);
-            manageStoresDeleteButton.Margin = new Padding(3, 4, 3, 4);
+            manageStoresDeleteButton.Location = new Point(940, 358);
+            manageStoresDeleteButton.Margin = new Padding(2);
             manageStoresDeleteButton.Name = "manageStoresDeleteButton";
-            manageStoresDeleteButton.Size = new Size(333, 248);
+            manageStoresDeleteButton.Size = new Size(194, 124);
             manageStoresDeleteButton.TabIndex = 4;
             manageStoresDeleteButton.Text = "Delete";
             manageStoresDeleteButton.Click += manageStoresDeleteButton_Click;
@@ -858,10 +822,10 @@
             // managStoresUpdateButton
             // 
             managStoresUpdateButton.Font = new Font("Segoe UI Semibold", 12F);
-            managStoresUpdateButton.Location = new Point(615, 730);
-            managStoresUpdateButton.Margin = new Padding(3, 4, 3, 4);
+            managStoresUpdateButton.Location = new Point(359, 365);
+            managStoresUpdateButton.Margin = new Padding(2);
             managStoresUpdateButton.Name = "managStoresUpdateButton";
-            managStoresUpdateButton.Size = new Size(333, 248);
+            managStoresUpdateButton.Size = new Size(194, 124);
             managStoresUpdateButton.TabIndex = 3;
             managStoresUpdateButton.Text = "Edit Store";
             managStoresUpdateButton.Click += managStoresUpdateButton_Click;
@@ -869,10 +833,10 @@
             // managStoresEditItemsButton
             // 
             managStoresEditItemsButton.Font = new Font("Segoe UI Semibold", 12F);
-            managStoresEditItemsButton.Location = new Point(1119, 730);
-            managStoresEditItemsButton.Margin = new Padding(3, 4, 3, 4);
+            managStoresEditItemsButton.Location = new Point(653, 365);
+            managStoresEditItemsButton.Margin = new Padding(2);
             managStoresEditItemsButton.Name = "managStoresEditItemsButton";
-            managStoresEditItemsButton.Size = new Size(333, 248);
+            managStoresEditItemsButton.Size = new Size(194, 124);
             managStoresEditItemsButton.TabIndex = 2;
             managStoresEditItemsButton.Text = "Edit Items";
             managStoresEditItemsButton.Click += managStoresEditItemsButton_Click;
@@ -880,11 +844,11 @@
             // manageStoresDataGrid
             // 
             manageStoresDataGrid.AccessibleName = "Table";
-            manageStoresDataGrid.Location = new Point(87, 60);
-            manageStoresDataGrid.Margin = new Padding(3, 4, 3, 4);
+            manageStoresDataGrid.Location = new Point(51, 30);
+            manageStoresDataGrid.Margin = new Padding(2);
             manageStoresDataGrid.Name = "manageStoresDataGrid";
             manageStoresDataGrid.PreviewRowHeight = 49;
-            manageStoresDataGrid.Size = new Size(1857, 350);
+            manageStoresDataGrid.Size = new Size(1084, 176);
             manageStoresDataGrid.Style.BorderColor = Color.FromArgb(100, 100, 100);
             manageStoresDataGrid.Style.CheckBoxStyle.CheckedBackColor = Color.FromArgb(0, 120, 215);
             manageStoresDataGrid.Style.CheckBoxStyle.CheckedBorderColor = Color.FromArgb(0, 120, 215);
@@ -896,49 +860,58 @@
             // 
             // myTicketsTab
             // 
+            myTicketsTab.Controls.Add(myTicketsErrorLabel);
             myTicketsTab.Controls.Add(sellSelectedTicketButton);
             myTicketsTab.Controls.Add(myTicketsMyTicketsLabel);
             myTicketsTab.Controls.Add(myTicketsDataGrid);
             myTicketsTab.Image = null;
             myTicketsTab.ImageSize = new Size(16, 16);
-            myTicketsTab.Location = new Point(1, 43);
-            myTicketsTab.Margin = new Padding(5, 6, 5, 6);
+            myTicketsTab.Location = new Point(1, 27);
             myTicketsTab.Name = "myTicketsTab";
             myTicketsTab.ShowCloseButton = true;
-            myTicketsTab.Size = new Size(2347, 1233);
+            myTicketsTab.Size = new Size(1072, 623);
             myTicketsTab.TabIndex = 3;
             myTicketsTab.Text = "My Tickets";
             myTicketsTab.ThemesEnabled = false;
             // 
+            // myTicketsErrorLabel
+            // 
+            myTicketsErrorLabel.AutoSize = true;
+            myTicketsErrorLabel.ForeColor = Color.Red;
+            myTicketsErrorLabel.Location = new Point(47, 459);
+            myTicketsErrorLabel.Name = "myTicketsErrorLabel";
+            myTicketsErrorLabel.Size = new Size(55, 15);
+            myTicketsErrorLabel.TabIndex = 4;
+            myTicketsErrorLabel.Text = "Error text";
+            myTicketsErrorLabel.Visible = false;
+            // 
             // sellSelectedTicketButton
             // 
             sellSelectedTicketButton.Font = new Font("Segoe UI Semibold", 9F);
-            sellSelectedTicketButton.Location = new Point(1114, 918);
-            sellSelectedTicketButton.Margin = new Padding(5, 6, 5, 6);
+            sellSelectedTicketButton.Location = new Point(650, 459);
             sellSelectedTicketButton.Name = "sellSelectedTicketButton";
-            sellSelectedTicketButton.Size = new Size(255, 56);
+            sellSelectedTicketButton.Size = new Size(149, 28);
             sellSelectedTicketButton.TabIndex = 3;
             sellSelectedTicketButton.Text = "Sell Selected Ticket";
+            sellSelectedTicketButton.Click += sellSelectedTicketButton_Click;
             // 
             // myTicketsMyTicketsLabel
             // 
             myTicketsMyTicketsLabel.AutoSize = true;
             myTicketsMyTicketsLabel.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            myTicketsMyTicketsLabel.Location = new Point(81, 26);
-            myTicketsMyTicketsLabel.Margin = new Padding(5, 0, 5, 0);
+            myTicketsMyTicketsLabel.Location = new Point(47, 13);
             myTicketsMyTicketsLabel.Name = "myTicketsMyTicketsLabel";
-            myTicketsMyTicketsLabel.Size = new Size(285, 68);
+            myTicketsMyTicketsLabel.Size = new Size(164, 40);
             myTicketsMyTicketsLabel.TabIndex = 2;
             myTicketsMyTicketsLabel.Text = "My Tickets";
             // 
             // myTicketsDataGrid
             // 
             myTicketsDataGrid.AccessibleName = "Table";
-            myTicketsDataGrid.Location = new Point(81, 112);
-            myTicketsDataGrid.Margin = new Padding(5, 6, 5, 6);
+            myTicketsDataGrid.Location = new Point(47, 56);
             myTicketsDataGrid.Name = "myTicketsDataGrid";
             myTicketsDataGrid.PreviewRowHeight = 49;
-            myTicketsDataGrid.Size = new Size(1288, 750);
+            myTicketsDataGrid.Size = new Size(752, 376);
             myTicketsDataGrid.Style.BorderColor = Color.FromArgb(100, 100, 100);
             myTicketsDataGrid.Style.CheckBoxStyle.CheckedBackColor = Color.FromArgb(0, 120, 215);
             myTicketsDataGrid.Style.CheckBoxStyle.CheckedBorderColor = Color.FromArgb(0, 120, 215);
@@ -946,6 +919,7 @@
             myTicketsDataGrid.Style.HyperlinkStyle.DefaultLinkColor = Color.FromArgb(0, 120, 215);
             myTicketsDataGrid.TabIndex = 1;
             myTicketsDataGrid.Text = "sfDataGrid1";
+            myTicketsDataGrid.SelectionChanged += myTicketsDataGrid_SelectionChanged;
             // 
             // profileTab
             // 
@@ -959,11 +933,10 @@
             profileTab.Controls.Add(pictureBox1);
             profileTab.Image = null;
             profileTab.ImageSize = new Size(16, 16);
-            profileTab.Location = new Point(1, 43);
-            profileTab.Margin = new Padding(5, 6, 5, 6);
+            profileTab.Location = new Point(1, 27);
             profileTab.Name = "profileTab";
             profileTab.ShowCloseButton = true;
-            profileTab.Size = new Size(2347, 1233);
+            profileTab.Size = new Size(1072, 623);
             profileTab.TabIndex = 2;
             profileTab.Text = "Profile";
             profileTab.ThemesEnabled = false;
@@ -972,10 +945,9 @@
             // 
             profileAccountBalanceValueLabel.AutoSize = true;
             profileAccountBalanceValueLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            profileAccountBalanceValueLabel.Location = new Point(809, 246);
-            profileAccountBalanceValueLabel.Margin = new Padding(5, 0, 5, 0);
+            profileAccountBalanceValueLabel.Location = new Point(472, 123);
             profileAccountBalanceValueLabel.Name = "profileAccountBalanceValueLabel";
-            profileAccountBalanceValueLabel.Size = new Size(67, 30);
+            profileAccountBalanceValueLabel.Size = new Size(38, 15);
             profileAccountBalanceValueLabel.TabIndex = 7;
             profileAccountBalanceValueLabel.Text = "$0.00";
             // 
@@ -983,20 +955,18 @@
             // 
             profileAccountBalanceLabel.AutoSize = true;
             profileAccountBalanceLabel.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            profileAccountBalanceLabel.Location = new Point(578, 236);
-            profileAccountBalanceLabel.Margin = new Padding(5, 0, 5, 0);
+            profileAccountBalanceLabel.Location = new Point(337, 118);
             profileAccountBalanceLabel.Name = "profileAccountBalanceLabel";
-            profileAccountBalanceLabel.Size = new Size(235, 37);
+            profileAccountBalanceLabel.Size = new Size(129, 20);
             profileAccountBalanceLabel.TabIndex = 6;
             profileAccountBalanceLabel.Text = "Account Balance:";
             // 
             // addNewPaymentMethodButton
             // 
             addNewPaymentMethodButton.Font = new Font("Segoe UI Semibold", 9F);
-            addNewPaymentMethodButton.Location = new Point(578, 466);
-            addNewPaymentMethodButton.Margin = new Padding(5, 6, 5, 6);
+            addNewPaymentMethodButton.Location = new Point(337, 233);
             addNewPaymentMethodButton.Name = "addNewPaymentMethodButton";
-            addNewPaymentMethodButton.Size = new Size(269, 56);
+            addNewPaymentMethodButton.Size = new Size(157, 28);
             addNewPaymentMethodButton.TabIndex = 5;
             addNewPaymentMethodButton.Text = "Add new payment method";
             addNewPaymentMethodButton.Click += addNewPaymentMethodButton_Click;
@@ -1005,32 +975,30 @@
             // 
             paymentMethodsLabel.AutoSize = true;
             paymentMethodsLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            paymentMethodsLabel.Location = new Point(578, 324);
-            paymentMethodsLabel.Margin = new Padding(5, 0, 5, 0);
+            paymentMethodsLabel.Location = new Point(337, 162);
             paymentMethodsLabel.Name = "paymentMethodsLabel";
-            paymentMethodsLabel.Size = new Size(197, 30);
+            paymentMethodsLabel.Size = new Size(111, 15);
             paymentMethodsLabel.TabIndex = 4;
             paymentMethodsLabel.Text = "Payment Methods:";
             // 
             // paymentMethodsComboBox
             // 
-            paymentMethodsComboBox.BeforeTouchSize = new Size(340, 38);
-            paymentMethodsComboBox.Location = new Point(578, 378);
-            paymentMethodsComboBox.Margin = new Padding(5, 6, 5, 6);
+            paymentMethodsComboBox.BeforeTouchSize = new Size(200, 23);
+            paymentMethodsComboBox.Location = new Point(337, 189);
             paymentMethodsComboBox.Name = "paymentMethodsComboBox";
-            paymentMethodsComboBox.Size = new Size(340, 38);
+            paymentMethodsComboBox.Size = new Size(200, 23);
             paymentMethodsComboBox.TabIndex = 3;
             paymentMethodsComboBox.Text = "Click to view";
+            paymentMethodsComboBox.SelectedValueChanged += paymentMethodsComboBox_SelectedValueChanged;
             // 
             // signOutButton
             // 
             signOutButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             signOutButton.Font = new Font("Segoe UI Semibold", 9F);
             signOutButton.ForeColor = Color.FromArgb(192, 0, 0);
-            signOutButton.Location = new Point(2002, 1122);
-            signOutButton.Margin = new Padding(5, 6, 5, 6);
+            signOutButton.Location = new Point(872, 574);
             signOutButton.Name = "signOutButton";
-            signOutButton.Size = new Size(307, 56);
+            signOutButton.Size = new Size(179, 28);
             signOutButton.Style.ForeColor = Color.FromArgb(192, 0, 0);
             signOutButton.TabIndex = 2;
             signOutButton.Text = "Sign Out";
@@ -1040,20 +1008,18 @@
             // 
             firstlastNameLabel.AutoSize = true;
             firstlastNameLabel.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            firstlastNameLabel.Location = new Point(578, 42);
-            firstlastNameLabel.Margin = new Padding(5, 0, 5, 0);
+            firstlastNameLabel.Location = new Point(337, 21);
             firstlastNameLabel.Name = "firstlastNameLabel";
-            firstlastNameLabel.Size = new Size(618, 84);
+            firstlastNameLabel.Size = new Size(349, 47);
             firstlastNameLabel.TabIndex = 1;
             firstlastNameLabel.Text = "Firstname Lastname";
             // 
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resource.pngtree_avatar_icon_profile_member_login_vector_isolated_silhouette_transparent_png_image_7111828;
-            pictureBox1.Location = new Point(5, 6);
-            pictureBox1.Margin = new Padding(5, 6, 5, 6);
+            pictureBox1.Location = new Point(3, 3);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(530, 620);
+            pictureBox1.Size = new Size(309, 310);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
@@ -1069,20 +1035,34 @@
             purchaseItemsTab.Controls.Add(purhaseItemsStoresDataGrid);
             purchaseItemsTab.Image = null;
             purchaseItemsTab.ImageSize = new Size(28, 28);
-            purchaseItemsTab.Location = new Point(1, 43);
+            purchaseItemsTab.Location = new Point(1, 27);
+            purchaseItemsTab.Margin = new Padding(2);
             purchaseItemsTab.Name = "purchaseItemsTab";
             purchaseItemsTab.ShowCloseButton = true;
-            purchaseItemsTab.Size = new Size(2347, 1233);
+            purchaseItemsTab.Size = new Size(1072, 623);
             purchaseItemsTab.TabIndex = 5;
             purchaseItemsTab.Text = "Purchase Items";
             purchaseItemsTab.ThemesEnabled = false;
             // 
+            // itemPurchaseMessageLabel
+            // 
+            itemPurchaseMessageLabel.AutoSize = true;
+            itemPurchaseMessageLabel.Font = new Font("Segoe UI", 16F);
+            itemPurchaseMessageLabel.Location = new Point(75, 566);
+            itemPurchaseMessageLabel.Margin = new Padding(2, 0, 2, 0);
+            itemPurchaseMessageLabel.Name = "itemPurchaseMessageLabel";
+            itemPurchaseMessageLabel.Size = new Size(71, 30);
+            itemPurchaseMessageLabel.TabIndex = 9;
+            itemPurchaseMessageLabel.Text = "label1";
+            itemPurchaseMessageLabel.Visible = false;
+            // 
             // itemPurchasePurchaseButton
             // 
             itemPurchasePurchaseButton.Font = new Font("Segoe UI Semibold", 12F);
-            itemPurchasePurchaseButton.Location = new Point(1746, 1102);
+            itemPurchasePurchaseButton.Location = new Point(1018, 551);
+            itemPurchasePurchaseButton.Margin = new Padding(2);
             itemPurchasePurchaseButton.Name = "itemPurchasePurchaseButton";
-            itemPurchasePurchaseButton.Size = new Size(351, 121);
+            itemPurchasePurchaseButton.Size = new Size(205, 60);
             itemPurchasePurchaseButton.TabIndex = 8;
             itemPurchasePurchaseButton.Text = "Purchase";
             itemPurchasePurchaseButton.Click += itemPurchasePurchaseButton_Click;
@@ -1090,9 +1070,10 @@
             // itemPurchaseCancelButton
             // 
             itemPurchaseCancelButton.Font = new Font("Segoe UI Semibold", 12F);
-            itemPurchaseCancelButton.Location = new Point(1364, 1102);
+            itemPurchaseCancelButton.Location = new Point(796, 551);
+            itemPurchaseCancelButton.Margin = new Padding(2);
             itemPurchaseCancelButton.Name = "itemPurchaseCancelButton";
-            itemPurchaseCancelButton.Size = new Size(351, 121);
+            itemPurchaseCancelButton.Size = new Size(205, 60);
             itemPurchaseCancelButton.TabIndex = 6;
             itemPurchaseCancelButton.Text = "Cancel";
             itemPurchaseCancelButton.Click += itemPurchaseCancelButton_Click;
@@ -1100,31 +1081,34 @@
             // itemPurchaseQuantityTextBox
             // 
             itemPurchaseQuantityTextBox.AccessibilityEnabled = true;
-            itemPurchaseQuantityTextBox.BeforeTouchSize = new Size(175, 63);
+            itemPurchaseQuantityTextBox.BeforeTouchSize = new Size(104, 39);
             itemPurchaseQuantityTextBox.Font = new Font("Segoe UI", 18F);
             itemPurchaseQuantityTextBox.IntegerValue = 1L;
-            itemPurchaseQuantityTextBox.Location = new Point(296, 962);
+            itemPurchaseQuantityTextBox.Location = new Point(173, 481);
+            itemPurchaseQuantityTextBox.Margin = new Padding(2);
             itemPurchaseQuantityTextBox.Name = "itemPurchaseQuantityTextBox";
-            itemPurchaseQuantityTextBox.Size = new Size(175, 63);
+            itemPurchaseQuantityTextBox.Size = new Size(104, 39);
             itemPurchaseQuantityTextBox.TabIndex = 5;
             itemPurchaseQuantityTextBox.Text = "1";
             // 
             // purchaseItemsQuantityLabel
             // 
             purchaseItemsQuantityLabel.Font = new Font("Segoe UI", 18F);
-            purchaseItemsQuantityLabel.Location = new Point(97, 962);
+            purchaseItemsQuantityLabel.Location = new Point(57, 481);
+            purchaseItemsQuantityLabel.Margin = new Padding(2, 0, 2, 0);
             purchaseItemsQuantityLabel.Name = "purchaseItemsQuantityLabel";
-            purchaseItemsQuantityLabel.Size = new Size(193, 57);
+            purchaseItemsQuantityLabel.Size = new Size(111, 32);
             purchaseItemsQuantityLabel.TabIndex = 3;
             purchaseItemsQuantityLabel.Text = "Quantity:";
             // 
             // purchaseItemsItemDataGrid
             // 
             purchaseItemsItemDataGrid.AccessibleName = "Table";
-            purchaseItemsItemDataGrid.Location = new Point(81, 550);
+            purchaseItemsItemDataGrid.Location = new Point(47, 275);
+            purchaseItemsItemDataGrid.Margin = new Padding(2);
             purchaseItemsItemDataGrid.Name = "purchaseItemsItemDataGrid";
             purchaseItemsItemDataGrid.PreviewRowHeight = 49;
-            purchaseItemsItemDataGrid.Size = new Size(2016, 342);
+            purchaseItemsItemDataGrid.Size = new Size(1177, 172);
             purchaseItemsItemDataGrid.Style.BorderColor = Color.FromArgb(100, 100, 100);
             purchaseItemsItemDataGrid.Style.CheckBoxStyle.CheckedBackColor = Color.FromArgb(0, 120, 215);
             purchaseItemsItemDataGrid.Style.CheckBoxStyle.CheckedBorderColor = Color.FromArgb(0, 120, 215);
@@ -1136,19 +1120,21 @@
             // autoLabel4
             // 
             autoLabel4.Font = new Font("Segoe UI", 12F);
-            autoLabel4.Location = new Point(81, 58);
+            autoLabel4.Location = new Point(47, 29);
+            autoLabel4.Margin = new Padding(2, 0, 2, 0);
             autoLabel4.Name = "autoLabel4";
-            autoLabel4.Size = new Size(189, 38);
+            autoLabel4.Size = new Size(105, 21);
             autoLabel4.TabIndex = 1;
             autoLabel4.Text = "Select a store:";
             // 
             // purhaseItemsStoresDataGrid
             // 
             purhaseItemsStoresDataGrid.AccessibleName = "Table";
-            purhaseItemsStoresDataGrid.Location = new Point(81, 119);
+            purhaseItemsStoresDataGrid.Location = new Point(47, 60);
+            purhaseItemsStoresDataGrid.Margin = new Padding(2);
             purhaseItemsStoresDataGrid.Name = "purhaseItemsStoresDataGrid";
             purhaseItemsStoresDataGrid.PreviewRowHeight = 49;
-            purhaseItemsStoresDataGrid.Size = new Size(2016, 383);
+            purhaseItemsStoresDataGrid.Size = new Size(1177, 192);
             purhaseItemsStoresDataGrid.Style.BorderColor = Color.FromArgb(100, 100, 100);
             purhaseItemsStoresDataGrid.Style.CheckBoxStyle.CheckedBackColor = Color.FromArgb(0, 120, 215);
             purhaseItemsStoresDataGrid.Style.CheckBoxStyle.CheckedBorderColor = Color.FromArgb(0, 120, 215);
@@ -1158,27 +1144,15 @@
             purhaseItemsStoresDataGrid.Text = "sfDataGrid1";
             purhaseItemsStoresDataGrid.SelectionChanged += purhaseItemsStoresDataGrid_SelectionChanged;
             // 
-            // itemPurchaseMessageLabel
-            // 
-            itemPurchaseMessageLabel.AutoSize = true;
-            itemPurchaseMessageLabel.Font = new Font("Segoe UI", 16F);
-            itemPurchaseMessageLabel.Location = new Point(128, 1133);
-            itemPurchaseMessageLabel.Name = "itemPurchaseMessageLabel";
-            itemPurchaseMessageLabel.Size = new Size(121, 51);
-            itemPurchaseMessageLabel.TabIndex = 9;
-            itemPurchaseMessageLabel.Text = "label1";
-            itemPurchaseMessageLabel.Visible = false;
-            // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(12F, 30F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BorderColor = Color.Black;
-            ClientSize = new Size(2693, 1278);
+            ClientSize = new Size(1275, 652);
             Controls.Add(tabControlAdv1);
             Controls.Add(dockingClientPanel1);
             Controls.Add(panel1);
-            Margin = new Padding(5, 6, 5, 6);
             Name = "MainForm";
             Text = "Venue App";
             WindowState = FormWindowState.Maximized;
@@ -1282,8 +1256,6 @@
         private Label myTicketsMyTicketsLabel;
         private Syncfusion.WinForms.DataGrid.SfDataGrid myTicketsDataGrid;
         private Syncfusion.WinForms.DataGrid.SfDataGrid homePageEventsDataGrid;
-        private Label homeEventDatesLabel;
-        private Syncfusion.WinForms.Input.SfCalendar homeDateSelector;
         private Label homeHeaderTextLabel;
         private Syncfusion.WinForms.Controls.SfButton homeViewEventTicketsButton;
         private Label homePageErrorLabel;
@@ -1314,5 +1286,6 @@
         private Syncfusion.WinForms.Controls.SfButton itemPurchasePurchaseButton;
         private Syncfusion.WinForms.Controls.SfButton itemPurchaseCancelButton;
         private Label itemPurchaseMessageLabel;
+        private Label myTicketsErrorLabel;
     }
 }

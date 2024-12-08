@@ -202,10 +202,18 @@ namespace VenueApplication.Services
                                 var command = new NpgsqlCommand(query, dbConnection, transaction);
 
                                 // Add parameters to the query
-                                command = ticketPurchase.AddWithValues(command, "SLD", ticket.tkt_id.ToString());
+
+                                if (ticket.tkt_status == "RSL")
+                                {
+                                    command = ticketPurchase.AddWithValues(command, "RLD", ticket.tkt_id.ToString());
+                                }
+                                else
+                                {
+                                    command = ticketPurchase.AddWithValues(command, "SLD", ticket.tkt_id.ToString());
+                                }
+
 
                                 int rowsAffected = command.ExecuteNonQuery();
-                                //check if rows affected is 3
 
 
                                 // Commit the transaction if everything is successful
@@ -233,5 +241,53 @@ namespace VenueApplication.Services
             return false;
         }
 
+        public static bool AttemptSellTicket(venue_ticket ticket, DatabaseManager databaseManager)
+        {
+            string query = VenueApplication.Properties.Resource.myTickets_UPDATE;
+
+            using (var dbConnection = databaseManager.GetConnection())
+            {
+
+                try
+                {
+                    dbConnection.Open();
+
+                    // Start a transaction
+                    using (var transaction = dbConnection.BeginTransaction())
+                    {
+                        try
+                        {
+                            // Create a command object to execute the query
+                            var command = new NpgsqlCommand(query, dbConnection, transaction);
+
+                            // Add parameters to the query
+                            command.Parameters.AddWithValue("@ticket_id", ticket.tkt_id);
+
+                            int rowsAffected = command.ExecuteNonQuery();
+
+                            // Commit the transaction if everything is successful
+                            transaction.Commit();
+
+                            return true;
+                        }
+                        catch (Exception ex)
+                        {
+                            // Rollback the transaction in case of error
+                            transaction.Rollback();
+                            MessageBox.Show($"Error executing query: {ex.Message}");
+                            return false;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Connection error: {ex.Message}");
+                    return false;
+                }
+            }
+        }
+
     }
+
+    
 }

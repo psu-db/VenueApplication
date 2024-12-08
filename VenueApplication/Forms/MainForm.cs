@@ -10,6 +10,8 @@ using Syncfusion.WinForms.DataGrid;
 using Microsoft.Extensions.Logging;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using Syncfusion.Windows.Forms.Tools;
+using Microsoft.VisualBasic.Logging;
 
 namespace VenueApplication
 {
@@ -22,7 +24,9 @@ namespace VenueApplication
         public venue_event selected_event;
         public venue_event homePage_selectedEvent;
         public venue_ticket homePage_selectedTicket;
+        public venue_ticket myTicket_selectedTicket;
         public venue_store manageStores_selectedStore;
+        public payment_info selectedPayment;
         public MainForm(app_user user, user_wallet user_wallet, LoginForm loginForm, DatabaseManager databaseManager)
         {
             InitializeComponent();
@@ -122,6 +126,27 @@ namespace VenueApplication
             profileAccountBalanceValueLabel.Text = $"${user.user_balance.ToString()}";
             List<payment_info> paymentMethods = InitializePaymentMethods();
             paymentMethodsComboBox.DataSource = paymentMethods;
+
+            bool hasAccount = false;
+
+            foreach (var paymentMethod in paymentMethods)
+            {
+                if (paymentMethod.pymt_info_type == "ACCOUNT")
+                {
+                    hasAccount = true;
+                    break;
+                }
+            }
+
+            if (!hasAccount)
+            {
+                NewPaymentMethodService.AttemptAddNewPaymentMethod("ACCOUNT", "0000000000000000", "000", "01/24", "Address 123 Street.", "Pennsylvania", "12345", databaseManager);
+                payment_info accountPayment = new payment_info(LoginForm.USER_ID, "ACCOUNT", "0000000000000000", "000", "01/24", "Address 123 Steet.", "Pennsylvania", "12345", databaseManager);
+                paymentMethods.Add(accountPayment);
+            }
+
+            
+            InitializeUsersSelectedPaymentInfo();
         }
 
         public void InitializeHomePage()
@@ -136,6 +161,18 @@ namespace VenueApplication
             homePageEventsDataGrid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
             this.homePage_selectedEvent = null;
 
+        }
+
+        public void InitializeUsersSelectedPaymentInfo()
+        {
+            if (paymentMethodsComboBox.SelectedItem != null)
+            {
+                selectedPayment = paymentMethodsComboBox.SelectedItem as payment_info;
+            }
+            else
+            {
+                selectedPayment = null;
+            }
         }
 
         public void FormatDataGridForEvents()
@@ -509,6 +546,7 @@ namespace VenueApplication
 
                             while (reader.Read())
                             {
+                                int? pymt_info_id = reader.IsDBNull(reader.GetOrdinal("pymt_info_id")) ? null : reader.GetInt32(reader.GetOrdinal("pymt_info_id"));
                                 int? pymt_info_user_id = reader.IsDBNull(reader.GetOrdinal("pymt_info_user_id")) ? null : reader.GetInt32(reader.GetOrdinal("pymt_info_user_id"));
                                 string? pymt_info_type = reader.IsDBNull(reader.GetOrdinal("pymt_info_type")) ? null : reader.GetString(reader.GetOrdinal("pymt_info_type"));
                                 string? pymt_info_card_number = reader.IsDBNull(reader.GetOrdinal("pymt_info_card_number")) ? null : reader.GetString(reader.GetOrdinal("pymt_info_card_number"));
@@ -518,7 +556,7 @@ namespace VenueApplication
                                 string? pymt_info_address_state = reader.IsDBNull(reader.GetOrdinal("pymt_info_address_state")) ? null : reader.GetString(reader.GetOrdinal("pymt_info_address_state"));
                                 string? pymt_info_zipcode = reader.IsDBNull(reader.GetOrdinal("pymt_info_zipcode")) ? null : reader.GetString(reader.GetOrdinal("pymt_info_zipcode"));
 
-                                payment_info paymentMethod = new payment_info((int)pymt_info_user_id, pymt_info_type, pymt_info_card_number, pymt_info_card_cvv, pymt_info_expiration_date, pymt_info_address, pymt_info_address_state, pymt_info_zipcode, databaseManager);
+                                payment_info paymentMethod = new payment_info((int)pymt_info_id, (int)pymt_info_user_id, pymt_info_type, pymt_info_card_number, pymt_info_card_cvv, pymt_info_expiration_date, pymt_info_address, pymt_info_address_state, pymt_info_zipcode, databaseManager);
                                 paymentMethods.Add(paymentMethod);
                             }
 
@@ -782,6 +820,7 @@ namespace VenueApplication
                     createEventErrorLabel.Visible = true;
                     createEventErrorLabel.Refresh();
                     InitializeEventManager();
+                    InitializeHomePage();
                 }
                 else
                 {
@@ -848,20 +887,28 @@ namespace VenueApplication
 
         private void homePageEventsDataGrid_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {
-            if (homeViewEventTicketsButton.Text == "View Tickets For Selected Event")
+
+            try
             {
-                homePage_selectedEvent = (venue_event)homePageEventsDataGrid.SelectedItem;
+                if (homeViewEventTicketsButton.Text == "View Tickets For Selected Event")
+                {
+                    homePage_selectedEvent = (venue_event)homePageEventsDataGrid.SelectedItem;
+                }
+                else
+                {
+                    homePage_selectedTicket = (venue_ticket)homePageEventsDataGrid.SelectedItem;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                homePage_selectedTicket = (venue_ticket)homePageEventsDataGrid.SelectedItem;
+                Debug.WriteLine(ex.Message);
             }
 
         }
 
         private void homeViewEventTicketsButton_Click(object sender, EventArgs e)
         {
-            if (homeViewEventTicketsButton.Text == "View Tickets For Selected Event")
+            if (homeViewEventTicketsButton.Text == "View Tickets For Selected Event" && homePage_selectedEvent != null)
             {
                 List<venue_ticket> eventTickets = InitializeTicketsForEvent(homePage_selectedEvent);
                 FormatDataGridForTickets(homePageEventsDataGrid);
@@ -1135,7 +1182,7 @@ namespace VenueApplication
                 // refresh tickets in MyTickets Tab
                 List<venue_ticket> myTickets = InitializeTicketsForMyTickets();
                 FormatDataGridForTickets(myTicketsDataGrid);
-                myTicketsDataGrid.DataSource = eventTickets;
+                myTicketsDataGrid.DataSource = myTickets;
 
                 homePage_selectedTicket = null;
 
@@ -1278,14 +1325,14 @@ namespace VenueApplication
 
         private void itemPurchasePurchaseButton_Click(object sender, EventArgs e)
         {
-            
+
 
             //payment info functionality not started yet
             int trans_pymt_info_id = 4;
 
             //search through my tickets that are scanned to find the event
             int trans_event_id = SelectEventForScannedTickets();
-            
+
             //set the current time
             DateTime currentTime = DateTime.Now;
             //TimeOnly currentTimeOnly = TimeOnly.FromTimeSpan(currentTime.TimeOfDay);
@@ -1309,9 +1356,9 @@ namespace VenueApplication
                 venue_item selectedItem = (venue_item)purchaseItemsItemDataGrid.SelectedItem;
                 trans_item_id = selectedItem.item_id;
             }
-            
-                
-            if (trans_pymt_info_id > 0 && trans_event_id > 0  && trans_quantity > 0 && trans_item_id > 0)
+
+
+            if (trans_pymt_info_id > 0 && trans_event_id > 0 && trans_quantity > 0 && trans_item_id > 0)
             {
                 bool transactionCreateAttempt = TransactionService.AttemptTransactionCreation(trans_pymt_info_id, trans_event_id, currentTime, trans_quantity, trans_item_id, databaseManager);
 
@@ -1340,6 +1387,40 @@ namespace VenueApplication
                 itemPurchaseMessageLabel.ForeColor = Color.Red;
                 itemPurchaseMessageLabel.Refresh();
             }
+        }
+
+        private void myTicketsDataGrid_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
+        {
+            myTicket_selectedTicket = (venue_ticket)myTicketsDataGrid.SelectedItem;
+        }
+
+        private void sellSelectedTicketButton_Click(object sender, EventArgs e)
+        {
+            bool sellTicketStatus = TicketService.AttemptSellTicket(myTicket_selectedTicket, databaseManager);
+
+            if (sellTicketStatus)
+            {
+                myTicketsErrorLabel.Visible = true;
+                myTicketsErrorLabel.ForeColor = Color.Green;
+                myTicketsErrorLabel.Text = "Successfully listed ticket for sale";
+
+                List<venue_ticket> myTickets = InitializeTicketsForMyTickets();
+                FormatDataGridForTickets(myTicketsDataGrid);
+                myTicketsDataGrid.DataSource = myTickets;
+
+                InitializeHomePage();
+            }
+            else
+            {
+                myTicketsErrorLabel.Visible = true;
+                myTicketsErrorLabel.Text = "Error selling ticket. Please try again.";
+            }
+
+        }
+
+        private void paymentMethodsComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            selectedPayment = paymentMethodsComboBox.SelectedItem as payment_info;
         }
     }
 

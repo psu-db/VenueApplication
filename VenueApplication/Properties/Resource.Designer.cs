@@ -352,5 +352,17 @@ namespace VenueApplication.Properties {
                 return ResourceManager.GetString("venue_stores_SELECT", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT * FROM venue_store;.
+        /// </summary>
+        internal static string myTickets_UPDATE
+        {
+            get
+            {
+                return ResourceManager.GetString("myTickets_UPDATE", resourceCulture);
+            }
+        }
+
     }
 }
