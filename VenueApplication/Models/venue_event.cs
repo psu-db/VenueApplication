@@ -57,6 +57,12 @@ namespace VenueApplication.Models
 
             return query;
         }
+        public string CreateSQLGetTicketData()
+        {
+            string query = VenueApplication.Properties.Resource.eventSelectTicketData_SELECT;
+
+            return query;
+        }
 
         public NpgsqlCommand AddWithValues(NpgsqlCommand command)
         {
