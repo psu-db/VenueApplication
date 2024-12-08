@@ -110,6 +110,7 @@ namespace VenueApplication
 
         private void profileButton_Click(object sender, EventArgs e)
         {
+            InitializeProfilePage();
             tabControlAdv1.SelectedTab = profileTab;
         }
 
@@ -128,13 +129,17 @@ namespace VenueApplication
             
             if (newBalance != 0)
             {
+                
                 profileAccountBalanceValueLabel.Text = $"${newBalance.ToString()}";
             }
             else
             {
                 profileAccountBalanceValueLabel.Text = $"${user.user_balance.ToString()}";
             }
-            
+
+            decimal new_balance = SelectAccountBalance(LoginForm.USER_ID);
+            profileAccountBalanceValueLabel.Text = $"${new_balance.ToString()}";
+
             List<payment_info> paymentMethods = InitializePaymentMethods();
             paymentMethodsComboBox.DataSource = paymentMethods;
 
@@ -166,7 +171,6 @@ namespace VenueApplication
             List<venue_event> venue_events = InitializeEvents();
             homePageEventsDataGrid.AutoGenerateColumns = false;
             homePageEventsDataGrid.DataSource = venue_events;
-
 
             FormatDataGridForEvents();
             homePageEventsDataGrid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
@@ -1336,6 +1340,59 @@ namespace VenueApplication
             tabControlAdv1.SelectedTab = homeTab;
         }
 
+
+        private bool updateAccountBalance(int user_id, decimal new_balance)
+        {            // Create necessary related objects
+            //venue_store newStore = new venue_store(store_id, storeName, storeSectionLocation, storeType, databaseManager);
+
+            // Generate the SQL query
+            string query = Properties.Resource.account_balance_UPDATE;
+
+            using (var dbConnection = databaseManager.GetConnection())
+            {
+
+                try
+                {
+                    dbConnection.Open();
+
+                    // Start a transaction
+                    using (var transaction = dbConnection.BeginTransaction())
+                    {
+                        try
+                        {
+                            // Create a command object to execute the query
+                            var command = new NpgsqlCommand(query, dbConnection, transaction);
+
+                            // Add parameters to the query
+                            command.Parameters.AddWithValue("@newbalance", new_balance);
+                            command.Parameters.AddWithValue("@userid", user_id);
+
+                            int rowsAffected = command.ExecuteNonQuery();
+                            //check if rows affected is 3
+
+
+                            // Commit the transaction if everything is successful
+                            transaction.Commit();
+
+                            return true;
+                        }
+                        catch (Exception ex)
+                        {
+                            // Rollback the transaction in case of error
+                            transaction.Rollback();
+                            MessageBox.Show($"Error executing query: {ex.Message}");
+                            return false;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Connection error: {ex.Message}");
+                    return false;
+                }
+            }
+
+        }
         private void itemPurchasePurchaseButton_Click(object sender, EventArgs e)
         {
 
@@ -1346,6 +1403,14 @@ namespace VenueApplication
             if (payment_selection != null)
             {
                 trans_pymt_info_id = payment_selection.pymt_info_id;
+            }
+            else
+            {
+                itemPurchaseMessageLabel.Text = "Please select a payment method";
+                itemPurchaseMessageLabel.ForeColor = Color.Red;
+                itemPurchaseMessageLabel.Visible = true;
+                return;
+
             }
 
             //search through my tickets that are scanned to find the event
@@ -1369,10 +1434,15 @@ namespace VenueApplication
             }
 
             int trans_item_id = -1;
+            venue_item selectedItem = null;
             if (purchaseItemsItemDataGrid.SelectedItem != null)
             {
-                venue_item selectedItem = (venue_item)purchaseItemsItemDataGrid.SelectedItem;
+                selectedItem = (venue_item)purchaseItemsItemDataGrid.SelectedItem;
                 trans_item_id = selectedItem.item_id;
+            }
+            else
+            {
+                return;
             }
             if (trans_event_id == 0)
             {
@@ -1383,8 +1453,42 @@ namespace VenueApplication
                 return;
             }
 
+
+           
+
             if (trans_pymt_info_id > 0 && trans_event_id > 0 && trans_quantity > 0 && trans_item_id > 0)
             {
+
+                //check if user used account balance, then check if they have enough in account
+                if (payment_selection.pymt_info_type == "ACCOUNT")
+                {
+                    int user_id = LoginForm.USER_ID;
+                    Debug.WriteLine("user Id is");
+                    Debug.WriteLine(user_id);
+
+                    decimal currentBalance = SelectAccountBalance(user_id);
+                    Debug.WriteLine("current balance is");
+                    Debug.WriteLine(currentBalance);
+                    decimal costDifference = currentBalance - selectedItem.item_price * trans_quantity;
+                    if (costDifference >= 0)
+                    {
+                        Debug.WriteLine("enough money in account");
+                        Debug.WriteLine(costDifference);
+                        Debug.WriteLine("updating to");
+                        Debug.WriteLine(costDifference);
+                        updateAccountBalance(this.user.user_id, costDifference);
+                    }
+                    else
+                    {
+
+                        Debug.WriteLine("broe boy");
+                        itemPurchaseMessageLabel.Text = "Your account balance is too low";
+                        itemPurchaseMessageLabel.Visible = true;
+                        itemPurchaseMessageLabel.ForeColor = Color.Red;
+                        return;
+                    }
+                }
+
                 bool transactionCreateAttempt = TransactionService.AttemptTransactionCreation(trans_pymt_info_id, trans_event_id, currentTime, trans_quantity, trans_item_id, databaseManager);
 
                 if (transactionCreateAttempt)
@@ -1455,6 +1559,53 @@ namespace VenueApplication
 
             List<payment_info> paymentMethods = InitializePaymentMethods();
             purchseItemsPaymentMethodComboBox.DataSource = paymentMethods;
+
+        }
+
+        private decimal SelectAccountBalance(int user_id)
+        {
+            int balance = 0;
+            string query = VenueApplication.Properties.Resource.account_balance_SELECT;
+            using (var dbConnection = databaseManager.GetConnection())
+            {
+                // Create a command object to execute the query
+                var command = new NpgsqlCommand(query, dbConnection);
+
+                // Add parameters to the query
+                command.Parameters.AddWithValue("@userid", user_id);
+
+                try
+                {
+                    dbConnection.Open();
+
+                    // Execute the query and get a reader to read the results
+                    using (var reader = command.ExecuteReader())
+                    {
+                        // Check if there are any rows (meaning the username/password pair is valid)
+                        if (reader.HasRows)
+                        {
+
+                            while (reader.Read())
+                            {
+                                decimal? user_balance = reader.IsDBNull(reader.GetOrdinal("user_balance")) ? null : reader.GetDecimal(reader.GetOrdinal("user_balance"));
+                                return (decimal)user_balance;
+                            }
+                            return balance;
+                        }
+                        else
+                        {
+                            Debug.WriteLine("Initialize tickets for MyTickets failed");
+                            return balance;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error executing query: {ex.Message}");
+
+                    return balance;
+                }
+            }
 
         }
 

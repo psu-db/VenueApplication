@@ -61,6 +61,26 @@ namespace VenueApplication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SELECT user_balance FROM app_user WHERE user_id = @userid;.
+        /// </summary>
+        internal static string account_balance_SELECT {
+            get {
+                return ResourceManager.GetString("account_balance_SELECT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UPDATE app_user
+        ///SET user_balance = @newbalance
+        ///WHERE user_id = @userid;.
+        /// </summary>
+        internal static string account_balance_UPDATE {
+            get {
+                return ResourceManager.GetString("account_balance_UPDATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap beaverStaidumLoginBackgroundImage_webp {
@@ -343,6 +363,31 @@ namespace VenueApplication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to UPDATE app_user
+        ///SET user_balance = user_balance + @ticket_sold_price
+        ///WHERE user_id = @user_id
+        ///RETURNING user_balance;.
+        /// </summary>
+        internal static string ticketSellerBalance_UPDATE {
+            get {
+                return ResourceManager.GetString("ticketSellerBalance_UPDATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT app_user.user_id, venue_ticket.tkt_price FROM ticket_purchase JOIN venue_ticket
+        ///ON ticket_purchase.tktpur_tkt_id = venue_ticket.tkt_id JOIN
+        ///user_wallet ON ticket_purchase.tktpur_wallet_id = user_wallet.wallet_id JOIN app_user
+        ///ON app_user.user_id = user_wallet.wallet_user_id
+        ///WHERE venue_ticket.tkt_id = @ticket_id;.
+        /// </summary>
+        internal static string ticketSellerInfo_SELECT {
+            get {
+                return ResourceManager.GetString("ticketSellerInfo_SELECT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SELECT * FROM venue_ticket WHERE tkt_event_id = @event_id AND tkt_status = @status1 OR tkt_status = @status2;.
         /// </summary>
         internal static string ticketsForEvent_SELECT {
@@ -426,28 +471,5 @@ namespace VenueApplication.Properties {
                 return ResourceManager.GetString("venue_stores_SELECT", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to SELECT * FROM venue_store;.
-        /// </summary>
-        internal static string ticketSellerInfo_SELECT
-        {
-            get
-            {
-                return ResourceManager.GetString("ticketSellerInfo_SELECT", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to SELECT * FROM venue_store;.
-        /// </summary>
-        internal static string ticketSellerBalance_UPDATE
-        {
-            get
-            {
-                return ResourceManager.GetString("ticketSellerBalance_UPDATE", resourceCulture);
-            }
-        }
-        
     }
 }

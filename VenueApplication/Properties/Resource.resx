@@ -296,6 +296,11 @@ WHERE tkt_event_id = @eventid;
 DELETE FROM venue_event
 WHERE event_id = @eventid;</value>
   </data>
+  <data name="account_balance_UPDATE" xml:space="preserve">
+    <value>UPDATE app_user
+SET user_balance = @newbalance
+WHERE user_id = @userid;</value>
+  </data>
   <data name="ticketSellerInfo_SELECT" xml:space="preserve">
     <value>SELECT app_user.user_id, venue_ticket.tkt_price FROM ticket_purchase JOIN venue_ticket
 ON ticket_purchase.tktpur_tkt_id = venue_ticket.tkt_id JOIN
@@ -308,5 +313,8 @@ WHERE venue_ticket.tkt_id = @ticket_id;</value>
 SET user_balance = user_balance + @ticket_sold_price
 WHERE user_id = @user_id
 RETURNING user_balance;</value>
+  </data>
+  <data name="account_balance_SELECT" xml:space="preserve">
+    <value>SELECT user_balance FROM app_user WHERE user_id = @userid;</value>
   </data>
 </root>
