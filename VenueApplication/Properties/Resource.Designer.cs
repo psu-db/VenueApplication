@@ -61,6 +61,26 @@ namespace VenueApplication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SELECT user_balance FROM app_user WHERE user_id = @userid;.
+        /// </summary>
+        internal static string account_balance_SELECT {
+            get {
+                return ResourceManager.GetString("account_balance_SELECT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UPDATE app_user
+        ///SET user_balance = @newbalance
+        ///WHERE user_id = @userid;.
+        /// </summary>
+        internal static string account_balance_UPDATE {
+            get {
+                return ResourceManager.GetString("account_balance_UPDATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap beaverStaidumLoginBackgroundImage_webp {

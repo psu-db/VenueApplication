@@ -253,6 +253,54 @@ WHERE tktpur_wallet_id = @wallet_id AND tkt_status = 'SCN';</value>
 SET tkt_status = 'RSL'
 WHERE tkt_id = @ticket_id;</value>
   </data>
+  <data name="eventSelectTicketData_SELECT" xml:space="preserve">
+    <value>SELECT COUNT(*) AS num_tickets_sold, SUM(tkt_price) AS total_ticket_revenue
+FROM venue_ticket 
+WHERE tkt_status = 'SCN'
+AND tkt_event_id = @eventid;</value>
+  </data>
+  <data name="eventDataTransactions_SELECT" xml:space="preserve">
+    <value>SELECT 
+    lgn_email, 
+    item_name, 
+    store_name, 
+    pymt_info_type, 
+    SUM(item_price * trans_quantity) AS total_spent
+FROM venue_transaction
+JOIN payment_info ON trans_pymt_info_id = pymt_info_id
+JOIN app_user ON pymt_info_user_id = user_id
+JOIN venue_item ON trans_item_id = item_id
+JOIN venue_store ON item_store_id = store_id
+JOIN login_credentials ON lgn_user_id = user_id
+WHERE trans_event_id = 6
+GROUP BY 
+    lgn_email, 
+    item_name, 
+    store_name, 
+    pymt_info_type
+ORDER BY total_spent DESC;</value>
+  </data>
+  <data name="close_event_DELETE" xml:space="preserve">
+    <value>DELETE FROM venue_transaction
+WHERE trans_event_id = @eventid;
+
+DELETE from ticket_purchase
+WHERE tktpur_tkt_id IN (SELECT tkt_id
+   FROM venue_ticket
+   WHERE tkt_event_id = @eventid);
+
+DELETE FROM venue_ticket
+WHERE tkt_event_id = @eventid;
+
+
+DELETE FROM venue_event
+WHERE event_id = @eventid;</value>
+  </data>
+  <data name="account_balance_UPDATE" xml:space="preserve">
+    <value>UPDATE app_user
+SET user_balance = @newbalance
+WHERE user_id = @userid;</value>
+  </data>
   <data name="ticketSellerInfo_SELECT" xml:space="preserve">
     <value>SELECT app_user.user_id, venue_ticket.tkt_price FROM ticket_purchase JOIN venue_ticket
 ON ticket_purchase.tktpur_tkt_id = venue_ticket.tkt_id JOIN
@@ -265,6 +313,9 @@ WHERE venue_ticket.tkt_id = @ticket_id;</value>
 SET user_balance = user_balance + @ticket_sold_price
 WHERE user_id = @user_id
 RETURNING user_balance;</value>
+  </data>
+  <data name="account_balance_SELECT" xml:space="preserve">
+    <value>SELECT user_balance FROM app_user WHERE user_id = @userid;</value>
   </data>
   <data name="userGetHashedPassword_SELECT" xml:space="preserve">
     <value>SELECT lgn_password FROM login_credentials WHERE lgn_username = @username;</value>
