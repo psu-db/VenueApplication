@@ -24,6 +24,7 @@ namespace VenueApplication.Forms
         public ScanTicketForm(MainForm mainForm, DatabaseManager databaseManager, venue_event selectedEvent)
         {
             InitializeComponent();
+            this.AutoScaleMode = AutoScaleMode.Dpi;
             this.mainForm = mainForm;
             this.databaseManager = databaseManager;
             this.selectedEvent = selectedEvent;

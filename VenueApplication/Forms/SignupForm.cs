@@ -24,6 +24,7 @@ namespace VenueApplication.Forms
         public SignupForm(LoginForm loginForm, DatabaseManager databaseManager)
         {
             InitializeComponent();
+            this.AutoScaleMode = AutoScaleMode.Dpi;
             this.loginForm = loginForm;
             this.databaseManager = databaseManager;
         }

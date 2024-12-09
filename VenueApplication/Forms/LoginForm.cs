@@ -26,6 +26,7 @@ namespace VenueApplication.Forms
         public LoginForm()
         {
             InitializeComponent();
+            this.AutoScaleMode = AutoScaleMode.Dpi;
             this.Text = "Login Page";
             databaseManager = new DatabaseManager(dbHost, dbUsername, dbPassword, dbName);
             passwordTextBoxEdit.UseSystemPasswordChar = true;

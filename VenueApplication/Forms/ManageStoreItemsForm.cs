@@ -41,6 +41,7 @@ namespace VenueApplication.Forms
 
         private void InitializeComponent()
         {
+            this.AutoScaleMode = AutoScaleMode.Dpi;
             components = new Container();
             manageStoreItemsDataGrid = new SfDataGrid();
             autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();

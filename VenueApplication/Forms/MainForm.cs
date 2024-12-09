@@ -31,6 +31,7 @@ namespace VenueApplication
         public MainForm(app_user user, user_wallet user_wallet, LoginForm loginForm, DatabaseManager databaseManager)
         {
             InitializeComponent();
+            this.AutoScaleMode = AutoScaleMode.Dpi;
             this.databaseManager = databaseManager;
             this.loginForm = loginForm;
             this.user = user;

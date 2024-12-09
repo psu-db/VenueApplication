@@ -20,6 +20,7 @@ namespace VenueApplication.Forms
         public PaymentMethodForm(MainForm mainForm, DatabaseManager databaseManager)
         {
             InitializeComponent();
+            this.AutoScaleMode = AutoScaleMode.Dpi;
             this.mainForm = mainForm;
             this.databaseManager = databaseManager;
         }

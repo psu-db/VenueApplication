@@ -29,6 +29,7 @@ namespace VenueApplication.Forms
         {
 
             InitializeComponent();
+            this.AutoScaleMode = AutoScaleMode.Dpi;
             this.mainForm = mainForm;
             this.databaseManager = databaseManager;
             this.selectedEvent = selectedEvent;
