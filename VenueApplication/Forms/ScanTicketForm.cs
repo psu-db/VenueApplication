@@ -64,7 +64,7 @@ namespace VenueApplication.Forms
                 showRedMessage();
                 return;
             }
-            
+
 
             if (ticketID != null)
             {
@@ -89,6 +89,15 @@ namespace VenueApplication.Forms
                 // update error message - one or more fields are empty
                 scanTicketMessageLabel.Text = "an error occurred. Try again";
                 showRedMessage();
+            }
+        }
+
+        private void scanTicketTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Check if the key is a letter
+            if (char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Suppress the keypress
             }
         }
     }

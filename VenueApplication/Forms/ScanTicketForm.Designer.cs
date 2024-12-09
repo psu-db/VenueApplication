@@ -55,6 +55,7 @@
             scanTicketTextBox.Name = "scanTicketTextBox";
             scanTicketTextBox.Size = new Size(175, 63);
             scanTicketTextBox.TabIndex = 2;
+            scanTicketTextBox.KeyPress += scanTicketTextBox_KeyPress;
             // 
             // scanTicketIdLabel
             // 

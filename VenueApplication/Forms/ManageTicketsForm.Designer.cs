@@ -82,6 +82,7 @@
             // manageTicketsSectionComboBoxAdv
             // 
             manageTicketsSectionComboBoxAdv.BeforeTouchSize = new Size(212, 46);
+            manageTicketsSectionComboBoxAdv.DropDownStyle = ComboBoxStyle.DropDownList;
             manageTicketsSectionComboBoxAdv.Font = new Font("Segoe UI", 12F);
             manageTicketsSectionComboBoxAdv.Items.AddRange(new object[] { "EB", "EF", "NL", "NG", "NC", "WH", "WD", "SK", "SF", "EAU", "EEU", "EJU", "NHU", "NDU", "WHU", "WEU", "WAU", "SLU", "SGU", "SCU" });
             manageTicketsSectionComboBoxAdv.Location = new Point(311, 828);

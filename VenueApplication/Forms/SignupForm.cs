@@ -93,6 +93,11 @@ namespace VenueApplication.Forms
             }
 
         }
+
+        private void singUpFormDateTimeEdit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true; // Disables typing
+        }
     }
 
     #endregion

@@ -138,6 +138,7 @@
             // editEventHourComboBoxAdv
             // 
             editEventHourComboBoxAdv.BeforeTouchSize = new Size(123, 46);
+            editEventHourComboBoxAdv.DropDownStyle = ComboBoxStyle.DropDownList;
             editEventHourComboBoxAdv.Font = new Font("Segoe UI", 12F);
             editEventHourComboBoxAdv.Items.AddRange(new object[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" });
             editEventHourComboBoxAdv.Location = new Point(493, 600);
@@ -148,6 +149,7 @@
             // editEventMinuteComboBoxAdv
             // 
             editEventMinuteComboBoxAdv.BeforeTouchSize = new Size(132, 46);
+            editEventMinuteComboBoxAdv.DropDownStyle = ComboBoxStyle.DropDownList;
             editEventMinuteComboBoxAdv.Font = new Font("Segoe UI", 12F);
             editEventMinuteComboBoxAdv.Items.AddRange(new object[] { "00", "15", "30", "45" });
             editEventMinuteComboBoxAdv.Location = new Point(689, 602);
@@ -158,6 +160,7 @@
             // editEventAMPMComboBoxAdv
             // 
             editEventAMPMComboBoxAdv.BeforeTouchSize = new Size(117, 46);
+            editEventAMPMComboBoxAdv.DropDownStyle = ComboBoxStyle.DropDownList;
             editEventAMPMComboBoxAdv.Font = new Font("Segoe UI", 12F);
             editEventAMPMComboBoxAdv.Items.AddRange(new object[] { "AM", "PM" });
             editEventAMPMComboBoxAdv.Location = new Point(864, 602);
@@ -177,6 +180,7 @@
             // editEventTypeComboBoxAdv
             // 
             editEventTypeComboBoxAdv.BeforeTouchSize = new Size(257, 46);
+            editEventTypeComboBoxAdv.DropDownStyle = ComboBoxStyle.DropDownList;
             editEventTypeComboBoxAdv.Font = new Font("Segoe UI", 12F);
             editEventTypeComboBoxAdv.Items.AddRange(new object[] { "Football", "Concert", "Other" });
             editEventTypeComboBoxAdv.Location = new Point(493, 817);

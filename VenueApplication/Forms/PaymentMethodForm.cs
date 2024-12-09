@@ -59,5 +59,40 @@ namespace VenueApplication.Forms
         }
 
         #endregion
+
+        private void zipcodeTextEdit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Suppress the keypress
+            }
+        }
+
+        private void cardNumberTextEdit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Check if the key is a letter
+            if (char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Suppress the keypress
+            }
+        }
+
+        private void cardCVVTextEdit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Check if the key is a letter
+            if (char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Suppress the keypress
+            }
+        }
+
+        private void zipcodeTextEdit_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            // Check if the key is a letter
+            if (char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Suppress the keypress
+            }
+        }
     }
 }

@@ -456,6 +456,7 @@
             // createEventTypeComboDropDown
             // 
             createEventTypeComboDropDown.BeforeTouchSize = new Size(211, 53);
+            createEventTypeComboDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
             createEventTypeComboDropDown.Font = new Font("Segoe UI", 14F);
             createEventTypeComboDropDown.Items.AddRange(new object[] { "Football", "Concert", "Other" });
             createEventTypeComboDropDown.Location = new Point(490, 796);
@@ -463,10 +464,12 @@
             createEventTypeComboDropDown.Name = "createEventTypeComboDropDown";
             createEventTypeComboDropDown.Size = new Size(211, 53);
             createEventTypeComboDropDown.TabIndex = 20;
+            createEventTypeComboDropDown.Text = "Football";
             // 
             // createEventAMPMComboDropDown
             // 
             createEventAMPMComboDropDown.BeforeTouchSize = new Size(105, 53);
+            createEventAMPMComboDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
             createEventAMPMComboDropDown.Font = new Font("Segoe UI", 14F);
             createEventAMPMComboDropDown.Items.AddRange(new object[] { "AM", "PM" });
             createEventAMPMComboDropDown.Location = new Point(801, 602);
@@ -474,10 +477,12 @@
             createEventAMPMComboDropDown.Name = "createEventAMPMComboDropDown";
             createEventAMPMComboDropDown.Size = new Size(105, 53);
             createEventAMPMComboDropDown.TabIndex = 19;
+            createEventAMPMComboDropDown.Text = "AM";
             // 
             // createEventMinuteComboDropDown
             // 
             createEventMinuteComboDropDown.BeforeTouchSize = new Size(103, 53);
+            createEventMinuteComboDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
             createEventMinuteComboDropDown.Font = new Font("Segoe UI", 14F);
             createEventMinuteComboDropDown.Items.AddRange(new object[] { "00", "15", "30", "45" });
             createEventMinuteComboDropDown.Location = new Point(660, 602);
@@ -485,10 +490,12 @@
             createEventMinuteComboDropDown.Name = "createEventMinuteComboDropDown";
             createEventMinuteComboDropDown.Size = new Size(103, 53);
             createEventMinuteComboDropDown.TabIndex = 18;
+            createEventMinuteComboDropDown.Text = "00";
             // 
             // createEventHourComboDropDown
             // 
             createEventHourComboDropDown.BeforeTouchSize = new Size(109, 53);
+            createEventHourComboDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
             createEventHourComboDropDown.Font = new Font("Segoe UI", 14F);
             createEventHourComboDropDown.Items.AddRange(new object[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" });
             createEventHourComboDropDown.Location = new Point(490, 602);
@@ -496,6 +503,7 @@
             createEventHourComboDropDown.Name = "createEventHourComboDropDown";
             createEventHourComboDropDown.Size = new Size(109, 53);
             createEventHourComboDropDown.TabIndex = 17;
+            createEventHourComboDropDown.Text = "01";
             // 
             // createEventColonLabel
             // 
@@ -736,6 +744,7 @@
             // manageStoreTypeComboBox
             // 
             manageStoreTypeComboBox.BeforeTouchSize = new Size(211, 46);
+            manageStoreTypeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             manageStoreTypeComboBox.Font = new Font("Segoe UI", 12F);
             manageStoreTypeComboBox.Items.AddRange(new object[] { "merchandise", "concession" });
             manageStoreTypeComboBox.Location = new Point(1558, 560);
@@ -743,10 +752,12 @@
             manageStoreTypeComboBox.Name = "manageStoreTypeComboBox";
             manageStoreTypeComboBox.Size = new Size(211, 46);
             manageStoreTypeComboBox.TabIndex = 13;
+            manageStoreTypeComboBox.Text = "merchandise";
             // 
             // manageStoreLocationComboBox
             // 
             manageStoreLocationComboBox.BeforeTouchSize = new Size(211, 46);
+            manageStoreLocationComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             manageStoreLocationComboBox.Font = new Font("Segoe UI", 12F);
             manageStoreLocationComboBox.Items.AddRange(new object[] { "EB", "EF", "NL", "NG", "NC", "WH", "WD", "SK", "SF", "EAU", "EEU", "EJU", "NHU", "NDU", "WHU", "WEU", "WAU", "SLU", "SGU", "SCU" });
             manageStoreLocationComboBox.Location = new Point(1017, 560);
@@ -754,6 +765,7 @@
             manageStoreLocationComboBox.Name = "manageStoreLocationComboBox";
             manageStoreLocationComboBox.Size = new Size(211, 46);
             manageStoreLocationComboBox.TabIndex = 12;
+            manageStoreLocationComboBox.Text = "EB";
             // 
             // manageStoreNameTextBox
             // 
@@ -1011,12 +1023,12 @@
             // paymentMethodsComboBox
             // 
             paymentMethodsComboBox.BeforeTouchSize = new Size(340, 38);
+            paymentMethodsComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             paymentMethodsComboBox.Location = new Point(578, 378);
             paymentMethodsComboBox.Margin = new Padding(5, 6, 5, 6);
             paymentMethodsComboBox.Name = "paymentMethodsComboBox";
             paymentMethodsComboBox.Size = new Size(340, 38);
             paymentMethodsComboBox.TabIndex = 3;
-            paymentMethodsComboBox.Text = "Click to view";
             paymentMethodsComboBox.SelectedValueChanged += paymentMethodsComboBox_SelectedValueChanged;
             // 
             // signOutButton
@@ -1083,13 +1095,14 @@
             purchaseItemsPaymentMethodLabel.Location = new Point(518, 968);
             purchaseItemsPaymentMethodLabel.Margin = new Padding(5, 0, 5, 0);
             purchaseItemsPaymentMethodLabel.Name = "purchaseItemsPaymentMethodLabel";
-            purchaseItemsPaymentMethodLabel.Size = new Size(203, 32);
+            purchaseItemsPaymentMethodLabel.Size = new Size(354, 57);
             purchaseItemsPaymentMethodLabel.TabIndex = 11;
             purchaseItemsPaymentMethodLabel.Text = "Payment Method:";
             // 
             // purchseItemsPaymentMethodComboBox
             // 
             purchseItemsPaymentMethodComboBox.BeforeTouchSize = new Size(937, 65);
+            purchseItemsPaymentMethodComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             purchseItemsPaymentMethodComboBox.Font = new Font("Segoe UI", 18F);
             purchseItemsPaymentMethodComboBox.Location = new Point(882, 968);
             purchseItemsPaymentMethodComboBox.Margin = new Padding(5, 6, 5, 6);
@@ -1104,7 +1117,7 @@
             itemPurchaseMessageLabel.Location = new Point(114, 1090);
             itemPurchaseMessageLabel.Margin = new Padding(5, 0, 5, 0);
             itemPurchaseMessageLabel.Name = "itemPurchaseMessageLabel";
-            itemPurchaseMessageLabel.Size = new Size(71, 30);
+            itemPurchaseMessageLabel.Size = new Size(121, 51);
             itemPurchaseMessageLabel.TabIndex = 9;
             itemPurchaseMessageLabel.Text = "label1";
             itemPurchaseMessageLabel.Visible = false;
