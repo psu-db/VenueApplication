@@ -207,7 +207,6 @@ namespace VenueApplication.Services
                                 {
                                     command = ticketPurchase.AddWithValues(command, "RLD", ticket.tkt_id.ToString());
 
-                                    // (IMPLEMENT): give seller their money for the ticket to their account balance
                                     (bool returnGetSellerAndTicketInfoStatus, int? user_id, decimal? tkt_price) = TicketService.AttemptGetSellerAndTicketInfo(ticket.tkt_id, databaseManager);
                                     (bool attemptUpdateBalanceStatus, decimal? newBalance) = TicketService.AttemptUpdateUserBalanceFromTicketSale(user_id, tkt_price, databaseManager);
 

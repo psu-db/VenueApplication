@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using VenueApplication.DataAccess;
 using static Syncfusion.Windows.Forms.Tools.NavigationView;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Policy;
 
 namespace VenueApplication.Models
 {
@@ -24,6 +26,7 @@ namespace VenueApplication.Models
         #endregion
 
         DatabaseManager databaseManager { get; set; }
+        private readonly PasswordHasher<string> hasher = new PasswordHasher<string>();
 
         public login_credentials(int lgn_creds_id, int lgn_user_id, string lgn_username, string lgn_password, string lgn_email, DatabaseManager databaseManager)
         {
@@ -53,8 +56,11 @@ namespace VenueApplication.Models
         {
             try
             {
+
+                string hashedPassword = hasher.HashPassword(null, lgn_password);
+
                 command.Parameters.AddWithValue("@username", lgn_username);
-                command.Parameters.AddWithValue("@password", lgn_password);
+                command.Parameters.AddWithValue("@password", hashedPassword);
                 command.Parameters.AddWithValue("@email", lgn_email);
             }
             catch (Exception ex)

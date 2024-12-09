@@ -62,10 +62,12 @@ namespace VenueApplication.Forms
             // manageStoreItemsDataGrid
             // 
             manageStoreItemsDataGrid.AccessibleName = "Table";
-            manageStoreItemsDataGrid.Location = new Point(145, 121);
+            manageStoreItemsDataGrid.AllowEditing = false;
+            manageStoreItemsDataGrid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
+            manageStoreItemsDataGrid.Location = new Point(58, 69);
             manageStoreItemsDataGrid.Name = "manageStoreItemsDataGrid";
             manageStoreItemsDataGrid.PreviewRowHeight = 49;
-            manageStoreItemsDataGrid.Size = new Size(2058, 375);
+            manageStoreItemsDataGrid.Size = new Size(769, 307);
             manageStoreItemsDataGrid.Style.BorderColor = Color.FromArgb(100, 100, 100);
             manageStoreItemsDataGrid.Style.CheckBoxStyle.CheckedBackColor = Color.FromArgb(0, 120, 215);
             manageStoreItemsDataGrid.Style.CheckBoxStyle.CheckedBorderColor = Color.FromArgb(0, 120, 215);
@@ -78,65 +80,65 @@ namespace VenueApplication.Forms
             // autoLabel1
             // 
             autoLabel1.Font = new Font("Segoe UI", 16F);
-            autoLabel1.Location = new Point(145, 9);
+            autoLabel1.Location = new Point(58, 9);
             autoLabel1.Name = "autoLabel1";
-            autoLabel1.Size = new Size(332, 51);
+            autoLabel1.Size = new Size(193, 30);
             autoLabel1.TabIndex = 1;
             autoLabel1.Text = "Showing items for:";
             // 
             // autoLabel2
             // 
             autoLabel2.Font = new Font("Segoe UI", 16F);
-            autoLabel2.Location = new Point(145, 628);
+            autoLabel2.Location = new Point(58, 418);
             autoLabel2.Name = "autoLabel2";
-            autoLabel2.Size = new Size(216, 51);
+            autoLabel2.Size = new Size(126, 30);
             autoLabel2.TabIndex = 2;
             autoLabel2.Text = "Item Name:";
             // 
             // manageStoreItemsStoreNameLabel
             // 
             manageStoreItemsStoreNameLabel.Font = new Font("Segoe UI", 16F);
-            manageStoreItemsStoreNameLabel.Location = new Point(483, 9);
+            manageStoreItemsStoreNameLabel.Location = new Point(245, 9);
             manageStoreItemsStoreNameLabel.Name = "manageStoreItemsStoreNameLabel";
-            manageStoreItemsStoreNameLabel.Size = new Size(0, 51);
+            manageStoreItemsStoreNameLabel.Size = new Size(0, 30);
             manageStoreItemsStoreNameLabel.TabIndex = 3;
             // 
             // autoLabel3
             // 
             autoLabel3.Font = new Font("Segoe UI", 16F);
-            autoLabel3.Location = new Point(145, 783);
+            autoLabel3.Location = new Point(58, 488);
             autoLabel3.Name = "autoLabel3";
-            autoLabel3.Size = new Size(197, 51);
+            autoLabel3.Size = new Size(115, 30);
             autoLabel3.TabIndex = 4;
             autoLabel3.Text = "Item Price:";
             // 
             // manageStoreItemsNameTextBox
             // 
-            manageStoreItemsNameTextBox.BeforeTouchSize = new Size(175, 57);
+            manageStoreItemsNameTextBox.BeforeTouchSize = new Size(175, 36);
             manageStoreItemsNameTextBox.Font = new Font("Segoe UI", 16F);
-            manageStoreItemsNameTextBox.Location = new Point(387, 628);
+            manageStoreItemsNameTextBox.Location = new Point(190, 418);
             manageStoreItemsNameTextBox.Name = "manageStoreItemsNameTextBox";
-            manageStoreItemsNameTextBox.Size = new Size(336, 57);
+            manageStoreItemsNameTextBox.Size = new Size(336, 36);
             manageStoreItemsNameTextBox.TabIndex = 5;
             // 
             // manageStoreItemsPriceCurrencyTextBox
             // 
             manageStoreItemsPriceCurrencyTextBox.AccessibilityEnabled = true;
-            manageStoreItemsPriceCurrencyTextBox.BeforeTouchSize = new Size(175, 57);
+            manageStoreItemsPriceCurrencyTextBox.BeforeTouchSize = new Size(175, 36);
             manageStoreItemsPriceCurrencyTextBox.DecimalValue = new decimal(new int[] { 100, 0, 0, 131072 });
             manageStoreItemsPriceCurrencyTextBox.Font = new Font("Segoe UI", 16F);
-            manageStoreItemsPriceCurrencyTextBox.Location = new Point(387, 783);
+            manageStoreItemsPriceCurrencyTextBox.Location = new Point(179, 488);
             manageStoreItemsPriceCurrencyTextBox.Name = "manageStoreItemsPriceCurrencyTextBox";
-            manageStoreItemsPriceCurrencyTextBox.Size = new Size(175, 57);
+            manageStoreItemsPriceCurrencyTextBox.Size = new Size(175, 36);
             manageStoreItemsPriceCurrencyTextBox.TabIndex = 6;
             manageStoreItemsPriceCurrencyTextBox.Text = "$1.00";
             // 
             // manageStoreItemsCreateButton
             // 
             manageStoreItemsCreateButton.Font = new Font("Segoe UI Semibold", 16F);
-            manageStoreItemsCreateButton.Location = new Point(1234, 933);
+            manageStoreItemsCreateButton.Location = new Point(58, 554);
             manageStoreItemsCreateButton.Name = "manageStoreItemsCreateButton";
-            manageStoreItemsCreateButton.Size = new Size(307, 110);
+            manageStoreItemsCreateButton.Size = new Size(193, 56);
             manageStoreItemsCreateButton.TabIndex = 7;
             manageStoreItemsCreateButton.Text = "Create";
             manageStoreItemsCreateButton.Click += manageStoreItemsCreateButton_Click;
@@ -144,9 +146,9 @@ namespace VenueApplication.Forms
             // manageStoreItemsUpdateButton
             // 
             manageStoreItemsUpdateButton.Font = new Font("Segoe UI Semibold", 16F);
-            manageStoreItemsUpdateButton.Location = new Point(1594, 933);
+            manageStoreItemsUpdateButton.Location = new Point(277, 554);
             manageStoreItemsUpdateButton.Name = "manageStoreItemsUpdateButton";
-            manageStoreItemsUpdateButton.Size = new Size(307, 110);
+            manageStoreItemsUpdateButton.Size = new Size(193, 56);
             manageStoreItemsUpdateButton.TabIndex = 8;
             manageStoreItemsUpdateButton.Text = "Update";
             manageStoreItemsUpdateButton.Click += manageStoreItemsUpdateButton_Click;
@@ -176,14 +178,14 @@ namespace VenueApplication.Forms
             manageStoreItemsMessageLabel.Font = new Font("Segoe UI", 16F);
             manageStoreItemsMessageLabel.Location = new Point(145, 974);
             manageStoreItemsMessageLabel.Name = "manageStoreItemsMessageLabel";
-            manageStoreItemsMessageLabel.Size = new Size(257, 51);
+            manageStoreItemsMessageLabel.Size = new Size(150, 30);
             manageStoreItemsMessageLabel.TabIndex = 11;
             manageStoreItemsMessageLabel.Text = "message label";
             manageStoreItemsMessageLabel.Visible = false;
             // 
             // ManageStoreItemsForm
             // 
-            ClientSize = new Size(2380, 1182);
+            ClientSize = new Size(852, 632);
             Controls.Add(manageStoreItemsMessageLabel);
             Controls.Add(manageStoreItemsCancelButton);
             Controls.Add(manageStoreItemsDeleteButton);
@@ -196,7 +198,10 @@ namespace VenueApplication.Forms
             Controls.Add(autoLabel2);
             Controls.Add(autoLabel1);
             Controls.Add(manageStoreItemsDataGrid);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
             Name = "ManageStoreItemsForm";
+            StartPosition = FormStartPosition.CenterScreen;
             ((ISupportInitialize)manageStoreItemsDataGrid).EndInit();
             ((ISupportInitialize)manageStoreItemsNameTextBox).EndInit();
             ((ISupportInitialize)manageStoreItemsPriceCurrencyTextBox).EndInit();
@@ -214,6 +219,7 @@ namespace VenueApplication.Forms
 
             manageStoreItemsStoreNameLabel.Text = this.selectedStore.store_name;
             refreshItemTable();
+            manageStoreItemsDataGrid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
 
         }
 
@@ -304,7 +310,7 @@ namespace VenueApplication.Forms
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error executing query: {ex.Message}");
+                    Debug.WriteLine($"Error executing query: {ex.Message}");
                     return storeItems;
                 }
             }

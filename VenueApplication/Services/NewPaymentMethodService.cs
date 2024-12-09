@@ -14,6 +14,7 @@ namespace VenueApplication.Services
 {
     internal static class NewPaymentMethodService
     {
+
         public static bool AttemptAddNewPaymentMethod(string cardType, string cardNumber, string cardCVV, string expDate, string address, string state, string zipcode, DatabaseManager databaseManager)
         {
             // Create necessary related object

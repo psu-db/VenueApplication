@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.1.39" />
     <PackageReference Include="Npgsql" Version="9.0.1" />
     <PackageReference Include="Syncfusion.Chart.Windows" Version="27.2.2" />
     <PackageReference Include="Syncfusion.Core.WinForms" Version="27.2.2" />

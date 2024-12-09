@@ -317,4 +317,7 @@ RETURNING user_balance;</value>
   <data name="account_balance_SELECT" xml:space="preserve">
     <value>SELECT user_balance FROM app_user WHERE user_id = @userid;</value>
   </data>
+  <data name="userGetHashedPassword_SELECT" xml:space="preserve">
+    <value>SELECT lgn_password FROM login_credentials WHERE lgn_username = @username;</value>
+  </data>
 </root>

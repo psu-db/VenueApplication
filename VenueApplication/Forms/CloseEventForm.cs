@@ -39,7 +39,7 @@ namespace VenueApplication.Forms
             initializeFinancialData();
 
             closeEventDataGrid.AutoGenerateColumns = false;
-            List<report_data>reportDataSet = initializeTransactionData();
+            List<report_data> reportDataSet = initializeTransactionData();
             closeEventDataGrid.DataSource = reportDataSet;
             FormatDataGridForReport();
 
@@ -102,7 +102,7 @@ namespace VenueApplication.Forms
 
             closeEventTicketsSoldLabel.Text = results[0].ToString();
             closeEventTicketRevenue.Text = results[1].ToString();
-     
+
         }
 
         private List<report_data> initializeTransactionData()
@@ -226,7 +226,7 @@ namespace VenueApplication.Forms
 
         public static bool attemptDeleteTicketsForEvent(int event_id, DatabaseManager databaseManager)
         {
-            
+
             // Generate the SQL query
             string query = Properties.Resource.close_event_DELETE;
 
@@ -290,5 +290,6 @@ namespace VenueApplication.Forms
                 closeEventCloseButton.Enabled = false;
             }
         }
+
     }
 }
