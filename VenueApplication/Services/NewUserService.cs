@@ -56,14 +56,14 @@ namespace VenueApplication.Services
                         {
                             // Rollback the transaction in case of error
                             transaction.Rollback();
-                            MessageBox.Show($"Error executing query: {ex.Message}");
+                            Debug.WriteLine($"Error executing query: {ex.Message}");
                             return false;
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Connection error: {ex.Message}");
+                    Debug.WriteLine($"Connection error: {ex.Message}");
                     return false;
                 }
             }
