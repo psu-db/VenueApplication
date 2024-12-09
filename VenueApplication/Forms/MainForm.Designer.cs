@@ -112,6 +112,7 @@
             autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             purhaseItemsStoresDataGrid = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             panel2 = new Panel();
+            panel3 = new Panel();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tabControlAdv1).BeginInit();
@@ -146,6 +147,7 @@
             ((System.ComponentModel.ISupportInitialize)purchaseItemsItemDataGrid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)purhaseItemsStoresDataGrid).BeginInit();
             panel2.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -527,7 +529,7 @@
             // 
             // createEventCalendar
             // 
-            createEventCalendar.Location = new Point(46, 80);
+            createEventCalendar.Location = new Point(11, 61);
             createEventCalendar.Margin = new Padding(2);
             createEventCalendar.Name = "createEventCalendar";
             createEventCalendar.Size = new Size(266, 203);
@@ -567,7 +569,7 @@
             // createEventDateLabel
             // 
             createEventDateLabel.Font = new Font("Segoe UI", 16F);
-            createEventDateLabel.Location = new Point(42, 38);
+            createEventDateLabel.Location = new Point(11, 17);
             createEventDateLabel.Margin = new Padding(2, 0, 2, 0);
             createEventDateLabel.Name = "createEventDateLabel";
             createEventDateLabel.Size = new Size(122, 30);
@@ -1163,11 +1165,10 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(createEventDateLabel);
+            panel2.Controls.Add(panel3);
             panel2.Controls.Add(createEventCreateButton);
             panel2.Controls.Add(createEventTypeComboDropDown);
             panel2.Controls.Add(createEventCancelButton);
-            panel2.Controls.Add(createEventCalendar);
             panel2.Controls.Add(createEventErrorLabel);
             panel2.Controls.Add(createEventAMPMComboDropDown);
             panel2.Controls.Add(createEventHourComboDropDown);
@@ -1182,6 +1183,15 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(1173, 620);
             panel2.TabIndex = 21;
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(createEventDateLabel);
+            panel3.Controls.Add(createEventCalendar);
+            panel3.Location = new Point(40, 5);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(326, 289);
+            panel3.TabIndex = 21;
             // 
             // MainForm
             // 
@@ -1238,6 +1248,8 @@
             ((System.ComponentModel.ISupportInitialize)purhaseItemsStoresDataGrid).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -1332,5 +1344,6 @@
         private Syncfusion.WinForms.Controls.SfButton adminControlsButton;
         private Syncfusion.WinForms.Controls.SfButton itemPurchaseControlButton;
         private Panel panel2;
+        private Panel panel3;
     }
 }
