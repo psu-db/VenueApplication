@@ -43,11 +43,13 @@
             editEventTypeComboBoxAdv = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
             editEventDescriptionTextBoxExt = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             editEventErrorLabel = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)editEventHourComboBoxAdv).BeginInit();
             ((System.ComponentModel.ISupportInitialize)editEventMinuteComboBoxAdv).BeginInit();
             ((System.ComponentModel.ISupportInitialize)editEventAMPMComboBoxAdv).BeginInit();
             ((System.ComponentModel.ISupportInitialize)editEventTypeComboBoxAdv).BeginInit();
             ((System.ComponentModel.ISupportInitialize)editEventDescriptionTextBoxExt).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // autoLabel1
@@ -64,7 +66,7 @@
             // 
             EditEventCancelButton.Font = new Font("Segoe UI Semibold", 9F);
             EditEventCancelButton.Location = new Point(29, 521);
-            EditEventCancelButton.Margin = new Padding(2, 2, 2, 2);
+            EditEventCancelButton.Margin = new Padding(2);
             EditEventCancelButton.Name = "EditEventCancelButton";
             EditEventCancelButton.Size = new Size(157, 44);
             EditEventCancelButton.TabIndex = 3;
@@ -75,7 +77,7 @@
             // 
             editEventUpdateButton.Font = new Font("Segoe UI Semibold", 9F);
             editEventUpdateButton.Location = new Point(197, 521);
-            editEventUpdateButton.Margin = new Padding(2, 2, 2, 2);
+            editEventUpdateButton.Margin = new Padding(2);
             editEventUpdateButton.Name = "editEventUpdateButton";
             editEventUpdateButton.Size = new Size(157, 44);
             editEventUpdateButton.TabIndex = 4;
@@ -124,48 +126,52 @@
             // 
             // editEventCalender
             // 
-            editEventCalender.Location = new Point(142, 114);
-            editEventCalender.Margin = new Padding(2, 2, 2, 2);
+            editEventCalender.Dock = DockStyle.Fill;
+            editEventCalender.Location = new Point(0, 0);
+            editEventCalender.Margin = new Padding(2);
             editEventCalender.Name = "editEventCalender";
-            editEventCalender.Size = new Size(231, 201);
+            editEventCalender.Size = new Size(231, 214);
             editEventCalender.TabIndex = 10;
             editEventCalender.Text = "sfCalendar1";
             // 
             // editEventHourComboBoxAdv
             // 
-            editEventHourComboBoxAdv.BeforeTouchSize = new Size(123, 46);
+            editEventHourComboBoxAdv.BeforeTouchSize = new Size(73, 29);
             editEventHourComboBoxAdv.DropDownStyle = ComboBoxStyle.DropDownList;
             editEventHourComboBoxAdv.Font = new Font("Segoe UI", 12F);
             editEventHourComboBoxAdv.Items.AddRange(new object[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" });
             editEventHourComboBoxAdv.Location = new Point(141, 359);
-            editEventHourComboBoxAdv.Margin = new Padding(2, 2, 2, 2);
+            editEventHourComboBoxAdv.Margin = new Padding(2);
             editEventHourComboBoxAdv.Name = "editEventHourComboBoxAdv";
             editEventHourComboBoxAdv.Size = new Size(73, 29);
             editEventHourComboBoxAdv.TabIndex = 11;
+            editEventHourComboBoxAdv.Text = "01";
             // 
             // editEventMinuteComboBoxAdv
             // 
-            editEventMinuteComboBoxAdv.BeforeTouchSize = new Size(132, 46);
+            editEventMinuteComboBoxAdv.BeforeTouchSize = new Size(79, 29);
             editEventMinuteComboBoxAdv.DropDownStyle = ComboBoxStyle.DropDownList;
             editEventMinuteComboBoxAdv.Font = new Font("Segoe UI", 12F);
             editEventMinuteComboBoxAdv.Items.AddRange(new object[] { "00", "15", "30", "45" });
             editEventMinuteComboBoxAdv.Location = new Point(255, 360);
-            editEventMinuteComboBoxAdv.Margin = new Padding(2, 2, 2, 2);
+            editEventMinuteComboBoxAdv.Margin = new Padding(2);
             editEventMinuteComboBoxAdv.Name = "editEventMinuteComboBoxAdv";
             editEventMinuteComboBoxAdv.Size = new Size(79, 29);
             editEventMinuteComboBoxAdv.TabIndex = 12;
+            editEventMinuteComboBoxAdv.Text = "00";
             // 
             // editEventAMPMComboBoxAdv
             // 
-            editEventAMPMComboBoxAdv.BeforeTouchSize = new Size(117, 46);
+            editEventAMPMComboBoxAdv.BeforeTouchSize = new Size(70, 29);
             editEventAMPMComboBoxAdv.DropDownStyle = ComboBoxStyle.DropDownList;
             editEventAMPMComboBoxAdv.Font = new Font("Segoe UI", 12F);
             editEventAMPMComboBoxAdv.Items.AddRange(new object[] { "AM", "PM" });
             editEventAMPMComboBoxAdv.Location = new Point(357, 360);
-            editEventAMPMComboBoxAdv.Margin = new Padding(2, 2, 2, 2);
+            editEventAMPMComboBoxAdv.Margin = new Padding(2);
             editEventAMPMComboBoxAdv.Name = "editEventAMPMComboBoxAdv";
             editEventAMPMComboBoxAdv.Size = new Size(70, 29);
             editEventAMPMComboBoxAdv.TabIndex = 13;
+            editEventAMPMComboBoxAdv.Text = "AM";
             // 
             // editEventColonLabel
             // 
@@ -179,22 +185,23 @@
             // 
             // editEventTypeComboBoxAdv
             // 
-            editEventTypeComboBoxAdv.BeforeTouchSize = new Size(257, 46);
+            editEventTypeComboBoxAdv.BeforeTouchSize = new Size(152, 29);
             editEventTypeComboBoxAdv.DropDownStyle = ComboBoxStyle.DropDownList;
             editEventTypeComboBoxAdv.Font = new Font("Segoe UI", 12F);
             editEventTypeComboBoxAdv.Items.AddRange(new object[] { "Football", "Concert", "Other" });
             editEventTypeComboBoxAdv.Location = new Point(142, 410);
-            editEventTypeComboBoxAdv.Margin = new Padding(2, 2, 2, 2);
+            editEventTypeComboBoxAdv.Margin = new Padding(2);
             editEventTypeComboBoxAdv.Name = "editEventTypeComboBoxAdv";
             editEventTypeComboBoxAdv.Size = new Size(152, 29);
             editEventTypeComboBoxAdv.TabIndex = 15;
+            editEventTypeComboBoxAdv.Text = "Football";
             // 
             // editEventDescriptionTextBoxExt
             // 
             editEventDescriptionTextBoxExt.BeforeTouchSize = new Size(335, 29);
             editEventDescriptionTextBoxExt.Font = new Font("Segoe UI", 12F);
             editEventDescriptionTextBoxExt.Location = new Point(197, 463);
-            editEventDescriptionTextBoxExt.Margin = new Padding(2, 2, 2, 2);
+            editEventDescriptionTextBoxExt.Margin = new Padding(2);
             editEventDescriptionTextBoxExt.Name = "editEventDescriptionTextBoxExt";
             editEventDescriptionTextBoxExt.Size = new Size(335, 29);
             editEventDescriptionTextBoxExt.TabIndex = 16;
@@ -212,11 +219,20 @@
             editEventErrorLabel.Text = "error label";
             editEventErrorLabel.Visible = false;
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(editEventCalender);
+            panel1.Location = new Point(142, 103);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(235, 214);
+            panel1.TabIndex = 18;
+            // 
             // EditEventForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(557, 627);
+            Controls.Add(panel1);
             Controls.Add(editEventErrorLabel);
             Controls.Add(editEventDescriptionTextBoxExt);
             Controls.Add(editEventTypeComboBoxAdv);
@@ -224,7 +240,6 @@
             Controls.Add(editEventAMPMComboBoxAdv);
             Controls.Add(editEventMinuteComboBoxAdv);
             Controls.Add(editEventHourComboBoxAdv);
-            Controls.Add(editEventCalender);
             Controls.Add(editEventDescriptionLabel);
             Controls.Add(editEventTimeLabel);
             Controls.Add(editEventTypeLabel);
@@ -233,7 +248,7 @@
             Controls.Add(EditEventCancelButton);
             Controls.Add(autoLabel1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             MaximizeBox = false;
             Name = "EditEventForm";
             StartPosition = FormStartPosition.CenterScreen;
@@ -243,6 +258,7 @@
             ((System.ComponentModel.ISupportInitialize)editEventAMPMComboBoxAdv).EndInit();
             ((System.ComponentModel.ISupportInitialize)editEventTypeComboBoxAdv).EndInit();
             ((System.ComponentModel.ISupportInitialize)editEventDescriptionTextBoxExt).EndInit();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -264,5 +280,6 @@
         private Syncfusion.Windows.Forms.Tools.ComboBoxAdv editEventTypeComboBoxAdv;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt editEventDescriptionTextBoxExt;
         private Syncfusion.Windows.Forms.Tools.AutoLabel editEventErrorLabel;
+        private Panel panel1;
     }
 }

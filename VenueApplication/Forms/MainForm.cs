@@ -124,7 +124,7 @@ namespace VenueApplication
 
             if (newBalance != 0)
             {
-                
+
                 profileAccountBalanceValueLabel.Text = $"${newBalance.ToString()}";
                 user.user_balance = (decimal)newBalance;
             }
@@ -1442,7 +1442,7 @@ namespace VenueApplication
             }
 
 
-           
+
 
             if (trans_pymt_info_id > 0 && trans_event_id > 0 && trans_quantity > 0 && trans_item_id > 0)
             {
@@ -1639,6 +1639,11 @@ namespace VenueApplication
         {
             tabControlAdv1.SelectedTab = adminToolsTab;
             tabControlAdv2.SelectedTab = adminToolsSelectionTab;
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 

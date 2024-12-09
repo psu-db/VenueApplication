@@ -50,20 +50,22 @@
             eventManagerButton = new Syncfusion.WinForms.Controls.SfButton();
             switchToCreateNewEventTabButton = new Syncfusion.WinForms.Controls.SfButton();
             createNewEventTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
-            createEventTypeComboDropDown = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
-            createEventAMPMComboDropDown = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
-            createEventMinuteComboDropDown = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
-            createEventHourComboDropDown = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
-            createEventColonLabel = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            panel2 = new Panel();
+            panel3 = new Panel();
+            createEventDateLabel = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            createEventCalendar = new Syncfusion.WinForms.Input.SfCalendar();
             createEventCreateButton = new Syncfusion.WinForms.Controls.SfButton();
+            createEventTypeComboDropDown = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
             createEventCancelButton = new Syncfusion.WinForms.Controls.SfButton();
             createEventErrorLabel = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            createEventDescriptionTextBox = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            createEventCalendar = new Syncfusion.WinForms.Input.SfCalendar();
-            createEventDescriptionLabel = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            createEventTypeLabel = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            createEventAMPMComboDropDown = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
+            createEventHourComboDropDown = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
+            createEventMinuteComboDropDown = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
             createEventTimeLabel = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            createEventDateLabel = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            createEventTypeLabel = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            createEventColonLabel = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            createEventDescriptionLabel = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            createEventDescriptionTextBox = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             eventManagerTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             eventManagerErrorLabel = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             manageEventCloseEventButton = new Syncfusion.WinForms.Controls.SfButton();
@@ -111,8 +113,6 @@
             purchaseItemsItemDataGrid = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             purhaseItemsStoresDataGrid = new Syncfusion.WinForms.DataGrid.SfDataGrid();
-            panel2 = new Panel();
-            panel3 = new Panel();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tabControlAdv1).BeginInit();
@@ -124,10 +124,12 @@
             tabControlAdv2.SuspendLayout();
             adminToolsSelectionTab.SuspendLayout();
             createNewEventTab.SuspendLayout();
+            panel2.SuspendLayout();
+            panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)createEventTypeComboDropDown).BeginInit();
             ((System.ComponentModel.ISupportInitialize)createEventAMPMComboDropDown).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)createEventMinuteComboDropDown).BeginInit();
             ((System.ComponentModel.ISupportInitialize)createEventHourComboDropDown).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)createEventMinuteComboDropDown).BeginInit();
             ((System.ComponentModel.ISupportInitialize)createEventDescriptionTextBox).BeginInit();
             eventManagerTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)manageEventDataGrid).BeginInit();
@@ -146,8 +148,6 @@
             ((System.ComponentModel.ISupportInitialize)itemPurchaseQuantityTextBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)purchaseItemsItemDataGrid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)purhaseItemsStoresDataGrid).BeginInit();
-            panel2.SuspendLayout();
-            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -421,6 +421,68 @@
             createNewEventTab.ThemesEnabled = false;
             createNewEventTab.Leave += createNewEventTab_Leave;
             // 
+            // panel2
+            // 
+            panel2.Controls.Add(createEventDateLabel);
+            panel2.Controls.Add(panel3);
+            panel2.Controls.Add(createEventCreateButton);
+            panel2.Controls.Add(createEventTypeComboDropDown);
+            panel2.Controls.Add(createEventCancelButton);
+            panel2.Controls.Add(createEventErrorLabel);
+            panel2.Controls.Add(createEventAMPMComboDropDown);
+            panel2.Controls.Add(createEventHourComboDropDown);
+            panel2.Controls.Add(createEventMinuteComboDropDown);
+            panel2.Controls.Add(createEventTimeLabel);
+            panel2.Controls.Add(createEventTypeLabel);
+            panel2.Controls.Add(createEventColonLabel);
+            panel2.Controls.Add(createEventDescriptionLabel);
+            panel2.Controls.Add(createEventDescriptionTextBox);
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(0, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(1173, 620);
+            panel2.TabIndex = 21;
+            panel2.Paint += panel2_Paint;
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(createEventCalendar);
+            panel3.Location = new Point(44, 83);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(216, 196);
+            panel3.TabIndex = 21;
+            // 
+            // createEventDateLabel
+            // 
+            createEventDateLabel.Font = new Font("Segoe UI", 16F);
+            createEventDateLabel.Location = new Point(40, 40);
+            createEventDateLabel.Margin = new Padding(2, 0, 2, 0);
+            createEventDateLabel.Name = "createEventDateLabel";
+            createEventDateLabel.Size = new Size(122, 30);
+            createEventDateLabel.TabIndex = 1;
+            createEventDateLabel.Text = "Event Date:";
+            // 
+            // createEventCalendar
+            // 
+            createEventCalendar.Dock = DockStyle.Fill;
+            createEventCalendar.Location = new Point(0, 0);
+            createEventCalendar.Margin = new Padding(2);
+            createEventCalendar.Name = "createEventCalendar";
+            createEventCalendar.Size = new Size(210, 196);
+            createEventCalendar.TabIndex = 5;
+            createEventCalendar.Text = "sfCalendar1";
+            // 
+            // createEventCreateButton
+            // 
+            createEventCreateButton.Font = new Font("Segoe UI Semibold", 9F);
+            createEventCreateButton.Location = new Point(453, 511);
+            createEventCreateButton.Margin = new Padding(2);
+            createEventCreateButton.Name = "createEventCreateButton";
+            createEventCreateButton.Size = new Size(113, 41);
+            createEventCreateButton.TabIndex = 11;
+            createEventCreateButton.Text = "Create";
+            createEventCreateButton.Click += createEventCreateButton_Click;
+            // 
             // createEventTypeComboDropDown
             // 
             createEventTypeComboDropDown.BeforeTouchSize = new Size(125, 33);
@@ -433,66 +495,6 @@
             createEventTypeComboDropDown.Size = new Size(125, 33);
             createEventTypeComboDropDown.TabIndex = 20;
             createEventTypeComboDropDown.Text = "Football";
-            // 
-            // createEventAMPMComboDropDown
-            // 
-            createEventAMPMComboDropDown.BeforeTouchSize = new Size(63, 33);
-            createEventAMPMComboDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
-            createEventAMPMComboDropDown.Font = new Font("Segoe UI", 14F);
-            createEventAMPMComboDropDown.Items.AddRange(new object[] { "AM", "PM" });
-            createEventAMPMComboDropDown.Location = new Point(334, 297);
-            createEventAMPMComboDropDown.Margin = new Padding(2);
-            createEventAMPMComboDropDown.Name = "createEventAMPMComboDropDown";
-            createEventAMPMComboDropDown.Size = new Size(63, 33);
-            createEventAMPMComboDropDown.TabIndex = 19;
-            createEventAMPMComboDropDown.Text = "AM";
-            // 
-            // createEventMinuteComboDropDown
-            // 
-            createEventMinuteComboDropDown.BeforeTouchSize = new Size(62, 33);
-            createEventMinuteComboDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
-            createEventMinuteComboDropDown.Font = new Font("Segoe UI", 14F);
-            createEventMinuteComboDropDown.Items.AddRange(new object[] { "00", "15", "30", "45" });
-            createEventMinuteComboDropDown.Location = new Point(256, 297);
-            createEventMinuteComboDropDown.Margin = new Padding(2);
-            createEventMinuteComboDropDown.Name = "createEventMinuteComboDropDown";
-            createEventMinuteComboDropDown.Size = new Size(62, 33);
-            createEventMinuteComboDropDown.TabIndex = 18;
-            createEventMinuteComboDropDown.Text = "00";
-            // 
-            // createEventHourComboDropDown
-            // 
-            createEventHourComboDropDown.BeforeTouchSize = new Size(65, 33);
-            createEventHourComboDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
-            createEventHourComboDropDown.Font = new Font("Segoe UI", 14F);
-            createEventHourComboDropDown.Items.AddRange(new object[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" });
-            createEventHourComboDropDown.Location = new Point(167, 297);
-            createEventHourComboDropDown.Margin = new Padding(2);
-            createEventHourComboDropDown.Name = "createEventHourComboDropDown";
-            createEventHourComboDropDown.Size = new Size(65, 33);
-            createEventHourComboDropDown.TabIndex = 17;
-            createEventHourComboDropDown.Text = "01";
-            // 
-            // createEventColonLabel
-            // 
-            createEventColonLabel.Font = new Font("Segoe UI", 14F);
-            createEventColonLabel.Location = new Point(236, 302);
-            createEventColonLabel.Margin = new Padding(2, 0, 2, 0);
-            createEventColonLabel.Name = "createEventColonLabel";
-            createEventColonLabel.Size = new Size(16, 25);
-            createEventColonLabel.TabIndex = 16;
-            createEventColonLabel.Text = ":";
-            // 
-            // createEventCreateButton
-            // 
-            createEventCreateButton.Font = new Font("Segoe UI Semibold", 9F);
-            createEventCreateButton.Location = new Point(453, 511);
-            createEventCreateButton.Margin = new Padding(2);
-            createEventCreateButton.Name = "createEventCreateButton";
-            createEventCreateButton.Size = new Size(113, 41);
-            createEventCreateButton.TabIndex = 11;
-            createEventCreateButton.Text = "Create";
-            createEventCreateButton.Click += createEventCreateButton_Click;
             // 
             // createEventCancelButton
             // 
@@ -517,44 +519,44 @@
             createEventErrorLabel.Text = "Create event error label";
             createEventErrorLabel.Visible = false;
             // 
-            // createEventDescriptionTextBox
+            // createEventAMPMComboDropDown
             // 
-            createEventDescriptionTextBox.BeforeTouchSize = new Size(104, 39);
-            createEventDescriptionTextBox.Font = new Font("Segoe UI", 12F);
-            createEventDescriptionTextBox.Location = new Point(232, 435);
-            createEventDescriptionTextBox.Margin = new Padding(2);
-            createEventDescriptionTextBox.Name = "createEventDescriptionTextBox";
-            createEventDescriptionTextBox.Size = new Size(375, 29);
-            createEventDescriptionTextBox.TabIndex = 8;
+            createEventAMPMComboDropDown.BeforeTouchSize = new Size(63, 33);
+            createEventAMPMComboDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
+            createEventAMPMComboDropDown.Font = new Font("Segoe UI", 14F);
+            createEventAMPMComboDropDown.Items.AddRange(new object[] { "AM", "PM" });
+            createEventAMPMComboDropDown.Location = new Point(334, 297);
+            createEventAMPMComboDropDown.Margin = new Padding(2);
+            createEventAMPMComboDropDown.Name = "createEventAMPMComboDropDown";
+            createEventAMPMComboDropDown.Size = new Size(63, 33);
+            createEventAMPMComboDropDown.TabIndex = 19;
+            createEventAMPMComboDropDown.Text = "AM";
             // 
-            // createEventCalendar
+            // createEventHourComboDropDown
             // 
-            createEventCalendar.Location = new Point(11, 61);
-            createEventCalendar.Margin = new Padding(2);
-            createEventCalendar.Name = "createEventCalendar";
-            createEventCalendar.Size = new Size(266, 203);
-            createEventCalendar.TabIndex = 5;
-            createEventCalendar.Text = "sfCalendar1";
+            createEventHourComboDropDown.BeforeTouchSize = new Size(65, 33);
+            createEventHourComboDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
+            createEventHourComboDropDown.Font = new Font("Segoe UI", 14F);
+            createEventHourComboDropDown.Items.AddRange(new object[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" });
+            createEventHourComboDropDown.Location = new Point(167, 297);
+            createEventHourComboDropDown.Margin = new Padding(2);
+            createEventHourComboDropDown.Name = "createEventHourComboDropDown";
+            createEventHourComboDropDown.Size = new Size(65, 33);
+            createEventHourComboDropDown.TabIndex = 17;
+            createEventHourComboDropDown.Text = "01";
             // 
-            // createEventDescriptionLabel
+            // createEventMinuteComboDropDown
             // 
-            createEventDescriptionLabel.Font = new Font("Segoe UI", 16F);
-            createEventDescriptionLabel.Location = new Point(42, 433);
-            createEventDescriptionLabel.Margin = new Padding(2, 0, 2, 0);
-            createEventDescriptionLabel.Name = "createEventDescriptionLabel";
-            createEventDescriptionLabel.Size = new Size(186, 30);
-            createEventDescriptionLabel.TabIndex = 4;
-            createEventDescriptionLabel.Text = "Event Description:";
-            // 
-            // createEventTypeLabel
-            // 
-            createEventTypeLabel.Font = new Font("Segoe UI", 16F);
-            createEventTypeLabel.Location = new Point(44, 357);
-            createEventTypeLabel.Margin = new Padding(2, 0, 2, 0);
-            createEventTypeLabel.Name = "createEventTypeLabel";
-            createEventTypeLabel.Size = new Size(124, 30);
-            createEventTypeLabel.TabIndex = 3;
-            createEventTypeLabel.Text = "Event Type:";
+            createEventMinuteComboDropDown.BeforeTouchSize = new Size(62, 33);
+            createEventMinuteComboDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
+            createEventMinuteComboDropDown.Font = new Font("Segoe UI", 14F);
+            createEventMinuteComboDropDown.Items.AddRange(new object[] { "00", "15", "30", "45" });
+            createEventMinuteComboDropDown.Location = new Point(256, 297);
+            createEventMinuteComboDropDown.Margin = new Padding(2);
+            createEventMinuteComboDropDown.Name = "createEventMinuteComboDropDown";
+            createEventMinuteComboDropDown.Size = new Size(62, 33);
+            createEventMinuteComboDropDown.TabIndex = 18;
+            createEventMinuteComboDropDown.Text = "00";
             // 
             // createEventTimeLabel
             // 
@@ -566,15 +568,45 @@
             createEventTimeLabel.TabIndex = 2;
             createEventTimeLabel.Text = "Event Time:";
             // 
-            // createEventDateLabel
+            // createEventTypeLabel
             // 
-            createEventDateLabel.Font = new Font("Segoe UI", 16F);
-            createEventDateLabel.Location = new Point(11, 17);
-            createEventDateLabel.Margin = new Padding(2, 0, 2, 0);
-            createEventDateLabel.Name = "createEventDateLabel";
-            createEventDateLabel.Size = new Size(122, 30);
-            createEventDateLabel.TabIndex = 1;
-            createEventDateLabel.Text = "Event Date:";
+            createEventTypeLabel.Font = new Font("Segoe UI", 16F);
+            createEventTypeLabel.Location = new Point(44, 357);
+            createEventTypeLabel.Margin = new Padding(2, 0, 2, 0);
+            createEventTypeLabel.Name = "createEventTypeLabel";
+            createEventTypeLabel.Size = new Size(124, 30);
+            createEventTypeLabel.TabIndex = 3;
+            createEventTypeLabel.Text = "Event Type:";
+            // 
+            // createEventColonLabel
+            // 
+            createEventColonLabel.Font = new Font("Segoe UI", 14F);
+            createEventColonLabel.Location = new Point(236, 302);
+            createEventColonLabel.Margin = new Padding(2, 0, 2, 0);
+            createEventColonLabel.Name = "createEventColonLabel";
+            createEventColonLabel.Size = new Size(16, 25);
+            createEventColonLabel.TabIndex = 16;
+            createEventColonLabel.Text = ":";
+            // 
+            // createEventDescriptionLabel
+            // 
+            createEventDescriptionLabel.Font = new Font("Segoe UI", 16F);
+            createEventDescriptionLabel.Location = new Point(42, 433);
+            createEventDescriptionLabel.Margin = new Padding(2, 0, 2, 0);
+            createEventDescriptionLabel.Name = "createEventDescriptionLabel";
+            createEventDescriptionLabel.Size = new Size(186, 30);
+            createEventDescriptionLabel.TabIndex = 4;
+            createEventDescriptionLabel.Text = "Event Description:";
+            // 
+            // createEventDescriptionTextBox
+            // 
+            createEventDescriptionTextBox.BeforeTouchSize = new Size(104, 39);
+            createEventDescriptionTextBox.Font = new Font("Segoe UI", 12F);
+            createEventDescriptionTextBox.Location = new Point(232, 435);
+            createEventDescriptionTextBox.Margin = new Padding(2);
+            createEventDescriptionTextBox.Name = "createEventDescriptionTextBox";
+            createEventDescriptionTextBox.Size = new Size(375, 29);
+            createEventDescriptionTextBox.TabIndex = 8;
             // 
             // eventManagerTab
             // 
@@ -1163,36 +1195,6 @@
             purhaseItemsStoresDataGrid.Text = "sfDataGrid1";
             purhaseItemsStoresDataGrid.SelectionChanged += purhaseItemsStoresDataGrid_SelectionChanged;
             // 
-            // panel2
-            // 
-            panel2.Controls.Add(panel3);
-            panel2.Controls.Add(createEventCreateButton);
-            panel2.Controls.Add(createEventTypeComboDropDown);
-            panel2.Controls.Add(createEventCancelButton);
-            panel2.Controls.Add(createEventErrorLabel);
-            panel2.Controls.Add(createEventAMPMComboDropDown);
-            panel2.Controls.Add(createEventHourComboDropDown);
-            panel2.Controls.Add(createEventMinuteComboDropDown);
-            panel2.Controls.Add(createEventTimeLabel);
-            panel2.Controls.Add(createEventTypeLabel);
-            panel2.Controls.Add(createEventColonLabel);
-            panel2.Controls.Add(createEventDescriptionLabel);
-            panel2.Controls.Add(createEventDescriptionTextBox);
-            panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(0, 0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(1173, 620);
-            panel2.TabIndex = 21;
-            // 
-            // panel3
-            // 
-            panel3.Controls.Add(createEventDateLabel);
-            panel3.Controls.Add(createEventCalendar);
-            panel3.Location = new Point(40, 5);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(326, 289);
-            panel3.TabIndex = 21;
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1219,10 +1221,13 @@
             tabControlAdv2.ResumeLayout(false);
             adminToolsSelectionTab.ResumeLayout(false);
             createNewEventTab.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)createEventTypeComboDropDown).EndInit();
             ((System.ComponentModel.ISupportInitialize)createEventAMPMComboDropDown).EndInit();
-            ((System.ComponentModel.ISupportInitialize)createEventMinuteComboDropDown).EndInit();
             ((System.ComponentModel.ISupportInitialize)createEventHourComboDropDown).EndInit();
+            ((System.ComponentModel.ISupportInitialize)createEventMinuteComboDropDown).EndInit();
             ((System.ComponentModel.ISupportInitialize)createEventDescriptionTextBox).EndInit();
             eventManagerTab.ResumeLayout(false);
             eventManagerTab.PerformLayout();
@@ -1246,10 +1251,6 @@
             ((System.ComponentModel.ISupportInitialize)itemPurchaseQuantityTextBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)purchaseItemsItemDataGrid).EndInit();
             ((System.ComponentModel.ISupportInitialize)purhaseItemsStoresDataGrid).EndInit();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
             ResumeLayout(false);
         }
 

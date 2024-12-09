@@ -37,11 +37,11 @@ namespace VenueApplication.Forms
         private Syncfusion.WinForms.Controls.SfButton manageStoreItemsCancelButton;
         private Syncfusion.Windows.Forms.Tools.AutoLabel manageStoreItemsMessageLabel;
         public venue_store selectedStore;
+        private Panel panel1;
         public venue_item selectedItem;
 
         private void InitializeComponent()
         {
-            this.AutoScaleMode = AutoScaleMode.Dpi;
             components = new Container();
             manageStoreItemsDataGrid = new SfDataGrid();
             autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -55,9 +55,11 @@ namespace VenueApplication.Forms
             manageStoreItemsDeleteButton = new Syncfusion.WinForms.Controls.SfButton();
             manageStoreItemsCancelButton = new Syncfusion.WinForms.Controls.SfButton();
             manageStoreItemsMessageLabel = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            panel1 = new Panel();
             ((ISupportInitialize)manageStoreItemsDataGrid).BeginInit();
             ((ISupportInitialize)manageStoreItemsNameTextBox).BeginInit();
             ((ISupportInitialize)manageStoreItemsPriceCurrencyTextBox).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // manageStoreItemsDataGrid
@@ -90,7 +92,7 @@ namespace VenueApplication.Forms
             // autoLabel2
             // 
             autoLabel2.Font = new Font("Segoe UI", 16F);
-            autoLabel2.Location = new Point(58, 418);
+            autoLabel2.Location = new Point(23, 29);
             autoLabel2.Name = "autoLabel2";
             autoLabel2.Size = new Size(126, 30);
             autoLabel2.TabIndex = 2;
@@ -107,7 +109,7 @@ namespace VenueApplication.Forms
             // autoLabel3
             // 
             autoLabel3.Font = new Font("Segoe UI", 16F);
-            autoLabel3.Location = new Point(58, 488);
+            autoLabel3.Location = new Point(23, 99);
             autoLabel3.Name = "autoLabel3";
             autoLabel3.Size = new Size(115, 30);
             autoLabel3.TabIndex = 4;
@@ -117,7 +119,7 @@ namespace VenueApplication.Forms
             // 
             manageStoreItemsNameTextBox.BeforeTouchSize = new Size(175, 36);
             manageStoreItemsNameTextBox.Font = new Font("Segoe UI", 16F);
-            manageStoreItemsNameTextBox.Location = new Point(190, 418);
+            manageStoreItemsNameTextBox.Location = new Point(155, 29);
             manageStoreItemsNameTextBox.Name = "manageStoreItemsNameTextBox";
             manageStoreItemsNameTextBox.Size = new Size(336, 36);
             manageStoreItemsNameTextBox.TabIndex = 5;
@@ -128,7 +130,7 @@ namespace VenueApplication.Forms
             manageStoreItemsPriceCurrencyTextBox.BeforeTouchSize = new Size(175, 36);
             manageStoreItemsPriceCurrencyTextBox.DecimalValue = new decimal(new int[] { 100, 0, 0, 131072 });
             manageStoreItemsPriceCurrencyTextBox.Font = new Font("Segoe UI", 16F);
-            manageStoreItemsPriceCurrencyTextBox.Location = new Point(179, 488);
+            manageStoreItemsPriceCurrencyTextBox.Location = new Point(144, 99);
             manageStoreItemsPriceCurrencyTextBox.Name = "manageStoreItemsPriceCurrencyTextBox";
             manageStoreItemsPriceCurrencyTextBox.Size = new Size(175, 36);
             manageStoreItemsPriceCurrencyTextBox.TabIndex = 6;
@@ -137,7 +139,7 @@ namespace VenueApplication.Forms
             // manageStoreItemsCreateButton
             // 
             manageStoreItemsCreateButton.Font = new Font("Segoe UI Semibold", 16F);
-            manageStoreItemsCreateButton.Location = new Point(58, 554);
+            manageStoreItemsCreateButton.Location = new Point(26, 170);
             manageStoreItemsCreateButton.Name = "manageStoreItemsCreateButton";
             manageStoreItemsCreateButton.Size = new Size(193, 56);
             manageStoreItemsCreateButton.TabIndex = 7;
@@ -147,7 +149,7 @@ namespace VenueApplication.Forms
             // manageStoreItemsUpdateButton
             // 
             manageStoreItemsUpdateButton.Font = new Font("Segoe UI Semibold", 16F);
-            manageStoreItemsUpdateButton.Location = new Point(277, 554);
+            manageStoreItemsUpdateButton.Location = new Point(245, 170);
             manageStoreItemsUpdateButton.Name = "manageStoreItemsUpdateButton";
             manageStoreItemsUpdateButton.Size = new Size(193, 56);
             manageStoreItemsUpdateButton.TabIndex = 8;
@@ -184,19 +186,29 @@ namespace VenueApplication.Forms
             manageStoreItemsMessageLabel.Text = "message label";
             manageStoreItemsMessageLabel.Visible = false;
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(autoLabel2);
+            panel1.Controls.Add(autoLabel3);
+            panel1.Controls.Add(manageStoreItemsNameTextBox);
+            panel1.Controls.Add(manageStoreItemsPriceCurrencyTextBox);
+            panel1.Controls.Add(manageStoreItemsUpdateButton);
+            panel1.Controls.Add(manageStoreItemsCreateButton);
+            panel1.Location = new Point(58, 382);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(545, 238);
+            panel1.TabIndex = 12;
+            // 
             // ManageStoreItemsForm
             // 
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             ClientSize = new Size(852, 632);
+            Controls.Add(panel1);
             Controls.Add(manageStoreItemsMessageLabel);
             Controls.Add(manageStoreItemsCancelButton);
             Controls.Add(manageStoreItemsDeleteButton);
-            Controls.Add(manageStoreItemsUpdateButton);
-            Controls.Add(manageStoreItemsCreateButton);
-            Controls.Add(manageStoreItemsPriceCurrencyTextBox);
-            Controls.Add(manageStoreItemsNameTextBox);
-            Controls.Add(autoLabel3);
             Controls.Add(manageStoreItemsStoreNameLabel);
-            Controls.Add(autoLabel2);
             Controls.Add(autoLabel1);
             Controls.Add(manageStoreItemsDataGrid);
             FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -206,6 +218,8 @@ namespace VenueApplication.Forms
             ((ISupportInitialize)manageStoreItemsDataGrid).EndInit();
             ((ISupportInitialize)manageStoreItemsNameTextBox).EndInit();
             ((ISupportInitialize)manageStoreItemsPriceCurrencyTextBox).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
