@@ -86,7 +86,7 @@
             // 
             // manageTicketsSectionComboBoxAdv
             // 
-            manageTicketsSectionComboBoxAdv.BeforeTouchSize = new Size(212, 46);
+            manageTicketsSectionComboBoxAdv.BeforeTouchSize = new Size(125, 29);
             manageTicketsSectionComboBoxAdv.DropDownStyle = ComboBoxStyle.DropDownList;
             manageTicketsSectionComboBoxAdv.Font = new Font("Segoe UI", 12F);
             manageTicketsSectionComboBoxAdv.Items.AddRange(new object[] { "EB", "EF", "NL", "NG", "NC", "WH", "WD", "SK", "SF", "EAU", "EEU", "EJU", "NHU", "NDU", "WHU", "WEU", "WAU", "SLU", "SGU", "SCU" });
@@ -95,6 +95,7 @@
             manageTicketsSectionComboBoxAdv.Name = "manageTicketsSectionComboBoxAdv";
             manageTicketsSectionComboBoxAdv.Size = new Size(125, 29);
             manageTicketsSectionComboBoxAdv.TabIndex = 3;
+            manageTicketsSectionComboBoxAdv.Text = "EB";
             // 
             // manageTicketsSectionLabel
             // 
@@ -176,8 +177,8 @@
             // 
             // ManageTicketsForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             ClientSize = new Size(810, 564);
             Controls.Add(manageTicketsDeleteButton);
             Controls.Add(manageTicketsErrorLabel);

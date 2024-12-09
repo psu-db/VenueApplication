@@ -127,7 +127,7 @@ namespace VenueApplication.Forms
             // manageStoreItemsPriceCurrencyTextBox
             // 
             manageStoreItemsPriceCurrencyTextBox.AccessibilityEnabled = true;
-            manageStoreItemsPriceCurrencyTextBox.BeforeTouchSize = new Size(175, 36);
+            manageStoreItemsPriceCurrencyTextBox.BeforeTouchSize = new Size(155, 23);
             manageStoreItemsPriceCurrencyTextBox.DecimalValue = new decimal(new int[] { 100, 0, 0, 131072 });
             manageStoreItemsPriceCurrencyTextBox.Font = new Font("Segoe UI", 16F);
             manageStoreItemsPriceCurrencyTextBox.Location = new Point(144, 99);
@@ -179,7 +179,7 @@ namespace VenueApplication.Forms
             // manageStoreItemsMessageLabel
             // 
             manageStoreItemsMessageLabel.Font = new Font("Segoe UI", 16F);
-            manageStoreItemsMessageLabel.Location = new Point(145, 974);
+            manageStoreItemsMessageLabel.Location = new Point(57, 593);
             manageStoreItemsMessageLabel.Name = "manageStoreItemsMessageLabel";
             manageStoreItemsMessageLabel.Size = new Size(150, 30);
             manageStoreItemsMessageLabel.TabIndex = 11;

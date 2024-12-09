@@ -50,10 +50,10 @@
             // 
             // scanTicketTextBox
             // 
-            scanTicketTextBox.BeforeTouchSize = new Size(104, 39);
+            scanTicketTextBox.BeforeTouchSize = new Size(159, 23);
             scanTicketTextBox.Font = new Font("Segoe UI", 18F);
             scanTicketTextBox.Location = new Point(269, 213);
-            scanTicketTextBox.Margin = new Padding(2, 2, 2, 2);
+            scanTicketTextBox.Margin = new Padding(2);
             scanTicketTextBox.Name = "scanTicketTextBox";
             scanTicketTextBox.Size = new Size(104, 39);
             scanTicketTextBox.TabIndex = 2;
@@ -98,7 +98,7 @@
             // 
             scanTicketCancelButton.Font = new Font("Segoe UI Semibold", 12F);
             scanTicketCancelButton.Location = new Point(59, 295);
-            scanTicketCancelButton.Margin = new Padding(2, 2, 2, 2);
+            scanTicketCancelButton.Margin = new Padding(2);
             scanTicketCancelButton.Name = "scanTicketCancelButton";
             scanTicketCancelButton.Size = new Size(185, 44);
             scanTicketCancelButton.TabIndex = 8;
@@ -109,7 +109,7 @@
             // 
             scanTicketScanButton.Font = new Font("Segoe UI Semibold", 12F);
             scanTicketScanButton.Location = new Point(262, 295);
-            scanTicketScanButton.Margin = new Padding(2, 2, 2, 2);
+            scanTicketScanButton.Margin = new Padding(2);
             scanTicketScanButton.Name = "scanTicketScanButton";
             scanTicketScanButton.Size = new Size(185, 44);
             scanTicketScanButton.TabIndex = 9;
@@ -118,8 +118,8 @@
             // 
             // ScanTicketForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             ClientSize = new Size(521, 533);
             Controls.Add(scanTicketScanButton);
             Controls.Add(scanTicketCancelButton);
@@ -129,7 +129,7 @@
             Controls.Add(scanTicketTextBox);
             Controls.Add(scanTicketsWelcomeLabel);
             FormBorderStyle = FormBorderStyle.FixedDialog;
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             MaximizeBox = false;
             Name = "ScanTicketForm";
             StartPosition = FormStartPosition.CenterScreen;

@@ -57,10 +57,9 @@
             // paymentMethodFormCancelButton
             // 
             paymentMethodFormCancelButton.Font = new Font("Segoe UI Semibold", 9F);
-            paymentMethodFormCancelButton.Location = new Point(365, 820);
-            paymentMethodFormCancelButton.Margin = new Padding(5, 6, 5, 6);
+            paymentMethodFormCancelButton.Location = new Point(213, 410);
             paymentMethodFormCancelButton.Name = "paymentMethodFormCancelButton";
-            paymentMethodFormCancelButton.Size = new Size(165, 56);
+            paymentMethodFormCancelButton.Size = new Size(96, 28);
             paymentMethodFormCancelButton.TabIndex = 0;
             paymentMethodFormCancelButton.TabStop = false;
             paymentMethodFormCancelButton.Text = "Cancel";
@@ -69,10 +68,9 @@
             // savePaymentMethodButton
             // 
             savePaymentMethodButton.Font = new Font("Segoe UI Semibold", 9F);
-            savePaymentMethodButton.Location = new Point(554, 820);
-            savePaymentMethodButton.Margin = new Padding(5, 6, 5, 6);
+            savePaymentMethodButton.Location = new Point(323, 410);
             savePaymentMethodButton.Name = "savePaymentMethodButton";
-            savePaymentMethodButton.Size = new Size(165, 56);
+            savePaymentMethodButton.Size = new Size(96, 28);
             savePaymentMethodButton.TabIndex = 1;
             savePaymentMethodButton.TabStop = false;
             savePaymentMethodButton.Text = "Save";
@@ -82,10 +80,9 @@
             // 
             cardTypeLabel.AutoSize = true;
             cardTypeLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            cardTypeLabel.Location = new Point(91, 102);
-            cardTypeLabel.Margin = new Padding(5, 0, 5, 0);
+            cardTypeLabel.Location = new Point(53, 51);
             cardTypeLabel.Name = "cardTypeLabel";
-            cardTypeLabel.Size = new Size(155, 38);
+            cardTypeLabel.Size = new Size(89, 21);
             cardTypeLabel.TabIndex = 2;
             cardTypeLabel.Text = "Card Type:";
             // 
@@ -93,10 +90,9 @@
             // 
             cardNumberLabel.AutoSize = true;
             cardNumberLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            cardNumberLabel.Location = new Point(91, 206);
-            cardNumberLabel.Margin = new Padding(5, 0, 5, 0);
+            cardNumberLabel.Location = new Point(53, 103);
             cardNumberLabel.Name = "cardNumberLabel";
-            cardNumberLabel.Size = new Size(202, 38);
+            cardNumberLabel.Size = new Size(117, 21);
             cardNumberLabel.TabIndex = 3;
             cardNumberLabel.Text = "Card Number:";
             // 
@@ -104,10 +100,9 @@
             // 
             cardCVVLabel.AutoSize = true;
             cardCVVLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            cardCVVLabel.Location = new Point(91, 302);
-            cardCVVLabel.Margin = new Padding(5, 0, 5, 0);
+            cardCVVLabel.Location = new Point(53, 151);
             cardCVVLabel.Name = "cardCVVLabel";
-            cardCVVLabel.Size = new Size(147, 38);
+            cardCVVLabel.Size = new Size(85, 21);
             cardCVVLabel.TabIndex = 4;
             cardCVVLabel.Text = "Card CVV:";
             // 
@@ -115,10 +110,9 @@
             // 
             cardExpirationDateLabel.AutoSize = true;
             cardExpirationDateLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            cardExpirationDateLabel.Location = new Point(91, 408);
-            cardExpirationDateLabel.Margin = new Padding(5, 0, 5, 0);
+            cardExpirationDateLabel.Location = new Point(53, 204);
             cardExpirationDateLabel.Name = "cardExpirationDateLabel";
-            cardExpirationDateLabel.Size = new Size(297, 38);
+            cardExpirationDateLabel.Size = new Size(172, 21);
             cardExpirationDateLabel.TabIndex = 5;
             cardExpirationDateLabel.Text = "Card Expiration Date:";
             // 
@@ -126,10 +120,9 @@
             // 
             cardAddressLabel.AutoSize = true;
             cardAddressLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            cardAddressLabel.Location = new Point(91, 512);
-            cardAddressLabel.Margin = new Padding(5, 0, 5, 0);
+            cardAddressLabel.Location = new Point(53, 256);
             cardAddressLabel.Name = "cardAddressLabel";
-            cardAddressLabel.Size = new Size(129, 38);
+            cardAddressLabel.Size = new Size(74, 21);
             cardAddressLabel.TabIndex = 6;
             cardAddressLabel.Text = "Address:";
             // 
@@ -137,63 +130,57 @@
             // 
             statePaymentMethodFormLabel.AutoSize = true;
             statePaymentMethodFormLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            statePaymentMethodFormLabel.Location = new Point(91, 610);
-            statePaymentMethodFormLabel.Margin = new Padding(5, 0, 5, 0);
+            statePaymentMethodFormLabel.Location = new Point(53, 305);
             statePaymentMethodFormLabel.Name = "statePaymentMethodFormLabel";
-            statePaymentMethodFormLabel.Size = new Size(92, 38);
+            statePaymentMethodFormLabel.Size = new Size(53, 21);
             statePaymentMethodFormLabel.TabIndex = 7;
             statePaymentMethodFormLabel.Text = "State:";
             // 
             // cardNumberTextEdit
             // 
-            cardNumberTextEdit.BeforeTouchSize = new Size(169, 35);
-            cardNumberTextEdit.Location = new Point(302, 206);
-            cardNumberTextEdit.Margin = new Padding(5, 6, 5, 6);
+            cardNumberTextEdit.BeforeTouchSize = new Size(159, 23);
+            cardNumberTextEdit.Location = new Point(176, 103);
             cardNumberTextEdit.Name = "cardNumberTextEdit";
-            cardNumberTextEdit.Size = new Size(270, 35);
+            cardNumberTextEdit.Size = new Size(159, 23);
             cardNumberTextEdit.TabIndex = 9;
             cardNumberTextEdit.KeyPress += cardNumberTextEdit_KeyPress;
             // 
             // cardCVVTextEdit
             // 
-            cardCVVTextEdit.BeforeTouchSize = new Size(169, 35);
-            cardCVVTextEdit.Location = new Point(247, 302);
-            cardCVVTextEdit.Margin = new Padding(5, 6, 5, 6);
+            cardCVVTextEdit.BeforeTouchSize = new Size(159, 23);
+            cardCVVTextEdit.Location = new Point(144, 151);
             cardCVVTextEdit.Name = "cardCVVTextEdit";
-            cardCVVTextEdit.Size = new Size(136, 35);
+            cardCVVTextEdit.Size = new Size(81, 23);
             cardCVVTextEdit.TabIndex = 10;
             cardCVVTextEdit.KeyPress += cardCVVTextEdit_KeyPress;
             // 
             // addressTextEdit
             // 
-            addressTextEdit.BeforeTouchSize = new Size(169, 35);
-            addressTextEdit.Location = new Point(228, 512);
-            addressTextEdit.Margin = new Padding(5, 6, 5, 6);
+            addressTextEdit.BeforeTouchSize = new Size(159, 23);
+            addressTextEdit.Location = new Point(133, 256);
             addressTextEdit.Name = "addressTextEdit";
-            addressTextEdit.Size = new Size(169, 35);
+            addressTextEdit.Size = new Size(100, 23);
             addressTextEdit.TabIndex = 12;
             // 
             // cardTypeComboBox
             // 
-            cardTypeComboBox.BeforeTouchSize = new Size(205, 38);
+            cardTypeComboBox.BeforeTouchSize = new Size(121, 23);
             cardTypeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             cardTypeComboBox.Items.AddRange(new object[] { "Debit", "Credit" });
-            cardTypeComboBox.Location = new Point(247, 102);
-            cardTypeComboBox.Margin = new Padding(5, 6, 5, 6);
+            cardTypeComboBox.Location = new Point(144, 51);
             cardTypeComboBox.Name = "cardTypeComboBox";
-            cardTypeComboBox.Size = new Size(205, 38);
+            cardTypeComboBox.Size = new Size(121, 23);
             cardTypeComboBox.TabIndex = 14;
             cardTypeComboBox.Text = "Debit";
             // 
             // selectStateComboBox
             // 
-            selectStateComboBox.BeforeTouchSize = new Size(205, 38);
+            selectStateComboBox.BeforeTouchSize = new Size(121, 23);
             selectStateComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             selectStateComboBox.Items.AddRange(new object[] { "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming" });
-            selectStateComboBox.Location = new Point(192, 610);
-            selectStateComboBox.Margin = new Padding(5, 6, 5, 6);
+            selectStateComboBox.Location = new Point(112, 305);
             selectStateComboBox.Name = "selectStateComboBox";
-            selectStateComboBox.Size = new Size(205, 38);
+            selectStateComboBox.Size = new Size(121, 23);
             selectStateComboBox.TabIndex = 16;
             selectStateComboBox.Text = "Alabama";
             // 
@@ -201,10 +188,9 @@
             // 
             paymentFormErrorLabel.AutoSize = true;
             paymentFormErrorLabel.ForeColor = Color.Red;
-            paymentFormErrorLabel.Location = new Point(91, 40);
-            paymentFormErrorLabel.Margin = new Padding(5, 0, 5, 0);
+            paymentFormErrorLabel.Location = new Point(53, 20);
             paymentFormErrorLabel.Name = "paymentFormErrorLabel";
-            paymentFormErrorLabel.Size = new Size(168, 30);
+            paymentFormErrorLabel.Size = new Size(95, 15);
             paymentFormErrorLabel.TabIndex = 17;
             paymentFormErrorLabel.Text = "Temp Error Label";
             paymentFormErrorLabel.Visible = false;
@@ -213,37 +199,34 @@
             // 
             zipcodeLabel.AutoSize = true;
             zipcodeLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            zipcodeLabel.Location = new Point(91, 714);
-            zipcodeLabel.Margin = new Padding(5, 0, 5, 0);
+            zipcodeLabel.Location = new Point(53, 357);
             zipcodeLabel.Name = "zipcodeLabel";
-            zipcodeLabel.Size = new Size(129, 38);
+            zipcodeLabel.Size = new Size(76, 21);
             zipcodeLabel.TabIndex = 18;
             zipcodeLabel.Text = "Zipcode:";
             // 
             // zipcodeTextEdit
             // 
-            zipcodeTextEdit.BeforeTouchSize = new Size(169, 35);
-            zipcodeTextEdit.Location = new Point(231, 714);
-            zipcodeTextEdit.Margin = new Padding(5, 6, 5, 6);
+            zipcodeTextEdit.BeforeTouchSize = new Size(159, 23);
+            zipcodeTextEdit.Location = new Point(135, 357);
             zipcodeTextEdit.Name = "zipcodeTextEdit";
-            zipcodeTextEdit.Size = new Size(169, 35);
+            zipcodeTextEdit.Size = new Size(100, 23);
             zipcodeTextEdit.TabIndex = 19;
             zipcodeTextEdit.KeyPress += zipcodeTextEdit_KeyPress_1;
             // 
             // cardExpDateTextEdit
             // 
-            cardExpDateTextEdit.BeforeTouchSize = new Size(169, 35);
-            cardExpDateTextEdit.Location = new Point(396, 408);
-            cardExpDateTextEdit.Margin = new Padding(5, 6, 5, 6);
+            cardExpDateTextEdit.BeforeTouchSize = new Size(159, 23);
+            cardExpDateTextEdit.Location = new Point(231, 204);
             cardExpDateTextEdit.Name = "cardExpDateTextEdit";
-            cardExpDateTextEdit.Size = new Size(169, 35);
+            cardExpDateTextEdit.Size = new Size(100, 23);
             cardExpDateTextEdit.TabIndex = 20;
             // 
             // PaymentMethodForm
             // 
-            AutoScaleDimensions = new SizeF(12F, 30F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(742, 888);
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
+            ClientSize = new Size(434, 445);
             Controls.Add(cardExpDateTextEdit);
             Controls.Add(zipcodeTextEdit);
             Controls.Add(zipcodeLabel);
@@ -262,7 +245,6 @@
             Controls.Add(savePaymentMethodButton);
             Controls.Add(paymentMethodFormCancelButton);
             FormBorderStyle = FormBorderStyle.FixedDialog;
-            Margin = new Padding(5, 6, 5, 6);
             MaximizeBox = false;
             Name = "PaymentMethodForm";
             StartPosition = FormStartPosition.CenterScreen;

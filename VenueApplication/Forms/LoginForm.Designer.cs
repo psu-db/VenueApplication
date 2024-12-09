@@ -45,7 +45,7 @@
             // usernameTextBoxEdit
             // 
             usernameTextBoxEdit.BackColor = SystemColors.Window;
-            usernameTextBoxEdit.BeforeTouchSize = new Size(129, 23);
+            usernameTextBoxEdit.BeforeTouchSize = new Size(155, 23);
             usernameTextBoxEdit.Location = new Point(148, 61);
             usernameTextBoxEdit.Name = "usernameTextBoxEdit";
             usernameTextBoxEdit.Size = new Size(155, 23);
@@ -53,7 +53,7 @@
             // 
             // passwordTextBoxEdit
             // 
-            passwordTextBoxEdit.BeforeTouchSize = new Size(129, 23);
+            passwordTextBoxEdit.BeforeTouchSize = new Size(155, 23);
             passwordTextBoxEdit.Location = new Point(148, 101);
             passwordTextBoxEdit.Name = "passwordTextBoxEdit";
             passwordTextBoxEdit.Size = new Size(155, 23);
@@ -140,8 +140,8 @@
             // 
             // LoginForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.White;
             BackgroundImage = Properties.Resource.beaverStaidumLoginBackgroundImage_webp;
             ClientSize = new Size(789, 445);

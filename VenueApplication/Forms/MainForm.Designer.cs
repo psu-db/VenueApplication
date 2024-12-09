@@ -424,7 +424,6 @@
             // panel2
             // 
             panel2.Controls.Add(createEventDateLabel);
-            panel2.Controls.Add(panel3);
             panel2.Controls.Add(createEventCreateButton);
             panel2.Controls.Add(createEventTypeComboDropDown);
             panel2.Controls.Add(createEventCancelButton);
@@ -437,6 +436,7 @@
             panel2.Controls.Add(createEventColonLabel);
             panel2.Controls.Add(createEventDescriptionLabel);
             panel2.Controls.Add(createEventDescriptionTextBox);
+            panel2.Controls.Add(panel3);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
@@ -467,14 +467,14 @@
             createEventCalendar.Location = new Point(2, 2);
             createEventCalendar.Margin = new Padding(2);
             createEventCalendar.Name = "createEventCalendar";
-            createEventCalendar.Size = new Size(224, 196);
+            createEventCalendar.Size = new Size(245, 212);
             createEventCalendar.TabIndex = 5;
             createEventCalendar.Text = "sfCalendar1";
             // 
             // createEventCreateButton
             // 
             createEventCreateButton.Font = new Font("Segoe UI Semibold", 9F);
-            createEventCreateButton.Location = new Point(453, 511);
+            createEventCreateButton.Location = new Point(167, 501);
             createEventCreateButton.Margin = new Padding(2);
             createEventCreateButton.Name = "createEventCreateButton";
             createEventCreateButton.Size = new Size(113, 41);
@@ -498,7 +498,7 @@
             // createEventCancelButton
             // 
             createEventCancelButton.Font = new Font("Segoe UI Semibold", 9F);
-            createEventCancelButton.Location = new Point(333, 511);
+            createEventCancelButton.Location = new Point(47, 501);
             createEventCancelButton.Margin = new Padding(2);
             createEventCancelButton.Name = "createEventCancelButton";
             createEventCancelButton.Size = new Size(110, 41);
@@ -510,7 +510,7 @@
             // 
             createEventErrorLabel.Font = new Font("Segoe UI", 16F);
             createEventErrorLabel.ForeColor = Color.Red;
-            createEventErrorLabel.Location = new Point(40, 522);
+            createEventErrorLabel.Location = new Point(40, 561);
             createEventErrorLabel.Margin = new Padding(2, 0, 2, 0);
             createEventErrorLabel.Name = "createEventErrorLabel";
             createEventErrorLabel.Size = new Size(244, 30);
@@ -1196,8 +1196,8 @@
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             BorderColor = Color.Black;
             ClientSize = new Size(1379, 678);
             Controls.Add(tabControlAdv1);

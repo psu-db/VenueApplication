@@ -126,7 +126,7 @@
             // 
             // editEventCalender
             // 
-            editEventCalender.Location = new Point(30, 26);
+            editEventCalender.Location = new Point(31, 25);
             editEventCalender.Margin = new Padding(2);
             editEventCalender.Name = "editEventCalender";
             editEventCalender.Size = new Size(231, 201);
@@ -228,8 +228,8 @@
             // 
             // EditEventForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             ClientSize = new Size(557, 627);
             Controls.Add(panel1);
             Controls.Add(editEventErrorLabel);
