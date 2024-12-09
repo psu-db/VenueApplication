@@ -52,7 +52,7 @@ namespace VenueApplication.Forms
             }
             else
             {
-                paymentFormErrorLabel.Text = "An error occured while trying to add payment method. Please wait and try again.";
+                paymentFormErrorLabel.Text = "An error occured. Please wait and try again.";
                 paymentFormErrorLabel.Visible = true;
                 paymentFormErrorLabel.Refresh();
             }

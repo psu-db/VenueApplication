@@ -28,6 +28,8 @@ namespace VenueApplication.Forms
             InitializeComponent();
             this.Text = "Login Page";
             databaseManager = new DatabaseManager(dbHost, dbUsername, dbPassword, dbName);
+            passwordTextBoxEdit.UseSystemPasswordChar = true;
+
         }
 
         #endregion

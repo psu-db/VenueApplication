@@ -71,28 +71,6 @@ namespace VenueApplication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DELETE FROM venue_transaction
-        ///WHERE trans_event_id = @eventid;
-        ///
-        ///DELETE from ticket_purchase
-        ///WHERE tktpur_tkt_id IN (SELECT tkt_id
-        ///   FROM venue_ticket
-        ///   WHERE tkt_event_id = @eventid);
-        ///
-        ///DELETE FROM venue_ticket
-        ///WHERE tkt_event_id = @eventid;
-        ///
-        ///
-        ///DELETE FROM venue_event
-        ///WHERE event_id = @eventid;.
-        /// </summary>
-        internal static string close_event_DELETE {
-            get {
-                return ResourceManager.GetString("close_event_DELETE", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to INSERT INTO venue_event(event_date, event_time, event_type, event_description)
         ///VALUES(@eventdate, @eventtime, @eventtype, @eventdescription);.
         /// </summary>
@@ -110,45 +88,6 @@ namespace VenueApplication.Properties {
         internal static string eventCreate_UPDATE {
             get {
                 return ResourceManager.GetString("eventCreate_UPDATE", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to SELECT 
-        ///    lgn_email, 
-        ///    item_name, 
-        ///    store_name, 
-        ///    pymt_info_type, 
-        ///    SUM(item_price * trans_quantity) AS total_spent
-        ///FROM venue_transaction
-        ///JOIN payment_info ON trans_pymt_info_id = pymt_info_id
-        ///JOIN app_user ON pymt_info_user_id = user_id
-        ///JOIN venue_item ON trans_item_id = item_id
-        ///JOIN venue_store ON item_store_id = store_id
-        ///JOIN login_credentials ON lgn_user_id = user_id
-        ///WHERE trans_event_id = 6
-        ///GROUP BY 
-        ///    lgn_email, 
-        ///    item_name, 
-        ///    store_name, 
-        ///    pymt_info_type
-        ///ORDER BY total_spent [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string eventDataTransactions_SELECT {
-            get {
-                return ResourceManager.GetString("eventDataTransactions_SELECT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to SELECT COUNT(*) AS num_tickets_sold, SUM(tkt_price) AS total_ticket_revenue
-        ///FROM venue_ticket 
-        ///WHERE tkt_status = &apos;SCN&apos;
-        ///AND tkt_event_id = @eventid;.
-        /// </summary>
-        internal static string eventSelectTicketData_SELECT {
-            get {
-                return ResourceManager.GetString("eventSelectTicketData_SELECT", resourceCulture);
             }
         }
         
@@ -343,6 +282,31 @@ namespace VenueApplication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to UPDATE app_user
+        ///SET user_balance = user_balance + @ticket_sold_price
+        ///WHERE user_id = @user_id
+        ///RETURNING user_balance;.
+        /// </summary>
+        internal static string ticketSellerBalance_UPDATE {
+            get {
+                return ResourceManager.GetString("ticketSellerBalance_UPDATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT app_user.user_id, venue_ticket.tkt_price FROM ticket_purchase JOIN venue_ticket
+        ///ON ticket_purchase.tktpur_tkt_id = venue_ticket.tkt_id JOIN
+        ///user_wallet ON ticket_purchase.tktpur_wallet_id = user_wallet.wallet_id JOIN app_user
+        ///ON app_user.user_id = user_wallet.wallet_user_id
+        ///WHERE venue_ticket.tkt_id = @ticket_id;.
+        /// </summary>
+        internal static string ticketSellerInfo_SELECT {
+            get {
+                return ResourceManager.GetString("ticketSellerInfo_SELECT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SELECT * FROM venue_ticket WHERE tkt_event_id = @event_id AND tkt_status = @status1 OR tkt_status = @status2;.
         /// </summary>
         internal static string ticketsForEvent_SELECT {
@@ -373,6 +337,15 @@ namespace VenueApplication.Properties {
         internal static string userCreate_INSERT {
             get {
                 return ResourceManager.GetString("userCreate_INSERT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT lgn_password FROM login_credentials WHERE lgn_username = @username;.
+        /// </summary>
+        internal static string userGetHashedPassword_SELECT {
+            get {
+                return ResourceManager.GetString("userGetHashedPassword_SELECT", resourceCulture);
             }
         }
         
@@ -430,24 +403,35 @@ namespace VenueApplication.Properties {
         /// <summary>
         ///   Looks up a localized string similar to SELECT * FROM venue_store;.
         /// </summary>
-        internal static string ticketSellerInfo_SELECT
+        internal static string eventSelectTicketData_SELECT
         {
             get
             {
-                return ResourceManager.GetString("ticketSellerInfo_SELECT", resourceCulture);
+                return ResourceManager.GetString("eventSelectTicketData_SELECT", resourceCulture);
             }
         }
 
         /// <summary>
         ///   Looks up a localized string similar to SELECT * FROM venue_store;.
         /// </summary>
-        internal static string ticketSellerBalance_UPDATE
+        internal static string eventDataTransactions_SELECT
         {
             get
             {
-                return ResourceManager.GetString("ticketSellerBalance_UPDATE", resourceCulture);
+                return ResourceManager.GetString("eventDataTransactions_SELECT", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT * FROM venue_store;.
+        /// </summary>
+        internal static string close_event_DELETE
+        {
+            get
+            {
+                return ResourceManager.GetString("close_event_DELETE", resourceCulture);
+            }
+        }
+       
     }
 }

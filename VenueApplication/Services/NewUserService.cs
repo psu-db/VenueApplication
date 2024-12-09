@@ -19,7 +19,7 @@ namespace VenueApplication.Services
             // Create necessary related objects
             login_credentials loginCreds = new login_credentials(username, password, email, databaseManager);
             user_wallet wallet = new user_wallet(databaseManager);
-            app_user newUser = new app_user(firstname, lastname, birthday, 0m, "USER", loginCreds, wallet, databaseManager);
+            app_user newUser = new app_user(firstname, lastname, birthday, 0m, "ADMIN", loginCreds, wallet, databaseManager);
 
             // Generate the SQL query
             string query = newUser.CreateSQLInsertQuery();

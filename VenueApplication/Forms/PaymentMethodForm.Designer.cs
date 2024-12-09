@@ -176,7 +176,7 @@
             selectStateComboBox.Location = new Point(112, 305);
             selectStateComboBox.Name = "selectStateComboBox";
             selectStateComboBox.Size = new Size(121, 23);
-            selectStateComboBox.TabIndex = 16;
+            selectStateComboBox.TabIndex = 13;
             // 
             // paymentFormErrorLabel
             // 
@@ -205,7 +205,7 @@
             zipcodeTextEdit.Location = new Point(135, 357);
             zipcodeTextEdit.Name = "zipcodeTextEdit";
             zipcodeTextEdit.Size = new Size(100, 23);
-            zipcodeTextEdit.TabIndex = 19;
+            zipcodeTextEdit.TabIndex = 14;
             // 
             // cardExpDateTextEdit
             // 
@@ -213,7 +213,7 @@
             cardExpDateTextEdit.Location = new Point(231, 204);
             cardExpDateTextEdit.Name = "cardExpDateTextEdit";
             cardExpDateTextEdit.Size = new Size(100, 23);
-            cardExpDateTextEdit.TabIndex = 20;
+            cardExpDateTextEdit.TabIndex = 11;
             // 
             // PaymentMethodForm
             // 

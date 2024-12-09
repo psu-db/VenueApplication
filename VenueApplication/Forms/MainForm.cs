@@ -96,12 +96,6 @@ namespace VenueApplication
             tabControlAdv2.SelectedTab = eventManagerTab;
         }
 
-        private void adminControlsButton_Click(object sender, EventArgs e)
-        {
-            tabControlAdv1.SelectedTab = adminToolsTab;
-            tabControlAdv2.SelectedTab = adminToolsSelectionTab;
-        }
-
         private void homeButton_Click(object sender, EventArgs e)
         {
             tabControlAdv1.SelectedTab = homeTab;
@@ -125,16 +119,17 @@ namespace VenueApplication
         public void InitializeProfilePage(decimal? newBalance = 0)
         {
             firstlastNameLabel.Text = $"{user.user_fname} {user.user_lname}";
-            
+
             if (newBalance != 0)
             {
                 profileAccountBalanceValueLabel.Text = $"${newBalance.ToString()}";
+                user.user_balance = (decimal)newBalance;
             }
             else
             {
                 profileAccountBalanceValueLabel.Text = $"${user.user_balance.ToString()}";
             }
-            
+
             List<payment_info> paymentMethods = InitializePaymentMethods();
             paymentMethodsComboBox.DataSource = paymentMethods;
 
@@ -514,7 +509,7 @@ namespace VenueApplication
                         }
                         else
                         {
-                            Debug.WriteLine("Initialize tickets for MyTickets failed");
+                            Debug.WriteLine("No tickets found while loading My tickets");
                             return myTickets;
                         }
                     }
@@ -918,6 +913,12 @@ namespace VenueApplication
 
         private void homeViewEventTicketsButton_Click(object sender, EventArgs e)
         {
+            if (homePage_selectedEvent != null)
+            {
+                homePageErrorLabel.Visible = false;
+                homePageErrorLabel.ForeColor = Color.Green;
+                homePageErrorLabel.Text = "Select an event to view available tickets.";
+            }
             if (homeViewEventTicketsButton.Text == "View Tickets For Selected Event" && homePage_selectedEvent != null)
             {
                 List<venue_ticket> eventTickets = InitializeTicketsForEvent(homePage_selectedEvent);
@@ -1297,20 +1298,6 @@ namespace VenueApplication
 
         }
 
-
-        private void itemPurchaseControlButton_Click(object sender, EventArgs e)
-        {
-            refreshStoreItemPurchaseTable();
-            purchaseItemsQuantityLabel.Visible = false;
-            purchaseItemsItemDataGrid.Visible = false;
-            itemPurchaseQuantityTextBox.Visible = false;
-            itemPurchasePurchaseButton.Visible = false;
-            purchaseItemsPaymentMethodLabel.Visible = false;
-            purchseItemsPaymentMethodComboBox.Visible = false;
-            tabControlAdv1.SelectedTab = purchaseItemsTab;
-
-        }
-
         public void refreshStoreItemPurchaseTable()
         {
             manageStoresDataGrid.DataSource = null;
@@ -1470,6 +1457,36 @@ namespace VenueApplication
                 eventManagerErrorLabel.Text = "Please select an event to continue";
                 eventManagerErrorLabel.Visible = true;
             }
+        }
+
+        private void homeTab_Leave(object sender, EventArgs e)
+        {
+            homeViewEventTicketsButton.Text = "View Tickets For Selected Event";
+            homePagePurchaseTicketButton.Visible = false;
+            InitializeHomePage();
+        }
+
+        private void itemPurchaseControlButton_Click(object sender, EventArgs e)
+        {
+            refreshStoreItemPurchaseTable();
+            purchaseItemsQuantityLabel.Visible = false;
+            purchaseItemsItemDataGrid.Visible = false;
+            itemPurchaseQuantityTextBox.Visible = false;
+            itemPurchasePurchaseButton.Visible = false;
+            purchaseItemsPaymentMethodLabel.Visible = false;
+            purchseItemsPaymentMethodComboBox.Visible = false;
+            tabControlAdv1.SelectedTab = purchaseItemsTab;
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            loginForm.Close();
+        }
+
+        private void adminControlsButton_Click(object sender, EventArgs e)
+        {
+            tabControlAdv1.SelectedTab = adminToolsTab;
+            tabControlAdv2.SelectedTab = adminToolsSelectionTab;
         }
     }
 
