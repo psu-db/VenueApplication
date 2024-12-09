@@ -139,9 +139,9 @@ namespace VenueApplication.Forms
             // manageStoreItemsCreateButton
             // 
             manageStoreItemsCreateButton.Font = new Font("Segoe UI Semibold", 16F);
-            manageStoreItemsCreateButton.Location = new Point(26, 170);
+            manageStoreItemsCreateButton.Location = new Point(21, 154);
             manageStoreItemsCreateButton.Name = "manageStoreItemsCreateButton";
-            manageStoreItemsCreateButton.Size = new Size(193, 56);
+            manageStoreItemsCreateButton.Size = new Size(166, 31);
             manageStoreItemsCreateButton.TabIndex = 7;
             manageStoreItemsCreateButton.Text = "Create";
             manageStoreItemsCreateButton.Click += manageStoreItemsCreateButton_Click;
@@ -149,9 +149,9 @@ namespace VenueApplication.Forms
             // manageStoreItemsUpdateButton
             // 
             manageStoreItemsUpdateButton.Font = new Font("Segoe UI Semibold", 16F);
-            manageStoreItemsUpdateButton.Location = new Point(245, 170);
+            manageStoreItemsUpdateButton.Location = new Point(193, 154);
             manageStoreItemsUpdateButton.Name = "manageStoreItemsUpdateButton";
-            manageStoreItemsUpdateButton.Size = new Size(193, 56);
+            manageStoreItemsUpdateButton.Size = new Size(166, 31);
             manageStoreItemsUpdateButton.TabIndex = 8;
             manageStoreItemsUpdateButton.Text = "Update";
             manageStoreItemsUpdateButton.Click += manageStoreItemsUpdateButton_Click;
@@ -169,9 +169,9 @@ namespace VenueApplication.Forms
             // manageStoreItemsCancelButton
             // 
             manageStoreItemsCancelButton.Font = new Font("Segoe UI Semibold", 12F);
-            manageStoreItemsCancelButton.Location = new Point(2119, 1098);
+            manageStoreItemsCancelButton.Location = new Point(365, 154);
             manageStoreItemsCancelButton.Name = "manageStoreItemsCancelButton";
-            manageStoreItemsCancelButton.Size = new Size(143, 57);
+            manageStoreItemsCancelButton.Size = new Size(166, 31);
             manageStoreItemsCancelButton.TabIndex = 10;
             manageStoreItemsCancelButton.Text = "Cancel";
             manageStoreItemsCancelButton.Click += manageStoreItemsCancelButton_Click;
@@ -190,13 +190,14 @@ namespace VenueApplication.Forms
             // 
             panel1.Controls.Add(autoLabel2);
             panel1.Controls.Add(autoLabel3);
+            panel1.Controls.Add(manageStoreItemsCancelButton);
             panel1.Controls.Add(manageStoreItemsNameTextBox);
             panel1.Controls.Add(manageStoreItemsPriceCurrencyTextBox);
             panel1.Controls.Add(manageStoreItemsUpdateButton);
             panel1.Controls.Add(manageStoreItemsCreateButton);
             panel1.Location = new Point(58, 382);
             panel1.Name = "panel1";
-            panel1.Size = new Size(545, 238);
+            panel1.Size = new Size(598, 201);
             panel1.TabIndex = 12;
             // 
             // ManageStoreItemsForm
@@ -206,7 +207,6 @@ namespace VenueApplication.Forms
             ClientSize = new Size(852, 632);
             Controls.Add(panel1);
             Controls.Add(manageStoreItemsMessageLabel);
-            Controls.Add(manageStoreItemsCancelButton);
             Controls.Add(manageStoreItemsDeleteButton);
             Controls.Add(manageStoreItemsStoreNameLabel);
             Controls.Add(autoLabel1);

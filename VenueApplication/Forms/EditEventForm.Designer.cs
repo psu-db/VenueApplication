@@ -126,11 +126,10 @@
             // 
             // editEventCalender
             // 
-            editEventCalender.Dock = DockStyle.Fill;
-            editEventCalender.Location = new Point(0, 0);
+            editEventCalender.Location = new Point(30, 26);
             editEventCalender.Margin = new Padding(2);
             editEventCalender.Name = "editEventCalender";
-            editEventCalender.Size = new Size(231, 214);
+            editEventCalender.Size = new Size(231, 201);
             editEventCalender.TabIndex = 10;
             editEventCalender.Text = "sfCalendar1";
             // 
@@ -222,9 +221,9 @@
             // panel1
             // 
             panel1.Controls.Add(editEventCalender);
-            panel1.Location = new Point(142, 103);
+            panel1.Location = new Point(120, 100);
             panel1.Name = "panel1";
-            panel1.Size = new Size(235, 214);
+            panel1.Size = new Size(285, 254);
             panel1.TabIndex = 18;
             // 
             // EditEventForm

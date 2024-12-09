@@ -447,9 +447,9 @@
             // panel3
             // 
             panel3.Controls.Add(createEventCalendar);
-            panel3.Location = new Point(44, 83);
+            panel3.Location = new Point(44, 73);
             panel3.Name = "panel3";
-            panel3.Size = new Size(216, 196);
+            panel3.Size = new Size(274, 216);
             panel3.TabIndex = 21;
             // 
             // createEventDateLabel
@@ -464,11 +464,10 @@
             // 
             // createEventCalendar
             // 
-            createEventCalendar.Dock = DockStyle.Fill;
-            createEventCalendar.Location = new Point(0, 0);
+            createEventCalendar.Location = new Point(2, 2);
             createEventCalendar.Margin = new Padding(2);
             createEventCalendar.Name = "createEventCalendar";
-            createEventCalendar.Size = new Size(210, 196);
+            createEventCalendar.Size = new Size(224, 196);
             createEventCalendar.TabIndex = 5;
             createEventCalendar.Text = "sfCalendar1";
             // 
